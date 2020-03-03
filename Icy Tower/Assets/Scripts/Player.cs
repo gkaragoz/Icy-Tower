@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     [SerializeField]
-    private float _movementSpeed;
+    private float _movementSpeed = 0f;
 
     Rigidbody2D rb;
 
