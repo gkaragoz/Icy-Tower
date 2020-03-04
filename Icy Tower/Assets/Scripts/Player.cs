@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
 
     [SerializeField]
     private float _movementSpeed = 0f;
+    [SerializeField]
+    private Joystick _joystick ;
 
     Rigidbody2D rb;
 
@@ -19,6 +21,7 @@ public class Player : MonoBehaviour {
     void Update() {
 
         _movement = (Input.GetAxis("Horizontal") * _movementSpeed);
+        _movement = _joystick.Horizontal * _movementSpeed;
     }
 
     void FixedUpdate() {
