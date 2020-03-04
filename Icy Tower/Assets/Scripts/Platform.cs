@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Platform : MonoBehaviour {
+public class Platform : MonoBehaviour , IPooledObject{
 
     [SerializeField]
     private float _jumpForce = 5f;
@@ -10,7 +10,7 @@ public class Platform : MonoBehaviour {
     private float _comboJumpForce = 10f;
     [SerializeField]
     private float _comboTrashHold = 0f;
-
+    
 
     void OnCollisionEnter2D(Collision2D collision) {
 
@@ -23,6 +23,13 @@ public class Platform : MonoBehaviour {
                 rb.velocity = velocity;
             }
         }
+    }
+    public void OnObjectReused() {
+        gameObject.SetActive(true);
+    }
+
+    public void OnPlatformCrashed() {
+        gameObject.SetActive(false);
     }
 
 }

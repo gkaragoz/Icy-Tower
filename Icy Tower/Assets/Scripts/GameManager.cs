@@ -18,14 +18,21 @@ public class GameManager : MonoBehaviour
 
     #endregion
     // Start is called before the first frame update
+    [SerializeField]
+    private Transform _leftPlatformPivot;
+    [SerializeField]
+    private Transform _rightPlatformPivot;
+
+    private float lastPlatformPositionY = 0;
+
+
     void Start()
     {
         ObjectPooler.instance.InitializePool("Platform");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
+
+    public Transform LeftPlatformPivot { get { return _leftPlatformPivot; } }
+    public Transform RightPlatformPivot { get { return _rightPlatformPivot; } }
 }
