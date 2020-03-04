@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class PlatformGenerator : MonoBehaviour {
 
+    #region Singleton
+
+    public static PlatformGenerator instance;
+    private void Awake() {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+    }
+
+    #endregion
+
     [SerializeField]
     private float _lastPlatformY = -4f;
 
@@ -23,13 +35,13 @@ public class PlatformGenerator : MonoBehaviour {
     //    }
     //}
 
-    private void SpawnPlatform() {
+    public void SpawnPlatform() {
         Vector3 randomPosition = new Vector3(
             Random.Range(GameManager.instance.LeftPlatformPivot.position.x, GameManager.instance.RightPlatformPivot.position.x),
               _lastPlatformY += 2f,
               0);
-        GameObject spawnedPlatform = ObjectPooler.instance.SpawnFromPool("Platform", randomPosition, Quaternion.identity);
-        
+        ObjectPooler.instance.SpawnFromPool("Platform", randomPosition, Quaternion.identity);
+
 
         Debug.Log("Platform has been spawned");
     }

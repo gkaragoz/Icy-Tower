@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6098371754674010250}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,5 +142,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpForce: 15
-  _comboJumoForce: 20
+  _comboJumpForce: 20
   _comboTrashHold: 3.5

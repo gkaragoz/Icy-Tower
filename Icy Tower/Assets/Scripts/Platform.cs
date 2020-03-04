@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour , IPooledObject{
 
+   
     [SerializeField]
     private float _jumpForce = 5f;
     [SerializeField]
@@ -28,8 +29,5 @@ public class Platform : MonoBehaviour , IPooledObject{
         gameObject.SetActive(true);
     }
 
-    public void OnPlatformCrashed() {
-        gameObject.SetActive(false);
-    }
 
 }
