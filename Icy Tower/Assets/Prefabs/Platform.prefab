@@ -143,4 +143,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jumpForce: 15
   _comboJumpForce: 25
-  _comboTrashHold: 3.5
+  _comboTrashHold: 3.9
