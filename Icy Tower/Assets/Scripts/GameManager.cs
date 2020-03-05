@@ -17,18 +17,20 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
-    // Start is called before the first frame update
+    [SerializeField]
+    private GameObject _player;
     [SerializeField]
     private Transform _leftPlatformPivot;
     [SerializeField]
     private Transform _rightPlatformPivot;
 
-    private float lastPlatformPositionY = 0;
+    private Rigidbody2D _rb;
 
 
     void Start()
     {
         ObjectPooler.instance.InitializePool("Platform");
+        
     }
 
    

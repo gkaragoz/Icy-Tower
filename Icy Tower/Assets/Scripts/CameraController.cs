@@ -9,12 +9,16 @@ public class CameraController : MonoBehaviour {
     private float _offset = 0f;
     [SerializeField]
     private float _cameraSpeed = 0f;
-   
+    [SerializeField]
+    private float _smoothSpeed = 0.125f;
+
+
     void LateUpdate() {
         if (_target.position.y + _offset > transform.position.y) {
 
             Vector3 newPos = new Vector3(transform.position.x, _target.position.y + _offset, transform.position.z);
-            transform.position = Vector3.Lerp(transform.position, newPos, 10f);
+            Vector3 smoothedPos = Vector3.Lerp(transform.position, newPos, _smoothSpeed);
+            transform.position = smoothedPos;
         } else {
             transform.Translate(Vector3.up * Time.deltaTime * _cameraSpeed);
 
