@@ -1018,33 +1018,8 @@ PrefabInstance:
       objectReference: {fileID: 2097841270}
     - target: {fileID: 6991562073100620534, guid: cbc6d7b27a9bcbf40af936275034a118,
         type: 3}
-      propertyPath: flyTime
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991562073100620534, guid: cbc6d7b27a9bcbf40af936275034a118,
-        type: 3}
-      propertyPath: gravityScale
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991562073100620534, guid: cbc6d7b27a9bcbf40af936275034a118,
-        type: 3}
-      propertyPath: _jumpForce
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991562073100620534, guid: cbc6d7b27a9bcbf40af936275034a118,
-        type: 3}
-      propertyPath: _downSpeed
+      propertyPath: _upSpeed
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991562073100620535, guid: cbc6d7b27a9bcbf40af936275034a118,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991562073100620535, guid: cbc6d7b27a9bcbf40af936275034a118,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc6d7b27a9bcbf40af936275034a118, type: 3}

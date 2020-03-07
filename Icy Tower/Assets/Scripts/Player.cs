@@ -14,15 +14,13 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private float _jumpForce = 0f;
     [SerializeField]
-    private float _comboJumpForce = 0f;
-    [SerializeField]
-    private float smoothSpeed = 0f;
-    [SerializeField]
     private float _downSpeed = 0f;
+    [SerializeField]
+    private float _upSpeed = 0f;
 
 
-    private bool isJumping;
-    private bool isFalling;
+    private bool isJumping = false;
+    private bool isFalling = true;
 
     public Animator anim;
 
@@ -38,6 +36,7 @@ public class Player : MonoBehaviour {
 
     void Start() {
         _rb = GetComponent<Rigidbody2D>();
+        isFalling = true;
     }
 
 
@@ -46,19 +45,22 @@ public class Player : MonoBehaviour {
 
         Vector2 velocity = _rb.velocity;
         velocity.x = _movement;
-        if (velocity.x != 0) {
+        if (_movement != 0) {
             _isPlayerMoved = true;
             _isRunning = true;
         } else {
             _isRunning = false;
         }
-        SetDirectionOfCharacter(velocity);
+        SetDirectionOfCharacter();
         PlayRunAnimation();
         PlayComboAnimation();
         _rb.velocity = velocity;
 
-        if (!isJumping) {
+        if (isFalling) {
             Fall();
+        }
+        if(isJumping) {
+            Jump();
         }
     }
 
@@ -67,19 +69,15 @@ public class Player : MonoBehaviour {
             anim.SetBool("hasComboJumped", _hasComboJumped);
     }
 
-    private void SetDirectionOfCharacter(Vector2 velocity) {
+    private void SetDirectionOfCharacter() {
         if (_isPlayerMoved) {
-            SetScaleBasedOnVelocity(velocity);
+            if (_movement > 0)
+                _scale = Vector3.one;
+            if (_movement < 0)
+                _scale = new Vector3(-1, _gfx.localScale.y, _gfx.localScale.z);
+            _gfx.localScale = _scale;
+            _isPlayerMoved = false;
         }
-    }
-
-    private void SetScaleBasedOnVelocity(Vector2 velocity) {
-        if (velocity.x > 0)
-            _scale = Vector3.one;
-        if (velocity.x < 0)
-            _scale = new Vector3(-1, _gfx.localScale.y, _gfx.localScale.z);
-        _gfx.localScale = _scale;
-        _isPlayerMoved = false;
     }
 
     private void PlayRunAnimation() {
@@ -90,30 +88,26 @@ public class Player : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
 
         if (collision.gameObject.tag == "Platform" && isFalling) {
+            _desiredPosition = new Vector3(transform.position.x, transform.position.y + _jumpForce, transform.position.z);
             isJumping = true;
             isFalling = false;
-            RealJump();
             anim.SetBool("hasJumped", isJumping);
         }
     }
 
 
-    public void RealJump() {
-        _desiredPosition = new Vector3(transform.position.x, transform.position.y + _jumpForce, transform.position.z);
-        StartCoroutine(GoToPosition());
-    }
-
-    IEnumerator GoToPosition() {
-        while (isJumping) {
-            transform.position = Vector3.Lerp(transform.position, _desiredPosition, 0.0250f);
-            if (Vector3.Distance(transform.position, _desiredPosition) <= 0.15f) {
-                isJumping = false;
-            }
-            yield return null;
+    public void Jump() {
+        isFalling = false;
+        transform.position += Vector3.up * _upSpeed * Time.fixedDeltaTime;
+        if (Mathf.Abs(transform.position.y - _desiredPosition.y) <= .1f) {
+            isFalling = true;
+            isJumping = false;
         }
     }
 
+
     private void Fall() {
+        isJumping = false;
         isFalling = true;
         transform.position += Vector3.down * _downSpeed * Time.fixedDeltaTime;
         Debug.Log("Falling");

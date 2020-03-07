@@ -50,12 +50,10 @@ MonoBehaviour:
   _movementSpeed: 5
   _joystick: {fileID: 0}
   _gfx: {fileID: 6991562073699446994}
-  _jumpForce: 100
+  _jumpForce: 3
   _comboJumpForce: 15
   smoothSpeed: 0.25
-  height: 5
-  flyTime: 1
-  gravityScale: 0.01
+  _downSpeed: 5
   anim: {fileID: 1103730878}
 --- !u!50 &6991562073100620535
 Rigidbody2D:
@@ -72,7 +70,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
