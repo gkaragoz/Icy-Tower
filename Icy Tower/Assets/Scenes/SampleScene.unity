@@ -220,12 +220,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &132633540 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6991562073100620532, guid: cbc6d7b27a9bcbf40af936275034a118,
-    type: 3}
-  m_PrefabInstance: {fileID: 6991562073844887748}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &284574501
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,8 +305,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 1498056184}
   _offset: -7
-  _cameraSpeed: 1
+  _cameraSpeed: 0
   _smoothSpeed: 0.0125
+  mainCam: {fileID: 519420031}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -477,7 +472,7 @@ GameObject:
   - component: {fileID: 823351270}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -555,7 +550,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 823351266}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: a07548b79f6ab0443ad6c803c2fcd1eb, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -584,9 +579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d647fef877d9db34c8024d38e000e734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 15
-  _comboJumpForce: 10
-  _comboTrashHold: 3.5
 --- !u!1 &837272090
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,7 +914,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5507c28bb621e45b6a0836abb14c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 132633540}
   _leftPlatformPivot: {fileID: 2008376558}
   _rightPlatformPivot: {fileID: 837272091}
 --- !u!4 &2042805804
@@ -968,12 +959,12 @@ PrefabInstance:
     - target: {fileID: 6991562073100620533, guid: cbc6d7b27a9bcbf40af936275034a118,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.33
+      value: -1.73
       objectReference: {fileID: 0}
     - target: {fileID: 6991562073100620533, guid: cbc6d7b27a9bcbf40af936275034a118,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.03
+      value: 1.674
       objectReference: {fileID: 0}
     - target: {fileID: 6991562073100620533, guid: cbc6d7b27a9bcbf40af936275034a118,
         type: 3}
@@ -1025,24 +1016,34 @@ PrefabInstance:
       propertyPath: _joystick
       value: 
       objectReference: {fileID: 2097841270}
-    - target: {fileID: 6991562073699446994, guid: cbc6d7b27a9bcbf40af936275034a118,
+    - target: {fileID: 6991562073100620534, guid: cbc6d7b27a9bcbf40af936275034a118,
         type: 3}
-      propertyPath: m_LocalRotation.z
+      propertyPath: flyTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991562073100620534, guid: cbc6d7b27a9bcbf40af936275034a118,
+        type: 3}
+      propertyPath: gravityScale
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991562073100620534, guid: cbc6d7b27a9bcbf40af936275034a118,
+        type: 3}
+      propertyPath: _jumpForce
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991562073100620534, guid: cbc6d7b27a9bcbf40af936275034a118,
+        type: 3}
+      propertyPath: _downSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991562073100620535, guid: cbc6d7b27a9bcbf40af936275034a118,
+        type: 3}
+      propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6991562073699446994, guid: cbc6d7b27a9bcbf40af936275034a118,
+    - target: {fileID: 6991562073100620535, guid: cbc6d7b27a9bcbf40af936275034a118,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991562073699446994, guid: cbc6d7b27a9bcbf40af936275034a118,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991562073699446994, guid: cbc6d7b27a9bcbf40af936275034a118,
-        type: 3}
-      propertyPath: m_LocalRotation.y
+      propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

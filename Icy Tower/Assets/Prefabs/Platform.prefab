@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6098371754674010247}
+  - component: {fileID: 6098371754674010250}
   - component: {fileID: 6098371754674010246}
   - component: {fileID: 6098371754674010248}
   - component: {fileID: 6098371754674010249}
-  - component: {fileID: 6098371754674010250}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Platform
@@ -34,6 +34,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6098371754674010250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6098371754674010245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d647fef877d9db34c8024d38e000e734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jumpForce: 100
+  _comboJumpForce: 20
+  _comboTrashHold: 3.9
+  smoothSpeed: 0.1
 --- !u!212 &6098371754674010246
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -93,7 +109,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 6098371754674010245}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: a07548b79f6ab0443ad6c803c2fcd1eb, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
@@ -129,18 +145,3 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!114 &6098371754674010250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6098371754674010245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d647fef877d9db34c8024d38e000e734, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _jumpForce: 15
-  _comboJumpForce: 30
-  _comboTrashHold: 3.9

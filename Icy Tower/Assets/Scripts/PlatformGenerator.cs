@@ -43,6 +43,5 @@ public class PlatformGenerator : MonoBehaviour {
         ObjectPooler.instance.SpawnFromPool("Platform", randomPosition, Quaternion.identity);
 
 
-        Debug.Log("Platform has been spawned");
     }
 }

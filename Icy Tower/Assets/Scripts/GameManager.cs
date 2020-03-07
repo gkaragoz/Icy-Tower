@@ -18,21 +18,15 @@ public class GameManager : MonoBehaviour
 
     #endregion
     [SerializeField]
-    private GameObject _player;
+    private Transform _leftPlatformPivot = null;
     [SerializeField]
-    private Transform _leftPlatformPivot;
-    [SerializeField]
-    private Transform _rightPlatformPivot;
-
-    private Rigidbody2D _rb;
-
+    private Transform _rightPlatformPivot =null;
 
     void Start()
     {
         ObjectPooler.instance.InitializePool("Platform");
         
     }
-
    
 
     public Transform LeftPlatformPivot { get { return _leftPlatformPivot; } }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour {
+public  class CameraController : MonoBehaviour {
     [SerializeField]
     private Transform _target = null;
     [SerializeField]
@@ -10,10 +10,14 @@ public class CameraController : MonoBehaviour {
     [SerializeField]
     private float _cameraSpeed = 0f;
     [SerializeField]
-    private float _smoothSpeed = 0.125f;
+    private float _smoothSpeed = 0.0125f;
+
+    public Camera mainCam;
 
 
     void LateUpdate() {
+       
+        //Debug.Log(mainCam.WorldToScreenPoint(_target.transform.position).x.Map(0, 1080,0,100));
         if (_target.position.y + _offset > transform.position.y) {
 
             Vector3 newPos = new Vector3(transform.position.x, _target.position.y + _offset, transform.position.z);
@@ -24,4 +28,7 @@ public class CameraController : MonoBehaviour {
 
         }
     }
+    
+
+
 }
