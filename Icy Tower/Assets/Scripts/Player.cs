@@ -14,16 +14,19 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private float _jumpForce = 0f;
     [SerializeField]
-    private float _downSpeed = 0f;
+    private float _fallSpeed = 0f;
     [SerializeField]
-    private float _upSpeed = 0f;
+    private float _jumpSpeed = 0f;
 
 
     private bool isJumping = false;
     private bool isFalling = true;
 
     public Animator anim;
+    public AnimationCurve jumpCurve;
+    public AnimationCurve fallCurve;
 
+    private float _timer = 0f;
     private float _movement = 0f;
     private Vector3 _desiredPosition;
     private Vector3 _scale;
@@ -51,6 +54,7 @@ public class Player : MonoBehaviour {
         SetDirectionOfCharacter();
         PlayRunAnimation();
         PlayComboAnimation();
+
         if (isFalling) {
             Fall();
         }
@@ -87,6 +91,7 @@ public class Player : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
 
         if (collision.gameObject.tag == "Platform" && isFalling) {
+            _timer = 0f;
             _desiredPosition = new Vector3(transform.position.x, transform.position.y + _jumpForce, transform.position.z);
             isJumping = true;
             isFalling = false;
@@ -96,8 +101,10 @@ public class Player : MonoBehaviour {
 
     public void Jump() {
         isFalling = false;
-        transform.position += Vector3.up * _upSpeed * Time.fixedDeltaTime;
+        _timer += Time.deltaTime;
+        transform.position += Vector3.up * _jumpSpeed * Time.fixedDeltaTime * jumpCurve.Evaluate(_timer);
         if (Mathf.Abs(transform.position.y - _desiredPosition.y) <= .1f) {
+            _timer = 0f;
             isFalling = true;
             isJumping = false;
         }
@@ -106,7 +113,8 @@ public class Player : MonoBehaviour {
     private void Fall() {
         isJumping = false;
         isFalling = true;
-        transform.position += Vector3.down * _downSpeed * Time.fixedDeltaTime;
+        _timer += Time.deltaTime;
+        transform.position += Vector3.down * _fallSpeed * Time.fixedDeltaTime * fallCurve.Evaluate(_timer) ;
     }
 
 
