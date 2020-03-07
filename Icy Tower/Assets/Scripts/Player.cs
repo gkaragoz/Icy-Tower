@@ -24,8 +24,6 @@ public class Player : MonoBehaviour {
 
     public Animator anim;
 
-    private Rigidbody2D _rb;
-
     private float _movement = 0f;
     private Vector3 _desiredPosition;
     private Vector3 _scale;
@@ -35,33 +33,34 @@ public class Player : MonoBehaviour {
 
 
     void Start() {
-        _rb = GetComponent<Rigidbody2D>();
         isFalling = true;
     }
 
 
     void FixedUpdate() {
         _movement = _joystick.Horizontal * _movementSpeed;
+        Move();
 
-        Vector2 velocity = _rb.velocity;
-        velocity.x = _movement;
         if (_movement != 0) {
             _isPlayerMoved = true;
             _isRunning = true;
         } else {
             _isRunning = false;
         }
+
         SetDirectionOfCharacter();
         PlayRunAnimation();
         PlayComboAnimation();
-        _rb.velocity = velocity;
-
         if (isFalling) {
             Fall();
         }
-        if(isJumping) {
+        if (isJumping) {
             Jump();
         }
+    }
+
+    private void Move() {
+        transform.position += new Vector3(_movement * Time.fixedDeltaTime, 0, 0);
     }
 
     private void PlayComboAnimation() {
@@ -95,7 +94,6 @@ public class Player : MonoBehaviour {
         }
     }
 
-
     public void Jump() {
         isFalling = false;
         transform.position += Vector3.up * _upSpeed * Time.fixedDeltaTime;
@@ -105,12 +103,10 @@ public class Player : MonoBehaviour {
         }
     }
 
-
     private void Fall() {
         isJumping = false;
         isFalling = true;
         transform.position += Vector3.down * _downSpeed * Time.fixedDeltaTime;
-        Debug.Log("Falling");
     }
 
 
