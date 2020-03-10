@@ -28,6 +28,8 @@ public class Player : MonoBehaviour {
 
     private float _timer = 0f;
     private float _movement = 0f;
+    private float _maxDistance = 0f;
+    private float _distanceToFall = 0f;
     private Vector3 _desiredPosition;
     private Vector3 _scale;
     private bool _isPlayerMoved = false;
@@ -43,7 +45,6 @@ public class Player : MonoBehaviour {
     void FixedUpdate() {
         _movement = _joystick.Horizontal * _movementSpeed;
         Move();
-
         if (_movement != 0) {
             _isPlayerMoved = true;
             _isRunning = true;
@@ -93,6 +94,7 @@ public class Player : MonoBehaviour {
         if (collision.gameObject.tag == "Platform" && isFalling) {
             _timer = 0f;
             _desiredPosition = new Vector3(transform.position.x, transform.position.y + _jumpForce, transform.position.z);
+            _maxDistance = Mathf.Abs(transform.position.y - _desiredPosition.y);
             isJumping = true;
             isFalling = false;
             anim.SetBool("hasJumped", isJumping);
@@ -100,10 +102,12 @@ public class Player : MonoBehaviour {
     }
 
     public void Jump() {
+        _distanceToFall = Mathf.Abs(transform.position.y - _desiredPosition.y);
         isFalling = false;
-        _timer += Time.deltaTime;
-        transform.position += Vector3.up * _jumpSpeed * Time.fixedDeltaTime * jumpCurve.Evaluate(_timer);
+        transform.position += Vector3.up * Time.fixedDeltaTime * _jumpSpeed * jumpCurve.Evaluate((_distanceToFall/_maxDistance));
+
         if (Mathf.Abs(transform.position.y - _desiredPosition.y) <= .1f) {
+            Debug.Log("Start falling");
             _timer = 0f;
             isFalling = true;
             isJumping = false;
@@ -114,10 +118,8 @@ public class Player : MonoBehaviour {
         isJumping = false;
         isFalling = true;
         _timer += Time.deltaTime;
-        transform.position += Vector3.down * _fallSpeed * Time.fixedDeltaTime * fallCurve.Evaluate(_timer) ;
+        transform.position += Vector3.down * Time.fixedDeltaTime * _fallSpeed * fallCurve.Evaluate(_timer);
     }
-
-
 
 }
 
