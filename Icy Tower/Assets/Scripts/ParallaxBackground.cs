@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParallaxBackground : MonoBehaviour {
 
     [SerializeField]
-    private Transform _cameraTransform;
+    private Transform _cameraTransform = null;
     [SerializeField]
     private Vector2 _parallaxEffectMultiplier = Vector2.zero;
 

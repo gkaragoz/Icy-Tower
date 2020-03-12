@@ -120,6 +120,7 @@ public class Player : MonoBehaviour {
             if (_rightSubstitutionAmount > 0.15f || _leftSubstitutionAmount < -0.15f)
                 _hasComboJumped = true;
 
+            PlaySounds();
             _timer = 0f;
             GetDesiredJumpDistance();
             _maxDistance = Mathf.Abs(transform.position.y - _desiredPosition.y);
@@ -129,6 +130,13 @@ public class Player : MonoBehaviour {
         }
     }
 
+    private void PlaySounds() {
+        if (_hasComboJumped)
+            SoundManager.PlayComboJumpSound();
+        else {
+            SoundManager.PlayJumpSound();
+        }
+    }
     private void GetDesiredJumpDistance() {
         if (_hasComboJumped) {
             _desiredPosition = new Vector3(transform.position.x, transform.position.y + (_comboMultiplier * _jumpForce), transform.position.z);
