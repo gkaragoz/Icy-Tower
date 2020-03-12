@@ -608,6 +608,27 @@ Transform:
   m_Father: {fileID: 2042805804}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1044765772 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6991562073699446992, guid: cbc6d7b27a9bcbf40af936275034a118,
+    type: 3}
+  m_PrefabInstance: {fileID: 6991562073844887748}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1044765776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044765772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c45ca22db85a64a9e396ee4cdc9c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostDelay: 0.05
+  ghost: {fileID: 1301210472357687681, guid: c67f75e2b2f5e464ea8d2a02d76814f8, type: 3}
+  makeGhost: 0
 --- !u!4 &1498056184 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6991562073100620533, guid: cbc6d7b27a9bcbf40af936275034a118,
@@ -1441,6 +1462,11 @@ PrefabInstance:
       propertyPath: moveCurve.m_Curve.Array.data[4].inWeight
       value: 0.33333334
       objectReference: {fileID: 0}
+    - target: {fileID: 6991562073100620534, guid: cbc6d7b27a9bcbf40af936275034a118,
+        type: 3}
+      propertyPath: ghostEffect
+      value: 
+      objectReference: {fileID: 1044765776}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc6d7b27a9bcbf40af936275034a118, type: 3}
 --- !u!1001 &8995469514990228801

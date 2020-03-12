@@ -18,6 +18,8 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private float _comboMultiplier = 0f;
 
+    public GhostEffect ghostEffect;
+
 
     private bool _isJumping = false;
     private bool _isFalling = true;
@@ -117,8 +119,10 @@ public class Player : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
 
         if (collision.gameObject.tag == "Platform" && _isFalling) {
-            if (_rightSubstitutionAmount > 0.15f || _leftSubstitutionAmount < -0.15f)
+            if (_rightSubstitutionAmount > 0.15f || _leftSubstitutionAmount < -0.15f) {
                 _hasComboJumped = true;
+                ghostEffect.makeGhost = true;
+            }
 
             PlaySounds();
             _timer = 0f;
@@ -169,6 +173,7 @@ public class Player : MonoBehaviour {
         _isJumping = false;
         _isFalling = true;
         _hasComboJumped = false;
+        ghostEffect.makeGhost = false;
         _timer += Time.deltaTime;
         transform.position += Vector3.down * Time.fixedDeltaTime * _airSpeed * fallCurve.Evaluate(_timer);
     }
