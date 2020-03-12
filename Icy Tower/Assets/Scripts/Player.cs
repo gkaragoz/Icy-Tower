@@ -152,8 +152,7 @@ public class Player : MonoBehaviour {
         _distanceToFall = Mathf.Abs(transform.position.y - _desiredPosition.y);
 
         if (_hasComboJumped) {
-            transform.position += Vector3.up * Time.fixedDeltaTime * (_airSpeed + _comboMultiplier) * jumpCurve.Evaluate((_distanceToFall / _maxDistance));
-            _hasComboJumped = false;
+            transform.position += Vector3.up * Time.fixedDeltaTime * (_airSpeed + _comboMultiplier ) * jumpCurve.Evaluate((_distanceToFall / _maxDistance));
         } else {
             transform.position += Vector3.up * Time.fixedDeltaTime * (_airSpeed) * jumpCurve.Evaluate((_distanceToFall / _maxDistance));
         }
@@ -169,6 +168,7 @@ public class Player : MonoBehaviour {
     private void Fall() {
         _isJumping = false;
         _isFalling = true;
+        _hasComboJumped = false;
         _timer += Time.deltaTime;
         transform.position += Vector3.down * Time.fixedDeltaTime * _airSpeed * fallCurve.Evaluate(_timer);
     }
