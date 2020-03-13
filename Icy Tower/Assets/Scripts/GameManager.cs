@@ -21,11 +21,24 @@ public class GameManager : MonoBehaviour
     private Transform _leftPlatformPivot = null;
     [SerializeField]
     private Transform _rightPlatformPivot =null;
+    [SerializeField]
+    private GameObject _pauseMenuCanvas= null;
 
     void Start()
     {
         ObjectPooler.instance.InitializePool("Platform");
+        Time.timeScale = 1f;
         
+    }
+
+    public void PauseGame() {
+        Time.timeScale = 0f;
+        _pauseMenuCanvas.SetActive(true);
+    }
+
+    public void ContinueGame() {
+        Time.timeScale = 1f;
+        _pauseMenuCanvas.SetActive(false);
     }
    
 
