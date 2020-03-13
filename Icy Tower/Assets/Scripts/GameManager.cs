@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
         _pauseMenuCanvas.SetActive(false);
     }
    
+    public void GameOver() {
+        LevelManager.instance.PlayGame();
+    }
 
     public Transform LeftPlatformPivot { get { return _leftPlatformPivot; } }
     public Transform RightPlatformPivot { get { return _rightPlatformPivot; } }

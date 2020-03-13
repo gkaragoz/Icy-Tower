@@ -9,5 +9,8 @@ public class PlatformCollector : MonoBehaviour
             collision.gameObject.SetActive(false);
             PlatformGenerator.instance.SpawnPlatform();
         }
+        if(collision.gameObject.tag == "Player") {
+            GameManager.instance.GameOver();
+        }
     }
 }
