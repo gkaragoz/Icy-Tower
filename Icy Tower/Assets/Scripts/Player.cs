@@ -74,6 +74,7 @@ public class Player : MonoBehaviour {
         if (_isJumping) {
             Jump();
         }
+        GameManager.instance.SetScore();
     }
 
     private void Move() {
@@ -85,6 +86,9 @@ public class Player : MonoBehaviour {
         if (_movement < 0) {
             _leftSubstitutionAmount = _movement * Time.fixedDeltaTime * (moveCurve.Evaluate(_leftMoveTimer * 0.8f));
             transform.position += new Vector3(_leftSubstitutionAmount, 0, 0);
+        } else {
+            _rightSubstitutionAmount = 0f;
+            _leftSubstitutionAmount = 0f;
         }
     }
 
@@ -94,7 +98,7 @@ public class Player : MonoBehaviour {
     }
 
     private void SetDirectionOfCharacter() {
-        if (_isPlayerMoved) {
+        if (_isRunning) {
             if (_movement > 0) {
                 _scale = Vector3.one;
                 _leftMoveTimer = 0f;
@@ -107,7 +111,7 @@ public class Player : MonoBehaviour {
                 _leftMoveTimer += Time.fixedDeltaTime;
             }
             _gfx.localScale = _scale;
-            _isPlayerMoved = false;
+            _isRunning = false;
         }
     }
 

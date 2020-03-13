@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(ObjectPooler))]
 public class GameManager : MonoBehaviour
@@ -22,13 +24,26 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Transform _rightPlatformPivot =null;
     [SerializeField]
+    private Transform _player= null;
+    [SerializeField]
     private GameObject _pauseMenuCanvas= null;
+    [SerializeField]
+    private Text _scoreText= null;
 
+    private float _startPointOfPlayer;
+    private int _score;
     void Start()
     {
         ObjectPooler.instance.InitializePool("Platform");
+        StartGame();
+        _startPointOfPlayer = _player.transform.position.y;
+    }
+
+
+    private void StartGame() {
         Time.timeScale = 1f;
-        
+        _scoreText.text = "0";
+        _score = 0;
     }
 
     public void PauseGame() {
@@ -43,6 +58,13 @@ public class GameManager : MonoBehaviour
    
     public void GameOver() {
         LevelManager.instance.PlayGame();
+    }
+
+    public void SetScore() {
+        if(_score < Math.Abs(_startPointOfPlayer - _player.transform.position.y)) {
+            _score = (int)Math.Abs(_startPointOfPlayer - _player.transform.position.y);
+            _scoreText.text = _score.ToString("0.##");
+        }
     }
 
     public Transform LeftPlatformPivot { get { return _leftPlatformPivot; } }
