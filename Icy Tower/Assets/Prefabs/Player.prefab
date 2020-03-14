@@ -51,8 +51,9 @@ MonoBehaviour:
   _joystick: {fileID: 0}
   _gfx: {fileID: 6991562073699446994}
   _jumpForce: 3
-  _fallSpeed: 10
-  _jumpSpeed: 10
+  _airSpeed: 0
+  _comboMultiplier: 0
+  ghostEffect: {fileID: 0}
   anim: {fileID: 1103730878}
   jumpCurve:
     serializedVersion: 2
@@ -99,6 +100,12 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  moveCurve:
+    serializedVersion: 2
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -211,7 +218,7 @@ GameObject:
   - component: {fileID: 6991562073699446993}
   - component: {fileID: 1103730878}
   m_Layer: 0
-  m_Name: GFX
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
