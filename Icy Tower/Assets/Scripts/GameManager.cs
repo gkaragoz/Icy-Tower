@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(ObjectPooler))]
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
 
     #region Singleton
 
@@ -19,26 +16,29 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
     [SerializeField]
     private Transform _leftPlatformPivot = null;
     [SerializeField]
-    private Transform _rightPlatformPivot =null;
+    private Transform _rightPlatformPivot = null;
     [SerializeField]
-    private Transform _player= null;
+    private Transform _player = null;
     [SerializeField]
-    private GameObject _pauseMenuCanvas= null;
+    private GameObject _pauseMenuCanvas = null;
     [SerializeField]
-    private Text _scoreText= null;
+    private Text _scoreText = null;
 
     private float _startPointOfPlayer;
     private int _score;
-    void Start()
-    {
+
+    public Transform LeftPlatformPivot { get { return _leftPlatformPivot; } }
+    public Transform RightPlatformPivot { get { return _rightPlatformPivot; } }
+
+    private void Start() {
         ObjectPooler.instance.InitializePool("Platform");
         StartGame();
         _startPointOfPlayer = _player.transform.position.y;
     }
-
 
     private void StartGame() {
         Time.timeScale = 1f;
@@ -55,18 +55,15 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         _pauseMenuCanvas.SetActive(false);
     }
-   
+
     public void GameOver() {
-        LevelManager.instance.PlayGame();
+        throw new NotImplementedException();
     }
 
     public void SetScore() {
-        if(_score < Math.Abs(_startPointOfPlayer - _player.transform.position.y)) {
+        if (_score < Math.Abs(_startPointOfPlayer - _player.transform.position.y)) {
             _score = (int)Math.Abs(_startPointOfPlayer - _player.transform.position.y);
             _scoreText.text = _score.ToString("0.##");
         }
     }
-
-    public Transform LeftPlatformPivot { get { return _leftPlatformPivot; } }
-    public Transform RightPlatformPivot { get { return _rightPlatformPivot; } }
 }

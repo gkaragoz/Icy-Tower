@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour {
 
@@ -20,7 +17,6 @@ public class Player : MonoBehaviour {
 
     public GhostEffect ghostEffect;
 
-
     private bool _isJumping = false;
     private bool _isFalling = true;
 
@@ -28,7 +24,6 @@ public class Player : MonoBehaviour {
     public AnimationCurve jumpCurve;
     public AnimationCurve fallCurve;
     public AnimationCurve moveCurve;
-
 
     private float _timer = 0f;
     private float _leftMoveTimer = 0f;
@@ -40,25 +35,19 @@ public class Player : MonoBehaviour {
     private float _leftSubstitutionAmount = 0f;
     private Vector3 _desiredPosition;
     private Vector3 _scale;
-    private bool _isPlayerMoved = false;
     private bool _isRunning = false;
     private bool _hasComboJumped = false;
 
-
-    void Start() {
+    private void Start() {
         _isFalling = true;
         _hasComboJumped = false;
     }
 
-
-    void FixedUpdate() {
-
-
+    private void FixedUpdate() {
         _movement = _joystick.Horizontal * _movementSpeed;
         Move();
 
         if (_movement != 0) {
-            _isPlayerMoved = true;
             _isRunning = true;
         } else {
             _isRunning = false;
@@ -145,6 +134,7 @@ public class Player : MonoBehaviour {
             SoundManager.PlayJumpSound();
         }
     }
+
     private void GetDesiredJumpDistance() {
         if (_hasComboJumped) {
             _desiredPosition = new Vector3(transform.position.x, transform.position.y + (_comboMultiplier * _jumpForce), transform.position.z);
@@ -160,7 +150,7 @@ public class Player : MonoBehaviour {
         _distanceToFall = Mathf.Abs(transform.position.y - _desiredPosition.y);
 
         if (_hasComboJumped) {
-            transform.position += Vector3.up * Time.fixedDeltaTime * (_airSpeed + _comboMultiplier ) * jumpCurve.Evaluate((_distanceToFall / _maxDistance));
+            transform.position += Vector3.up * Time.fixedDeltaTime * (_airSpeed + _comboMultiplier) * jumpCurve.Evaluate((_distanceToFall / _maxDistance));
         } else {
             transform.position += Vector3.up * Time.fixedDeltaTime * (_airSpeed) * jumpCurve.Evaluate((_distanceToFall / _maxDistance));
         }

@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GameAssets : MonoBehaviour
-{
+public class GameAssets : MonoBehaviour {
+    public AudioClip jumpSound;
+    public AudioClip comboJumpSound;
+
     private static GameAssets _instance;
 
     #region Singleton
@@ -17,6 +17,4 @@ public class GameAssets : MonoBehaviour
 
     #endregion
 
-    public AudioClip jumpSound;
-    public AudioClip comboJumpSound;
 }
