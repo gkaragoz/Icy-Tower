@@ -50,7 +50,7 @@ public class CharacterMotor : MonoBehaviour {
     }
 
     private void Awake() {
-        _rb = GetComponentInChildren<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
         _boxCollider = GetComponentInChildren<BoxCollider>();
     }
 
