@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(CharacterStats))]
 public class CharacterMotor : MonoBehaviour {
 
     [Header("Initializations")]
@@ -21,6 +22,9 @@ public class CharacterMotor : MonoBehaviour {
     [SerializeField]
     [Utils.ReadOnly]
     private bool _isJumping = false;
+    [SerializeField]
+    [Utils.ReadOnly]
+    private CharacterStats _characterStats;
 
     public bool IsFalling {
         get {
@@ -52,6 +56,7 @@ public class CharacterMotor : MonoBehaviour {
     private void Awake() {
         _rb = GetComponent<Rigidbody>();
         _boxCollider = GetComponentInChildren<BoxCollider>();
+        _characterStats = GetComponent<CharacterStats>();
     }
 
     private void Update() {
@@ -65,8 +70,7 @@ public class CharacterMotor : MonoBehaviour {
     }
 
     public void Jump() {
-        //_rb.AddForce(Vector3.up * _characterStats.GetJumpPower(), ForceMode.Impulse);
-        _rb.AddForce(Vector3.up * 10f, ForceMode.Impulse);
+        _rb.AddForce(Vector3.up * _characterStats.GetJumpPower(), ForceMode.Impulse);
     }
 
 }
