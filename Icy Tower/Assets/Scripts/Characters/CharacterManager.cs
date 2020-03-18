@@ -24,6 +24,14 @@ public class CharacterManager : MonoBehaviour {
         _characterMotor.Jump();
     }
 
+    public void Move() {
+        if (_characterMotor.IsMoving) {
+            _characterMotor.Move();
+        } else {
+            return;
+        }
+    }
+
     private void HandleColliders() {
         if (_characterMotor.IsFalling) {
             SetColliders(true);

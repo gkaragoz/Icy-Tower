@@ -32,7 +32,14 @@ public class CharacterMotor : MonoBehaviour {
         }
     }
 
-    public bool IsJumping { 
+    public bool IsMoving {
+        get {
+            return Input.GetAxis("Horizontal") != 0 ? true : false;
+
+        }
+    }
+
+    public bool IsJumping {
         get {
             return _isJumping;
         }
@@ -41,7 +48,7 @@ public class CharacterMotor : MonoBehaviour {
         }
     }
 
-    public float CollisionRayDistance { 
+    public float CollisionRayDistance {
         get {
             return _collisionRayDistance;
         }
@@ -61,7 +68,7 @@ public class CharacterMotor : MonoBehaviour {
 
     private void Update() {
         if (Physics.Raycast(_boxCollider.transform.position, Vector3.down, out _hit, CollisionRayDistance)) {
-            if (_hit.transform.tag == _walkableTag) {
+            if (_hit.transform.tag == _walkableTag && IsFalling == true) {
                 IsJumping = false;
             }
         } else {
@@ -71,6 +78,18 @@ public class CharacterMotor : MonoBehaviour {
 
     public void Jump() {
         _rb.AddForce(Vector3.up * _characterStats.GetJumpPower(), ForceMode.Impulse);
+    }
+
+    public void Move() {
+        float _horizontalMove = Input.GetAxis("Horizontal");
+
+        if (_rb.velocity.x > 5)
+            _rb.velocity = new Vector3(5f, _rb.velocity.y, _rb.velocity.z);
+        if (_rb.velocity.x < -5)
+            _rb.velocity = new Vector3(-5f, _rb.velocity.y, _rb.velocity.z);
+
+        _rb.AddForce(new Vector3(_horizontalMove * _characterStats.GetMovementSpeed(), 0));
+
     }
 
 }

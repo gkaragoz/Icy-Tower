@@ -16,10 +16,19 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space)) {
             Jump();
         }
+        if(Input.GetAxis("Horizontal") != 0) {
+            Move();
+        }
     }
+
+    
 
     public void Jump() {
         _characterManager.Jump();
+    }
+
+    public void Move() {
+        _characterManager.Move();
     }
 
 }
