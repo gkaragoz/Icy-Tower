@@ -24,6 +24,9 @@ public class CharacterMotor : MonoBehaviour {
     private bool _isJumping = false;
     [SerializeField]
     [Utils.ReadOnly]
+    private bool _isJumpCalled = false;
+    [SerializeField]
+    [Utils.ReadOnly]
     private CharacterStats _characterStats;
 
     public bool IsFalling {
@@ -73,20 +76,26 @@ public class CharacterMotor : MonoBehaviour {
             }
         } else {
             IsJumping = true;
+            _isJumpCalled = false;
         }
     }
 
     public void Jump() {
-        _rb.AddForce(Vector3.up * _characterStats.GetJumpPower(), ForceMode.Impulse);
+        if (!_isJumpCalled) {
+            _isJumpCalled = true;
+            _rb.velocity = new Vector3(_rb.velocity.x, 0 , _rb.velocity.z);
+            _rb.AddForce(Vector3.up * _characterStats.GetJumpPower(), ForceMode.Impulse);
+            Debug.Log(_rb.velocity);
+        }
     }
 
     public void Move() {
         float _horizontalMove = Input.GetAxis("Horizontal");
 
-        if (_rb.velocity.x > 5)
-            _rb.velocity = new Vector3(5f, _rb.velocity.y, _rb.velocity.z);
-        if (_rb.velocity.x < -5)
-            _rb.velocity = new Vector3(-5f, _rb.velocity.y, _rb.velocity.z);
+        if (_rb.velocity.x > 8)
+            _rb.velocity = new Vector3(8f, _rb.velocity.y, _rb.velocity.z);
+        if (_rb.velocity.x < -8)
+            _rb.velocity = new Vector3(-8f, _rb.velocity.y, _rb.velocity.z);
 
         _rb.AddForce(new Vector3(_horizontalMove * _characterStats.GetMovementSpeed(), 0));
 

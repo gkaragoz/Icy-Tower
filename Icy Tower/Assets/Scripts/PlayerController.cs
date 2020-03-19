@@ -12,16 +12,15 @@ public class PlayerController : MonoBehaviour {
         _characterManager = GetComponent<CharacterManager>();
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            Jump();
-        }
-        if(Input.GetAxis("Horizontal") != 0) {
+
+    private void FixedUpdate() {
+        if (Input.GetAxis("Horizontal") != 0) {
             Move();
         }
+        Jump();
     }
 
-    
+
 
     public void Jump() {
         _characterManager.Jump();
