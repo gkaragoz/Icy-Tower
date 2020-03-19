@@ -85,7 +85,6 @@ public class CharacterMotor : MonoBehaviour {
             _isJumpCalled = true;
             _rb.velocity = new Vector3(_rb.velocity.x, 0 , _rb.velocity.z);
             _rb.AddForce(Vector3.up * _characterStats.GetJumpPower(), ForceMode.Impulse);
-            Debug.Log(_rb.velocity);
         }
     }
 
