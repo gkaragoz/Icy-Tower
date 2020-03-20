@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Collector : MonoBehaviour {
 
@@ -6,6 +8,8 @@ public class Collector : MonoBehaviour {
         if (other.tag == "Platform") {
             other.gameObject.SetActive(false);
             SpawnManager.instance.SpawnPlatform();
+        }else if(other.tag == "Player") {
+            SceneManager.LoadScene("Main");
         }
     }
 }
