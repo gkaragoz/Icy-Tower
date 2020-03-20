@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
+
+    [SerializeField]
+    private float _gravityScale = 1.0f;
     [SerializeField]
     private Transform _leftMapSpawnTransform = null;
     [SerializeField]
     private Transform _rightMapSpawnTransform = null;
-
 
     #region Singleton
 
@@ -20,6 +22,14 @@ public class GameManager : MonoBehaviour {
     }
 
     #endregion
+
+    public float GetGravityScale() {
+        return _gravityScale;
+    }
+
+    public void SetGravityScale(float value) {
+        _gravityScale = value;
+    }
 
     public Transform LeftMapSpawnTransform { get { return _leftMapSpawnTransform; } }
     public Transform RightMapSpawnTransform { get { return _rightMapSpawnTransform; } }

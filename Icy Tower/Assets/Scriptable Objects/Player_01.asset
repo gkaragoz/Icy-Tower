@@ -15,4 +15,4 @@ MonoBehaviour:
   _name: Ninja
   _prefab: {fileID: 0}
   _movementSpeed: 15
-  _jumpPower: 10
+  _jumpPower: 20
