@@ -83,18 +83,30 @@ public class CharacterMotor : MonoBehaviour {
     public void Jump() {
         if (!_isJumpCalled) {
             _isJumpCalled = true;
-            _rb.velocity = new Vector3(_rb.velocity.x, 0 , _rb.velocity.z);
+            _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
             _rb.AddForce(Vector3.up * _characterStats.GetJumpPower(), ForceMode.Impulse);
+        }
+    }
+
+    public void ComboJump() {
+        if (!_isJumpCalled) {
+            Debug.Log("ComboJump first if");
+            if (Mathf.Abs( _rb.velocity.x) >= 7f) {
+                Debug.Log("combo jump second if");
+                _isJumpCalled = true;
+                _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
+                _rb.AddForce(Vector3.up * _characterStats.GetComboJumpPower(), ForceMode.Impulse);
+            }
         }
     }
 
     public void Move() {
         float _horizontalMove = Input.GetAxis("Horizontal");
 
-        if (_rb.velocity.x > 8)
-            _rb.velocity = new Vector3(8f, _rb.velocity.y, _rb.velocity.z);
-        if (_rb.velocity.x < -8)
-            _rb.velocity = new Vector3(-8f, _rb.velocity.y, _rb.velocity.z);
+        if (_rb.velocity.x > _characterStats.GetMaxVelocityX())
+            _rb.velocity = new Vector3(_characterStats.GetMaxVelocityX(), _rb.velocity.y, _rb.velocity.z);
+        if (_rb.velocity.x < -_characterStats.GetMaxVelocityX())
+            _rb.velocity = new Vector3(-_characterStats.GetMaxVelocityX(), _rb.velocity.y, _rb.velocity.z);
 
         _rb.AddForce(new Vector3(_horizontalMove * _characterStats.GetMovementSpeed(), 0));
 

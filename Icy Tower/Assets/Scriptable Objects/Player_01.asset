@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Ninja
   _prefab: {fileID: 0}
-  _movementSpeed: 15
-  _jumpPower: 20
+  _movementSpeed: 20
+  _jumpPower: 15
+  _comboJumpPower: 25
+  _maxVelocityX: 8

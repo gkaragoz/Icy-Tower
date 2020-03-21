@@ -24,6 +24,13 @@ public class CharacterManager : MonoBehaviour {
         _characterMotor.Jump();
     }
 
+    public void ComboJump() {
+        if (_characterMotor.IsJumping) {
+            return;
+        }
+        _characterMotor.ComboJump();
+    }
+
     public void Move() {
         if (_characterMotor.IsMoving) {
             _characterMotor.Move();

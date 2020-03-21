@@ -61,6 +61,14 @@ public class CharacterStats : MonoBehaviour {
     public void SetJumpPower(float power) {
         _character.JumpPower = power;
     }
+    public void SetComboJumpPower(float power) {
+        _character.ComboJumpPower = power;
+    }
+
+    public void SetMaxVelocityX(float power) {
+        _character.MaxVelocityX = power;
+    }
+
 
     #endregion
 
@@ -80,6 +88,14 @@ public class CharacterStats : MonoBehaviour {
 
     public float GetJumpPower() {
         return _character.JumpPower;
+    }
+
+    public float GetComboJumpPower() {
+        return _character.ComboJumpPower;
+    }
+
+    public float GetMaxVelocityX() {
+        return _character.MaxVelocityX;
     }
 
     #endregion

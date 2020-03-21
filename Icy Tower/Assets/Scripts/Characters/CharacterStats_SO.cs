@@ -17,6 +17,13 @@ public class CharacterStats_SO : ScriptableObject {
     [SerializeField]
     private float _jumpPower = 10f;
 
+    [SerializeField]
+    private float _comboJumpPower = 20f;
+
+    [SerializeField]
+    private float _maxVelocityX = 8f;
+
+
     public string Name {
         get { return _name; }
         set { _name = value; }
@@ -35,6 +42,16 @@ public class CharacterStats_SO : ScriptableObject {
     public float JumpPower {
         get { return _jumpPower; }
         set { _jumpPower = value; }
+    }
+
+    public float ComboJumpPower {
+        get { return _comboJumpPower; }
+        set { _comboJumpPower = value; }
+    }
+
+    public float MaxVelocityX {
+        get { return _maxVelocityX; }
+        set { _maxVelocityX = value; }
     }
 
 }

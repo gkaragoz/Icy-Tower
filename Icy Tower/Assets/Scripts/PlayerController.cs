@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetAxis("Horizontal") != 0) {
             Move();
         }
+        ComboJump();
         Jump();
     }
 
@@ -28,6 +29,10 @@ public class PlayerController : MonoBehaviour {
 
     public void Move() {
         _characterManager.Move();
+    }
+
+    public void ComboJump() {
+        _characterManager.ComboJump();
     }
 
 }
