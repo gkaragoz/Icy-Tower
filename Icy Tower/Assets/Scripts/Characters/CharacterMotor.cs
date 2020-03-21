@@ -90,9 +90,7 @@ public class CharacterMotor : MonoBehaviour {
 
     public void ComboJump() {
         if (!_isJumpCalled) {
-            Debug.Log("ComboJump first if");
-            if (Mathf.Abs( _rb.velocity.x) >= 7f) {
-                Debug.Log("combo jump second if");
+            if (Mathf.Abs( _rb.velocity.x) >= _characterStats.GetRequiredVelocityForComboJump()) {
                 _isJumpCalled = true;
                 _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
                 _rb.AddForce(Vector3.up * _characterStats.GetComboJumpPower(), ForceMode.Impulse);

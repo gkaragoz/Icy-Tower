@@ -23,6 +23,9 @@ public class CharacterStats_SO : ScriptableObject {
     [SerializeField]
     private float _maxVelocityX = 8f;
 
+    [SerializeField]
+    private float _requiredVelocityForComboJump = 7f;
+
 
     public string Name {
         get { return _name; }
@@ -53,5 +56,10 @@ public class CharacterStats_SO : ScriptableObject {
         get { return _maxVelocityX; }
         set { _maxVelocityX = value; }
     }
+    public float RequiredVelocityForComboJump {
+        get { return _requiredVelocityForComboJump; }
+        set { _requiredVelocityForComboJump = value; }
+    }
+
 
 }

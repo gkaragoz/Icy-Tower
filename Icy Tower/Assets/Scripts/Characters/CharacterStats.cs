@@ -69,6 +69,9 @@ public class CharacterStats : MonoBehaviour {
         _character.MaxVelocityX = power;
     }
 
+    public void SetRequiredVelocityForComboJump(float power) {
+        _character.RequiredVelocityForComboJump = power;
+    }
 
     #endregion
 
@@ -98,6 +101,9 @@ public class CharacterStats : MonoBehaviour {
         return _character.MaxVelocityX;
     }
 
+    public float GetRequiredVelocityForComboJump() {
+        return _character.RequiredVelocityForComboJump;
+    }
     #endregion
 
     #region Custom Methods
