@@ -78,11 +78,11 @@ public class CharacterStats : MonoBehaviour {
     #region Reporters
 
     public string GetName() {
-        return _characterDefinition_Template.Name;
+        return _character.name;
     }
 
     public GameObject GetPrefab() {
-        return _characterDefinition_Template.Prefab;
+        return _character.Prefab;
     }
 
     public float GetMovementSpeed() {

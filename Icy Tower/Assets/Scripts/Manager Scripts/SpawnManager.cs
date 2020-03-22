@@ -27,11 +27,7 @@ public class SpawnManager : MonoBehaviour {
         Vector3 _randomPos = new Vector3(Random.Range(GameManager.instance.LeftMapSpawnTransform.position.x, GameManager.instance.RightMapSpawnTransform.position.x), //x
                                          _firstPlatformPosition += 4f,                                                                                                //y
                                          0f);                                                                                                                         //z
-        Vector3 _randomScale = new Vector3(Random.Range(2,5),
-            transform.localScale.y /4,
-            transform.localScale.z);
 
-        GameObject _platform = ObjectPooler.instance.SpawnFromPool("Platform", _randomPos, Quaternion.identity);
-        _platform.transform.localScale = _randomScale;
+       ObjectPooler.instance.SpawnFromPool("Platform", _randomPos, Quaternion.identity);
     }
 }
