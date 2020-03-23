@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8645313060680749036}
   - component: {fileID: -6192652004833316961}
   - component: {fileID: -8428128190687809022}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Platform
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -122,5 +122,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6c393dbcd5bc744a0a76f59549d747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxPlatformScale: 5
-  _minPlatformScale: 2
+  _platformStats: {fileID: 0}

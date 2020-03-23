@@ -179,7 +179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229673297}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -12.12, z: 10}
+  m_LocalPosition: {x: 0, y: -40, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1687258585}
@@ -819,7 +819,7 @@ MonoBehaviour:
     name: Wall
     prefab: {fileID: 8803275282467759935, guid: 18f4a7dd4406ce946a1ab4868cbe2f60,
       type: 3}
-    size: 20
+    size: 40
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0

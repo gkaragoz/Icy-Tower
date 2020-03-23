@@ -11,11 +11,6 @@ public class Platform : MonoBehaviour, IPooledObject {
         _platformStats = GetComponent<PlatformStats>();
     }
 
-    private void Start() {
-        SetScale();
-        SetPosition();
-    }
-
     private void SetScale() {
         transform.localScale = new Vector3(Random.Range(_platformStats.GetMinScale(), _platformStats.GetMaxScale()), _platformStats.GetThickness(), _platformStats.GetPrefab().transform.localScale.z);
     }
@@ -30,5 +25,7 @@ public class Platform : MonoBehaviour, IPooledObject {
 
     public void OnObjectReused() {
         gameObject.SetActive(true);
+        SetPosition();
+        SetScale();
     }
 }
