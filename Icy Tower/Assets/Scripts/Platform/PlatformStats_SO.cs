@@ -24,10 +24,17 @@ public class PlatformStats_SO : ScriptableObject {
     [SerializeField]
     private int _jumpPower = 1;
 
+    [SerializeField]
+    private float _distanceBetweenPlatforms = 0;
+
 
     public string Name {
         get { return _name; }
         set { _name = value; }
+    }
+    public GameObject Prefab {
+        get { return _prefab; }
+        set { _prefab = value; }
     }
 
     public float Thickness {
@@ -35,10 +42,11 @@ public class PlatformStats_SO : ScriptableObject {
         set { _thickness = value; }
     }
 
-    public GameObject Prefab {
-        get { return _prefab; }
-        set { _prefab = value; }
+    public float DistanceBetweenPlatforms {
+        get { return _distanceBetweenPlatforms; }
+        set { _distanceBetweenPlatforms = value; }
     }
+
 
     public float MovementSpeed {
         get { return _movementSpeed; }
@@ -50,7 +58,7 @@ public class PlatformStats_SO : ScriptableObject {
         set { _jumpPower = value; }
     }
 
-    public int MaxScale{
+    public int MaxScale {
         get { return _maxScale; }
         set { _maxScale = value; }
     }

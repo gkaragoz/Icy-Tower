@@ -19,3 +19,5 @@ MonoBehaviour:
   _thickness: 0.25
   _movementSpeed: 0
   _jumpPower: 1
+  _firstPlatformPos: 0
+  _distanceBetweenPlatforms: 4

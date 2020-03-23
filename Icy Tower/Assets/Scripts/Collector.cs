@@ -8,7 +8,7 @@ public class Collector : MonoBehaviour {
         if (other.tag == "Platform") {
             other.gameObject.SetActive(false);
             SpawnManager.instance.SpawnPlatform();
-        }else if(other.tag == "Player") {
+        } else if (other.tag == "Player") {
             SceneManager.LoadScene("Main");
         }
     }

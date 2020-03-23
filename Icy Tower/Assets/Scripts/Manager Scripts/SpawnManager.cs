@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +17,8 @@ public class SpawnManager : MonoBehaviour {
 
     #endregion
 
-    private float _firstPlatformPosition = 0f;
+    private float _lastSpawnedPlatformPos = 0f;
+
     private void Start() {
         for (int i = 0; i < ObjectPooler.instance.GetGameObjectsOnPool("Platform").Length; i++) {
             SpawnPlatform();
@@ -24,10 +26,11 @@ public class SpawnManager : MonoBehaviour {
     }
 
     public void SpawnPlatform() {
-        Vector3 _randomPos = new Vector3(Random.Range(GameManager.instance.LeftMapSpawnTransform.position.x, GameManager.instance.RightMapSpawnTransform.position.x), //x
-                                         _firstPlatformPosition += 4f,                                                                                                //y
-                                         0f);                                                                                                                         //z
+        ObjectPooler.instance.SpawnFromPool("Platform" , Quaternion.identity);
+    }
 
-       ObjectPooler.instance.SpawnFromPool("Platform", _randomPos, Quaternion.identity);
+    public float LastSpawnedPlatformPos {
+        get { return _lastSpawnedPlatformPos; }
+        set { _lastSpawnedPlatformPos = value; }
     }
 }

@@ -24,7 +24,7 @@ public class CharacterStats : MonoBehaviour {
 
     public void IncreaseMovementSpeed(float amount) {
         _character.MovementSpeed += amount;
-        
+
         // TODO: check maximum values to not go over it.
     }
 
@@ -46,7 +46,7 @@ public class CharacterStats : MonoBehaviour {
 
     public void DecreaseJumpPower(float amount) {
         _character.JumpPower -= amount;
-        
+
         // TODO: check default values to not go below zero.
     }
 

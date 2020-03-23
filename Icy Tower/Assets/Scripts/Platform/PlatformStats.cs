@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlatformStats : MonoBehaviour{
+public class PlatformStats : MonoBehaviour {
 
     [Header("Initialization")]
     [SerializeField]
@@ -42,6 +42,10 @@ public class PlatformStats : MonoBehaviour{
         _platform.Thickness = amount;
     }
 
+    public void SetDistanceBetweenPlatform(float amount) {
+        _platform.DistanceBetweenPlatforms = amount;
+    }
+
     #endregion
 
     #region Reporters
@@ -55,7 +59,7 @@ public class PlatformStats : MonoBehaviour{
     }
 
     public float GetMovementSpeed() {
-        return _platform.MovementSpeed ;
+        return _platform.MovementSpeed;
     }
 
     public int GetJumpPower() {
@@ -63,7 +67,7 @@ public class PlatformStats : MonoBehaviour{
     }
 
     public int GetMaxScale() {
-        return _platform.MaxScale ;
+        return _platform.MaxScale;
     }
     public int GetMinScale() {
         return _platform.MinScale;
@@ -72,6 +76,16 @@ public class PlatformStats : MonoBehaviour{
     public float GetThickness() {
         return _platform.Thickness;
     }
+
+    public float GetDistanceBetweenPlatforms() {
+        return _platform.DistanceBetweenPlatforms;
+    }
+
+
     #endregion
 
+    #region Custom Methods
+
+
+    #endregion
 }
