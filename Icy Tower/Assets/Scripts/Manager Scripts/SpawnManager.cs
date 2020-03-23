@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpawnManager : MonoBehaviour {
 
@@ -19,9 +16,16 @@ public class SpawnManager : MonoBehaviour {
 
     private float _lastSpawnedPlatformPos = 0f;
 
+    private float _lastSpawnedWallPos = -20f;
+
     private void Start() {
         for (int i = 0; i < ObjectPooler.instance.GetGameObjectsOnPool("Platform").Length; i++) {
             SpawnPlatform();
+        }
+
+        for (int i = 0; i < ObjectPooler.instance.GetGameObjectsOnPool("Wall").Length; i++) {
+            SpawnWall();
+           
         }
     }
 
@@ -29,8 +33,18 @@ public class SpawnManager : MonoBehaviour {
         ObjectPooler.instance.SpawnFromPool("Platform" , Quaternion.identity);
     }
 
+    public void SpawnWall() {
+        ObjectPooler.instance.SpawnFromPool("Wall", transform.position,Quaternion.identity);
+    }
+
+
     public float LastSpawnedPlatformPos {
         get { return _lastSpawnedPlatformPos; }
         set { _lastSpawnedPlatformPos = value; }
+    }
+
+    public float LastSpawnedWallPos {
+        get { return _lastSpawnedWallPos; }
+        set { _lastSpawnedWallPos = value; }
     }
 }
