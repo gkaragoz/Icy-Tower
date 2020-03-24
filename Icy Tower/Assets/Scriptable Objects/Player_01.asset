@@ -17,6 +17,6 @@ MonoBehaviour:
   _movementSpeed: 20
   _jumpPower: 15
   _comboJumpPower: 25
-  _maxVelocityX: 8
-  _requiredVelocityForComboJump: 7
+  _maxVelocityX: 10
+  _requiredVelocityForComboJump: 9
   _footPositionOffset: 0.5
