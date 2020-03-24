@@ -9,6 +9,7 @@ public class Gold : MonoBehaviour, IPooledObject {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "FullCollider") {
             this.gameObject.SetActive(false);
+            GameManager.instance.AddGoldToPlayer();
         }
     }
 

@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour{
     private PlayerStats_SO _playerDefinition_Template = null;
 
     [Header("Debug")]
+    [Utils.ReadOnly]
     [SerializeField]
     private PlayerStats_SO _player = null;
 

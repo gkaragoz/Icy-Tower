@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private CollectableSpawner _collectableSpawner = null;
     public Transform _camera= null;
+    [SerializeField]
+    private PlayerController _playerController = null;
 
     [Header("Debug")]
     [Utils.ReadOnly]
@@ -42,5 +44,9 @@ public class GameManager : MonoBehaviour {
         ObjectPooler.instance.InitializePool("Wall");
         ObjectPooler.instance.InitializePool("GanoverGold");
         _collectableSpawner.StartGoldSpawns();
+    }
+
+    public void AddGoldToPlayer() {
+        _playerController.AddGold();
     }
 }

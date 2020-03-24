@@ -533,6 +533,7 @@ MonoBehaviour:
   _rightMapSpawnTransform: {fileID: 639886571}
   _collectableSpawner: {fileID: 1830753074}
   _camera: {fileID: 1687258585}
+  _playerController: {fileID: 2112543046}
   _gravityScale: 2
 --- !u!1 &1258602646
 GameObject:
@@ -1049,6 +1050,7 @@ GameObject:
   - component: {fileID: 2112543048}
   - component: {fileID: 2112543047}
   - component: {fileID: 2112543050}
+  - component: {fileID: 2112543052}
   - component: {fileID: 2112543049}
   - component: {fileID: 2112543051}
   m_Layer: 0
@@ -1088,6 +1090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterManager: {fileID: 0}
+  _playerStats: {fileID: 0}
 --- !u!114 &2112543047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1163,6 +1166,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ffed22c0727fc46a4f42ba627c96c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2112543052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112543044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344b1efeef0a9d947aa3f787dc44ad4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerDefinition_Template: {fileID: 11400000, guid: 5c5ba8e665086874dae9b2593c57cb29,
+    type: 2}
+  _player: {fileID: 0}
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0
