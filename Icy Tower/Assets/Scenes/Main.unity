@@ -579,7 +579,7 @@ GameObject:
   - component: {fileID: 1262839356}
   m_Layer: 8
   m_Name: FullCollider
-  m_TagString: Untagged
+  m_TagString: FullCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -821,7 +821,7 @@ MonoBehaviour:
     name: Wall
     prefab: {fileID: 8803275282467759935, guid: 18f4a7dd4406ce946a1ab4868cbe2f60,
       type: 3}
-    size: 40
+    size: 10
   - parentTransform: {fileID: 1352614923}
     name: GanoverGold
     prefab: {fileID: 6230961096890996121, guid: 2a0f9b2198b030f489ce4dcd29235947,

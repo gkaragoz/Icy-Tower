@@ -4,7 +4,7 @@ using UnityEngine;
 public class Wall : MonoBehaviour, IPooledObject {
 
     public void OnObjectReused() {
-        gameObject.SetActive(true);
+        gameObject.SetActiveRecursively(true);
         SetWallPosition();
     }
 

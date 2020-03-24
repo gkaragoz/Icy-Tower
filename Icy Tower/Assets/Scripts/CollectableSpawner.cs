@@ -28,7 +28,7 @@ public class CollectableSpawner : MonoBehaviour{
         Vector3 randomPosition = new Vector3(
             Random.Range(GameManager.instance.LeftMapSpawnTransform.position.x, GameManager.instance.RightMapSpawnTransform.position.x),
             SpawnManager.instance.LastSpawnedPlatformPos + 1f,
-            0);
+            -0.1f);
 
         ObjectPooler.instance.SpawnFromPool("GanoverGold", randomPosition, Quaternion.identity);
     }
