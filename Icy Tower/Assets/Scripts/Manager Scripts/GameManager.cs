@@ -1,14 +1,19 @@
 ﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour {
-
-    [SerializeField]
-    private float _gravityScale = 1.0f;
+    [Header("Initializations")]
     [SerializeField]
     private Transform _leftMapSpawnTransform = null;
     [SerializeField]
     private Transform _rightMapSpawnTransform = null;
+    [SerializeField]
+    private CollectableSpawner _collectableSpawner = null;
+    public Transform _camera= null;
 
+    [Header("Debug")]
+    [Utils.ReadOnly]
+    [SerializeField]
+    private float _gravityScale = 1.0f;
     #region Singleton
 
     public static GameManager instance;
@@ -35,5 +40,7 @@ public class GameManager : MonoBehaviour {
     private void Start() {
         ObjectPooler.instance.InitializePool("Platform");
         ObjectPooler.instance.InitializePool("Wall");
+        ObjectPooler.instance.InitializePool("GanoverGold");
+        _collectableSpawner.StartGoldSpawns();
     }
 }

@@ -515,7 +515,7 @@ Transform:
   - {fileID: 1714600979}
   - {fileID: 639886571}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &965116326
 MonoBehaviour:
@@ -529,9 +529,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f5d26068243a94ca8cfd4756d53c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gravityScale: 2
   _leftMapSpawnTransform: {fileID: 1714600979}
   _rightMapSpawnTransform: {fileID: 639886571}
+  _collectableSpawner: {fileID: 1830753074}
+  _camera: {fileID: 1687258585}
+  _gravityScale: 2
 --- !u!1 &1258602646
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +565,7 @@ Transform:
   - {fileID: 2138677393}
   - {fileID: 653260038}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1262839354
 GameObject:
@@ -795,7 +797,7 @@ Transform:
   - {fileID: 1352614923}
   - {fileID: 92732798}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1603324855
 MonoBehaviour:
@@ -814,12 +816,17 @@ MonoBehaviour:
     name: Platform
     prefab: {fileID: 8645313060680749039, guid: c3a647a84af2c0240814e432b6d7bfb4,
       type: 3}
-    size: 25
+    size: 15
   - parentTransform: {fileID: 1352614923}
     name: Wall
     prefab: {fileID: 8803275282467759935, guid: 18f4a7dd4406ce946a1ab4868cbe2f60,
       type: 3}
     size: 40
+  - parentTransform: {fileID: 1352614923}
+    name: GanoverGold
+    prefab: {fileID: 6230961096890996121, guid: 2a0f9b2198b030f489ce4dcd29235947,
+      type: 3}
+    size: 5
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,7 +928,7 @@ Transform:
   - {fileID: 229673298}
   - {fileID: 318524499}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1687258586
 MonoBehaviour:
@@ -984,6 +991,51 @@ Transform:
   m_Father: {fileID: 965116325}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1830753072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1830753073}
+  - component: {fileID: 1830753074}
+  m_Layer: 0
+  m_Name: _CollectableSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1830753073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830753072}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1830753074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830753072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5dbd669f1f7d954bb64c2d2c04f5892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goldSpawnRate: 5
+  _isRunning: 0
 --- !u!1 &2112543044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,7 +1073,7 @@ Transform:
   - {fileID: 1495006366}
   - {fileID: 1262839355}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2112543046
 MonoBehaviour:

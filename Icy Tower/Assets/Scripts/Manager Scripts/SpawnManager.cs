@@ -18,6 +18,7 @@ public class SpawnManager : MonoBehaviour {
 
     private float _lastSpawnedWallPos = -10f;
 
+
     private void Start() {
         for (int i = 0; i < ObjectPooler.instance.GetGameObjectsOnPool("Platform").Length; i++) {
             SpawnPlatform();
