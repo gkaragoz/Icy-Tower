@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour {
+
     [Header("Initializations")]
     [SerializeField]
     private Transform _leftMapSpawnTransform = null;
@@ -8,9 +10,12 @@ public class GameManager : MonoBehaviour {
     private Transform _rightMapSpawnTransform = null;
     [SerializeField]
     private CollectableSpawner _collectableSpawner = null;
-    public Transform _camera= null;
+    [SerializeField]
+    private Transform _camera = null;
     [SerializeField]
     private PlayerController _playerController = null;
+
+    public Action<PlayerStats> OnPlayerStatsChanged;
 
     [Header("Debug")]
     [Utils.ReadOnly]
@@ -48,5 +53,7 @@ public class GameManager : MonoBehaviour {
 
     public void AddGoldToPlayer() {
         _playerController.AddGold();
+
+        OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
     }
 }

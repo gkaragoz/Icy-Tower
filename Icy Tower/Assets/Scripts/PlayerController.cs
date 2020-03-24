@@ -3,6 +3,8 @@
 [RequireComponent(typeof(CharacterController),typeof(PlayerStats))]
 public class PlayerController : MonoBehaviour {
 
+    public PlayerStats PlayerStats { get { return _playerStats; } }
+
     [Header("Debug")]
     [SerializeField]
     [Utils.ReadOnly]
