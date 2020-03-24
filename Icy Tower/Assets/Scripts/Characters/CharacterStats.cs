@@ -73,6 +73,9 @@ public class CharacterStats : MonoBehaviour {
         _character.RequiredVelocityForComboJump = power;
     }
 
+    public void SetFootPositionOffset(float amount) {
+        _character.FootPositionOffset = amount;
+    }
     #endregion
 
     #region Reporters
@@ -103,6 +106,10 @@ public class CharacterStats : MonoBehaviour {
 
     public float GetRequiredVelocityForComboJump() {
         return _character.RequiredVelocityForComboJump;
+    }
+
+    public float GetFootPositionOffset() {
+        return _character.FootPositionOffset;
     }
     #endregion
 

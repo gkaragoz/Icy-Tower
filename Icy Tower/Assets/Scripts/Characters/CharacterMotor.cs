@@ -29,6 +29,7 @@ public class CharacterMotor : MonoBehaviour {
     [Utils.ReadOnly]
     private CharacterStats _characterStats;
 
+
     public bool IsFalling {
         get {
             return _rb.velocity.y < 0 ? true : false;
@@ -70,7 +71,13 @@ public class CharacterMotor : MonoBehaviour {
     }
 
     private void Update() {
-        if (Physics.Raycast(_boxCollider.transform.position, Vector3.down, out _hit, CollisionRayDistance)) {
+        SendRay();
+    }
+
+    private void SendRay() {
+        Vector3 _leftFoot = new Vector3(_boxCollider.transform.position.x + _characterStats.GetFootPositionOffset(), _boxCollider.transform.position.y, _boxCollider.transform.position.z);
+        Vector3 _rightFoot = new Vector3(_boxCollider.transform.position.x - _characterStats.GetFootPositionOffset(), _boxCollider.transform.position.y, _boxCollider.transform.position.z);
+        if (Physics.Raycast(_leftFoot, Vector3.down, out _hit, CollisionRayDistance) || Physics.Raycast(_rightFoot, Vector3.down, out _hit, CollisionRayDistance)) {
             if (_hit.transform.tag == _walkableTag && IsFalling == true) {
                 IsJumping = false;
             }

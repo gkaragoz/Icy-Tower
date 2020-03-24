@@ -26,6 +26,10 @@ public class CharacterStats_SO : ScriptableObject {
     [SerializeField]
     private float _requiredVelocityForComboJump = 7f;
 
+    [SerializeField]
+    private float _footPositionOffset= 0f;
+    
+
 
     public string Name {
         get { return _name; }
@@ -59,6 +63,11 @@ public class CharacterStats_SO : ScriptableObject {
     public float RequiredVelocityForComboJump {
         get { return _requiredVelocityForComboJump; }
         set { _requiredVelocityForComboJump = value; }
+    }
+
+    public float FootPositionOffset {
+        get { return _footPositionOffset; }
+        set { _footPositionOffset = value; }
     }
 
 
