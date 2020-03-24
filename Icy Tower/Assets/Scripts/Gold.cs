@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 public class Gold : MonoBehaviour, IPooledObject {
+    [System.Obsolete]
     public void OnObjectReused() {
         gameObject.SetActiveRecursively(true);
     }
@@ -10,4 +11,6 @@ public class Gold : MonoBehaviour, IPooledObject {
             this.gameObject.SetActive(false);
         }
     }
+
+    //TODO : Play Gold pickup Sound
 }
