@@ -68,6 +68,6 @@ public class GameManager : MonoBehaviour {
     public void SetScore() {
         _playerController.SetScore();
 
-       // OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
+        OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
     }
 }
