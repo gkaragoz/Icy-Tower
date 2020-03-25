@@ -54,10 +54,10 @@ public class GameManager : MonoBehaviour {
     private void Start() {
         ObjectPooler.instance.InitializePool("Platform");
         ObjectPooler.instance.InitializePool("Wall");
-        ObjectPooler.instance.InitializePool("GanoverGold");
-        ObjectPooler.instance.InitializePool("TriangleGold");
-        ObjectPooler.instance.InitializePool("LineGold");
-        ObjectPooler.instance.InitializePool("DiagonalGold");
+        foreach (String goldTypes in (String[])Enum.GetNames(typeof(GoldTypes))) {
+            ObjectPooler.instance.InitializePool(goldTypes);
+        }
+
         _collectableSpawner.StartGoldSpawns();
     }
 

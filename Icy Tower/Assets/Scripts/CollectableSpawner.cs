@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class CollectableSpawner : MonoBehaviour{
+public class CollectableSpawner : MonoBehaviour {
     public bool IsRunning { get { return _isRunning; } }
     [SerializeField]
     private float _goldSpawnRate = 3f;
