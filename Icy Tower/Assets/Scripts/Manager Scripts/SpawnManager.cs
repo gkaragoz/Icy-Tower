@@ -19,14 +19,13 @@ public class SpawnManager : MonoBehaviour {
     private float _lastSpawnedWallPos = -10f;
 
 
-    private void Start() {
+    public void SpawnAll() {
         for (int i = 0; i < ObjectPooler.instance.GetGameObjectsOnPool("Platform").Length; i++) {
             SpawnPlatform();
         }
 
         for (int i = 0; i < ObjectPooler.instance.GetGameObjectsOnPool("Wall").Length; i++) {
             SpawnWall();
-           
         }
     }
 
