@@ -72,6 +72,8 @@ public class CharacterMotor : MonoBehaviour {
 
     private void Update() {
         SendRay();
+        SetCharacterPositionY();
+        GameManager.instance.SetScore();
     }
 
     private void SendRay() {
@@ -115,6 +117,10 @@ public class CharacterMotor : MonoBehaviour {
 
         _rb.AddForce(new Vector3(_horizontalMove * _characterStats.GetMovementSpeed(), 0));
 
+    }
+
+    private void SetCharacterPositionY() {
+        _characterStats.SetCharacterPositionY(gameObject.transform.position.y);
     }
 
 }

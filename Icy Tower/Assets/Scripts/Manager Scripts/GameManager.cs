@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private CollectableSpawner _collectableSpawner = null;
     [SerializeField]
-    private Transform _camera = null;
-    [SerializeField]
     private PlayerController _playerController = null;
 
     public Action<PlayerStats> OnPlayerStatsChanged;
@@ -54,7 +52,7 @@ public class GameManager : MonoBehaviour {
     private void Start() {
         ObjectPooler.instance.InitializePool("Platform");
         ObjectPooler.instance.InitializePool("Wall");
-        foreach (String goldTypes in (String[])Enum.GetNames(typeof(GoldTypes))) {
+        foreach (string goldTypes in (string[])Enum.GetNames(typeof(GoldTypes))) {
             ObjectPooler.instance.InitializePool(goldTypes);
         }
 
@@ -65,5 +63,11 @@ public class GameManager : MonoBehaviour {
         _playerController.AddGold();
 
         OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
+    }
+
+    public void SetScore() {
+        _playerController.SetScore();
+
+       // OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
     }
 }

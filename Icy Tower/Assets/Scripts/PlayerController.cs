@@ -11,11 +11,15 @@ public class PlayerController : MonoBehaviour {
     private CharacterManager _characterManager;
     [SerializeField]
     [Utils.ReadOnly]
+    private CharacterStats _characterStats;
+    [SerializeField]
+    [Utils.ReadOnly]
     private PlayerStats _playerStats;
 
     private void Awake() {
         _characterManager = GetComponent<CharacterManager>();
         _playerStats = GetComponent<PlayerStats>();
+        _characterStats = GetComponent<CharacterStats>();
     }
 
 
@@ -45,4 +49,10 @@ public class PlayerController : MonoBehaviour {
         _playerStats.AddGold();
     }
 
+    public void SetScore() {
+        int currentScore = _playerStats.GetCurrentScore();
+        if(_characterStats.GetCharacterPositionY() > currentScore) {
+            PlayerStats.SetCurrentScore((int)_characterStats.GetCharacterPositionY());
+        }
+    }
 }

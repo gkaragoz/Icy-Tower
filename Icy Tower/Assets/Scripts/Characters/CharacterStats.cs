@@ -8,6 +8,7 @@ public class CharacterStats : MonoBehaviour {
 
     [Header("Debug")]
     [SerializeField]
+    [Utils.ReadOnly]
     private CharacterStats_SO _character = null;
 
     #region Initializations
@@ -30,6 +31,12 @@ public class CharacterStats : MonoBehaviour {
 
     public void IncreaseJumpPower(float amount) {
         _character.JumpPower += amount;
+
+        // TODO: check maximum values to not go over it.
+    }
+
+    public void IncreaseCharacterPosition(float amount) {
+        _character.CharacterPositionY += amount;
 
         // TODO: check maximum values to not go over it.
     }
@@ -76,6 +83,10 @@ public class CharacterStats : MonoBehaviour {
     public void SetFootPositionOffset(float amount) {
         _character.FootPositionOffset = amount;
     }
+
+    public void SetCharacterPositionY(float value) {
+        _character.CharacterPositionY = value;
+    }
     #endregion
 
     #region Reporters
@@ -111,6 +122,11 @@ public class CharacterStats : MonoBehaviour {
     public float GetFootPositionOffset() {
         return _character.FootPositionOffset;
     }
+
+    public float GetCharacterPositionY() {
+        return _character.CharacterPositionY;
+    }
+
     #endregion
 
     #region Custom Methods
