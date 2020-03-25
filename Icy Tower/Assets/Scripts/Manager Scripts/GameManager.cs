@@ -33,6 +33,13 @@ public class GameManager : MonoBehaviour {
 
     #endregion
 
+
+    public enum GoldTypes {
+        GanoverGold,
+        TriangleGold,
+        LineGold,
+        DiagonalGold
+    }
     public float GetGravityScale() {
         return _gravityScale;
     }
@@ -48,6 +55,9 @@ public class GameManager : MonoBehaviour {
         ObjectPooler.instance.InitializePool("Platform");
         ObjectPooler.instance.InitializePool("Wall");
         ObjectPooler.instance.InitializePool("GanoverGold");
+        ObjectPooler.instance.InitializePool("TriangleGold");
+        ObjectPooler.instance.InitializePool("LineGold");
+        ObjectPooler.instance.InitializePool("DiagonalGold");
         _collectableSpawner.StartGoldSpawns();
     }
 

@@ -1081,6 +1081,21 @@ MonoBehaviour:
     prefab: {fileID: 6230961096890996121, guid: 2a0f9b2198b030f489ce4dcd29235947,
       type: 3}
     size: 5
+  - parentTransform: {fileID: 1352614923}
+    name: DiagonalGold
+    prefab: {fileID: 5687587543953112714, guid: 99dd78f4e98e460419840752cacd53e9,
+      type: 3}
+    size: 5
+  - parentTransform: {fileID: 1352614923}
+    name: LineGold
+    prefab: {fileID: 7780014523164210282, guid: a4ee47a2eccd3774f8399520590a14a6,
+      type: 3}
+    size: 5
+  - parentTransform: {fileID: 1352614923}
+    name: TriangleGold
+    prefab: {fileID: 2116504032627625081, guid: 55060b8f16ea99742a6ed29804767cf7,
+      type: 3}
+    size: 5
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,9 +1137,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 2112543045}
-  _offset: -3
+  _offset: -2
   _scrollSpeed: 0
-  _smothSpeed: 0.025
+  _smothSpeed: 0.25
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0
@@ -1365,7 +1380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5dbd669f1f7d954bb64c2d2c04f5892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _goldSpawnRate: 5
+  _goldSpawnRate: 1
   _isRunning: 0
 --- !u!1 &2112543044
 GameObject:

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class CollectableSpawner : MonoBehaviour{
@@ -25,12 +26,23 @@ public class CollectableSpawner : MonoBehaviour{
     }
 
     private void SpawnGold() {
-        Vector3 randomPosition = new Vector3(
-            Random.Range(GameManager.instance.LeftMapSpawnTransform.position.x, GameManager.instance.RightMapSpawnTransform.position.x),
-            SpawnManager.instance.LastSpawnedPlatformPos + 1f,
-            -0.1f);
+        Vector3 randomPosition = RandomizePosition();
 
-        ObjectPooler.instance.SpawnFromPool("GanoverGold", randomPosition, Quaternion.identity);
+        ObjectPooler.instance.SpawnFromPool(GetRandomGoldType(), randomPosition, Quaternion.identity);
+    }
+
+    private Vector3 RandomizePosition() {
+        return new Vector3(
+                    UnityEngine.Random.Range(GameManager.instance.LeftMapSpawnTransform.position.x, GameManager.instance.RightMapSpawnTransform.position.x),
+                    SpawnManager.instance.LastSpawnedPlatformPos + 2f,
+                    -0.2f);
+    }
+
+    private string GetRandomGoldType() {
+        int enumLenght = Enum.GetNames(typeof(GameManager.GoldTypes)).Length;
+        int randomType = UnityEngine.Random.Range(0, enumLenght);
+        string goldType = Enum.GetName(typeof(GameManager.GoldTypes), randomType);
+        return goldType;
     }
 
     public void StartGoldSpawns() {
