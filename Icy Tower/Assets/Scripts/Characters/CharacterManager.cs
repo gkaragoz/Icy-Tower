@@ -31,12 +31,11 @@ public class CharacterManager : MonoBehaviour {
         _characterMotor.ComboJump();
     }
 
-    public void Move() {
-        if (_characterMotor.IsMoving) {
-            _characterMotor.Move();
-        } else {
-            return;
-        }
+    public void MoveLeft() {
+            _characterMotor.MoveLeft();
+    }
+    public void MoveRight() {
+            _characterMotor.MoveRight();
     }
 
     private void HandleColliders() {

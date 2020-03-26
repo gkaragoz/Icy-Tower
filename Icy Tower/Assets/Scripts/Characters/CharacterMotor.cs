@@ -36,13 +36,6 @@ public class CharacterMotor : MonoBehaviour {
         }
     }
 
-    public bool IsMoving {
-        get {
-            return Input.GetAxis("Horizontal") != 0 ? true : false;
-
-        }
-    }
-
     public bool IsJumping {
         get {
             return _isJumping;
@@ -107,16 +100,22 @@ public class CharacterMotor : MonoBehaviour {
         }
     }
 
-    public void Move() {
-        float _horizontalMove = Input.GetAxis("Horizontal");
-
+    public void MoveLeft() {
         if (_rb.velocity.x > _characterStats.GetMaxVelocityX())
             _rb.velocity = new Vector3(_characterStats.GetMaxVelocityX(), _rb.velocity.y, _rb.velocity.z);
         if (_rb.velocity.x < -_characterStats.GetMaxVelocityX())
             _rb.velocity = new Vector3(-_characterStats.GetMaxVelocityX(), _rb.velocity.y, _rb.velocity.z);
 
-        _rb.AddForce(new Vector3(_horizontalMove * _characterStats.GetMovementSpeed(), 0));
+        _rb.AddForce(new Vector3(-1 * _characterStats.GetMovementSpeed(), 0));
+    }
 
+    public void MoveRight() {
+        if (_rb.velocity.x > _characterStats.GetMaxVelocityX())
+            _rb.velocity = new Vector3(_characterStats.GetMaxVelocityX(), _rb.velocity.y, _rb.velocity.z);
+        if (_rb.velocity.x < -_characterStats.GetMaxVelocityX())
+            _rb.velocity = new Vector3(-_characterStats.GetMaxVelocityX(), _rb.velocity.y, _rb.velocity.z);
+
+        _rb.AddForce(new Vector3(1 * _characterStats.GetMovementSpeed(), 0));
     }
 
     private void SetCharacterPositionY() {

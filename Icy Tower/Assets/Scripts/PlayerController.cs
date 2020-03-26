@@ -1,9 +1,15 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(CharacterController),typeof(PlayerStats))]
+[RequireComponent(typeof(CharacterController), typeof(PlayerStats))]
 public class PlayerController : MonoBehaviour {
 
     public PlayerStats PlayerStats { get { return _playerStats; } }
+
+    [SerializeField]
+    private bool _isMovingLeft = false;
+    [SerializeField]
+    private bool _isMovingRight = false;
+
 
     [Header("Debug")]
     [SerializeField]
@@ -24,9 +30,11 @@ public class PlayerController : MonoBehaviour {
 
 
     private void FixedUpdate() {
-        if (Input.GetAxis("Horizontal") != 0) {
-            Move();
-        }
+        if (_isMovingLeft)
+            MoveLeft();
+        if (_isMovingRight)
+            MoveRight();
+
         ComboJump();
         Jump();
     }
@@ -37,8 +45,12 @@ public class PlayerController : MonoBehaviour {
         _characterManager.Jump();
     }
 
-    public void Move() {
-        _characterManager.Move();
+    public void MoveLeft() {
+        _characterManager.MoveLeft();
+    }
+
+    public void MoveRight() {
+        _characterManager.MoveRight();
     }
 
     public void ComboJump() {
@@ -51,8 +63,15 @@ public class PlayerController : MonoBehaviour {
 
     public void SetScore() {
         int currentScore = _playerStats.GetCurrentScore();
-        if(_characterStats.GetCharacterPositionY() > currentScore) {
+        if (_characterStats.GetCharacterPositionY() > currentScore) {
             PlayerStats.SetCurrentScore((int)_characterStats.GetCharacterPositionY());
         }
+    }
+
+    public void SetMoveLeft(bool moveLeft) {
+        _isMovingLeft = moveLeft;
+    }
+    public void SetMoveRight(bool moveRight) {
+        _isMovingRight = moveRight;
     }
 }
