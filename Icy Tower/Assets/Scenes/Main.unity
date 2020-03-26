@@ -1253,6 +1253,7 @@ MonoBehaviour:
   _rightMapSpawnTransform: {fileID: 639886571}
   _collectableSpawner: {fileID: 1830753074}
   _playerController: {fileID: 2112543046}
+  _playerStats: {fileID: 4890027346354954583}
   _countDownTime: 3
   _gravityScale: 2
   _gameState: 0
@@ -2279,3 +2280,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0338bd966b8ef434db62ef1a592315ae, type: 3}
+--- !u!114 &4890027346354954583 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4890027348151515162, guid: 0338bd966b8ef434db62ef1a592315ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 4890027346354954582}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344b1efeef0a9d947aa3f787dc44ad4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

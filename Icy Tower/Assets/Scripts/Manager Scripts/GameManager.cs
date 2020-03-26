@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
     private CollectableSpawner _collectableSpawner = null;
     [SerializeField]
     private PlayerController _playerController = null;
+    [SerializeField]
+    private PlayerStats _playerStats = null;
 
     [SerializeField]
     private int _countDownTime = 3;
@@ -42,6 +44,8 @@ public class GameManager : MonoBehaviour {
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+        _playerStats.LoadData();
+
     }
 
     #endregion
@@ -129,7 +133,7 @@ public class GameManager : MonoBehaviour {
 
     public void OnClick_NewGame() {
         InitializeNewGame();
-
+        
         GameStateEnum = GameState.NewGame;
 
         StartCoroutine(IStartGameCountdown());

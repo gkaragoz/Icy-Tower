@@ -33,6 +33,7 @@ public class PlayerStats : MonoBehaviour{
 
     public void AddGold() {
         _player.Gold++;
+         SavePlayer();
     }
 
     #endregion
@@ -49,6 +50,7 @@ public class PlayerStats : MonoBehaviour{
 
     public void SetHighScore(int value) {
         _player.HighScore = value;
+        SavePlayer();
     }
 
     public void SetGold(int value) {
@@ -77,5 +79,14 @@ public class PlayerStats : MonoBehaviour{
 
     #endregion
 
+    public void SavePlayer() {
+        SaveSystem.SavePlayer(_player);
+    }
+
+    public void LoadData() {
+        PlayerData playerData = SaveSystem.LoadPlayer();
+        SetHighScore(playerData.highScore);
+        SetGold(playerData.playerGold);
+    }
 
 }
