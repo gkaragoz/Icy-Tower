@@ -4,9 +4,12 @@ using UnityEngine;
 public class Gold : MonoBehaviour {
 
     private Renderer _goldRenderer = null;
-    private int _coinScore = 0;
+    private Transform _player = null;
 
+    private float _flySpeed = 0.2f;
+    private int _coinScore = 0;
     private string _goldType = "";
+    private bool _hasInteractedWithMagnet = false;
 
     public enum GoldTypes {
         YellowGold,
@@ -19,6 +22,12 @@ public class Gold : MonoBehaviour {
         _goldRenderer = GetComponent<Renderer>();
         SetGoldType();
         SetGoldValues();
+    }
+
+    private void FixedUpdate() {
+        if (_hasInteractedWithMagnet) {
+            FlyToPlayer();
+        }
     }
 
     private void SetGoldType() {
@@ -54,10 +63,18 @@ public class Gold : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "FullCollider") {
-            Destroy(gameObject);
-            Debug.Log(_goldType + " " + _coinScore);
+            gameObject.SetActive(false);
             GameManager.instance.AddGoldToPlayer(_coinScore);
+            _hasInteractedWithMagnet = false;
+
+        }else if(other.tag == "CoinMagnet") {
+            _hasInteractedWithMagnet = true;
+            _player = other.gameObject.transform;
         }
+    }
+
+    private void FlyToPlayer() {
+        transform.position = Vector3.MoveTowards(transform.position, _player.position, _flySpeed);
     }
 
     //TODO : Play Gold pickup Sound

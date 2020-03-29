@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class GoldHolder : MonoBehaviour , IPooledObject{
+public class GoldHolder : MonoBehaviour, IPooledObject {
 
     [SerializeField]
     private Gold[] _golds = null;
@@ -11,8 +13,10 @@ public class GoldHolder : MonoBehaviour , IPooledObject{
         }
     }
 
+    [System.Obsolete]
     public void OnObjectReused() {
         SetGolds();
-        gameObject.SetActive(true);
+        gameObject.SetActiveRecursively(true);
     }
+
 }

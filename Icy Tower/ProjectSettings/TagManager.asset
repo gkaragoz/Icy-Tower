@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - FullCollider
   - Collector
+  - CoinMagnet
   layers:
   - Default
   - TransparentFX

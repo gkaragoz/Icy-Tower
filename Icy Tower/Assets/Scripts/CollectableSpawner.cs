@@ -34,7 +34,7 @@ public class CollectableSpawner : MonoBehaviour {
     private Vector3 GetRandomSpawnPosition() {
         return new Vector3(
                     UnityEngine.Random.Range(GameManager.instance.LeftMapSpawnTransform.position.x, GameManager.instance.RightMapSpawnTransform.position.x),
-                    SpawnManager.instance.LastSpawnedPlatformPos + 2f,
+                    SpawnManager.instance.LastSpawnedPlatformPos + 1f,
                     -0.2f);
     }
 
