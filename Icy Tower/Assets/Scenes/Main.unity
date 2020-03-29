@@ -2099,7 +2099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5dbd669f1f7d954bb64c2d2c04f5892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _goldSpawnRate: 5
+  _goldSpawnRate: 3
   _isRunning: 0
 --- !u!4 &2112543045 stripped
 Transform:

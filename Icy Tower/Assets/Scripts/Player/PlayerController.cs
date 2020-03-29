@@ -57,8 +57,8 @@ public class PlayerController : MonoBehaviour {
         _characterManager.ComboJump();
     }
 
-    public void AddGold() {
-        _playerStats.AddGold();
+    public void AddGold(int value) {
+        _playerStats.AddGold(value);
     }
 
     public void SetScore() {

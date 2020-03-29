@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour {
         else if (instance != this)
             Destroy(gameObject);
         _playerStats.LoadData();
-
     }
 
     #endregion
@@ -60,7 +59,7 @@ public class GameManager : MonoBehaviour {
         GameOver
     }
 
-    public enum GoldTypes {
+    public enum GoldHolderTypes {
         GanoverGold,
         TriangleGold,
         LineGold,
@@ -92,7 +91,7 @@ public class GameManager : MonoBehaviour {
         if (!_hasGameObjectsInitialized) {
             ObjectPooler.instance.InitializePool("Platform");
             ObjectPooler.instance.InitializePool("Wall");
-            foreach (string goldTypes in (string[])Enum.GetNames(typeof(GoldTypes))) {
+            foreach (string goldTypes in (string[])Enum.GetNames(typeof(GoldHolderTypes))) {
                 ObjectPooler.instance.InitializePool(goldTypes);
             }
 
@@ -155,8 +154,8 @@ public class GameManager : MonoBehaviour {
         GameStateEnum = GameState.RestartGame;
     }
 
-    public void AddGoldToPlayer() {
-        _playerController.AddGold();
+    public void AddGoldToPlayer(int value) {
+        _playerController.AddGold(value);
 
         OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
     }

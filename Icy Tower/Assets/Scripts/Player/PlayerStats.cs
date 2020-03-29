@@ -31,8 +31,8 @@ public class PlayerStats : MonoBehaviour{
         }
     }
 
-    public void AddGold() {
-        _player.Gold++;
+    public void AddGold(int value) {
+        _player.Gold += value;
          SavePlayer();
     }
 
