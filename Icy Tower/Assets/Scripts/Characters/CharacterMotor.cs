@@ -45,6 +45,13 @@ public class CharacterMotor : MonoBehaviour {
         }
     }
 
+    public bool IsMoving {
+        get {
+            return Input.GetAxis("Horizontal") != 0 ? true : false;
+
+        }
+    }
+
     public float CollisionRayDistance {
         get {
             return _collisionRayDistance;
@@ -100,7 +107,12 @@ public class CharacterMotor : MonoBehaviour {
         }
     }
 
-    public void MoveLeft() {
+    public void Move() {
+        float _horizontalMove = Input.GetAxisRaw("Horizontal");
+        _rb.AddForce(new Vector3(_horizontalMove * _characterStats.GetMovementSpeed(), 0));
+    }
+
+        public void MoveLeft() {
         if (_rb.velocity.x > _characterStats.GetMaxVelocityX())
             _rb.velocity = new Vector3(_characterStats.GetMaxVelocityX(), _rb.velocity.y, _rb.velocity.z);
         if (_rb.velocity.x < -_characterStats.GetMaxVelocityX())

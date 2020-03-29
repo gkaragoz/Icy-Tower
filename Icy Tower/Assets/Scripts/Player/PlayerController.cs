@@ -34,12 +34,16 @@ public class PlayerController : MonoBehaviour {
             MoveLeft();
         if (_isMovingRight)
             MoveRight();
-
+        if (Input.GetAxis("Horizontal") != 0) {
+            Move();
+        }
         ComboJump();
         Jump();
     }
 
-
+    public void Move() {
+        _characterManager.Move();
+    }
 
     public void Jump() {
         _characterManager.Jump();

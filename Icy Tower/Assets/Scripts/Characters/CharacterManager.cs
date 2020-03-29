@@ -16,7 +16,15 @@ public class CharacterManager : MonoBehaviour {
         HandleColliders();
     }
 
-    public void Jump() {
+    public void Move() {
+        if (_characterMotor.IsMoving) {
+            _characterMotor.Move();
+        } else {
+            return;
+        }
+    }
+
+        public void Jump() {
         if (_characterMotor.IsJumping) {
             return;
         }
