@@ -20,7 +20,6 @@ public class PlatformStats : MonoBehaviour {
     }
     #endregion
 
-
     #region Setters
 
     public void SetMovementSpeed(float speed) {

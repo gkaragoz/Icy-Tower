@@ -3,7 +3,7 @@
 public class GoldHolder : MonoBehaviour , IPooledObject{
 
     [SerializeField]
-    private Gold[] _golds;
+    private Gold[] _golds = null;
 
     private void SetGolds() {
         foreach (var gold in _golds) {

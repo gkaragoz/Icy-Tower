@@ -32,6 +32,7 @@ public class PlatformStats_SO : ScriptableObject {
         get { return _name; }
         set { _name = value; }
     }
+
     public GameObject Prefab {
         get { return _prefab; }
         set { _prefab = value; }
