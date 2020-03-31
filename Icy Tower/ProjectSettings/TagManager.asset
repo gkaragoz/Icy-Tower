@@ -10,6 +10,8 @@ TagManager:
   - Collector
   - CoinMagnet
   - WallParent
+  - LeftWall
+  - RightWall
   layers:
   - Default
   - TransparentFX

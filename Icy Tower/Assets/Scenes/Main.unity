@@ -395,7 +395,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 168470388}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1812070849}
+        m_MethodName: ChangeWall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &168470388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,9 +460,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 2112543046}
-          m_MethodName: SetMoveLeft
-          m_Mode: 6
+        - m_Target: {fileID: 1812070849}
+          m_MethodName: ChangeWall
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1689,7 +1700,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1546667832}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1812070849}
+        m_MethodName: ChangeWall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1546667832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2087,6 +2109,18 @@ Transform:
   m_Father: {fileID: 965116325}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1812070849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4890027346354954586, guid: 0338bd966b8ef434db62ef1a592315ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 4890027346354954582}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fff4ef9503f7ab848b9493494ae62fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1830753072
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,6 +2283,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3425498381586067463, guid: 0338bd966b8ef434db62ef1a592315ae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890027346354954588, guid: 0338bd966b8ef434db62ef1a592315ae,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.94
+      objectReference: {fileID: 0}
     - target: {fileID: 4890027348151515154, guid: 0338bd966b8ef434db62ef1a592315ae,
         type: 3}
       propertyPath: m_Name

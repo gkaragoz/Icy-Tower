@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Sticky Plunger
   _prefab: {fileID: 0}
-  _duration: 3
+  _duration: 5
   _moveSpeed: 5
