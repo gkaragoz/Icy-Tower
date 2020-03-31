@@ -42,7 +42,7 @@ public class SuperCoinStats : MonoBehaviour {
         return _superCoin.Prefab;
     }
 
-    public float GetAmount() {
+    public int GetAmount() {
         return _superCoin.Amount;
     }
 

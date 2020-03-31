@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SuperCoin Stats
   m_EditorClassIdentifier: 
   _name: Super Coin
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 1972419128551397935, guid: 5cc030df79f8eac4d85ad174aa53bce5, type: 3}
   amount: 25
