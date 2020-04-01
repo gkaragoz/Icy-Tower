@@ -34,6 +34,10 @@ public class TimeSlowerStats : MonoBehaviour{
         _timeSlower.ScrollSpeed = amount;
     }
 
+    public void SetSlowAmount(float amount) {
+        _timeSlower.SlowAmount = amount;
+    }
+
     #endregion
 
     #region Getters
@@ -52,6 +56,10 @@ public class TimeSlowerStats : MonoBehaviour{
 
     public float GetScrollSpeed() {
         return _timeSlower.ScrollSpeed;
+    }
+
+    public float GetSlowAmount() {
+        return _timeSlower.SlowAmount;
     }
 
     #endregion

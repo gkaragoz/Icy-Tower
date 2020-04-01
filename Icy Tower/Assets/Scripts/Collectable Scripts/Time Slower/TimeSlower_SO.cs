@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "TimeSlower Stats", menuName = "Scriptable Objects/TimeSlower Stats")]
-public class TimeSlower_SO : ScriptableObject{
+public class TimeSlower_SO : ScriptableObject {
 
     [SerializeField]
     private string _name = "Time Slower";
@@ -14,6 +14,9 @@ public class TimeSlower_SO : ScriptableObject{
 
     [SerializeField]
     private float _scrollSpeed;
+
+    [SerializeField]
+    private float _slowAmount;
 
     public string Name {
         get { return _name; }
@@ -33,5 +36,10 @@ public class TimeSlower_SO : ScriptableObject{
     public float ScrollSpeed {
         get { return _scrollSpeed; }
         set { _scrollSpeed = value; }
+    }
+
+    public float SlowAmount {
+        get { return _slowAmount; }
+        set { _slowAmount = value; }
     }
 }

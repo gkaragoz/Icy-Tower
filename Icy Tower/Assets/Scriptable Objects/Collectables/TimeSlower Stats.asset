@@ -16,3 +16,4 @@ MonoBehaviour:
   _prefab: {fileID: 0}
   _duration: 5
   _scrollSpeed: 2
+  _slowAmount: 2
