@@ -1891,7 +1891,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 2112543045}
   _offset: -2
-  _scrollSpeed: 0
   _smothSpeed: 0.3
   _timeSlower: {fileID: 0}
 --- !u!20 &1687258584
@@ -1996,6 +1995,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5a7f075ac0e3147979bef5bcfc5438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeSlower: {fileID: 0}
+  _duration: 0
 --- !u!114 &1687258588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2292,19 +2293,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 65957646, guid: 0338bd966b8ef434db62ef1a592315ae, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1470785059, guid: 0338bd966b8ef434db62ef1a592315ae, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425498381586067463, guid: 0338bd966b8ef434db62ef1a592315ae,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 1216969004, guid: 0338bd966b8ef434db62ef1a592315ae, type: 3}
+      propertyPath: speedUp_Template
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c96104d270615743a084260df72f1e8,
+        type: 2}
     - target: {fileID: 4890027348151515154, guid: 0338bd966b8ef434db62ef1a592315ae,
         type: 3}
       propertyPath: m_Name
@@ -2364,11 +2357,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890027348151515167, guid: 0338bd966b8ef434db62ef1a592315ae,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0338bd966b8ef434db62ef1a592315ae, type: 3}
