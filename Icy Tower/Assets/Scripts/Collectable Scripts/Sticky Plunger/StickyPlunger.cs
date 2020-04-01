@@ -73,6 +73,7 @@ public class StickyPlunger : MonoBehaviour {
         } else if (gameObject.transform.position.x <= 0) {
             _rb.AddForce(new Vector3(-1f, 1f) * _forceAmount, ForceMode.Impulse);
         }
+        StartCoroutine(StopStickingToWall());
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -81,13 +82,11 @@ public class StickyPlunger : MonoBehaviour {
                 _wallPositionX = 4.25f;
                 _isCollideWithRightWall = true;
                 _isCollideWithLeftWall = false;
-                StartCoroutine(StopStickingToWall());
             }
             if (other.tag == "LeftWall") {
                 _wallPositionX = -4.25f;
                 _isCollideWithLeftWall = true;
                 _isCollideWithRightWall = false;
-                StartCoroutine(StopStickingToWall());
             }
         }
     }

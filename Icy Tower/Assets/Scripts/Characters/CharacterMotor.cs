@@ -70,7 +70,7 @@ public class CharacterMotor : MonoBehaviour {
         _characterStats = GetComponent<CharacterStats>();
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         SendRay();
         SetCharacterPositionY();
         GameManager.instance.SetScore();

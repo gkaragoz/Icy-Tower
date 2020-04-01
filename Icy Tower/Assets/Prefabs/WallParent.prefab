@@ -104,12 +104,12 @@ GameObject:
   - component: {fileID: 8803275282467759934}
   - component: {fileID: 1660583896}
   - component: {fileID: 1964218010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallParent
   m_TagString: WallParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8803275282467759934
 Transform:

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Platform
   _prefab: {fileID: 8645313060680749039, guid: c3a647a84af2c0240814e432b6d7bfb4, type: 3}
-  _maxScale: 10
-  _minScale: 10
+  _maxScale: 5
+  _minScale: 3
   _thickness: 0.25
   _movementSpeed: 0
   _jumpPower: 1

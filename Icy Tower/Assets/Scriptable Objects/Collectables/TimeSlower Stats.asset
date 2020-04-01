@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3092336a2b985124b8a7b9ccd4844543, type: 3}
-  m_Name: StickyPlunger Stats
+  m_Script: {fileID: 11500000, guid: 07c93141e94f75a4797055b31adb6b42, type: 3}
+  m_Name: TimeSlower Stats
   m_EditorClassIdentifier: 
-  _name: Sticky Plunger
+  _name: Time Slower
   _prefab: {fileID: 0}
-  _duration: 10
-  _moveSpeed: 5
+  _duration: 5
+  _slowAmount: 2

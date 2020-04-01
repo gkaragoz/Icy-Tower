@@ -9,15 +9,15 @@ public static class SaveSystem {
         string path = Application.persistentDataPath + "/player.ganover";
         FileStream fileStream;
         if (File.Exists(path)) {
-             fileStream = new FileStream(path, FileMode.Open);
+            fileStream = new FileStream(path, FileMode.Open);
         } else {
-             fileStream = new FileStream(path, FileMode.Create);
+            fileStream = new FileStream(path, FileMode.Create);
         }
 
         PlayerData playerData = new PlayerData(playerStats);
+        //TODO:Encryption
         formatter.Serialize(fileStream, playerData);
         fileStream.Close();
-
     }
 
     public static PlayerData LoadPlayer() {
@@ -27,7 +27,7 @@ public static class SaveSystem {
         if (File.Exists(path)) {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream fileStream = new FileStream(path, FileMode.Open);
-
+            //TODO:Decryption
             PlayerData playerData = formatter.Deserialize(fileStream) as PlayerData;
             fileStream.Close();
             return playerData;
