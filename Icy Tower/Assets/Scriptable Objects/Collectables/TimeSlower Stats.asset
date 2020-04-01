@@ -15,4 +15,4 @@ MonoBehaviour:
   _name: Time Slower
   _prefab: {fileID: 0}
   _duration: 5
-  _slowAmount: 2
+  _scrollSpeed: 2

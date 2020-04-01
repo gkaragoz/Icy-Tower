@@ -13,7 +13,7 @@ public class TimeSlower_SO : ScriptableObject{
     private float _duration;
 
     [SerializeField]
-    private float _slowAmount;
+    private float _scrollSpeed;
 
     public string Name {
         get { return _name; }
@@ -30,8 +30,8 @@ public class TimeSlower_SO : ScriptableObject{
         set { _duration = value; }
     }
 
-    public float SlowAmount {
-        get { return _slowAmount; }
-        set { _slowAmount = value; }
+    public float ScrollSpeed {
+        get { return _scrollSpeed; }
+        set { _scrollSpeed = value; }
     }
 }

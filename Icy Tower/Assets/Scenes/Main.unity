@@ -1289,6 +1289,7 @@ MonoBehaviour:
   _gameState: 0
   _isGamePaused: 0
   _hasGameObjectsInitialized: 0
+  _timeSlower: {fileID: 0}
 --- !u!1 &1045264000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,9 +1890,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 2112543045}
-  _offset: 0
+  _offset: -2
   _scrollSpeed: 0
   _smothSpeed: 0.3
+  _timeSlower: {fileID: 0}
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0
@@ -1943,7 +1945,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -10}
+  m_LocalPosition: {x: 0, y: 4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 229673298}
