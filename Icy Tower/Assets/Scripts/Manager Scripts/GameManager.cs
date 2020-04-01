@@ -56,23 +56,6 @@ public class GameManager : MonoBehaviour {
         _timeSlower = Camera.main.GetComponent<TimeSlowerStats>();
     }
 
-    public enum GameState {
-        MainMenu,
-        GamePaused,
-        NewGame,
-        RestartGame,
-        GameplayCountdown,
-        Gameplay,
-        GameOver
-    }
-
-    public enum GoldHolderTypes {
-        GanoverGold,
-        TriangleGold,
-        LineGold,
-        DiagonalGold
-    }
-
     public GameState GameStateEnum {
         get {
             return _gameState;
@@ -108,7 +91,6 @@ public class GameManager : MonoBehaviour {
 
     private IEnumerator IStartGameCountdown() {
         GameStateEnum = GameState.GameplayCountdown;
-
         yield return new WaitForSeconds(_countDownTime);
 
         StartGame();

@@ -11,13 +11,6 @@ public class Gold : MonoBehaviour {
     private string _goldType = "";
     private bool _hasInteractedWithMagnet = false;
 
-    public enum GoldTypes {
-        YellowGold,
-        GreenGold,
-        BlueGold,
-        RedGold
-    }
-
     public void CreateGold() {
         _goldRenderer = GetComponent<Renderer>();
         SetGoldType();
@@ -67,7 +60,7 @@ public class Gold : MonoBehaviour {
             GameManager.instance.AddGoldToPlayer(_coinScore);
             _hasInteractedWithMagnet = false;
 
-        }else if(other.tag == "CoinMagnet") {
+        } else if (other.tag == "CoinMagnet") {
             _hasInteractedWithMagnet = true;
             _player = other.gameObject.transform;
         }

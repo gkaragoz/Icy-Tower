@@ -39,9 +39,9 @@ public class CollectableSpawner : MonoBehaviour {
     }
 
     private string GetRandomGoldType() {
-        int enumLenght = Enum.GetNames(typeof(GameManager.GoldHolderTypes)).Length;
+        int enumLenght = Enum.GetNames(typeof(GoldHolderTypes)).Length;
         int randomType = UnityEngine.Random.Range(0, enumLenght);
-        string goldType = Enum.GetName(typeof(GameManager.GoldHolderTypes), randomType);
+        string goldType = Enum.GetName(typeof(GoldHolderTypes), randomType);
         return goldType;
     }
 
