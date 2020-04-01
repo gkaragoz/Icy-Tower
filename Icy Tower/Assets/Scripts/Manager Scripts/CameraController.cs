@@ -6,8 +6,6 @@ public class CameraController : MonoBehaviour {
     [SerializeField]
     private float _offset = 0f;
     [SerializeField]
-    private float _scrollSpeed = 0f;
-    [SerializeField]
     private float _smothSpeed = 0f;
 
     [Header("DEBUG")]

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class TimeSlower : MonoBehaviour{
+public class TimeSlower : MonoBehaviour {
 
     [Header("DEBUG")]
     [Utils.ReadOnly]
@@ -10,6 +10,7 @@ public class TimeSlower : MonoBehaviour{
     [SerializeField]
     [Utils.ReadOnly]
     private float _duration = 0f;
+
     private void Start() {
         _timeSlower = GetComponent<TimeSlowerStats>();
         _duration = _timeSlower.GetDuration();
