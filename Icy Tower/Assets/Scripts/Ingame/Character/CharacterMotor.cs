@@ -72,15 +72,24 @@ public class CharacterMotor : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        SetLocalGravity();
+        if (IsFalling) {
+            FallBooster();
+        } else if (_isJumpCalled) {
+            Debug.Log("asd");
+            JumpBooster();
+        }
 
         SendRay();
         SetCharacterPositionY();
         GameManager.instance.SetScore();
     }
 
-    private void SetLocalGravity() {
-        _rb.AddForce(Vector3.up * Physics.gravity.y * _characterStats.GetLocalGravity(), ForceMode.Acceleration);
+    private void JumpBooster() {
+        _rb.velocity += Vector3.down * Physics.gravity.y * _characterStats.GetJumpPower() * Time.deltaTime;
+    }
+
+    private void FallBooster() {
+        _rb.velocity += Vector3.up * Physics.gravity.y * _characterStats.GetFallMultiplier() * Time.deltaTime;
     }
 
     private void SendRay() {
@@ -99,8 +108,8 @@ public class CharacterMotor : MonoBehaviour {
     public void Jump() {
         if (!_isJumpCalled) {
             _isJumpCalled = true;
-            _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
-            _rb.AddForce(Vector3.up * (_characterStats.GetJumpPower() + (Mathf.Abs(_rb.velocity.x) / 3f)), ForceMode.Impulse);
+            //_rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
+            //_rb.AddForce(Vector3.up * (_characterStats.GetJumpPower() + (Mathf.Abs(_rb.velocity.x) / 3f)), ForceMode.Impulse);
         }
     }
 
