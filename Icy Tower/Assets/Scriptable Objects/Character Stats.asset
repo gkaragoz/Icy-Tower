@@ -15,10 +15,10 @@ MonoBehaviour:
   _name: Ninja
   _prefab: {fileID: 0}
   _movementSpeed: 15
-  _jumpPower: 36.3
-  _comboJumpPower: 40
+  _jumpPower: 15
+  _comboJumpPower: 30
   _maxVelocityX: 15
   _requiredVelocityForComboJump: 13
   _footPositionOffset: 0.5
   _playerPositionY: 0
-  _fallMultiplier: 2.5
+  _localGravity: 1

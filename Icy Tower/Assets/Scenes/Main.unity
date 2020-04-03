@@ -1327,13 +1327,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f5d26068243a94ca8cfd4756d53c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftMapSpawnTransform: {fileID: 1714600979}
-  _rightMapSpawnTransform: {fileID: 639886571}
   _collectableSpawner: {fileID: 1830753074}
   _playerController: {fileID: 2112543046}
   _playerStats: {fileID: 4890027346354954583}
   _countDownTime: 3
-  _gravityScale: 2
   _gameState: 0
   _isGamePaused: 0
   _hasGameObjectsInitialized: 0
@@ -2405,6 +2402,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890027348151515167, guid: 0338bd966b8ef434db62ef1a592315ae,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0338bd966b8ef434db62ef1a592315ae, type: 3}
