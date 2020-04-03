@@ -88,7 +88,7 @@ public class CharacterStats : MonoBehaviour {
         _character.CharacterPositionY = value;
     }
     public void SetFallMultiplier(float value) {
-        _character.FallMultiplier = value;
+        _character.LocalGravity = value;
     }
     #endregion
 
@@ -130,8 +130,8 @@ public class CharacterStats : MonoBehaviour {
         return _character.CharacterPositionY;
     }
 
-    public float GetFallMultiplier() {
-        return _character.FallMultiplier;
+    public float GetLocalGravity() {
+        return _character.LocalGravity;
     }
 
     #endregion
