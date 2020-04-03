@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour {
             foreach (string goldTypes in (string[])Enum.GetNames(typeof(GoldHolderTypes))) {
                 ObjectPooler.instance.InitializePool(goldTypes);
             }
-
             _hasGameObjectsInitialized = true;
         }
     }
