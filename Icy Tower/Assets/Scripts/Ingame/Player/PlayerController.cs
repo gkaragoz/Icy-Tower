@@ -5,11 +5,6 @@ public class PlayerController : MonoBehaviour {
 
     public PlayerStats PlayerStats { get { return _playerStats; } }
 
-    [SerializeField]
-    private bool _isMovingLeft = false;
-    [SerializeField]
-    private bool _isMovingRight = false;
-
     [Header("Debug")]
     [SerializeField]
     [Utils.ReadOnly]
@@ -20,6 +15,12 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     [Utils.ReadOnly]
     private PlayerStats _playerStats;
+    [Utils.ReadOnly]
+    [SerializeField]
+    private bool _isMovingLeft = false;
+    [Utils.ReadOnly]
+    [SerializeField]
+    private bool _isMovingRight = false;
 
     private void Awake() {
         _characterManager = GetComponent<CharacterManager>();
@@ -64,6 +65,10 @@ public class PlayerController : MonoBehaviour {
 
     public void AddGold(int value) {
         _playerStats.AddGold(value);
+    }
+
+    public void AddKey(int value) {
+        _playerStats.AddKey(value);
     }
 
     public void SetScore() {

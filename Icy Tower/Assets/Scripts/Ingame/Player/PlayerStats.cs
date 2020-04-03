@@ -35,6 +35,16 @@ public class PlayerStats : MonoBehaviour{
         _player.Gold += value;
          SavePlayer();
     }
+    
+    public void AddKey(int value) {
+        _player.Gold += value;
+        SavePlayer();
+    }
+
+    public void AddGem(int value) {
+        _player.Gem += value;
+        SavePlayer();
+    }
 
     #endregion
 
@@ -57,12 +67,20 @@ public class PlayerStats : MonoBehaviour{
         _player.Gold = value;
     }
 
+    public void SetKey(int value) {
+        _player.Key = value;
+    }
+
+    public void SetGem(int value) {
+        _player.Gem = value;
+    }
+
     #endregion
 
     #region Reporters
 
     public string GetName() {
-        return _playerDefinition_Template.Name;
+        return _player.Name;
     }
 
     public int GetCurrentScore() {
@@ -75,6 +93,14 @@ public class PlayerStats : MonoBehaviour{
 
     public int GetGold() {
         return _player.Gold;
+    }
+
+    public int GetKey() {
+        return _player.Key;
+    }
+
+    public int GetGem() {
+        return _player.Gem;
     }
 
     #endregion

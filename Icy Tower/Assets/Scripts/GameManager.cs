@@ -138,6 +138,12 @@ public class GameManager : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
     }
 
+    public void AddKeyToPlayer(int value) {
+        _playerController.AddKey(value);
+
+        OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
+    }
+
     public void SetScore() {
         _playerController.SetScore();
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Player Stats", menuName = "Scriptable Objects/Player Stats")]
-public class PlayerStats_SO : ScriptableObject{
+public class PlayerStats_SO : ScriptableObject {
 
     [SerializeField]
     private string _name = "Player";
@@ -18,20 +18,41 @@ public class PlayerStats_SO : ScriptableObject{
     [Utils.ReadOnly]
     private int _gold = 0;
 
+    [SerializeField]
+    [Utils.ReadOnly]
+    private int _key = 0;
+
+    [SerializeField]
+    [Utils.ReadOnly]
+    private int _gem = 0;
+
     public string Name {
         get { return _name; }
         set { _name = value; }
     }
+
     public int CurrentScore {
         get { return _currentScore; }
         set { _currentScore = value; }
     }
+
     public int HighScore {
         get { return _highScore; }
         set { _highScore = value; }
     }
+
     public int Gold {
         get { return _gold; }
         set { _gold = value; }
+    }
+
+    public int Key {
+        get { return _key; }
+        set { _key = value; }
+    }
+
+    public int Gem {
+        get { return _gem; }
+        set { _gem = value; }
     }
 }
