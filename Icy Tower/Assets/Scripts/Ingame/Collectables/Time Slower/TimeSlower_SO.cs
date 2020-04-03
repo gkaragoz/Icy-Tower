@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "TimeSlower Stats", menuName = "Scriptable Objects/TimeSlower Stats")]
+[CreateAssetMenu(fileName = "TimeSlower Stats", menuName = "Scriptable Objects/Collectables/TimeSlower Stats")]
 public class TimeSlower_SO : ScriptableObject {
 
     [SerializeField]

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName ="SpeedUp Stats" , menuName = "Scriptable Objects/SpeedUp Stats")]
+[CreateAssetMenu(fileName ="SpeedUp Stats" , menuName = "Scriptable Objects/Collectables/SpeedUp Stats")]
 public class SpeedUp_SO : ScriptableObject{
 
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "Umbrella Stats", menuName = "Scriptable Objects/Umbrella Stats")]
+[CreateAssetMenu(fileName = "Umbrella Stats", menuName = "Scriptable Objects/Collectables/Umbrella Stats")]
 public class Umbrella_SO : ScriptableObject {
 
     [SerializeField]

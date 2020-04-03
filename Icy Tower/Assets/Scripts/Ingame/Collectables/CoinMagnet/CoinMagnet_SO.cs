@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "CoinMagnet Stats", menuName = "Scriptable Objects/CoinMagnet Stats")]
+[CreateAssetMenu(fileName = "CoinMagnet Stats", menuName = "Scriptable Objects/Collectables/CoinMagnet Stats")]
 public class CoinMagnet_SO : ScriptableObject {
 
     [SerializeField]

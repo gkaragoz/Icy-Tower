@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "SuperCoin Stats", menuName = "Scriptable Objects/SuperCoin Stats")]
+[CreateAssetMenu(fileName = "SuperCoin Stats", menuName = "Scriptable Objects/Collectables/SuperCoin Stats")]
 public class SuperCoin_SO : ScriptableObject{
 
 

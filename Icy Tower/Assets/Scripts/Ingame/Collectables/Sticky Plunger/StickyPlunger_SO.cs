@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "StickyPlunger Stats", menuName = "Scriptable Objects/StickyPlunger Stats")]
+[CreateAssetMenu(fileName = "StickyPlunger Stats", menuName = "Scriptable Objects/Collectables/StickyPlunger Stats")]
 public class StickyPlunger_SO : ScriptableObject{
 
     [SerializeField]

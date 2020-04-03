@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlatformSaver Stats", menuName = "Scriptable Objects/PlatformSaver Stats")]
+[CreateAssetMenu(fileName = "PlatformSaver Stats", menuName = "Scriptable Objects/Collectables/PlatformSaver Stats")]
 public class PlatformSaver_SO : ScriptableObject {
 
     [SerializeField]
