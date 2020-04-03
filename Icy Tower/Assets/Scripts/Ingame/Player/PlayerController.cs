@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private bool _isMovingRight = false;
 
-
     [Header("Debug")]
     [SerializeField]
     [Utils.ReadOnly]
@@ -30,19 +29,21 @@ public class PlayerController : MonoBehaviour {
 
 
     private void FixedUpdate() {
+        float horizontal = Input.GetAxis("Horizontal");
+
         if (_isMovingLeft)
             MoveLeft();
         if (_isMovingRight)
             MoveRight();
-        if (Input.GetAxis("Horizontal") != 0) {
-            Move();
+        if (horizontal != 0) {
+            Move(horizontal);
         }
         ComboJump();
         Jump();
     }
 
-    public void Move() {
-        _characterManager.Move();
+    public void Move(float horizontal) {
+        _characterManager.Move(horizontal);
     }
 
     public void Jump() {

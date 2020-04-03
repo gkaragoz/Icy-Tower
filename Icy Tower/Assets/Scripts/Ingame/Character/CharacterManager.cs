@@ -16,15 +16,15 @@ public class CharacterManager : MonoBehaviour {
         HandleColliders();
     }
 
-    public void Move() {
+    public void Move(float horizontal) {
         if (_characterMotor.IsMoving) {
-            _characterMotor.Move();
+            _characterMotor.Move(horizontal);
         } else {
             return;
         }
     }
 
-        public void Jump() {
+    public void Jump() {
         if (_characterMotor.IsJumping) {
             return;
         }
@@ -40,10 +40,10 @@ public class CharacterManager : MonoBehaviour {
     }
 
     public void MoveLeft() {
-            _characterMotor.MoveLeft();
+        _characterMotor.MoveLeft();
     }
     public void MoveRight() {
-            _characterMotor.MoveRight();
+        _characterMotor.MoveRight();
     }
 
     private void HandleColliders() {

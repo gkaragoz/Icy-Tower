@@ -16,9 +16,10 @@ public class Platform : MonoBehaviour, IPooledObject {
     }
 
     private void SetPosition() {
-        Vector3 _randomPos = new Vector3(Random.Range(GameManager.instance.LeftMapSpawnTransform.position.x, GameManager.instance.RightMapSpawnTransform.position.x),
-                                         SpawnManager.instance.LastSpawnedPlatformPos += _platformStats.GetDistanceBetweenPlatforms(),                                                                                                //y
-                                         0f);
+        float x = WorldSettings.instance.GetRandomPosition().x;
+        float y = SpawnManager.instance.LastSpawnedPlatformPos += _platformStats.GetDistanceBetweenPlatforms();
+        float z = 0;
+        Vector3 _randomPos = new Vector3(x, y, z);
 
         transform.position = _randomPos;
     }

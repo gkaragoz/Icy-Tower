@@ -6,10 +6,6 @@ public class GameManager : MonoBehaviour {
 
     [Header("Initializations")]
     [SerializeField]
-    private Transform _leftMapSpawnTransform = null;
-    [SerializeField]
-    private Transform _rightMapSpawnTransform = null;
-    [SerializeField]
     private CollectableSpawner _collectableSpawner = null;
     [SerializeField]
     private PlayerController _playerController = null;
@@ -23,9 +19,6 @@ public class GameManager : MonoBehaviour {
     public Action<GameState> OnGameStateChanged;
 
     [Header("Debug")]
-    [Utils.ReadOnly]
-    [SerializeField]
-    private float _gravityScale = 1.0f;
     [SerializeField]
     [Utils.ReadOnly]
     private GameState _gameState = GameState.MainMenu;
@@ -66,10 +59,6 @@ public class GameManager : MonoBehaviour {
             OnGameStateChanged?.Invoke(_gameState);
         }
     }
-
-    public Transform LeftMapSpawnTransform { get { return _leftMapSpawnTransform; } }
-
-    public Transform RightMapSpawnTransform { get { return _rightMapSpawnTransform; } }
 
     public int GetCountDownCount { get { return _countDownTime; } }
 
@@ -155,11 +144,5 @@ public class GameManager : MonoBehaviour {
 
         OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
     }
-    public float GetGravityScale() {
-        return _gravityScale;
-    }
 
-    public void SetGravityScale(float value) {
-        _gravityScale = value;
-    }
 }

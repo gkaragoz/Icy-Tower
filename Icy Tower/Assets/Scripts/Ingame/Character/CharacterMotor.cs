@@ -66,14 +66,23 @@ public class CharacterMotor : MonoBehaviour {
 
     private void Awake() {
         _rb = GetComponent<Rigidbody>();
+
         _boxCollider = GetComponentInChildren<BoxCollider>();
         _characterStats = GetComponent<CharacterStats>();
     }
 
     private void FixedUpdate() {
+        if (IsFalling) {
+            FallBooster();
+        }
+
         SendRay();
         SetCharacterPositionY();
         GameManager.instance.SetScore();
+    }
+
+    private void FallBooster() {
+        _rb.velocity += Vector3.up * Physics.gravity.y * _characterStats.GetFallMultiplier() * Time.deltaTime;
     }
 
     private void SendRay() {
@@ -107,12 +116,11 @@ public class CharacterMotor : MonoBehaviour {
         }
     }
 
-    public void Move() {
-        float _horizontalMove = Input.GetAxisRaw("Horizontal");
-        _rb.AddForce(new Vector3(_horizontalMove * _characterStats.GetMovementSpeed(), 0));
+    public void Move(float horizontal) {
+        _rb.AddForce(new Vector3(horizontal * _characterStats.GetMovementSpeed(), 0));
     }
 
-        public void MoveLeft() {
+    public void MoveLeft() {
         if (_rb.velocity.x > _characterStats.GetMaxVelocityX())
             _rb.velocity = new Vector3(_characterStats.GetMaxVelocityX(), _rb.velocity.y, _rb.velocity.z);
         if (_rb.velocity.x < -_characterStats.GetMaxVelocityX())

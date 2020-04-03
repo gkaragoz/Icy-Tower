@@ -87,6 +87,9 @@ public class CharacterStats : MonoBehaviour {
     public void SetCharacterPositionY(float value) {
         _character.CharacterPositionY = value;
     }
+    public void SetFallMultiplier(float value) {
+        _character.FallMultiplier = value;
+    }
     #endregion
 
     #region Reporters
@@ -125,6 +128,10 @@ public class CharacterStats : MonoBehaviour {
 
     public float GetCharacterPositionY() {
         return _character.CharacterPositionY;
+    }
+
+    public float GetFallMultiplier() {
+        return _character.FallMultiplier;
     }
 
     #endregion

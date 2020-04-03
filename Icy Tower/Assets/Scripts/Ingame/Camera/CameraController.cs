@@ -23,7 +23,6 @@ public class CameraController : MonoBehaviour {
             Vector3 newPos = new Vector3(transform.position.x, _target.position.y + _offset, transform.position.z);
             transform.position = Vector3.Lerp(transform.position, newPos, _smothSpeed);
         } else {
-            Debug.Log(_timeSlower.GetScrollSpeed());
             transform.Translate(Vector3.up * Time.deltaTime * _timeSlower.GetScrollSpeed());
         }
     }
