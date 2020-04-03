@@ -72,17 +72,15 @@ public class CharacterMotor : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (IsFalling) {
-            FallBooster();
-        }
+        SetLocalGravity();
 
         SendRay();
         SetCharacterPositionY();
         GameManager.instance.SetScore();
     }
 
-    private void FallBooster() {
-        _rb.velocity += Vector3.up * Physics.gravity.y * _characterStats.GetFallMultiplier() * Time.deltaTime;
+    private void SetLocalGravity() {
+        _rb.AddForce(Vector3.up * Physics.gravity.y * _characterStats.GetLocalGravity(), ForceMode.Acceleration);
     }
 
     private void SendRay() {
