@@ -33,7 +33,7 @@ public class CharacterStats_SO : ScriptableObject {
     private float _playerPositionY= 0f;
 
     [SerializeField]
-    private float _fallMultiplier = 3.5f;
+    private float _localGravity = 3.5f;
 
     public string Name {
         get { return _name; }
@@ -79,9 +79,9 @@ public class CharacterStats_SO : ScriptableObject {
         set { _playerPositionY = value; }
     }
 
-    public float FallMultiplier {
-        get { return _fallMultiplier; }
-        set { _fallMultiplier = value; }
+    public float LocalGravity {
+        get { return _localGravity; }
+        set { _localGravity = value; }
     }
 
 }
