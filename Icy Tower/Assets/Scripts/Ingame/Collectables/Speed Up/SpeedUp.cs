@@ -20,8 +20,9 @@ public class SpeedUp : MonoBehaviour{
         _duration = _speedUpStats.GetDuration();
     }
 
-    private void FixedUpdate() {
-        if (Input.GetKeyDown(KeyCode.F)) {
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag =="SpeedUp") {
             IncreaseCharacterSpeed();
             StartCoroutine(StopSpeedUping());
         }
