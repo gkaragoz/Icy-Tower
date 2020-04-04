@@ -20,8 +20,8 @@ public class PlatformSaver : MonoBehaviour {
 
     }
 
-    private void FixedUpdate() {
-        if (Input.GetKeyDown(KeyCode.M)) {
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "PlatformSaver") {
             _platformCountToMaximize = _platformSaverStats.GetPlatformCount();
             MaximizePlatformScale();
         }
@@ -38,7 +38,6 @@ public class PlatformSaver : MonoBehaviour {
 
     private void MaximizePlatformScale() {
         for (int i = 0; i < _platforms.Length; i++) {
-            Debug.Log("is called");
             if (IsPlatformOnScreen(_platforms[i])) {
                 _platforms[i].gameObject.transform.localScale = new Vector3(10, _platforms[i].gameObject.transform.localScale.y, _platforms[i].gameObject.transform.localScale.y);
                 _platforms[i].gameObject.transform.position = new Vector3(0, _platforms[i].gameObject.transform.position.y, _platforms[i].gameObject.transform.position.z);
