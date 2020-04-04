@@ -22,4 +22,13 @@ public enum GoldTypes {
     RedGold
 }
 
+public enum Collectables {
+    CoinMagnet,
+    PlatformSaver,
+    SpeedUp,
+    StickyPlunger,
+    TimeSlower,
+    Umbrella,
+}
+
 

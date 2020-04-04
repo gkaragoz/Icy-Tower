@@ -28,9 +28,6 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     [Utils.ReadOnly]
     private bool _hasGameObjectsInitialized = false;
-    [SerializeField]
-    [Utils.ReadOnly]
-    private TimeSlowerStats _timeSlower= null;
 
     #region Singleton
 
@@ -44,10 +41,6 @@ public class GameManager : MonoBehaviour {
     }
 
     #endregion
-
-    private void Start() {
-        _timeSlower = Camera.main.GetComponent<TimeSlowerStats>();
-    }
 
     public GameState GameStateEnum {
         get {
@@ -89,7 +82,7 @@ public class GameManager : MonoBehaviour {
         _collectableSpawner.StartGoldSpawns();
 
         GameStateEnum = GameState.Gameplay;
-        _timeSlower.SetScrollSpeed(2f);
+        Camera.main.GetComponent<CameraController>().scrollSpeed = 2f;
     }
 
     private void Pause() {

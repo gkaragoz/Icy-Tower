@@ -16,19 +16,21 @@ public class TimeSlower : MonoBehaviour {
         _duration = _timeSlower.GetDuration();
     }
 
-    private void FixedUpdate() {
-        if (Input.GetKeyDown(KeyCode.S)) {
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "TimeSlower") {
             SlowTime();
         }
     }
 
     private void SlowTime() {
         _timeSlower.SetScrollSpeed(CalculateScrollSpeed());
+        Camera.main.GetComponent<CameraController>().scrollSpeed = _timeSlower.GetScrollSpeed();
         StartCoroutine(StopSlowingTime());
     }
 
     private void SpeedUpTime() {
         _timeSlower.SetScrollSpeed(2f);
+        Camera.main.GetComponent<CameraController>().scrollSpeed = _timeSlower.GetScrollSpeed();
         _duration = _timeSlower.GetDuration();
     }
 
@@ -39,7 +41,6 @@ public class TimeSlower : MonoBehaviour {
     private IEnumerator StopSlowingTime() {
         while (true) {
             _duration--;
-            Debug.Log(_duration);
             yield return new WaitForSeconds(1f);
 
             if (_duration <= 0) {
