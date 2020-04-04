@@ -39,9 +39,6 @@ public class StickyPlunger : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            JumpToClosestWall();
-        }
         if (_hasUsedStickyPlunger) {
             if (_isCollideWithRightWall || _isCollideWithLeftWall) {
                 StickToWall();
@@ -64,9 +61,6 @@ public class StickyPlunger : MonoBehaviour {
     }
 
     private void JumpToClosestWall() {
-        _climbTime = _stickyPlungerStats.GetDuration();
-        Debug.Log(_climbTime);
-        _hasUsedStickyPlunger = true;
         _rb.velocity = Vector3.zero;
         if (gameObject.transform.position.x > 0) {
             _rb.AddForce(new Vector3(1f, 1f) * _forceAmount, ForceMode.Impulse);
@@ -88,6 +82,12 @@ public class StickyPlunger : MonoBehaviour {
                 _isCollideWithLeftWall = true;
                 _isCollideWithRightWall = false;
             }
+        }
+        if (other.tag == "StickyPlunger") {
+            Debug.Log("Sticky plunger");
+            _climbTime = _stickyPlungerStats.GetDuration();
+            _hasUsedStickyPlunger = true;
+            JumpToClosestWall();
         }
     }
 
@@ -111,27 +111,25 @@ public class StickyPlunger : MonoBehaviour {
 
     private void JumptToOtherWall() {
         if (_hasUsedStickyPlunger) {
+            _rb.velocity = Vector3.zero;
+
             if (_isCollideWithRightWall) {
                 _isCollideWithRightWall = false;
-                _rb.velocity = Vector3.zero;
                 _rb.AddForce(new Vector3(-15, 15, 0), ForceMode.Impulse);
             } else if (_isCollideWithLeftWall) {
                 _isCollideWithLeftWall = false;
-                _rb.velocity = Vector3.zero;
                 _rb.AddForce(new Vector3(15, 15, 0), ForceMode.Impulse);
             }
         }
     }
 
     private void LeaveWall() {
+        _rb.velocity = Vector3.zero;
+
         if (_isCollideWithLeftWall) {
-            _rb.velocity = Vector3.zero;
             _rb.AddForce(new Vector3(5, 15, 0), ForceMode.Impulse);
-            Debug.Log("Left Wal collide Called!");
         } else if (_isCollideWithRightWall) {
-            _rb.velocity = Vector3.zero;
             _rb.AddForce(new Vector3(-5, 15, 0), ForceMode.Impulse);
-            Debug.Log("Right Wal collide Called!");
         }
 
         _isCollideWithRightWall = false;
