@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6267484637196796900}
   - component: {fileID: 6267484637196796907}
   - component: {fileID: 6267484637196796906}
+  - component: {fileID: 8130681131139130391}
   m_Layer: 0
   m_Name: Sticky Plunger
   m_TagString: StickyPlunger
@@ -96,3 +97,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8130681131139130391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6267484637196796905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f02457c7996544483a43ca2835d59b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

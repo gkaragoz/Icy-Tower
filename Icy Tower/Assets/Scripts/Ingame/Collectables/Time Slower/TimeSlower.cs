@@ -19,6 +19,7 @@ public class TimeSlower : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "TimeSlower") {
             SlowTime();
+            other.gameObject.SetActive(false);
         }
     }
 

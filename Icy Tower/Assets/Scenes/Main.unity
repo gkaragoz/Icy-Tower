@@ -1576,6 +1576,36 @@ Transform:
   m_Father: {fileID: 1603324854}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1379375341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1379375342}
+  m_Layer: 0
+  m_Name: Collectables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1379375342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379375341}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1603324854}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1425937753 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1425937753, guid: 4d3693fedb44b8d4693b6dc0ab4e764d,
@@ -1876,6 +1906,7 @@ Transform:
   - {fileID: 1352614923}
   - {fileID: 92732798}
   - {fileID: 603829070}
+  - {fileID: 1379375342}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1922,6 +1953,41 @@ MonoBehaviour:
     prefab: {fileID: 2116504032627625081, guid: 55060b8f16ea99742a6ed29804767cf7,
       type: 3}
     size: 5
+  - parentTransform: {fileID: 1379375342}
+    name: CoinMagnet
+    prefab: {fileID: 5653471069008797416, guid: 50abb5c0a810367419b0d5661ce43284,
+      type: 3}
+    size: 2
+  - parentTransform: {fileID: 1379375342}
+    name: PlatformSaver
+    prefab: {fileID: 7077825631020241899, guid: 47ad0a18851f2f840a32c09f936de348,
+      type: 3}
+    size: 2
+  - parentTransform: {fileID: 1379375342}
+    name: SpeedUp
+    prefab: {fileID: 2353669391936623536, guid: 7cd5167ccb81d3f43be10a3a3a736d8a,
+      type: 3}
+    size: 2
+  - parentTransform: {fileID: 1379375342}
+    name: StickyPlunger
+    prefab: {fileID: 6267484637196796905, guid: 77c2f0599cf2997499856cc4db5cc420,
+      type: 3}
+    size: 2
+  - parentTransform: {fileID: 1379375342}
+    name: SuperCoin
+    prefab: {fileID: 1972419128551397935, guid: 5cc030df79f8eac4d85ad174aa53bce5,
+      type: 3}
+    size: 2
+  - parentTransform: {fileID: 1379375342}
+    name: TimeSlower
+    prefab: {fileID: 6408258527001104837, guid: a818084c57748c3428e1202652479ec9,
+      type: 3}
+    size: 2
+  - parentTransform: {fileID: 1379375342}
+    name: Umbrella
+    prefab: {fileID: 2616088305007485242, guid: 3cbdd9e779be10a47bf24e4187a9abc1,
+      type: 3}
+    size: 2
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,6 +32,7 @@ public class CoinMagnet : MonoBehaviour {
             _duration = _coinMagnetStats.GetDuration();
             ActivateCoinMagnet();
             StartCoroutine(StopCoinMagnet());
+            other.gameObject.SetActive(false);
         }
     }
 

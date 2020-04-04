@@ -25,6 +25,7 @@ public class SpeedUp : MonoBehaviour{
         if (other.tag =="SpeedUp") {
             IncreaseCharacterSpeed();
             StartCoroutine(StopSpeedUping());
+            other.gameObject.SetActive(false);
         }
     }
 

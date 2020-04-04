@@ -84,10 +84,10 @@ public class StickyPlunger : MonoBehaviour {
             }
         }
         if (other.tag == "StickyPlunger") {
-            Debug.Log("Sticky plunger");
             _climbTime = _stickyPlungerStats.GetDuration();
             _hasUsedStickyPlunger = true;
             JumpToClosestWall();
+            other.gameObject.SetActive(false);
         }
     }
 

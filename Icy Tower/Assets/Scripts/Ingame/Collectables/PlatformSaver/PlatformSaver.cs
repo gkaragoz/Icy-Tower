@@ -24,6 +24,7 @@ public class PlatformSaver : MonoBehaviour {
         if (other.tag == "PlatformSaver") {
             _platformCountToMaximize = _platformSaverStats.GetPlatformCount();
             MaximizePlatformScale();
+            other.gameObject.SetActive(false);
         }
     }
 

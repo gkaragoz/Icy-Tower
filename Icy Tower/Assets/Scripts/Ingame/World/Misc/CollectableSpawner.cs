@@ -6,6 +6,8 @@ public class CollectableSpawner : MonoBehaviour {
     public bool IsRunning { get { return _isRunning; } }
     [SerializeField]
     private float _goldSpawnRate = 3f;
+    [SerializeField]
+    private float _powerUpSpawnRate= 5f;
 
     [Header("Debug")]
     [SerializeField]
@@ -14,6 +16,9 @@ public class CollectableSpawner : MonoBehaviour {
     [SerializeField]
     [Utils.ReadOnly]
     private Coroutine _checkGoldCoroutine = null;
+    [SerializeField]
+    [Utils.ReadOnly]
+    private Coroutine _checkPowerUpCoroutine = null;
 
     private IEnumerator ICheckGolds() {
         WaitForSeconds waitForSeconds = new WaitForSeconds(_goldSpawnRate);
@@ -25,10 +30,26 @@ public class CollectableSpawner : MonoBehaviour {
         }
     }
 
+    private IEnumerator ICheckPowerUps() {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(_powerUpSpawnRate);
+
+        while (true) {
+            yield return waitForSeconds;
+
+            SpawnPowerUps();
+        }
+    }
+
     private void SpawnGold() {
         Vector3 randomPosition = GetRandomSpawnPosition();
 
         ObjectPooler.instance.SpawnFromPool(GetRandomGoldType(), randomPosition, Quaternion.identity);
+    }
+
+    private void SpawnPowerUps() {
+        Vector3 randomPosition = GetRandomSpawnPosition();
+
+        ObjectPooler.instance.SpawnFromPool(GetRandomPowerUpToSpawn(), randomPosition, Quaternion.identity);
     }
 
     private Vector3 GetRandomSpawnPosition() {
@@ -44,9 +65,22 @@ public class CollectableSpawner : MonoBehaviour {
         return Enum.GetName(typeof(GoldHolderTypes), randomType);
     }
 
+    private string GetRandomPowerUpToSpawn() {
+        int enumLenght = Enum.GetNames(typeof(Collectables)).Length;
+        int randomType = UnityEngine.Random.Range(0, enumLenght);
+        return Enum.GetName(typeof(Collectables), randomType);
+    }
+
     public void StartGoldSpawns() {
         if (_checkGoldCoroutine == null) {
             _checkGoldCoroutine = StartCoroutine(ICheckGolds());
+            _isRunning = true;
+        }
+    }
+
+    public void StartPowerUpSpawns() {
+        if (_checkPowerUpCoroutine == null) {
+            _checkPowerUpCoroutine = StartCoroutine(ICheckPowerUps());
             _isRunning = true;
         }
     }

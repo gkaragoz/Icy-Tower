@@ -66,6 +66,9 @@ public class GameManager : MonoBehaviour {
             foreach (string goldTypes in (string[])Enum.GetNames(typeof(GoldHolderTypes))) {
                 ObjectPooler.instance.InitializePool(goldTypes);
             }
+            foreach (string collectables in (string[])Enum.GetNames(typeof(Collectables))) {
+                ObjectPooler.instance.InitializePool(collectables);
+            }
             _hasGameObjectsInitialized = true;
         }
     }
@@ -80,6 +83,7 @@ public class GameManager : MonoBehaviour {
     private void StartGame() {
         SpawnManager.instance.SpawnAll();
         _collectableSpawner.StartGoldSpawns();
+        _collectableSpawner.StartPowerUpSpawns();
 
         GameStateEnum = GameState.Gameplay;
         Camera.main.GetComponent<CameraController>().scrollSpeed = 2f;

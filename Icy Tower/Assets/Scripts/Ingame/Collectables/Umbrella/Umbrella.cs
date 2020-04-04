@@ -35,6 +35,7 @@ public class Umbrella : MonoBehaviour {
             _flyTime = _umbrellaStats.GetDuration();
             _hasUsedUmbrella = true;
             StartCoroutine(StopFlying());
+            other.gameObject.SetActive(false);
         }
     }
 

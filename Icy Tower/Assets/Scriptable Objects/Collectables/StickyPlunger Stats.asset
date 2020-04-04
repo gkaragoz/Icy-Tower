@@ -15,4 +15,4 @@ MonoBehaviour:
   _name: Sticky Plunger
   _prefab: {fileID: 0}
   _duration: 10
-  _moveSpeed: 5
+  _moveSpeed: 15

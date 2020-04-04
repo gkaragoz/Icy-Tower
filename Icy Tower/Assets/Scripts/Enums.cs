@@ -29,6 +29,7 @@ public enum Collectables {
     StickyPlunger,
     TimeSlower,
     Umbrella,
+    SuperCoin
 }
 
 
