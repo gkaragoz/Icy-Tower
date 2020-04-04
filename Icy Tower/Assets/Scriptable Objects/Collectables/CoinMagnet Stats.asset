@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Coin Magnet
   _prefab: {fileID: 0}
-  _duration: 3
-  _radius: 3
+  _duration: 5
+  _radius: 2

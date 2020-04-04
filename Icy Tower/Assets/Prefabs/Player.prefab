@@ -10,14 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 65957647}
   - component: {fileID: 65957648}
-  - component: {fileID: 648107509}
   m_Layer: 0
   m_Name: CoinMagnet
   m_TagString: CoinMagnet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &65957647
 Transform:
   m_ObjectHideFlags: 0
@@ -25,12 +24,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65957646}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.532, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4890027348151515155}
-  m_RootOrder: 3
+  m_Father: {fileID: 2911598251010495029}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &65957648
 SphereCollider:
@@ -45,21 +44,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &648107509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 65957646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd3d9300adb9794c9d65605995ab509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _coinMagnet_Template: {fileID: 11400000, guid: be9edb98ed072f644bd48f87efd7b2b4,
-    type: 2}
-  _coinMagnet: {fileID: 0}
 --- !u!1 &1216969002
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +74,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4890027348151515155}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1216969005
 MonoBehaviour:
@@ -119,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a02a1e5ea642d418098ee195df9adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedUp_Template: {fileID: 0}
+  speedUp_Template: {fileID: 11400000, guid: 4c96104d270615743a084260df72f1e8, type: 2}
   _speedUp: {fileID: 0}
 --- !u!1 &1470785059
 GameObject:
@@ -151,7 +135,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4890027348151515155}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1470785062
 MonoBehaviour:
@@ -214,7 +198,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4890027348151515155}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4890027346354954585
 MonoBehaviour:
@@ -469,10 +453,10 @@ Transform:
   - {fileID: 4890027347677868196}
   - {fileID: 4890027347546545608}
   - {fileID: 4890027347306841965}
-  - {fileID: 65957647}
   - {fileID: 631954844255284585}
   - {fileID: 1470785060}
   - {fileID: 1216969003}
+  - {fileID: 2911598251010495029}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -488,11 +472,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31423f0cb1dfc1e44b8d6b1701ee0a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isMovingLeft: 0
-  _isMovingRight: 0
   _characterManager: {fileID: 0}
   _characterStats: {fileID: 0}
   _playerStats: {fileID: 0}
+  _isMovingLeft: 0
+  _isMovingRight: 0
 --- !u!114 &4890027348151515166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,3 +555,82 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 120
   m_CollisionDetection: 1
+--- !u!1 &5483166777339781780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2911598251010495029}
+  - component: {fileID: 7422267336930598479}
+  - component: {fileID: 1827116585}
+  - component: {fileID: 1827116587}
+  m_Layer: 0
+  m_Name: CoinMagnetManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2911598251010495029
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5483166777339781780}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 65957647}
+  m_Father: {fileID: 4890027348151515155}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7422267336930598479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5483166777339781780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 417dff6162a4a564f8e60c2206e44739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coinMagnetStats: {fileID: 0}
+  _radius: 0
+  _duration: 0
+  _collider: {fileID: 65957648}
+  _coinMagnet: {fileID: 65957646}
+--- !u!65 &1827116585
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5483166777339781780}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1827116587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5483166777339781780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd3d9300adb9794c9d65605995ab509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coinMagnet_Template: {fileID: 11400000, guid: be9edb98ed072f644bd48f87efd7b2b4,
+    type: 2}
+  _coinMagnet: {fileID: 0}

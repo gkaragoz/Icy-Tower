@@ -12,6 +12,13 @@ TagManager:
   - WallParent
   - LeftWall
   - RightWall
+  - PlatformSaver
+  - SpeedUp
+  - StickyPlunger
+  - SuperCoin
+  - TimeSlower
+  - Umbrella
+  - Gold
   layers:
   - Default
   - TransparentFX

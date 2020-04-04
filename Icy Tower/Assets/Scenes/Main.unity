@@ -1464,7 +1464,6 @@ MonoBehaviour:
   _platformSaverStats: {fileID: 0}
   _platformCountToMaximize: 0
   _platforms: []
-  _gameState: 0
 --- !u!1 &1202766406
 GameObject:
   m_ObjectHideFlags: 0
@@ -2402,11 +2401,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1216969004, guid: 0338bd966b8ef434db62ef1a592315ae, type: 3}
-      propertyPath: speedUp_Template
-      value: 
-      objectReference: {fileID: 11400000, guid: 4c96104d270615743a084260df72f1e8,
-        type: 2}
     - target: {fileID: 4890027348151515154, guid: 0338bd966b8ef434db62ef1a592315ae,
         type: 3}
       propertyPath: m_Name
@@ -2466,11 +2460,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4890027348151515167, guid: 0338bd966b8ef434db62ef1a592315ae,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0338bd966b8ef434db62ef1a592315ae, type: 3}

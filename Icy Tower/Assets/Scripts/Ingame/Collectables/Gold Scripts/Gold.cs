@@ -69,5 +69,4 @@ public class Gold : MonoBehaviour {
         transform.position = Vector3.MoveTowards(transform.position, _player.position, _flySpeed);
     }
 
-    //TODO : Play Gold pickup Sound
 }
