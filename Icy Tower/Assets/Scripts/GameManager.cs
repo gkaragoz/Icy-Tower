@@ -12,19 +12,10 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private PlayerStats _playerStats = null;
 
-    [SerializeField]
-    private int _countDownTime = 3;
 
     public Action<PlayerStats> OnPlayerStatsChanged;
-    public Action<GameState> OnGameStateChanged;
 
     [Header("Debug")]
-    [SerializeField]
-    [Utils.ReadOnly]
-    private GameState _gameState = GameState.MainMenu;
-    [SerializeField]
-    [Utils.ReadOnly]
-    private bool _isGamePaused = false;
     [SerializeField]
     [Utils.ReadOnly]
     private bool _hasGameObjectsInitialized = false;
@@ -42,24 +33,20 @@ public class GameManager : MonoBehaviour {
 
     #endregion
 
-    public GameState GameStateEnum {
-        get {
-            return _gameState;
-        }
-        private set {
-            _gameState = value;
-            Debug.Log(">>GAME STATE HAS BEEN CHANGED: " + _gameState.ToString());
-            OnGameStateChanged?.Invoke(_gameState);
+
+    private void Start() {
+        LevelManager.instance.OnGameStateChanged += InitializeNewGame;
+    }
+    private void InitializeNewGame(GameState state) {
+        if(state == GameState.NewGame) {
+            InitializePool();
+        }else if(state == GameState.Gameplay) {
+            _collectableSpawner.StartGoldSpawns();
+            _collectableSpawner.StartPowerUpSpawns();
         }
     }
 
-    public int GetCountDownCount { get { return _countDownTime; } }
-
-    private void InitializeNewGame() {
-        if (_isGamePaused) {
-            Unpause();
-        }
-
+    private void InitializePool() {
         if (!_hasGameObjectsInitialized) {
             ObjectPooler.instance.InitializePool("Platform");
             ObjectPooler.instance.InitializePool("Wall");
@@ -73,61 +60,6 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private IEnumerator IStartGameCountdown() {
-        GameStateEnum = GameState.GameplayCountdown;
-        yield return new WaitForSeconds(_countDownTime);
-
-        StartGame();
-    }
-
-    private void StartGame() {
-        SpawnManager.instance.SpawnAll();
-        _collectableSpawner.StartGoldSpawns();
-        _collectableSpawner.StartPowerUpSpawns();
-
-        GameStateEnum = GameState.Gameplay;
-        Camera.main.GetComponent<CameraController>().scrollSpeed = 2f;
-    }
-
-    private void Pause() {
-        Time.timeScale = 0;
-
-        _isGamePaused = true;
-
-        GameStateEnum = GameState.GamePaused;
-    }
-
-    private void Unpause() {
-        Time.timeScale = 1;
-
-        _isGamePaused = false;
-
-        GameStateEnum = GameState.Gameplay;
-    }
-
-    public void OnClick_NewGame() {
-        InitializeNewGame();
-
-        GameStateEnum = GameState.NewGame;
-
-        StartCoroutine(IStartGameCountdown());
-    }
-
-    public void OnClick_PauseUnpauseGame() {
-        _isGamePaused = !_isGamePaused;
-
-        if (_isGamePaused) {
-            Pause();
-        } else {
-            Unpause();
-        }
-    }
-
-    public void OnClick_RestartGame() {
-        OnClick_NewGame();
-
-        GameStateEnum = GameState.RestartGame;
-    }
 
     public void AddGoldToPlayer(int value) {
         _playerController.AddGold(value);

@@ -16,7 +16,7 @@ public class PlatformSaver : MonoBehaviour {
     private void Start() {
         _platformSaverStats = GetComponent<PlatformSaverStats>();
         _platformCountToMaximize = _platformSaverStats.GetPlatformCount();
-        GameManager.instance.OnGameStateChanged += GetPlatforms;
+        LevelManager.instance.OnGameStateChanged += GetPlatforms;
 
     }
 
