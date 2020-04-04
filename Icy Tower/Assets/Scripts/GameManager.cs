@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private PlayerStats _playerStats = null;
 
-
     public Action<PlayerStats> OnPlayerStatsChanged;
 
     [Header("Debug")]
@@ -33,10 +32,10 @@ public class GameManager : MonoBehaviour {
 
     #endregion
 
-
     private void Start() {
         LevelManager.instance.OnGameStateChanged += InitializeNewGame;
     }
+
     private void InitializeNewGame(GameState state) {
         if(state == GameState.NewGame) {
             InitializePool();
