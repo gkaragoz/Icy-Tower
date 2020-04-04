@@ -25,13 +25,16 @@ public class Umbrella : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (Input.GetKeyDown(KeyCode.U)){
+        if (_hasUsedUmbrella) {
+            StartFly();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "Umbrella") {
             _flyTime = _umbrellaStats.GetDuration();
             _hasUsedUmbrella = true;
             StartCoroutine(StopFlying());
-        }
-        if (_hasUsedUmbrella) {
-            StartFly();
         }
     }
 

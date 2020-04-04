@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class CoinMagnet : MonoBehaviour{
+public class CoinMagnet : MonoBehaviour {
 
     [Utils.ReadOnly]
     [SerializeField]
