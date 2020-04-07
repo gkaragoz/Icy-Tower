@@ -334,13 +334,8 @@ MonoBehaviour:
   _meshRenderer: {fileID: 1582690307}
   _inverseX: 0
   _inverseY: 1
-  _row: 3
+  _row: 4
   _column: 4
-  _textureMap:
-    ID: 0
-    coordinate: {x: 0, y: 0}
-  _rowInput: 0
-  _columnInput: 0
   _baseMapTexture: {fileID: 0}
   _baseMapWidth: 0
   _baseMapHeigth: 0
