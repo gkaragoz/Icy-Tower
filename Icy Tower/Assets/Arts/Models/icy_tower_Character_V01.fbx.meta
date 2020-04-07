@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 088e75471cd243240ba6ab17010679db
+guid: fd6383d73346ead449ded96a7cc1e1a3
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,63 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Atlas -8
-    second: {fileID: 2100000, guid: f48f5bedbab892f4588d176065a2dc9c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Atlas-1
-    second: {fileID: 2100000, guid: 2ee05de79b207ee489115b5625a81408, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Atlas-2
-    second: {fileID: 2100000, guid: 5fe631bb9764398468df6b4eac451d9b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Atlas-3
-    second: {fileID: 2100000, guid: bb3dcfe1840f6134f8e2a8d31f0b8c61, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Atlas-4
-    second: {fileID: 2100000, guid: 034ee48e68da3204eb547f9f5a8a0770, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Atlas-5
-    second: {fileID: 2100000, guid: 2db1324978791a24b849eb313a88749e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Atlas-6
-    second: {fileID: 2100000, guid: 12d0da5813b5c70408718d4a360bab90, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Atlas-7
-    second: {fileID: 2100000, guid: 28e5078092194b442962898e740fe554, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Atlas-9
-    second: {fileID: 2100000, guid: 83b44c72f6754b347965ff9f6efe9bf8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Bed
-    second: {fileID: 2100000, guid: 015ee2be4ef82a64692614e6f79f4117, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Chains
-    second: {fileID: 2100000, guid: b692345987332eb48abae1f05d07fff1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wardrobe
-    second: {fileID: 2100000, guid: cba05c146dd420743919e0af3fd52841, type: 2}
+      name: lambert1
+    second: {fileID: 2100000, guid: cb83eee881c2ce142b1064103bde32b4, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -94,7 +39,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 3
+    globalScale: 2
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -128,7 +73,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -140,14 +85,14 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 3
+    globalScale: 2
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   avatarSetup: 0
   additionalBone: 0
