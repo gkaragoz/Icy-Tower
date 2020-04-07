@@ -13,14 +13,6 @@ public class MeshUVChanger : MonoBehaviour {
     private int _row = 0;
     [SerializeField]
     private int _column = 0;
-    [SerializeField]
-    private UVTextureMap _textureMap;
-
-    [SerializeField]
-    private int _rowInput = 0;
-    [SerializeField]
-    private int _columnInput = 0;
-
 
     [Header("Debug")]
     [SerializeField]
@@ -51,9 +43,9 @@ public class MeshUVChanger : MonoBehaviour {
         _tileHeight = _baseMapHeigth / _row;
     }
 
-    private void Update() {
-        float uvCoordX = (_columnInput * _tileWidth) / _baseMapWidth;
-        float uvCoordY = (_rowInput * _tileHeight) / _baseMapHeigth;
+    public void SetOffset(int row, int column) {
+        float uvCoordX = (column * _tileWidth) / _baseMapWidth;
+        float uvCoordY = (row * _tileHeight) / _baseMapHeigth;
 
         if (_inverseX) {
             uvCoordX *= -1;
@@ -63,33 +55,7 @@ public class MeshUVChanger : MonoBehaviour {
         }
 
         _selectedUVCoordinate = new Vector2(uvCoordX, uvCoordY);
-
-        SetOffset(_selectedUVCoordinate);
-    }
-
-    public void SetOffset(Vector2 offset) {
-        _meshRenderer.material.SetTextureOffset("_BaseMap", offset);
-    }
-
-}
-
-[System.Serializable]
-public class UVTextureMap {
-    
-    [SerializeField]
-    [Utils.ReadOnly]
-    public int ID;
-    [SerializeField]
-    [Utils.ReadOnly]
-    public Vector2 coordinate;
-
-    public UVTextureMap(int id, float posX, float posY) {
-        this.ID = id;
-        this.coordinate = CalculateCoordinate(posX, posY);
-    }
-
-    private Vector2 CalculateCoordinate(float posX, float posY) {
-        return Vector2.zero;
+        _meshRenderer.material.SetTextureOffset("_BaseMap", _selectedUVCoordinate);
     }
 
 }
