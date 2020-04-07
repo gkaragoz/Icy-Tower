@@ -6,8 +6,8 @@ public class CameraController : MonoBehaviour {
     private Transform _target = null;
     [SerializeField]
     private float _offset = 0f;
-    [SerializeField]
-    private float _smothSpeed = 0f;
+    //[SerializeField]
+    //private float _smothSpeed = 0f;
     [SerializeField]
     CinemachineVirtualCamera vcam = null;
     [SerializeField]

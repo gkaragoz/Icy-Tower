@@ -8,8 +8,6 @@ public class CharacterMotor : MonoBehaviour {
     private float _collisionRayDistance = 1f;
     [SerializeField]
     private string _walkableTag = "Platform";
-    [SerializeField]
-    private Joystick _joystick= null;
 
     [Header("Debug")]
     [SerializeField]
