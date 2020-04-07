@@ -17,11 +17,7 @@ public class CharacterManager : MonoBehaviour {
     }
 
     public void Move(float horizontal) {
-        if (_characterMotor.IsMoving) {
-            _characterMotor.Move(horizontal);
-        } else {
-            return;
-        }
+        _characterMotor.Move(horizontal);
     }
 
     public void Jump() {

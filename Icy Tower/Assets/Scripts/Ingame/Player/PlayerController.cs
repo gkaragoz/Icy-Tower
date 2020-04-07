@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour {
 
     public PlayerStats PlayerStats { get { return _playerStats; } }
 
+    public Joystick _joystick;
+
     [Header("Debug")]
     [SerializeField]
     [Utils.ReadOnly]
@@ -21,6 +23,9 @@ public class PlayerController : MonoBehaviour {
     [Utils.ReadOnly]
     [SerializeField]
     private bool _isMovingRight = false;
+    [Utils.ReadOnly]
+    [SerializeField]
+    private float _horizontal = 0f;
 
     private void Awake() {
         _characterManager = GetComponent<CharacterManager>();
@@ -30,14 +35,16 @@ public class PlayerController : MonoBehaviour {
 
 
     private void FixedUpdate() {
-        float horizontal = Input.GetAxis("Horizontal");
+        _horizontal = Input.GetAxis("Horizontal");
+        _horizontal = _joystick.Horizontal;
+
 
         if (_isMovingLeft)
             MoveLeft();
         if (_isMovingRight)
             MoveRight();
-        if (horizontal != 0) {
-            Move(horizontal);
+        if (_horizontal != 0) {
+            Move(_horizontal);
         }
         ComboJump();
         Jump();
