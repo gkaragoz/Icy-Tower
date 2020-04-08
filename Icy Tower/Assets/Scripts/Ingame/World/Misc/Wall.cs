@@ -6,9 +6,6 @@ public class Wall : MonoBehaviour, IPooledObject {
     [SerializeField]
     private Transform[] _holderPos = null;
 
-    [Utils.ReadOnly]
-    private GameObject lastSpawnedTowerEnvironment = null;
-
     [Obsolete]
     public void OnObjectReused() {
         gameObject.SetActiveRecursively(true);
@@ -27,5 +24,4 @@ public class Wall : MonoBehaviour, IPooledObject {
             SpawnManager.instance.SpawnTowerEnvironment(_holderPos[_randPos].transform.position, _holderPos[_randPos].transform.rotation);
         }
     }
-}
 }
