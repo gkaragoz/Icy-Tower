@@ -7,6 +7,8 @@ public class WorldSettings_SO : ScriptableObject {
     private Transform _leftMapTransform = null;
     [SerializeField]
     private Transform _rightMapTransform = null;
+    [SerializeField]
+    private float _wallHeight= 0;
 
     public Transform MapLeftBorder { 
         get { 
@@ -23,6 +25,15 @@ public class WorldSettings_SO : ScriptableObject {
         }
         set {
             _rightMapTransform = value;
+        }
+    }
+
+    public float WallHeight {
+        get {
+            return _wallHeight;
+        }
+        set {
+            _wallHeight = value;
         }
     }
 

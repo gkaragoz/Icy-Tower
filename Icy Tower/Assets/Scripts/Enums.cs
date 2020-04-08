@@ -32,10 +32,9 @@ public enum Collectables {
     SuperCoin
 }
 
-public enum TowerEnvironments {
+public enum TowerProp{
     Skull,
     Torch,
-    Window
 }
 
 // Every sound enums has their sound files same named as enum.

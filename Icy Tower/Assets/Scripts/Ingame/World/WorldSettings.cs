@@ -51,6 +51,9 @@ public class WorldSettings : MonoBehaviour {
         _worldSettings.MapRightBorder = _rightMapTransform;
     }
 
+    public void SetWallHeight(float value) {
+        _worldSettings.WallHeight = value;
+    }
     #endregion
 
     #region Getters
@@ -61,6 +64,10 @@ public class WorldSettings : MonoBehaviour {
 
     public Vector3 GetMapRightBorder() {
         return _worldSettings.MapRightBorder.position;
+    }
+
+    public float GetWallHeight() {
+        return _worldSettings.WallHeight;
     }
 
     public Vector3 GetRandomPosition() {

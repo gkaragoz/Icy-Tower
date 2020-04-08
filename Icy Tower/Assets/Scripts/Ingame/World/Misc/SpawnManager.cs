@@ -17,8 +17,7 @@ public class SpawnManager : MonoBehaviour {
 
     private float _lastSpawnedPlatformPos = 0f;
 
-    private float _lastSpawnedWallPos = -35;
-
+    private float _lastSpawnedWallPos = -35f;
 
     public void SpawnAll() {
         for (int i = 0; i < ObjectPooler.instance.GetGameObjectsOnPool("Platform").Length; i++) {
@@ -38,16 +37,19 @@ public class SpawnManager : MonoBehaviour {
         ObjectPooler.instance.SpawnFromPool("Wall", transform.position,Quaternion.identity);
     }
 
-    public void SpawnTowerEnvironment(Vector3 pos,Quaternion rotation) {
-       ObjectPooler.instance.SpawnFromPool(GetRandomTowerEnvironments(), pos, rotation);
+    public GameObject SpawnTowerWindow() {
+       return ObjectPooler.instance.SpawnFromPool("Window", transform.position, Quaternion.identity);
     }
 
-    public string GetRandomTowerEnvironments() {
-        int enumLenght = Enum.GetNames(typeof(TowerEnvironments)).Length;
+    public GameObject SpawnTowerProp() {
+       return ObjectPooler.instance.SpawnFromPool(GetRandomTowerProp(), transform.position, Quaternion.identity);
+    }
+
+    public string GetRandomTowerProp() {
+        int enumLenght = Enum.GetNames(typeof(TowerProp)).Length;
         int randomType = UnityEngine.Random.Range(0, enumLenght);
-        return Enum.GetName(typeof(TowerEnvironments), randomType);
+        return Enum.GetName(typeof(TowerProp), randomType);
     }
-
 
     public float LastSpawnedPlatformPos {
         get { return _lastSpawnedPlatformPos; }
