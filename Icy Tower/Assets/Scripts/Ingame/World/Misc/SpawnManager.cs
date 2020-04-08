@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class SpawnManager : MonoBehaviour {
 
@@ -35,6 +36,16 @@ public class SpawnManager : MonoBehaviour {
 
     public void SpawnWall() {
         ObjectPooler.instance.SpawnFromPool("Wall", transform.position,Quaternion.identity);
+    }
+
+    public void SpawnTowerEnvironment(Vector3 pos,Quaternion rotation) {
+       ObjectPooler.instance.SpawnFromPool(GetRandomTowerEnvironments(), pos, rotation);
+    }
+
+    public string GetRandomTowerEnvironments() {
+        int enumLenght = Enum.GetNames(typeof(TowerEnvironments)).Length;
+        int randomType = UnityEngine.Random.Range(0, enumLenght);
+        return Enum.GetName(typeof(TowerEnvironments), randomType);
     }
 
 

@@ -37,9 +37,9 @@ public class GameManager : MonoBehaviour {
     }
 
     private void InitializeNewGame(GameState state) {
-        if(state == GameState.NewGame) {
+        if (state == GameState.NewGame) {
             InitializePool();
-        }else if(state == GameState.Gameplay) {
+        } else if (state == GameState.Gameplay) {
             _collectableSpawner.StartGoldSpawns();
             _collectableSpawner.StartPowerUpSpawns();
         }
@@ -49,12 +49,19 @@ public class GameManager : MonoBehaviour {
         if (!_hasGameObjectsInitialized) {
             ObjectPooler.instance.InitializePool("Platform");
             ObjectPooler.instance.InitializePool("Wall");
+
             foreach (string goldTypes in (string[])Enum.GetNames(typeof(GoldHolderTypes))) {
                 ObjectPooler.instance.InitializePool(goldTypes);
             }
+
             foreach (string collectables in (string[])Enum.GetNames(typeof(Collectables))) {
                 ObjectPooler.instance.InitializePool(collectables);
             }
+
+            foreach (string environments in (string[])Enum.GetNames(typeof(TowerEnvironments))) {
+                ObjectPooler.instance.InitializePool(environments);
+            }
+
             _hasGameObjectsInitialized = true;
         }
     }
