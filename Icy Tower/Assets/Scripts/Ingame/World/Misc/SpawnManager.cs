@@ -16,7 +16,7 @@ public class SpawnManager : MonoBehaviour {
 
     private float _lastSpawnedPlatformPos = 0f;
 
-    private float _lastSpawnedWallPos = -10f;
+    private float _lastSpawnedWallPos = -35;
 
 
     public void SpawnAll() {

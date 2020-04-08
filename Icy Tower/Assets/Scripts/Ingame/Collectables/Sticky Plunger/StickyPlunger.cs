@@ -73,12 +73,12 @@ public class StickyPlunger : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (_hasUsedStickyPlunger) {
             if (other.tag == "RightWall") {
-                _wallPositionX = 4.25f;
+                _wallPositionX = 3.5f;
                 _isCollideWithRightWall = true;
                 _isCollideWithLeftWall = false;
             }
             if (other.tag == "LeftWall") {
-                _wallPositionX = -4.25f;
+                _wallPositionX = -3.5f;
                 _isCollideWithLeftWall = true;
                 _isCollideWithRightWall = false;
             }

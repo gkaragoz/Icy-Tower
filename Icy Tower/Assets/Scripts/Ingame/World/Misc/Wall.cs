@@ -10,6 +10,6 @@ public class Wall : MonoBehaviour, IPooledObject {
     }
 
     private void SetWallPosition() {
-        transform.position = new Vector3(0, SpawnManager.instance.LastSpawnedWallPos += 10, 0);
+        transform.position = new Vector3(0, SpawnManager.instance.LastSpawnedWallPos += 35, 0);
     }
 }
