@@ -30,7 +30,7 @@ public class SpawnManager : MonoBehaviour {
     }
 
     public void SpawnPlatform() {
-        ObjectPooler.instance.SpawnFromPool("Platform" , Quaternion.identity);
+        ObjectPooler.instance.SpawnFromPool("Platform");
     }
 
     public void SpawnWall() {

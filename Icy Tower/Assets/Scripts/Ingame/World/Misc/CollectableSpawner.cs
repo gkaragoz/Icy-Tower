@@ -49,7 +49,7 @@ public class CollectableSpawner : MonoBehaviour {
     private void SpawnPowerUps() {
         Vector3 randomPosition = GetRandomSpawnPosition();
 
-        ObjectPooler.instance.SpawnFromPool(GetRandomPowerUpToSpawn(), randomPosition, Quaternion.identity);
+        ObjectPooler.instance.SpawnFromPool(GetRandomPowerUpToSpawn(), randomPosition);
     }
 
     private Vector3 GetRandomSpawnPosition() {
