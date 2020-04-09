@@ -6,7 +6,8 @@ public class Gold : MonoBehaviour {
     private Renderer _goldRenderer = null;
     private Transform _player = null;
 
-    private float _flySpeed = 0.2f;
+    private float _flySpeedDivisor = 5f;
+    private float _minFlySpeed = 0.4f;
     private int _coinScore = 0;
     private GoldTypes _goldType;
     private bool _hasInteractedWithMagnet = false;
@@ -66,7 +67,12 @@ public class Gold : MonoBehaviour {
     }
 
     private void FlyToPlayer() {
-        transform.position = Vector3.MoveTowards(transform.position, _player.position, _flySpeed);
+        transform.position = Vector3.MoveTowards(transform.position, _player.position, CalculateFlySpeed());
     }
 
+    private float CalculateFlySpeed() {
+        if (Vector3.Distance(transform.position, _player.position) / _flySpeedDivisor <= _minFlySpeed)
+            return _minFlySpeed;
+        return Vector3.Distance(transform.position, _player.position) / _flySpeedDivisor;
+    }
 }
