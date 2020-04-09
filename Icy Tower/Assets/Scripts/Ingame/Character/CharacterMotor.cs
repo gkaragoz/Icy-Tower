@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(CharacterStats))]
 public class CharacterMotor : MonoBehaviour {
@@ -8,6 +9,9 @@ public class CharacterMotor : MonoBehaviour {
     private float _collisionRayDistance = 1f;
     [SerializeField]
     private string _walkableTag = "Platform";
+
+    public Action<AnimationState> OnAnimationStateChanged;
+
 
     [Header("Debug")]
     [SerializeField]
@@ -28,7 +32,19 @@ public class CharacterMotor : MonoBehaviour {
     [SerializeField]
     [Utils.ReadOnly]
     private CharacterStats _characterStats;
+    [SerializeField]
+    [Utils.ReadOnly]
+    private AnimationState _animationState = AnimationState.Idle;
 
+    public AnimationState AnimationStateEnum {
+        get {
+            return _animationState;
+        }
+        set {
+            _animationState = value;
+            OnAnimationStateChanged?.Invoke(_animationState);
+        }
+    }
 
     public bool IsFalling {
         get {
@@ -100,6 +116,7 @@ public class CharacterMotor : MonoBehaviour {
             _isJumpCalled = true;
             _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
             _rb.AddForce(Vector3.up * (_characterStats.GetJumpPower() + (Mathf.Abs(_rb.velocity.x) / 3f)), ForceMode.Impulse);
+            AnimationStateEnum = AnimationState.Jump;
         }
     }
 
@@ -109,6 +126,7 @@ public class CharacterMotor : MonoBehaviour {
                 _isJumpCalled = true;
                 _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
                 _rb.AddForce(Vector3.up * _characterStats.GetComboJumpPower(), ForceMode.Impulse);
+                AnimationStateEnum = AnimationState.ComboJump;
             }
         }
     }

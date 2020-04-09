@@ -29,13 +29,21 @@ public class StickyPlunger : MonoBehaviour {
     [SerializeField]
     [Utils.ReadOnly]
     private float _wallPositionX = 0f;
+    [SerializeField]
+    [Utils.ReadOnly]
+    private CharacterMotor _characterMotor;
+    [SerializeField]
+    [Utils.ReadOnly]
+    private PlayerController _playerController;
 
     private Rigidbody _rb = null;
 
     private void Start() {
         _rb = GetComponentInParent<Rigidbody>();
         _stickyPlungerStats = GetComponent<StickyPlungerStats>();
-        _climbTime = _stickyPlungerStats.GetDuration();
+        _climbTime = _stickyPlungerStats.GetDuration(); 
+        _characterMotor = GetComponentInParent<CharacterMotor>();
+        _playerController = GetComponentInParent<PlayerController>();
     }
 
     private void Update() {
@@ -48,12 +56,12 @@ public class StickyPlunger : MonoBehaviour {
     }
 
     public void ChangeWall() {
-        if (Input.GetKeyDown(KeyCode.Z)) {
+        if (_playerController._joystick.Horizontal < 0) {
             if (_isCollideWithRightWall) {
                 JumptToOtherWall();
             }
         }
-        if (Input.GetKeyDown(KeyCode.X)) {
+        if (_playerController._joystick.Horizontal > 0) {
             if (_isCollideWithLeftWall) {
                 JumptToOtherWall();
             }
@@ -76,11 +84,13 @@ public class StickyPlunger : MonoBehaviour {
                 _wallPositionX = 3.5f;
                 _isCollideWithRightWall = true;
                 _isCollideWithLeftWall = false;
+                _characterMotor.AnimationStateEnum = AnimationState.RightRun;
             }
             if (other.tag == "LeftWall") {
                 _wallPositionX = -3.5f;
                 _isCollideWithLeftWall = true;
                 _isCollideWithRightWall = false;
+                _characterMotor.AnimationStateEnum = AnimationState.LeftRun;
             }
         }
         if (other.tag == "StickyPlunger") {
@@ -88,6 +98,11 @@ public class StickyPlunger : MonoBehaviour {
             _hasUsedStickyPlunger = true;
             JumpToClosestWall();
             other.gameObject.SetActive(false);
+            //if (_isCollideWithLeftWall) {
+            //    _characterMotor.AnimationStateEnum = AnimationState.LeftRun;
+            //}else if (_isCollideWithRightWall) {
+            //    _characterMotor.AnimationStateEnum = AnimationState.RightRun;
+            //}
         }
     }
 
@@ -112,12 +127,13 @@ public class StickyPlunger : MonoBehaviour {
     private void JumptToOtherWall() {
         if (_hasUsedStickyPlunger) {
             _rb.velocity = Vector3.zero;
-
             if (_isCollideWithRightWall) {
                 _isCollideWithRightWall = false;
+                _characterMotor.AnimationStateEnum = AnimationState.LeftRun;
                 _rb.AddForce(new Vector3(-15, 15, 0), ForceMode.Impulse);
             } else if (_isCollideWithLeftWall) {
                 _isCollideWithLeftWall = false;
+                _characterMotor.AnimationStateEnum = AnimationState.RightRun;
                 _rb.AddForce(new Vector3(15, 15, 0), ForceMode.Impulse);
             }
         }
@@ -125,7 +141,7 @@ public class StickyPlunger : MonoBehaviour {
 
     private void LeaveWall() {
         _rb.velocity = Vector3.zero;
-
+        _characterMotor.AnimationStateEnum = AnimationState.Jump;
         if (_isCollideWithLeftWall) {
             _rb.AddForce(new Vector3(5, 15, 0), ForceMode.Impulse);
         } else if (_isCollideWithRightWall) {

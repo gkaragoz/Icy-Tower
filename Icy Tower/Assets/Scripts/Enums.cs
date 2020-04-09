@@ -37,6 +37,18 @@ public enum TowerProp{
     Torch,
 }
 
+public enum AnimationState {
+    Walk,
+    LeftRun,
+    RightRun,
+    Idle,
+    Jump,
+    ComboJump,
+    Flip,
+    Rotate,
+    Fall
+}
+
 // Every sound enums has their sound files same named as enum.
 public enum SoundFX {
     UI_General_Button_Open_or_Click,// EVERY BUTTON HAS THIS SOUND BUT WANT TO OVERRIDES ARE DIFFERENT.
