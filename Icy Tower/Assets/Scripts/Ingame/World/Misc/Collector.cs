@@ -9,7 +9,7 @@ public class Collector : MonoBehaviour {
             other.gameObject.SetActive(false);
             SpawnManager.instance.SpawnPlatform();
         } else if (other.tag == "Player") {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("Scene");
         }else if(other.tag == "WallParent") {
             other.gameObject.SetActive(false);
             SpawnManager.instance.SpawnWall();
