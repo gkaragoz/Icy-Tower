@@ -33,6 +33,8 @@ public class CoinMagnet : MonoBehaviour {
             _duration = _coinMagnetStats.GetDuration();
 
             ActivateCoinMagnet();
+            PlayVFX();
+
             StartCoroutine(StopCoinMagnet());
             other.gameObject.SetActive(false);
         }
@@ -40,15 +42,19 @@ public class CoinMagnet : MonoBehaviour {
 
     private void ActivateCoinMagnet() {
         _coinMagnet.SetActive(true);
+    }
 
+    private void PlayVFX() {
         _activeVFX = Instantiate(VFXDatabase.instance.GetVFX(VFXTypes.Magnet), this.transform) as VFX;
         _activeVFX.transform.position = transform.position;
         _activeVFX.Play(true);
     }
 
-    private void DeactivateCoinMagnet() {
+    private void StopVFX() {
         _activeVFX.Stop();
+    }
 
+    private void DeactivateCoinMagnet() {
         _coinMagnet.SetActive(false);
     }
 
@@ -59,6 +65,7 @@ public class CoinMagnet : MonoBehaviour {
 
             if (_duration <= 0) {
                 DeactivateCoinMagnet();
+                StopVFX();
                 break;
             }
         }
