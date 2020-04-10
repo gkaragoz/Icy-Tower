@@ -37,6 +37,7 @@ public class Wall : MonoBehaviour, IPooledObject {
             randomNumber = GetRandomNumber(0, _propHolder.Length);
             GameObject prop = SpawnManager.instance.SpawnTowerProp();
             prop.transform.parent = GetRandomPropTransform(randomNumber);
+            Debug.Log("Spawn prop: " + prop.name);
             prop.transform.localPosition = Vector3.zero;
             prop.transform.localRotation = Quaternion.Euler(Vector3.zero);
         }
