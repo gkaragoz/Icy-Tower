@@ -17,6 +17,8 @@ public class CoinMagnet : MonoBehaviour {
     [SerializeField]
     private GameObject _coinMagnet = null;
 
+    private VFX _activeVFX;
+
     private void Start() {
         _coinMagnetStats = GetComponent<CoinMagnetStats>();
         _collider = GetComponentInChildren<SphereCollider>();
@@ -29,6 +31,7 @@ public class CoinMagnet : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "CoinMagnet") {
             _duration = _coinMagnetStats.GetDuration();
+
             ActivateCoinMagnet();
             StartCoroutine(StopCoinMagnet());
             other.gameObject.SetActive(false);
@@ -37,9 +40,15 @@ public class CoinMagnet : MonoBehaviour {
 
     private void ActivateCoinMagnet() {
         _coinMagnet.SetActive(true);
+
+        _activeVFX = Instantiate(VFXDatabase.instance.GetVFX(VFXTypes.Magnet), this.transform) as VFX;
+        _activeVFX.transform.position = transform.position;
+        _activeVFX.Play(true);
     }
 
     private void DeactivateCoinMagnet() {
+        _activeVFX.Stop();
+
         _coinMagnet.SetActive(false);
     }
 
