@@ -33,7 +33,7 @@ public class VFX : MonoBehaviour {
 
     public void Stop() {
         for (int ii = 0; ii < _vfxs.Length; ii++) {
-            _vfxs[ii].Stop();
+            Destroy(this.gameObject);
         }
     }
 
