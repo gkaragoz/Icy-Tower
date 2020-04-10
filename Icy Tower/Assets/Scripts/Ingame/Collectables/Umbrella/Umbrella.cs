@@ -18,6 +18,8 @@ public class Umbrella : MonoBehaviour {
     [Utils.ReadOnly]
     private float _flyTime = 0f;
 
+    private VFX _activeVFX;
+
     private void Start() {
         _rb = GetComponentInParent<Rigidbody>();
         _umbrellaStats = GetComponent<UmbrellaStats>();
@@ -29,11 +31,21 @@ public class Umbrella : MonoBehaviour {
             StartFly();
         }
     }
+    private void PlayVFX() {
+        _activeVFX = Instantiate(VFXDatabase.instance.GetVFX(VFXTypes.Umbrella), this.transform);
+        _activeVFX.transform.position = transform.position;
+        _activeVFX.Play(true);
+    }
+
+    private void StopVFX() {
+        _activeVFX.Stop();
+    }
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Umbrella") {
             _flyTime = _umbrellaStats.GetDuration();
             _hasUsedUmbrella = true;
+            PlayVFX();
             StartCoroutine(StopFlying());
             other.gameObject.SetActive(false);
         }
@@ -55,6 +67,7 @@ public class Umbrella : MonoBehaviour {
 
             if (_flyTime <= 0) {
                 StopFly();
+                StopVFX();
                 break;
             }
         }
