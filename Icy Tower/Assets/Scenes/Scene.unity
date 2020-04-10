@@ -3502,7 +3502,7 @@ MonoBehaviour:
     size: 15
   - parentTransform: {fileID: 1352614923}
     name: Wall
-    prefab: {fileID: 4939431531683005552, guid: 15416280836ea334697c6b8197361879,
+    prefab: {fileID: 4939431531683005552, guid: 99ce3472dbc0e01478837313fcc6b140,
       type: 3}
     size: 10
   - parentTransform: {fileID: 603829070}
@@ -3560,20 +3560,6 @@ MonoBehaviour:
     prefab: {fileID: 2616088305007485242, guid: 3cbdd9e779be10a47bf24e4187a9abc1,
       type: 3}
     size: 4
-  - parentTransform: {fileID: 164187678}
-    name: Skull
-    prefab: {fileID: 3633434593864914992, guid: 1275a3d38376c0f4f822c0cf95ddf615,
-      type: 3}
-    size: 15
-  - parentTransform: {fileID: 164187678}
-    name: Torch
-    prefab: {fileID: 7228542956083030358, guid: d343e5732cd558a49a2c065afc39b868,
-      type: 3}
-    size: 15
-  - parentTransform: {fileID: 164187678}
-    name: Window
-    prefab: {fileID: 561699621352164316, guid: ee1b4fb465a266146a111e407866ded7, type: 3}
-    size: 15
 --- !u!1 &1666185189
 GameObject:
   m_ObjectHideFlags: 3

@@ -42,7 +42,7 @@ public class SpawnManager : MonoBehaviour {
     }
 
     public GameObject SpawnTowerProp() {
-       return ObjectPooler.instance.SpawnFromPool(GetRandomTowerProp(), transform.position, Quaternion.identity);
+       return ObjectPooler.instance.SpawnFromPool(GetRandomTowerProp(), transform.position);
     }
 
     public string GetRandomTowerProp() {

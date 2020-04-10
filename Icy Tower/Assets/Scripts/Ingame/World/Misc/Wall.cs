@@ -4,54 +4,42 @@ using UnityEngine;
 public class Wall : MonoBehaviour, IPooledObject {
 
     [SerializeField]
-    private Transform[] _windowsHolderPos = null;
+    private GameObject _skullsParent = null;
     [SerializeField]
-    private Transform[] _propHolder = null;
+    private GameObject _torchesParent = null;
     [SerializeField]
-    private int _windowSpawnRate = 0;
-    [SerializeField]
-    private int _propSpawnRate = 0;
-
+    private GameObject[] _windowsParent = null;
     [Obsolete]
     public void OnObjectReused() {
         gameObject.SetActiveRecursively(true);
-        SpawnTowerProps();
         SetWallPosition();
+        ActivateProps();
+        ActivateWindows();
     }
 
     private void SetWallPosition() {
         transform.position = new Vector3(0, SpawnManager.instance.LastSpawnedWallPos += 35, 0);
+        Debug.Log("Position : " + transform.position);
     }
 
-    private void SpawnTowerProps() {
-        int randomNumber;
-        for (int i = 0; i < _windowSpawnRate; i++) {
-            randomNumber = GetRandomNumber(0, _windowsHolderPos.Length);
-            GameObject window = SpawnManager.instance.SpawnTowerWindow();
-            window.transform.parent = GetRandomWindowHolderTransform(randomNumber);
-            window.transform.localPosition = Vector3.zero;
-            window.transform.localRotation = Quaternion.Euler(Vector3.zero);
+    private void ActivateWindows() {
+        for (int ii = 0; ii < _windowsParent.Length; ii++) {
+            _windowsParent[ii].SetActive(false);
         }
+        int random = UnityEngine.Random.Range(0, _windowsParent.Length);
 
-        for (int i = 0; i < _propSpawnRate; i++) {
-            randomNumber = GetRandomNumber(0, _propHolder.Length);
-            GameObject prop = SpawnManager.instance.SpawnTowerProp();
-            prop.transform.parent = GetRandomPropTransform(randomNumber);
-            Debug.Log("Spawn prop: " + prop.name);
-            prop.transform.localPosition = Vector3.zero;
-            prop.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        _windowsParent[random].SetActive(true);
+    }
+
+    private void ActivateProps() {
+        int dice = UnityEngine.Random.Range(0, 2);
+        if (dice == 0) {
+            _skullsParent.SetActive(true);
+            _torchesParent.SetActive(false);
+        } else {
+            _skullsParent.SetActive(false);
+            _torchesParent.SetActive(true);
         }
     }
 
-    private Transform GetRandomWindowHolderTransform(int rand) {
-        return _windowsHolderPos[rand].transform;
-    }
-
-    private Transform GetRandomPropTransform(int rand) {
-        return _propHolder[rand].transform;
-    }
-
-    private int GetRandomNumber(int min, int max) {
-        return UnityEngine.Random.Range(min, max);
-    }
 }
