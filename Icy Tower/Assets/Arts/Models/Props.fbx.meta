@@ -1,9 +1,39 @@
 fileFormatVersion: 2
-guid: b3cbc469e777a84439dbe7e411982857
+guid: 285aac39e4816d840a9b346f940ee67a
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Atlas-10
+    second: {fileID: 2100000, guid: 1492e3c7466b019459da04023f1c6144, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Atlas-11
+    second: {fileID: 2100000, guid: 214c6bd6c9a2f8449ac03e1413378a3a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Atlas-12
+    second: {fileID: 2100000, guid: d19ada2a4ea2a6f4ca5f470f0a33e0f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Atlas-13
+    second: {fileID: 2100000, guid: b83579133c3a34640b5dcba4983360b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Atlas-14
+    second: {fileID: 2100000, guid: 7ce1b876c12d4d941a517e286d7832a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ladders
+    second: {fileID: 2100000, guid: 3274f8b231a54a44a97e0147c864a7a2, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -39,10 +69,10 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -68,7 +98,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -83,11 +113,11 @@ ModelImporter:
     globalScale: 0.044999998
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   avatarSetup: 0
   additionalBone: 0

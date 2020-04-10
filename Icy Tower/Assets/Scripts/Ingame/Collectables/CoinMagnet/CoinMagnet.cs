@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class CoinMagnet : MonoBehaviour {
@@ -47,7 +46,6 @@ public class CoinMagnet : MonoBehaviour {
     private IEnumerator StopCoinMagnet() {
         while (true) {
             _duration--;
-            Debug.Log(_duration);
             yield return new WaitForSeconds(1f);
 
             if (_duration <= 0) {

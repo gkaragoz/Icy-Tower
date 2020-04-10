@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6272097a7f6c23e4eae81cf8fb53c903
+guid: fdbb982bd37ab264aa8fe2afb6874ce7
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -8,17 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Atlas-10
-    second: {fileID: 2100000, guid: bcb91284908af764b9234dcd2a020e3c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Atlas-12
-    second: {fileID: 2100000, guid: 049a961e16a094a4e8bbcea3a5427c04, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ladders
-    second: {fileID: 2100000, guid: 3274f8b231a54a44a97e0147c864a7a2, type: 2}
+    second: {fileID: 2100000, guid: 1492e3c7466b019459da04023f1c6144, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

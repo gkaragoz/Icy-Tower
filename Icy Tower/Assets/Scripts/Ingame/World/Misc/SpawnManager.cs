@@ -34,7 +34,7 @@ public class SpawnManager : MonoBehaviour {
     }
 
     public void SpawnWall() {
-        ObjectPooler.instance.SpawnFromPool("Wall", transform.position,Quaternion.identity);
+        ObjectPooler.instance.SpawnFromPool("Wall", transform.position);
     }
 
     public GameObject SpawnTowerWindow() {

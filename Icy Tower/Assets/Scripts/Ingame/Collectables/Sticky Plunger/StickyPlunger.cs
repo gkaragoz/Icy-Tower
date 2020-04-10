@@ -81,12 +81,14 @@ public class StickyPlunger : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (_hasUsedStickyPlunger) {
             if (other.tag == "RightWall") {
+                Debug.Log("right");
                 _wallPositionX = 3.5f;
                 _isCollideWithRightWall = true;
                 _isCollideWithLeftWall = false;
                 _characterMotor.AnimationStateEnum = AnimationState.RightRun;
             }
             if (other.tag == "LeftWall") {
+                Debug.Log("left");
                 _wallPositionX = -3.5f;
                 _isCollideWithLeftWall = true;
                 _isCollideWithRightWall = false;
