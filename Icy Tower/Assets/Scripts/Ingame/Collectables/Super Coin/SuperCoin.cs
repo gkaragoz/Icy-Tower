@@ -10,8 +10,15 @@ public class SuperCoin : MonoBehaviour {
         _superCoinStats = GetComponent<SuperCoinStats>();
     }
 
+    private void PlayVFX() {
+        VFX activeVFX = Instantiate(VFXDatabase.instance.GetVFX(VFXTypes.CollectGold));
+        activeVFX.transform.position = transform.position;
+        activeVFX.Play();
+    }
+
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "FullCollider") {
+            PlayVFX();
             gameObject.SetActive(false);
             GameManager.instance.AddGoldToPlayer(_superCoinStats.GetAmount());
         }
