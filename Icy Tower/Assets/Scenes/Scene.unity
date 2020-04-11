@@ -1665,6 +1665,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08012cddd22f8554f893c141caad95bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &593463252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 593463253}
+  m_Layer: 0
+  m_Name: VFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &593463253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593463252}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1603324854}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &603829069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2587,7 +2617,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -1.2952775e+18, z: 4.5905e-41, w: -0.000000003109749}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 9.158346e-36, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3481,7 +3511,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1603324854}
   - component: {fileID: 1603324855}
-  - component: {fileID: 1603324856}
   m_Layer: 0
   m_Name: _ObjectPooler
   m_TagString: Untagged
@@ -3505,6 +3534,7 @@ Transform:
   - {fileID: 603829070}
   - {fileID: 1379375342}
   - {fileID: 164187678}
+  - {fileID: 593463253}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3590,31 +3620,44 @@ MonoBehaviour:
     prefab: {fileID: 5182253678983169642, guid: c54351e90026a8346b1c65dbd8e1e5ec,
       type: 3}
     size: 5
---- !u!114 &1603324856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603324853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a152a037e88557a44835e14f44a879b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _vfxList:
-  - {fileID: -6427900922749459913, guid: 36738d22b72821849b8611e23ccbe86f, type: 3}
-  - {fileID: 192640943996432535, guid: 58ca280ad97835a4186d8e908eb49f50, type: 3}
-  - {fileID: 163842196567872373, guid: 3e93cf44d7c44744ab2092518ab1b8f1, type: 3}
-  - {fileID: 5924259618448996469, guid: d52b7b086f168164fa95dafab3ced586, type: 3}
-  - {fileID: 6883631332221213788, guid: ad26df68f4b2b8a4bae83cbaa1c2073b, type: 3}
-  - {fileID: 893648170043435570, guid: 562a69eba6dd7fd45873cd6b91b9d008, type: 3}
-  - {fileID: 955950609301757135, guid: 732faaa9732955248b348c59c0e8707e, type: 3}
-  - {fileID: 8478768999496458649, guid: a10dd88998cdb0b429aba8ab0bed7385, type: 3}
-  - {fileID: 8992358158404899323, guid: f4b023e6dfd805c45b895f115a9e751a, type: 3}
-  - {fileID: 2217635314715462031, guid: ad04375015b658440874144a5445267d, type: 3}
-  - {fileID: 8938619923344533852, guid: bfb37fa5243515040bc6619207b3d503, type: 3}
-  - {fileID: 7257502858996083468, guid: 1de3b055a22c317489120f67dbec816d, type: 3}
+  - parentTransform: {fileID: 593463253}
+    name: VFXCollectGold
+    prefab: {fileID: 7409098659251629293, guid: 36738d22b72821849b8611e23ccbe86f,
+      type: 3}
+    size: 30
+  - parentTransform: {fileID: 593463253}
+    name: VFXComboJump
+    prefab: {fileID: 192640943996432533, guid: 58ca280ad97835a4186d8e908eb49f50, type: 3}
+    size: 1
+  - parentTransform: {fileID: 593463253}
+    name: VFXJump
+    prefab: {fileID: 8333000548071171119, guid: 562a69eba6dd7fd45873cd6b91b9d008,
+      type: 3}
+    size: 1
+  - parentTransform: {fileID: 593463253}
+    name: VFXConffetti
+    prefab: {fileID: 2716634797683739129, guid: 3e93cf44d7c44744ab2092518ab1b8f1,
+      type: 3}
+    size: 1
+  - parentTransform: {fileID: 593463253}
+    name: VFXGhost
+    prefab: {fileID: 6883631332221213790, guid: ad26df68f4b2b8a4bae83cbaa1c2073b,
+      type: 3}
+    size: 1
+  - parentTransform: {fileID: 593463253}
+    name: VFXMagnet
+    prefab: {fileID: 955950609301757121, guid: 732faaa9732955248b348c59c0e8707e, type: 3}
+    size: 1
+  - parentTransform: {fileID: 593463253}
+    name: VFXUmbrella
+    prefab: {fileID: 5701757496015184218, guid: ad04375015b658440874144a5445267d,
+      type: 3}
+    size: 1
+  - parentTransform: {fileID: 593463253}
+    name: VFXPumpWalking
+    prefab: {fileID: 7257502858996083467, guid: 1de3b055a22c317489120f67dbec816d,
+      type: 3}
+    size: 1
 --- !u!1 &1625300846 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: b44a1d2c604bf734bbf94c3a0281e3b2,
@@ -4733,7 +4776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42eb10dbce8ddb148be7274e8ffae141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vfxType: 6
+  _isLoopable: 0
   _vfxs:
   - {fileID: 4310769959056562992}
   _duration: 0
@@ -5038,7 +5081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42eb10dbce8ddb148be7274e8ffae141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vfxType: 6
+  _isLoopable: 0
   _vfxs:
   - {fileID: 3590522473267419871}
   _duration: 0
@@ -21255,7 +21298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42eb10dbce8ddb148be7274e8ffae141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vfxType: 6
+  _isLoopable: 0
   _vfxs:
   - {fileID: 8398040641899903157}
   _duration: 0
@@ -27256,7 +27299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42eb10dbce8ddb148be7274e8ffae141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vfxType: 6
+  _isLoopable: 0
   _vfxs:
   - {fileID: 5043252689814394490}
   _duration: 0

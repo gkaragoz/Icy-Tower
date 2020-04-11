@@ -11,9 +11,7 @@ public class SuperCoin : MonoBehaviour, IPooledObject {
     }
 
     private void PlayVFX() {
-        VFX activeVFX = Instantiate(VFXDatabase.instance.GetVFX(VFXTypes.CollectGold));
-        activeVFX.transform.position = transform.position;
-        activeVFX.Play();
+        ObjectPooler.instance.SpawnFromPool(VFXTypes.VFXCollectGold.ToString(), transform.position);
     }
 
     private void OnTriggerEnter(Collider other) {

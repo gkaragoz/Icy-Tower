@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using System.Collections;
 
-public class VFX : MonoBehaviour {
+public class VFX : MonoBehaviour , IPooledObject{
 
     [SerializeField]
-    private VFXTypes _vfxType = VFXTypes.CollectGold;
+    private bool _isLoopable = false;
 
     [Header("Debug")]
     [SerializeField]
@@ -12,31 +13,44 @@ public class VFX : MonoBehaviour {
     [SerializeField]
     [Utils.ReadOnly]
     private float _duration = 0f;
-
-    public VFXTypes VFXType { 
-        get {
-            return _vfxType;
-        }
-    }
+    private Transform _currentTarget = null;
 
     private void Awake() {
         _vfxs = GetComponentsInChildren<ParticleSystem>();
-
         _duration = _vfxs[0].main.duration;
     }
 
-    public void Play(bool manualStop = false) {
-        for (int ii = 0; ii < _vfxs.Length; ii++) {
-            _vfxs[ii].Play();
-
-            if (manualStop == false) {
-                Invoke("Stop", _duration);
+    private IEnumerator IStartFollowTarget() {
+        while (true) {
+            if (_currentTarget == null) {
+                break;
             }
+            transform.position = _currentTarget.position;
+            yield return new WaitForSeconds(0.01f);
         }
+        Stop();
     }
+
+    public void SetTarget(Transform target) {
+        _currentTarget = target;
+    }
+
+    public void Play() {
+        this.gameObject.SetActive(true);
+        StartCoroutine(IStartFollowTarget());
+    }
+
 
     public void Stop() {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
+        SetTarget(null);
     }
 
+    public void OnObjectReused() {
+        if (_isLoopable)
+            return;
+
+        this.gameObject.SetActive(true);
+        Invoke("Stop",_duration);
+    }
 }

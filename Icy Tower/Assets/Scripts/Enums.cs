@@ -33,15 +33,14 @@ public enum Collectables {
 }
 
 public enum VFXTypes {
-    CollectGold,
-    ComboJump,
-    Jump,
-    Conffeti,
-    Ghost,
-    Magnet,
-    Torch,
-    Umbrella,
-    PumpWalking
+    VFXCollectGold,
+    VFXComboJump,
+    VFXJump,
+    VFXGhost,
+    VFXMagnet,
+    VFXUmbrella,
+    VFXPumpWalking,
+    VFXConffetti
 }
 
 public enum TowerProp{

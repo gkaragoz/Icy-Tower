@@ -50,12 +50,16 @@ public class GameManager : MonoBehaviour {
             ObjectPooler.instance.InitializePool("Platform");
             ObjectPooler.instance.InitializePool("Wall");
 
-            foreach (string goldTypes in (string[])Enum.GetNames(typeof(GoldHolderTypes))) {
-                ObjectPooler.instance.InitializePool(goldTypes, true);
+            foreach (string goldType in (string[])Enum.GetNames(typeof(GoldHolderTypes))) {
+                ObjectPooler.instance.InitializePool(goldType, true);
             }
 
-            foreach (string collectables in (string[])Enum.GetNames(typeof(Collectables))) {
-                ObjectPooler.instance.InitializePool(collectables);
+            foreach (string vfxType in (string[])Enum.GetNames(typeof(VFXTypes))) {
+                ObjectPooler.instance.InitializePool(vfxType);
+            }
+
+            foreach (string collectable in (string[])Enum.GetNames(typeof(Collectables))) {
+                ObjectPooler.instance.InitializePool(collectable);
             }
 
             _hasGameObjectsInitialized = true;

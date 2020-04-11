@@ -95,9 +95,9 @@ public class StickyPlunger : MonoBehaviour {
     }
 
     private void PlayVFX() {
-        _activeVFX = Instantiate(VFXDatabase.instance.GetVFX(VFXTypes.PumpWalking), this.transform);
-        _activeVFX.transform.position = transform.position;
-        _activeVFX.Play(true);
+        _activeVFX = ObjectPooler.instance.SpawnFromPool(VFXTypes.VFXPumpWalking.ToString(),transform.position).GetComponent<VFX>();
+        _activeVFX.SetTarget(this.transform);
+        _activeVFX.Play();
     }
 
     private void StopVFX() {

@@ -45,9 +45,9 @@ public class CoinMagnet : MonoBehaviour {
     }
 
     private void PlayVFX() {
-        _activeVFX = Instantiate(VFXDatabase.instance.GetVFX(VFXTypes.Magnet), this.transform) as VFX;
-        _activeVFX.transform.position = transform.position;
-        _activeVFX.Play(true);
+        _activeVFX = ObjectPooler.instance.SpawnFromPool(VFXTypes.VFXMagnet.ToString(), transform.position).GetComponent<VFX>();
+        _activeVFX.SetTarget(this.transform);
+        _activeVFX.Play();
     }
 
     private void StopVFX() {
