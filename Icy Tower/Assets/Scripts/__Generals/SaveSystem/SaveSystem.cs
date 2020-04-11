@@ -32,11 +32,9 @@ public static class SaveSystem {
             fileStream.Close();
             return playerData;
 
-
         } else {
             Debug.Log("file does not exist in" + path);
             return null;
         }
-
     }
 }
