@@ -32,6 +32,18 @@ public enum Collectables {
     SuperCoin
 }
 
+public enum VFXTypes {
+    CollectGold,
+    ComboJump,
+    Jump,
+    Conffeti,
+    Ghost,
+    Magnet,
+    Torch,
+    Umbrella,
+    PumpWalking
+}
+
 public enum TowerProp{
     Skull,
     Torch,

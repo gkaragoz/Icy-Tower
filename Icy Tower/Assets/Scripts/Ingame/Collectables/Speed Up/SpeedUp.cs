@@ -14,6 +14,8 @@ public class SpeedUp : MonoBehaviour{
     [SerializeField]
     private float _duration = 0f;
 
+    private VFX _activeVFX;
+
     private void Start() {
         _characterStats = GetComponentInParent<CharacterStats>();
         _speedUpStats = GetComponent<SpeedUpStats>();
@@ -24,9 +26,20 @@ public class SpeedUp : MonoBehaviour{
     private void OnTriggerEnter(Collider other) {
         if (other.tag =="SpeedUp") {
             IncreaseCharacterSpeed();
+            PlayVFX();
             StartCoroutine(StopSpeedUping());
             other.gameObject.SetActive(false);
         }
+    }
+
+    private void PlayVFX() {
+        _activeVFX = Instantiate(VFXDatabase.instance.GetVFX(VFXTypes.Ghost), this.transform);
+        _activeVFX.transform.position = transform.position;
+        _activeVFX.Play(true);
+    }
+
+    private void StopVFX() {
+        _activeVFX.Stop();
     }
 
     private void IncreaseCharacterSpeed() {
@@ -54,6 +67,7 @@ public class SpeedUp : MonoBehaviour{
 
             if (_duration <= 0) {
                 SetCharacterSpeedToNormal();
+                StopVFX();
                 break;
             }
         }

@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour {
         if (!_hasGameObjectsInitialized) {
             ObjectPooler.instance.InitializePool("Platform");
             ObjectPooler.instance.InitializePool("Wall");
-            ObjectPooler.instance.InitializePool("Window");
 
             foreach (string goldTypes in (string[])Enum.GetNames(typeof(GoldHolderTypes))) {
                 ObjectPooler.instance.InitializePool(goldTypes);
@@ -57,10 +56,6 @@ public class GameManager : MonoBehaviour {
 
             foreach (string collectables in (string[])Enum.GetNames(typeof(Collectables))) {
                 ObjectPooler.instance.InitializePool(collectables);
-            }
-
-            foreach (string environments in (string[])Enum.GetNames(typeof(TowerProp))) {
-                ObjectPooler.instance.InitializePool(environments);
             }
 
             _hasGameObjectsInitialized = true;

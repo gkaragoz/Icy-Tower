@@ -56,14 +56,21 @@ public class Gold : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "FullCollider") {
+            PlayVFX();
+
             gameObject.SetActive(false);
             GameManager.instance.AddGoldToPlayer(_coinScore);
             _hasInteractedWithMagnet = false;
-
         } else if (other.tag == "CoinMagnet") {
             _hasInteractedWithMagnet = true;
             _player = other.gameObject.transform;
         }
+    }
+
+    private void PlayVFX() {
+        VFX activeVFX = Instantiate(VFXDatabase.instance.GetVFX(VFXTypes.CollectGold));
+        activeVFX.transform.position = transform.position;
+        activeVFX.Play();
     }
 
     private void FlyToPlayer() {

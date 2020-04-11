@@ -1,0 +1,1249 @@
+fileFormatVersion: 2
+guid: 8606aaad0f5367c4c94f56b397e0a9df
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3583700648726284267
+    second: UI_Slot_BG_01
+  - first:
+      213: 903345298867312159
+    second: UI_Long_Background
+  - first:
+      213: -7108974821668894762
+    second: UI_Icon_Slot_BG
+  - first:
+      213: -8222374172573103096
+    second: UI_Buy_Button_BG
+  - first:
+      213: -6718672684236311707
+    second: UI_Icon_Buy_Gold
+  - first:
+      213: -3805945957839986636
+    second: UI_Icon_Buy_Gem
+  - first:
+      213: 6081771188536701580
+    second: UI_Icon_PowerUp_Gold
+  - first:
+      213: -612896471607249914
+    second: UI_Icon_PowerUp_Rocket
+  - first:
+      213: -781962886245311012
+    second: UI_Icon_PowerUp_GoldPacket
+  - first:
+      213: -6694273787086534951
+    second: UI_Icon_PowerUp_AllPowers
+  - first:
+      213: -3907228107087865065
+    second: UI_Icon_PowerUp_Elevator
+  - first:
+      213: -6557556636248495517
+    second: UI_Icon_PowerUp_Gold_x2
+  - first:
+      213: 2858501118839121449
+    second: UI_Icon_PowerUp_ColorGold
+  - first:
+      213: -8567591521225960260
+    second: UI_Icon_PowerUp_Stairs
+  - first:
+      213: 789130820466506505
+    second: UI_Social_Player_Background
+  - first:
+      213: -4092160698333615632
+    second: UI_Icon_PowerUp_Offline_Timer
+  - first:
+      213: -5675783994537717373
+    second: UI_Icon_PowerUp_ConstantCamera
+  - first:
+      213: 8562568867533341473
+    second: UI_Icon_PowerUp_SpeedUp
+  - first:
+      213: -5019705866986116660
+    second: Atlas 1_18
+  - first:
+      213: 4862838913200776351
+    second: Atlas 1_19
+  - first:
+      213: -7803337690158546778
+    second: Atlas 1_20
+  - first:
+      213: 7963053501904341533
+    second: Atlas 1_21
+  - first:
+      213: -3169293316121210343
+    second: Atlas 1_22
+  - first:
+      213: 6200391077506488768
+    second: Atlas 1_23
+  - first:
+      213: -9019292411686299608
+    second: Atlas 1_24
+  - first:
+      213: 8707213001405004437
+    second: Atlas 1_25
+  - first:
+      213: 8221242773622288681
+    second: UI_Slot_BG_02
+  - first:
+      213: -7682101926154945006
+    second: UI_Icon_Social_Friends
+  - first:
+      213: -7604636344267509475
+    second: UI_Icon_Wardrobe_Head
+  - first:
+      213: -8347414346455953772
+    second: UI_Icon_Wardrobe_Panths
+  - first:
+      213: 4271225012373789864
+    second: UI_Icon_Wardrobe_Shoes
+  - first:
+      213: 4210285393200110246
+    second: UI_Icon_Wardrobe_TShirts
+  - first:
+      213: -2222185168427535432
+    second: UI_Icon_Wardrobe_Music
+  - first:
+      213: 8129869601318056626
+    second: Atlas 1_33
+  - first:
+      213: 571277210143702914
+    second: UI_Icon_Wardrobe_Particles
+  - first:
+      213: 5110005805578490600
+    second: UI_Wardrobe_Tab_Selected_Bg
+  - first:
+      213: 6356277545214225182
+    second: UI_Wardrobe_Bg_Line
+  - first:
+      213: 6476370930517683472
+    second: UI_Social_Score_Bg
+  - first:
+      213: 7417736501075901466
+    second: UI_Settings_Button_BG
+  - first:
+      213: 8979869970522451752
+    second: Atlas 1_39
+  - first:
+      213: 2548968104849581262
+    second: Atlas 1_40
+  - first:
+      213: -3977213792837834747
+    second: Atlas 1_41
+  - first:
+      213: 7447100639436012767
+    second: Atlas 1_42
+  - first:
+      213: 5407779570539273848
+    second: Atlas 1_43
+  - first:
+      213: 1186572399543629807
+    second: UI_Button_Close
+  - first:
+      213: 2900110662729212154
+    second: Atlas 1_45
+  - first:
+      213: 8026078950629124965
+    second: Atlas 1_46
+  - first:
+      213: -5191765327164424998
+    second: Atlas 1_47
+  - first:
+      213: 171990556424500772
+    second: Atlas 1_48
+  - first:
+      213: -3300933214176533254
+    second: Atlas 1_49
+  - first:
+      213: 7507682369318563782
+    second: Atlas 1_50
+  - first:
+      213: 7385961335560259639
+    second: Atlas 1_51
+  - first:
+      213: 497891757544804138
+    second: UI_General_Button_BG_01
+  - first:
+      213: 1153231485739627187
+    second: UI_Header_Bg_01
+  - first:
+      213: -7173719092676448167
+    second: UI_General_Button_BG_02
+  - first:
+      213: 7047159246032241887
+    second: UI_Icon_Back
+  - first:
+      213: -272997949720867784
+    second: Atlas 1_56
+  - first:
+      213: -3001971884546831206
+    second: UI_Icon_Play
+  - first:
+      213: 8330319374530622394
+    second: Atlas 1_58
+  - first:
+      213: -3121414741433600785
+    second: Atlas 1_59
+  - first:
+      213: -6631100114938801969
+    second: "UI_Icon_V\u0131deoAds"
+  - first:
+      213: -2061224404582722776
+    second: UI_Icon_Tick
+  - first:
+      213: -2429668619534991400
+    second: UI_Icon_Exclamation
+  - first:
+      213: -8631906342168750470
+    second: UI_Slot_BG_01
+  - first:
+      213: -399672654869391549
+    second: UI_Icon_Slot_BG
+  - first:
+      213: -5033173118467897101
+    second: UI_Buy_Button_BG
+  - first:
+      213: 6813122524134427649
+    second: UI_Icon_Buy_Gold
+  - first:
+      213: -3493800389872760664
+    second: UI_Icon_Buy_Gem
+  - first:
+      213: -8631906342168750470
+    second: UI_Icon_PowerUp_Umbrella
+  - first:
+      213: -8370698954941881840
+    second: UI_Button_Pause
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UI_Slot_BG_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1705
+        width: 920
+        height: 311
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 518355b4f33244ec0800000000000000
+      internalID: -3583700648726284267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Long_Background
+      rect:
+        serializedVersion: 2
+        x: 1144
+        y: 203
+        width: 889
+        height: 1830
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f16518063c3598c00800000000000000
+      internalID: 903345298867312159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Slot_BG
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1503
+        width: 178
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d7ca3d8019d75d90800000000000000
+      internalID: -7108974821668894762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Buy_Button_BG
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 1529
+        width: 337
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80c0f69014244ed80800000000000000
+      internalID: -8222374172573103096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Buy_Gold
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1544
+        width: 80
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56379fd6aca72c2a0800000000000000
+      internalID: -6718672684236311707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Buy_Gem
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 1548
+        width: 62
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4302d9ce0509e2bc0800000000000000
+      internalID: -3805945957839986636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Social_Player_Background
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 1120
+        width: 202
+        height: 334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90bf73bdc4e83fa00800000000000000
+      internalID: 789130820466506505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Slot_BG_02
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 771
+        width: 895
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 921f00e9eb8b71270800000000000000
+      internalID: 8221242773622288681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Social_Friends
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 832
+        width: 104
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21eb03beff0b36590800000000000000
+      internalID: -7682101926154945006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Wardrobe_Head
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 660
+        width: 128
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d11f8e53987e67690800000000000000
+      internalID: -7604636344267509475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Wardrobe_Panths
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 657
+        width: 46
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49e4e7ed0e6082c80800000000000000
+      internalID: -8347414346455953772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Wardrobe_Shoes
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 672
+        width: 99
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ac9d42d480764b30800000000000000
+      internalID: 4271225012373789864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Wardrobe_TShirts
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 657
+        width: 87
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aa55b01240fd6a30800000000000000
+      internalID: 4210285393200110246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Wardrobe_Music
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 656
+        width: 97
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b33cbaec563921e0800000000000000
+      internalID: -2222185168427535432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Wardrobe_Particles
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 657
+        width: 76
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28f34ea88959de700800000000000000
+      internalID: 571277210143702914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wardrobe_Tab_Selected_Bg
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 587
+        width: 149
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e290b9c4336ae640800000000000000
+      internalID: 5110005805578490600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wardrobe_Bg_Line
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 596
+        width: 874
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1b294810c8063850800000000000000
+      internalID: 6356277545214225182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Social_Score_Bg
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 441
+        width: 196
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01d2c2b4c01b0e950800000000000000
+      internalID: 6476370930517683472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Button_Close
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 456
+        width: 92
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe7b4178f4d877010800000000000000
+      internalID: 1186572399543629807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_General_Button_BG_01
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 298
+        width: 226
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2f8d016aedd8e600800000000000000
+      internalID: 497891757544804138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Header_Bg_01
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 122
+        width: 631
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b27e4b1de9110010800000000000000
+      internalID: 1153231485739627187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_General_Button_BG_02
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 72
+        width: 190
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95035924e74d17c90800000000000000
+      internalID: -7173719092676448167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Back
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 168
+        width: 114
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd48c5f2ff98cc160800000000000000
+      internalID: 7047159246032241887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Play
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 49
+        width: 112
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9c40e3e97ad656d0800000000000000
+      internalID: -3001971884546831206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "UI_Icon_V\u0131deoAds"
+      rect:
+        serializedVersion: 2
+        x: 1219
+        y: 33
+        width: 123
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc0550b149999f3a0800000000000000
+      internalID: -6631100114938801969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Tick
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 49
+        width: 85
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8231b7a235f0563e0800000000000000
+      internalID: -2061224404582722776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Exclamation
+      rect:
+        serializedVersion: 2
+        x: 1516
+        y: 40
+        width: 45
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dff3b27345184ed0800000000000000
+      internalID: -2429668619534991400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_Umbrella
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1334
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7617946aee453880800000000000000
+      internalID: -8631906342168750470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_Pump
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 1334
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 347921486d3147af0800000000000000
+      internalID: -399672654869391549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_SlowTimer
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 1333
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f80da437b3962ab0800000000000000
+      internalID: -5033173118467897101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_SaverBlock
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 1333
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10cce3696d21d8e50800000000000000
+      internalID: 6813122524134427649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_Magnet
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 1333
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a8438d6e07838fc0800000000000000
+      internalID: -3493800389872760664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_Gold
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 1333
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c827fe16caac66450800000000000000
+      internalID: 6081771188536701580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_Rocket
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1179
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60472c508ed8e77f0800000000000000
+      internalID: -612896471607249914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_GoldPacket
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1179
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdd1fc1e5e8e525f0800000000000000
+      internalID: -781962886245311012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_AllPowers
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 1179
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d68f7b55792913a0800000000000000
+      internalID: -6694273787086534951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_Elevator
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 1184
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b1b9cecbcb6c9c0800000000000000
+      internalID: -3907228107087865065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_Gold_x2
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 1181
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36a27e59bf0eef4a0800000000000000
+      internalID: -6557556636248495517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_ColorGold
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 1181
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92666726f9f6ba720800000000000000
+      internalID: 2858501118839121449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_Stairs
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1028
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb49dac87ecc91980800000000000000
+      internalID: -8567591521225960260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_Offline_Timer
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 1028
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f9a20ca689b537c0800000000000000
+      internalID: -4092160698333615632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_ConstantCamera
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 1028
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3815bbf47809b31b0800000000000000
+      internalID: -5675783994537717373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_SpeedUp
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 1027
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 123c422c40b54d670800000000000000
+      internalID: 8562568867533341473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Button_Pause
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 36
+        width: 113
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 012a4fc76ad45db80800000000000000
+      internalID: -8370698954941881840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
