@@ -18,7 +18,6 @@ public enum GoldHolderTypes {
 public enum GoldTypes {
     YellowGold,
     GreenGold,
-    BlueGold,
     RedGold
 }
 

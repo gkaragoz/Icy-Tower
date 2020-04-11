@@ -40,10 +40,6 @@ public class Gold : MonoBehaviour {
                 _coinScore = 2;
                 _goldRenderer.material.SetColor("_BaseColor", Color.green);
                 break;
-            case GoldTypes.BlueGold:
-                _coinScore = 3;
-                _goldRenderer.material.SetColor("_BaseColor", Color.blue);
-                break;
             case GoldTypes.RedGold:
                 _coinScore = 5;
                 _goldRenderer.material.SetColor("_BaseColor", Color.red);
