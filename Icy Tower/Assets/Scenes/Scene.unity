@@ -3712,7 +3712,7 @@ MonoBehaviour:
     size: 4
   - parentTransform: {fileID: 1379375342}
     name: SuperCoin
-    prefab: {fileID: 1972419128551397935, guid: 5cc030df79f8eac4d85ad174aa53bce5,
+    prefab: {fileID: 6058881711128533146, guid: 26066635575704048979a374da776eae,
       type: 3}
     size: 4
   - parentTransform: {fileID: 1379375342}
