@@ -793,7 +793,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: b44a1d2c604bf734bbf94c3a0281e3b2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b44a1d2c604bf734bbf94c3a0281e3b2,
         type: 3}
@@ -838,7 +838,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: b44a1d2c604bf734bbf94c3a0281e3b2,
         type: 3}
       propertyPath: m_Name
-      value: icy_tower_animations_V03
+      value: GFX
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b44a1d2c604bf734bbf94c3a0281e3b2, type: 3}
