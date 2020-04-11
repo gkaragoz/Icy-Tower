@@ -8,7 +8,7 @@ public class CharacterMotor : MonoBehaviour {
     [SerializeField]
     private float _collisionRayDistance = 1f;
     [SerializeField]
-    private string _walkableTag = "Platform";
+    private string _jumpableTag = "Platform";
 
     public Action<AnimationState> OnAnimationStateChanged;
 
@@ -102,7 +102,7 @@ public class CharacterMotor : MonoBehaviour {
         Vector3 _leftFoot = new Vector3(_boxCollider.transform.position.x + _characterStats.GetFootPositionOffset(), _boxCollider.transform.position.y, _boxCollider.transform.position.z);
         Vector3 _rightFoot = new Vector3(_boxCollider.transform.position.x - _characterStats.GetFootPositionOffset(), _boxCollider.transform.position.y, _boxCollider.transform.position.z);
         if (Physics.Raycast(_leftFoot, Vector3.down, out _hit, CollisionRayDistance) || Physics.Raycast(_rightFoot, Vector3.down, out _hit, CollisionRayDistance)) {
-            if (_hit.transform.tag == _walkableTag && IsFalling == true) {
+            if (_hit.transform.tag == _jumpableTag && IsFalling == true) {
                 IsJumping = false;
             }
         } else {

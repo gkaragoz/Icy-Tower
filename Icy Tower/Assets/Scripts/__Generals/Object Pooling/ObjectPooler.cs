@@ -28,7 +28,7 @@ public class ObjectPooler : MonoBehaviour {
     public List<Pool> pools = new List<Pool>();
     public Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
-    public void InitializePool(string name) {
+    public void InitializePool(string name , bool initialVisibility = false) {
         Pool pool = pools.Where(p => p.name == name).First();
 
         if (pool == null) {
@@ -45,7 +45,10 @@ public class ObjectPooler : MonoBehaviour {
 
         for (int ii = 0; ii < pool.size; ii++) {
             GameObject newObject = Instantiate(pool.prefab, pool.parentTransform);
-            newObject.SetActive(false);
+
+            if(initialVisibility == false)
+                newObject.SetActive(false);
+
             objectPool.Enqueue(newObject);
         }
 

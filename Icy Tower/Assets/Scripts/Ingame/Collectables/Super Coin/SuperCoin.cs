@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SuperCoin : MonoBehaviour {
+public class SuperCoin : MonoBehaviour, IPooledObject {
 
     [Utils.ReadOnly]
     [SerializeField]
@@ -19,8 +19,12 @@ public class SuperCoin : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "FullCollider") {
             PlayVFX();
-            gameObject.SetActive(false);
             GameManager.instance.AddGoldToPlayer(_superCoinStats.GetAmount());
+            gameObject.SetActive(false);
         }
+    }
+
+    public void OnObjectReused() {
+        gameObject.SetActive(true);
     }
 }

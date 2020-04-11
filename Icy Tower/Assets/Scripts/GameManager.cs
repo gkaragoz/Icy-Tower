@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour {
             ObjectPooler.instance.InitializePool("Wall");
 
             foreach (string goldTypes in (string[])Enum.GetNames(typeof(GoldHolderTypes))) {
-                ObjectPooler.instance.InitializePool(goldTypes);
+                ObjectPooler.instance.InitializePool(goldTypes, true);
             }
 
             foreach (string collectables in (string[])Enum.GetNames(typeof(Collectables))) {

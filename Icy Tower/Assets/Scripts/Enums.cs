@@ -9,16 +9,16 @@
 }
 
 public enum GoldHolderTypes {
-    GanoverGold,
-    TriangleGold,
-    LineGold,
-    DiagonalGold
+    ShortLineGoldHolder,
+    LongLineGoldHolder,
+    TriangleGoldHolder,
+    RectangleGoldHolder,
+    SquareGoldHolder
 }
 
 public enum GoldTypes {
     YellowGold,
     GreenGold,
-    BlueGold,
     RedGold
 }
 
