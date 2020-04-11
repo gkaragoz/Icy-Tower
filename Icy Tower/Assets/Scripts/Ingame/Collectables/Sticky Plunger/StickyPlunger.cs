@@ -49,6 +49,12 @@ public class StickyPlunger : MonoBehaviour {
     }
 
     private void Update() {
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _hasUsedStickyPlunger = true;
+        }
+
         if (_hasUsedStickyPlunger) {
             if (_isCollideWithRightWall || _isCollideWithLeftWall) {
                 StickToWall();
@@ -61,11 +67,15 @@ public class StickyPlunger : MonoBehaviour {
         if (_playerController._joystick.Horizontal < 0) {
             if (_isCollideWithRightWall) {
                 JumptToOtherWall();
+                Camera.main.GetComponent<NewCameraController>().WallWalk(1);
+
             }
         }
         if (_playerController._joystick.Horizontal > 0) {
             if (_isCollideWithLeftWall) {
                 JumptToOtherWall();
+                Camera.main.GetComponent<NewCameraController>().WallWalk(-1);
+
             }
         }
     }
@@ -74,8 +84,12 @@ public class StickyPlunger : MonoBehaviour {
         _rb.velocity = Vector3.zero;
         if (gameObject.transform.position.x > 0) {
             _rb.AddForce(new Vector3(1f, 1f) * _forceAmount, ForceMode.Impulse);
-        } else if (gameObject.transform.position.x <= 0) {
+            Camera.main.GetComponent<NewCameraController>().WallWalk(-1);
+        }
+        else if (gameObject.transform.position.x <= 0) {
             _rb.AddForce(new Vector3(-1f, 1f) * _forceAmount, ForceMode.Impulse);
+            Camera.main.GetComponent<NewCameraController>().WallWalk(1);
+
         }
         StartCoroutine(StopStickingToWall());
     }
@@ -105,6 +119,7 @@ public class StickyPlunger : MonoBehaviour {
                 _isCollideWithLeftWall = true;
                 _isCollideWithRightWall = false;
                 _characterMotor.AnimationStateEnum = AnimationState.LeftRun;
+
             }
         }
         if (other.tag == "StickyPlunger") {
@@ -168,5 +183,7 @@ public class StickyPlunger : MonoBehaviour {
         _isCollideWithRightWall = false;
         _isCollideWithLeftWall = false;
         _hasUsedStickyPlunger = false;
+        Camera.main.GetComponent<NewCameraController>().WallWalk(0);
+
     }
 }

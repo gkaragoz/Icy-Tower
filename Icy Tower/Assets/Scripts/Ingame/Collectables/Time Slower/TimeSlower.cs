@@ -25,13 +25,13 @@ public class TimeSlower : MonoBehaviour {
 
     private void SlowTime() {
         _timeSlower.SetScrollSpeed(CalculateScrollSpeed());
-        Camera.main.GetComponent<CameraController>().scrollSpeed = _timeSlower.GetScrollSpeed();
+     //   Camera.main.GetComponent<CameraController>().scrollSpeed = _timeSlower.GetScrollSpeed();
         StartCoroutine(StopSlowingTime());
     }
 
     private void SpeedUpTime() {
         _timeSlower.SetScrollSpeed(2f);
-        Camera.main.GetComponent<CameraController>().scrollSpeed = _timeSlower.GetScrollSpeed();
+     //   Camera.main.GetComponent<CameraController>().scrollSpeed = _timeSlower.GetScrollSpeed();
         _duration = _timeSlower.GetDuration();
     }
 
