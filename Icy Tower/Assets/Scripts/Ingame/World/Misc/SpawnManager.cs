@@ -37,20 +37,6 @@ public class SpawnManager : MonoBehaviour {
         ObjectPooler.instance.SpawnFromPool("Wall", transform.position);
     }
 
-    public GameObject SpawnTowerWindow() {
-       return ObjectPooler.instance.SpawnFromPool("Window", transform.position, Quaternion.identity);
-    }
-
-    public GameObject SpawnTowerProp() {
-       return ObjectPooler.instance.SpawnFromPool(GetRandomTowerProp(), transform.position);
-    }
-
-    public string GetRandomTowerProp() {
-        int enumLenght = Enum.GetNames(typeof(TowerProp)).Length;
-        int randomType = UnityEngine.Random.Range(0, enumLenght);
-        return Enum.GetName(typeof(TowerProp), randomType);
-    }
-
     public float LastSpawnedPlatformPos {
         get { return _lastSpawnedPlatformPos; }
         set { _lastSpawnedPlatformPos = value; }
