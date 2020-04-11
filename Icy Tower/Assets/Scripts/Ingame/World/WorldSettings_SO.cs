@@ -8,9 +8,12 @@ public class WorldSettings_SO : ScriptableObject {
     [SerializeField]
     private Transform _rightMapTransform = null;
     [SerializeField]
-    private float _wallHeight= 0;
+    private Transform _leftMapBorderTransform = null;
+    [SerializeField]
+    private Transform _rightMapBorderTransform = null;
+    [SerializeField]
 
-    public Transform MapLeftBorder { 
+    public Transform MapLeftSpawnTransform { 
         get { 
             return _leftMapTransform; 
         } 
@@ -19,7 +22,7 @@ public class WorldSettings_SO : ScriptableObject {
         }
     }
 
-    public Transform MapRightBorder { 
+    public Transform MapRightSpawnTransform { 
         get { 
             return _rightMapTransform; 
         }
@@ -28,12 +31,21 @@ public class WorldSettings_SO : ScriptableObject {
         }
     }
 
-    public float WallHeight {
+    public Transform MapLeftBorderTransform {
         get {
-            return _wallHeight;
+            return _leftMapBorderTransform;
         }
         set {
-            _wallHeight = value;
+            _leftMapBorderTransform = value;
+        }
+    }
+
+    public Transform MapRightBorderTransform {
+        get {
+            return _rightMapBorderTransform;
+        }
+        set {
+            _rightMapBorderTransform = value;
         }
     }
 

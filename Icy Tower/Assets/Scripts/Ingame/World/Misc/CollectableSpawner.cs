@@ -53,7 +53,7 @@ public class CollectableSpawner : MonoBehaviour {
     }
 
     private Vector3 GetRandomSpawnPosition() {
-        float x = WorldSettings.instance.GetRandomPosition().x;
+        float x = WorldSettings.instance.GetRandomSpawnPosition().x;
         float y = SpawnManager.instance.LastSpawnedPlatformPos + 1f;
         float z = -0.5f;
         return new Vector3(x, y, z);

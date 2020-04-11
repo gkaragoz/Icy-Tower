@@ -18,9 +18,13 @@ public class WorldSettings : MonoBehaviour {
 
     [Header("Initialization")]
     [SerializeField]
-    private Transform _leftMapTransform = null;
+    private Transform _leftMapSpawnTransform = null;
     [SerializeField]
-    private Transform _rightMapTransform = null;
+    private Transform _rightMapSpawnTransform = null;
+    [SerializeField]
+    private Transform _leftMapBorderTransform = null;
+    [SerializeField]
+    private Transform _rightMapBorderTransform = null;
     [SerializeField]
     private WorldSettings_SO _worldSettings_Template = null;
 
@@ -36,44 +40,62 @@ public class WorldSettings : MonoBehaviour {
             _worldSettings = Instantiate(_worldSettings_Template);
         }
 
-        SetMapLeftBorder();
-        SetMapRightBorder();
+        SetMapLeftSpawnPosition();
+        SetMapRightSpawnPosition();
+        SetMapLeftBorderPosition();
+        SetMapRightBorderPosition();
     }
     #endregion
 
     #region Setters
 
-    public void SetMapLeftBorder() {
-        _worldSettings.MapLeftBorder = _leftMapTransform;
+    public void SetMapLeftSpawnPosition() {
+        _worldSettings.MapLeftSpawnTransform = _leftMapSpawnTransform;
     }
 
-    public void SetMapRightBorder() {
-        _worldSettings.MapRightBorder = _rightMapTransform;
+    public void SetMapRightSpawnPosition() {
+        _worldSettings.MapRightSpawnTransform = _rightMapSpawnTransform;
     }
 
-    public void SetWallHeight(float value) {
-        _worldSettings.WallHeight = value;
+    public void SetMapLeftBorderPosition() {
+        _worldSettings.MapLeftBorderTransform = _leftMapBorderTransform;
     }
+
+    public void SetMapRightBorderPosition() {
+        _worldSettings.MapRightBorderTransform = _rightMapBorderTransform;
+    }
+
     #endregion
 
     #region Getters
 
-    public Vector3 GetMapLeftBorder() {
-        return _worldSettings.MapLeftBorder.position;
+    public Vector3 GetMapLeftSpawnPosition() {
+        return _worldSettings.MapLeftSpawnTransform.position;
     }
 
-    public Vector3 GetMapRightBorder() {
-        return _worldSettings.MapRightBorder.position;
+
+    public Vector3 GetMapRightSpawnPosition() {
+        return _worldSettings.MapRightSpawnTransform.position;
+    }
+    public Vector3 GetMapLeftBorderPosition() {
+        return _worldSettings.MapLeftBorderTransform.position;
     }
 
-    public float GetWallHeight() {
-        return _worldSettings.WallHeight;
+    public Vector3 GetMapRightBorderPosition() {
+        return _worldSettings.MapRightBorderTransform.position;
     }
 
-    public Vector3 GetRandomPosition() {
-        float x = Random.Range(GetMapLeftBorder().x, GetMapRightBorder().x);
-        float y = Random.Range(GetMapLeftBorder().y, GetMapRightBorder().y);
-        float z = Random.Range(GetMapLeftBorder().z, GetMapRightBorder().z);
+    public Vector3 GetRandomSpawnPosition() {
+        float x = Random.Range(GetMapLeftSpawnPosition().x, GetMapRightSpawnPosition().x);
+        float y = Random.Range(GetMapLeftSpawnPosition().y, GetMapRightSpawnPosition().y);
+        float z = Random.Range(GetMapLeftSpawnPosition().z, GetMapRightSpawnPosition().z);
+        return new Vector3(x, y, z);
+    }
+
+    public Vector3 GetRandomBorderPosition() {
+        float x = Random.Range(GetMapLeftBorderPosition().x, GetMapRightBorderPosition().x);
+        float y = Random.Range(GetMapLeftBorderPosition().y, GetMapRightBorderPosition().y);
+        float z = Random.Range(GetMapLeftBorderPosition().z, GetMapRightBorderPosition().z);
         return new Vector3(x, y, z);
     }
 
