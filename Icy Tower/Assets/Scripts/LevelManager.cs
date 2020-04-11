@@ -53,7 +53,7 @@ public class LevelManager : MonoBehaviour{
         SpawnManager.instance.SpawnAll();
         GameStateEnum = GameState.Gameplay;
 
-        Camera.main.GetComponent<CameraController>().scrollSpeed = 0f;
+      //  Camera.main.GetComponent<CameraController>().scrollSpeed = 0f;
     }
 
     private void Pause() {
