@@ -15,7 +15,7 @@ public class SpawnManager : MonoBehaviour {
 
     #endregion
 
-    private float _lastSpawnedPlatformPos = 0f;
+    private float _lastSpawnedPlatformPos = 44f;
 
     private float _lastSpawnedWallPos = 30f;
 
