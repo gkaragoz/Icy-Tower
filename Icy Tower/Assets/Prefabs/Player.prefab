@@ -840,6 +840,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: GFX
       objectReference: {fileID: 0}
+    - target: {fileID: -200941031206332884, guid: b44a1d2c604bf734bbf94c3a0281e3b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 98829618496732451, guid: b44a1d2c604bf734bbf94c3a0281e3b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 939430752323385867, guid: b44a1d2c604bf734bbf94c3a0281e3b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914173520696884878, guid: b44a1d2c604bf734bbf94c3a0281e3b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016175377009249869, guid: b44a1d2c604bf734bbf94c3a0281e3b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287633393389703260, guid: b44a1d2c604bf734bbf94c3a0281e3b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b44a1d2c604bf734bbf94c3a0281e3b2, type: 3}
 --- !u!4 &7690888175087486135 stripped
