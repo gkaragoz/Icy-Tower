@@ -2563,7 +2563,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.7e-44, y: 0, z: 1, w: 6.33e-42}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3574,15 +3574,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _vfxList:
-  - {fileID: 3197926691220815441, guid: 5142868669cf0a845863ff28885db567, type: 3}
-  - {fileID: 8602309145062701504, guid: b7240ae17dbbf9647bdf02e4d99fb877, type: 3}
+  - {fileID: -6427900922749459913, guid: 36738d22b72821849b8611e23ccbe86f, type: 3}
+  - {fileID: 192640943996432535, guid: 58ca280ad97835a4186d8e908eb49f50, type: 3}
   - {fileID: 163842196567872373, guid: 3e93cf44d7c44744ab2092518ab1b8f1, type: 3}
-  - {fileID: 6021775136407299300, guid: 9e8545177b074274db942ec43757c5b8, type: 3}
+  - {fileID: 5924259618448996469, guid: d52b7b086f168164fa95dafab3ced586, type: 3}
+  - {fileID: 6883631332221213788, guid: ad26df68f4b2b8a4bae83cbaa1c2073b, type: 3}
   - {fileID: 893648170043435570, guid: 562a69eba6dd7fd45873cd6b91b9d008, type: 3}
-  - {fileID: 6577901199065181522, guid: 5f7fea364fc17c549be20dfe387855be, type: 3}
+  - {fileID: 955950609301757135, guid: 732faaa9732955248b348c59c0e8707e, type: 3}
   - {fileID: 8478768999496458649, guid: a10dd88998cdb0b429aba8ab0bed7385, type: 3}
   - {fileID: 8992358158404899323, guid: f4b023e6dfd805c45b895f115a9e751a, type: 3}
   - {fileID: 2217635314715462031, guid: ad04375015b658440874144a5445267d, type: 3}
+  - {fileID: 8938619923344533852, guid: bfb37fa5243515040bc6619207b3d503, type: 3}
+  - {fileID: 7257502858996083468, guid: 1de3b055a22c317489120f67dbec816d, type: 3}
 --- !u!1 &1666185189
 GameObject:
   m_ObjectHideFlags: 3

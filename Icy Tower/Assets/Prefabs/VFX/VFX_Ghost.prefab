@@ -41,12 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6883631332221213790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 860f83c273607e5468473d847430876a, type: 3}
+  m_Script: {fileID: 11500000, guid: 42eb10dbce8ddb148be7274e8ffae141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleSystem: {fileID: 6883631333120105276}
-  _vfxType: 5
-  _isLooping: 1
+  _vfxType: 4
+  _vfxs: []
   _duration: 0
 --- !u!1 &6883631333120105273
 GameObject:
