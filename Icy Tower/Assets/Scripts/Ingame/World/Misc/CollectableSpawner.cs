@@ -43,7 +43,7 @@ public class CollectableSpawner : MonoBehaviour {
     private void SpawnGold() {
         Vector3 randomPosition = GetRandomSpawnPosition();
 
-        ObjectPooler.instance.SpawnFromPool(GetRandomGoldType(), randomPosition, Quaternion.identity);
+        ObjectPooler.instance.SpawnFromPool(GetRandomGoldHolderType(), randomPosition, Quaternion.identity);
     }
 
     private void SpawnPowerUps() {
@@ -59,7 +59,7 @@ public class CollectableSpawner : MonoBehaviour {
         return new Vector3(x, y, z);
     }
 
-    private string GetRandomGoldType() {
+    private string GetRandomGoldHolderType() {
         int enumLenght = Enum.GetNames(typeof(GoldHolderTypes)).Length;
         int randomType = UnityEngine.Random.Range(0, enumLenght);
         return Enum.GetName(typeof(GoldHolderTypes), randomType);

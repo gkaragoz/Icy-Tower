@@ -3,58 +3,46 @@ using UnityEngine;
 
 public class Gold : MonoBehaviour {
 
-    private Renderer _goldRenderer = null;
     private Transform _player = null;
 
+    [SerializeField]
+    private int _value = 1;
     private float _flySpeedDivisor = 5f;
     private float _minFlySpeed = 0.4f;
     private int _coinScore = 0;
-    private GoldTypes _goldType;
     private bool _hasInteractedWithMagnet = false;
+    private Vector3 _initialPosition = Vector3.zero;
+    private Quaternion _initialQuaternion = Quaternion.identity;
 
-    public void CreateGold() {
-        _goldRenderer = GetComponent<Renderer>();
-        SetGoldType();
-        SetGoldValues();
+    private void Awake() {
+        _initialPosition = transform.localPosition;
+        _initialQuaternion = transform.localRotation;
     }
 
+    public int Value {
+        get {
+            return _value;
+        }
+    }
     private void FixedUpdate() {
         if (_hasInteractedWithMagnet) {
             FlyToPlayer();
         }
     }
 
-    private void SetGoldType() {
-        int enumLenght = Enum.GetNames(typeof(GoldTypes)).Length;
-        int _randomGoldType = UnityEngine.Random.Range(0, enumLenght);
-        _goldType = (GoldTypes)_randomGoldType;
-    }
-
-    private void SetGoldValues() {
-        switch (_goldType) {
-            case GoldTypes.YellowGold:
-                _coinScore = 1;
-                _goldRenderer.material.SetColor("_BaseColor", Color.yellow);
-                break;
-            case GoldTypes.GreenGold:
-                _coinScore = 2;
-                _goldRenderer.material.SetColor("_BaseColor", Color.green);
-                break;
-            case GoldTypes.RedGold:
-                _coinScore = 5;
-                _goldRenderer.material.SetColor("_BaseColor", Color.red);
-                break;
-            default:
-                Debug.LogError("Gold type did not exist");
-                break;
+    public void SetVisibility(bool isActive) {
+        gameObject.SetActive(isActive);
+        if (isActive) {
+            transform.localPosition = _initialPosition;
+            transform.localRotation = _initialQuaternion;
+            _hasInteractedWithMagnet = false;
         }
     }
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "FullCollider") {
             PlayVFX();
-
-            gameObject.SetActive(false);
+            SetVisibility(false);
             GameManager.instance.AddGoldToPlayer(_coinScore);
             _hasInteractedWithMagnet = false;
         } else if (other.tag == "CoinMagnet") {
