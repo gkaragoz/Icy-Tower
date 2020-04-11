@@ -479,7 +479,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1492e3c7466b019459da04023f1c6144, type: 2}
+  - {fileID: 2100000, guid: bcb91284908af764b9234dcd2a020e3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -700,8 +700,8 @@ GameObject:
   - component: {fileID: 8890181256247615030}
   - component: {fileID: 8890181256247614985}
   m_Layer: 0
-  m_Name: LeftWall
-  m_TagString: LeftWall
+  m_Name: RightWall
+  m_TagString: RightWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -744,8 +744,8 @@ GameObject:
   - component: {fileID: 8890181256359444936}
   - component: {fileID: 8890181256359444939}
   m_Layer: 0
-  m_Name: RighWall
-  m_TagString: RightWall
+  m_Name: LeftWall
+  m_TagString: LeftWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
