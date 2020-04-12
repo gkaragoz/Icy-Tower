@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Umbrella : MonoBehaviour {
+public class Umbrella : MonoBehaviour, IHaveSingleSound {
 
     [Header("DEBUG")]
     [Utils.ReadOnly]
@@ -46,6 +46,7 @@ public class Umbrella : MonoBehaviour {
             _flyTime = _umbrellaStats.GetDuration();
             _hasUsedUmbrella = true;
             PlayVFX();
+            PlaySFX(SoundFXTypes.InGame_Collect_Slot_Powerup);
             StartCoroutine(StopFlying());
             other.gameObject.SetActive(false);
         }
@@ -71,5 +72,9 @@ public class Umbrella : MonoBehaviour {
                 break;
             }
         }
+    }
+
+    public void PlaySFX(SoundFXTypes sfxType) {
+        ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
     }
 }

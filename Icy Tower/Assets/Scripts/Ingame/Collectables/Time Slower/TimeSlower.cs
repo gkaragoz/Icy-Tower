@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class TimeSlower : MonoBehaviour {
+public class TimeSlower : MonoBehaviour, IHaveSingleSound {
 
     [Header("DEBUG")]
     [Utils.ReadOnly]
@@ -19,6 +19,7 @@ public class TimeSlower : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "TimeSlower") {
             SlowTime();
+            PlaySFX(SoundFXTypes.InGame_Collect_Slot_Powerup);
             other.gameObject.SetActive(false);
         }
     }
@@ -51,4 +52,7 @@ public class TimeSlower : MonoBehaviour {
         }
     }
 
+    public void PlaySFX(SoundFXTypes sfxType) {
+        ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
+    }
 }

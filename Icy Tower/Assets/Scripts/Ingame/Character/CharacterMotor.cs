@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterStats))]
-public class CharacterMotor : MonoBehaviour {
+public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
 
     [Header("Initializations")]
     [SerializeField]
@@ -121,6 +121,7 @@ public class CharacterMotor : MonoBehaviour {
             _rb.AddForce(Vector3.up * (_characterStats.GetJumpPower() + (Mathf.Abs(_rb.velocity.x) / 3f)), ForceMode.Impulse);
             AnimationStateEnum = AnimationState.Jump;
             PlayVFX();
+            PlaySFX(SoundFXTypes.InGame_Player_Jump);
         }
     }
 
@@ -148,6 +149,7 @@ public class CharacterMotor : MonoBehaviour {
                 _rb.AddForce(Vector3.up * _characterStats.GetComboJumpPower(), ForceMode.Impulse);
                 AnimationStateEnum = AnimationState.ComboJump;
                 PlayLoopVFX();
+                PlaySFX(SoundFXTypes.InGame_Player_Jump_Combo);
             }
         }
     }
@@ -178,4 +180,7 @@ public class CharacterMotor : MonoBehaviour {
         _characterStats.SetCharacterPositionY(gameObject.transform.position.y);
     }
 
+    public void PlaySFX(SoundFXTypes sfxType) {
+        ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
+    }
 }

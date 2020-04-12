@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SuperCoin : MonoBehaviour, IPooledObject {
+public class SuperCoin : MonoBehaviour, IPooledObject, IHaveSingleSound {
 
     [Utils.ReadOnly]
     [SerializeField]
@@ -17,6 +17,7 @@ public class SuperCoin : MonoBehaviour, IPooledObject {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "FullCollider") {
             PlayVFX();
+            PlaySFX(SoundFXTypes.InGame_Collect_SuperGold);
             GameManager.instance.AddGoldToPlayer(_superCoinStats.GetAmount());
             gameObject.SetActive(false);
         }
@@ -24,5 +25,9 @@ public class SuperCoin : MonoBehaviour, IPooledObject {
 
     public void OnObjectReused() {
         gameObject.SetActive(true);
+    }
+
+    public void PlaySFX(SoundFXTypes sfxType) {
+        ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
     }
 }

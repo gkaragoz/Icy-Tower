@@ -20,18 +20,20 @@ public class Sound : MonoBehaviour, IPooledObject {
 
     public void Play() {
         this.gameObject.SetActive(true);
+        this._sfx.Play();
     }
 
 
     public void Stop() {
         this.gameObject.SetActive(false);
+        this._sfx.Stop();
     }
 
     public void OnObjectReused() {
         if (_isLoopable)
             return;
 
-        this.gameObject.SetActive(true);
+        this.Play();
         Invoke("Stop", _duration);
     }
 

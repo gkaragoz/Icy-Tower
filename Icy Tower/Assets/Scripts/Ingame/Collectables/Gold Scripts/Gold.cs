@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class Gold : MonoBehaviour {
+public class Gold : MonoBehaviour, IHaveSingleSound {
 
     private Transform _player = null;
 
@@ -42,6 +42,7 @@ public class Gold : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "FullCollider") {
             PlayVFX();
+            PlaySFX(SoundFXTypes.InGame_Collect_Gold);
             SetVisibility(false);
             GameManager.instance.AddGoldToPlayer(_coinScore);
             _hasInteractedWithMagnet = false;
@@ -63,5 +64,9 @@ public class Gold : MonoBehaviour {
         if (Vector3.Distance(transform.position, _player.position) / _flySpeedDivisor <= _minFlySpeed)
             return _minFlySpeed;
         return Vector3.Distance(transform.position, _player.position) / _flySpeedDivisor;
+    }
+
+    public void PlaySFX(SoundFXTypes sfxType) {
+        ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
     }
 }

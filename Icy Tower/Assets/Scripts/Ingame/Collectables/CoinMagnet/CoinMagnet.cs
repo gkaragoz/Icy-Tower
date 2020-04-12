@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class CoinMagnet : MonoBehaviour {
+public class CoinMagnet : MonoBehaviour, IHaveSingleSound {
 
     [Utils.ReadOnly]
     [SerializeField]
@@ -34,6 +34,7 @@ public class CoinMagnet : MonoBehaviour {
 
             ActivateCoinMagnet();
             PlayVFX();
+            PlaySFX(SoundFXTypes.InGame_Collect_Slot_Powerup);
 
             StartCoroutine(StopCoinMagnet());
             other.gameObject.SetActive(false);
@@ -70,4 +71,9 @@ public class CoinMagnet : MonoBehaviour {
             }
         }
     }
+
+    public void PlaySFX(SoundFXTypes sfxType) {
+        ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
+    }
+
 }

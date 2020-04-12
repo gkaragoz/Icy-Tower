@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlatformSaver : MonoBehaviour {
+public class PlatformSaver : MonoBehaviour, IHaveSingleSound {
 
     [Utils.ReadOnly]
     [SerializeField]
@@ -24,6 +24,7 @@ public class PlatformSaver : MonoBehaviour {
         if (other.tag == "PlatformSaver") {
             _platformCountToMaximize = _platformSaverStats.GetPlatformCount();
             MaximizePlatformScale();
+            PlaySFX(SoundFXTypes.InGame_PowerUp_BlockSaver);
             other.gameObject.SetActive(false);
         }
     }
@@ -58,5 +59,9 @@ public class PlatformSaver : MonoBehaviour {
         else {
             return false;
         }
+    }
+
+    public void PlaySFX(SoundFXTypes sfxType) {
+        ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
     }
 }

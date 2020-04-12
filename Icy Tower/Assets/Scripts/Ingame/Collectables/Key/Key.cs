@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Key : MonoBehaviour{
+public class Key : MonoBehaviour, IHaveSingleSound{
     
     [Utils.ReadOnly]
     [SerializeField]
@@ -12,9 +12,13 @@ public class Key : MonoBehaviour{
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "FullCollider") {
-            gameObject.SetActive(false);
+            PlaySFX(SoundFXTypes.InGame_Collect_Key);
             GameManager.instance.AddKeyToPlayer(_keyStats.GetAmount());
+            gameObject.SetActive(false);
         }
     }
 
+    public void PlaySFX(SoundFXTypes sfxType) {
+        ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
+    }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class SpeedUp : MonoBehaviour{
+public class SpeedUp : MonoBehaviour, IHaveSingleSound {
 
     [Header("DEBUG")]
     [Utils.ReadOnly]
@@ -27,6 +27,7 @@ public class SpeedUp : MonoBehaviour{
         if (other.tag =="SpeedUp") {
             IncreaseCharacterSpeed();
             PlayVFX();
+            PlaySFX(SoundFXTypes.InGame_Collect_Slot_Powerup);
             StartCoroutine(StopSpeedUping());
             other.gameObject.SetActive(false);
         }
@@ -71,5 +72,9 @@ public class SpeedUp : MonoBehaviour{
                 break;
             }
         }
+    }
+
+    public void PlaySFX(SoundFXTypes sfxType) {
+        ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
     }
 }

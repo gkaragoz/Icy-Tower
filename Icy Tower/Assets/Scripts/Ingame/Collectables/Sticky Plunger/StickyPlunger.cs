@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class StickyPlunger : MonoBehaviour {
+public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound {
 
     [SerializeField]
     private Transform _player = null;
@@ -39,6 +39,7 @@ public class StickyPlunger : MonoBehaviour {
     private Rigidbody _rb = null;
 
     private VFX _activeVFX;
+    private Sound _activeSFX;
 
     private void Start() {
         _rb = GetComponentInParent<Rigidbody>();
@@ -125,6 +126,8 @@ public class StickyPlunger : MonoBehaviour {
             _hasUsedStickyPlunger = true;
             JumpToClosestWall();
             PlayVFX();
+            PlaySFX(SoundFXTypes.InGame_Collect_Slot_Powerup);
+            PlayLoopableSFX();
             other.gameObject.SetActive(false);
         }
     }
@@ -144,6 +147,7 @@ public class StickyPlunger : MonoBehaviour {
                 LeaveWall();
 
                 StopVFX();
+                StopLoopableSFX();
                 break;
             }
         }
@@ -152,6 +156,9 @@ public class StickyPlunger : MonoBehaviour {
     private void JumptToOtherWall() {
         if (_hasUsedStickyPlunger) {
             _rb.velocity = Vector3.zero;
+
+            PlaySFX(SoundFXTypes.InGame_PowerUp_Pump_Jump);
+
             if (_isCollideWithRightWall) {
                 _isCollideWithRightWall = false;
                 _characterMotor.AnimationStateEnum = AnimationState.LeftRun;
@@ -178,5 +185,18 @@ public class StickyPlunger : MonoBehaviour {
         _hasUsedStickyPlunger = false;
         Camera.main.GetComponent<NewCameraController>().WallWalk(0);
 
+    }
+
+    public void PlayLoopableSFX() {
+        _activeSFX = ObjectPooler.instance.SpawnFromPool(SoundFXTypes.InGame_PowerUp_Pump_Step.ToString(), transform.position).GetComponent<Sound>();
+        _activeSFX.Play();
+    }
+
+    public void StopLoopableSFX() {
+        _activeSFX.Stop();
+    }
+
+    public void PlaySFX(SoundFXTypes sfxType) {
+        ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
     }
 }
