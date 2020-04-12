@@ -1320,7 +1320,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 2112543045}
   _followers: {fileID: 572924028}
-  _deadZoneOffset: 12
+  _deadZoneOffset: 15
+  _followersOffset: 20
   _jumpOffset: 2
   speed: 2
   startMatch: 0
