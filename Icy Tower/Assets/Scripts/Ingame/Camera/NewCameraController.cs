@@ -1,7 +1,19 @@
 ﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class NewCameraController : MonoBehaviour {
+
+    [System.Serializable]
+    public class CameraStates {
+        public GameState state;
+        public Vector3 position;
+        public Vector3 rotation;
+        public float positionTime;
+        public float rotationTime;
+        public LeanTweenType easeType;
+    }
+
     [SerializeField]
     private Transform _target = null;
     [SerializeField]
@@ -10,6 +22,9 @@ public class NewCameraController : MonoBehaviour {
     private float _deadZoneOffset = 0f;
     [SerializeField]
     private float _followersOffset = 11f;
+
+    [SerializeField]
+    private CameraStates[] _cameraStates = null;
 
     [SerializeField]
     private float _jumpOffset = 0f;
@@ -23,24 +38,39 @@ public class NewCameraController : MonoBehaviour {
     private Coroutine mycor;
     public int value;
 
+    private bool _isLeanTweenPlaying = false;
+
     private void Start() {
         LevelManager.instance.OnGameStateChanged += OnGameStateChanged;
+    }
+
+    private void MoveTo(GameState state) {
+        CameraStates currentState = _cameraStates.Where(a => a.state == state).FirstOrDefault();
+
+        LeanTween.move(this.gameObject, currentState.position, currentState.positionTime).setEase(currentState.easeType);
+        LeanTween.rotate(this.gameObject, currentState.rotation, currentState.rotationTime).setEase(currentState.easeType);
     }
 
     private void OnGameStateChanged(GameState state) {
         switch (state) {
             case GameState.MainMenu:
+                Debug.Log("MainMenu");
+                MoveTo(state);
                 break;
             case GameState.GamePaused:
                 break;
             case GameState.NewGame:
+                Debug.Log("NewGame");
+                MoveTo(state);
                 break;
             case GameState.RestartGame:
                 break;
             case GameState.GameplayCountdown:
                 break;
             case GameState.Gameplay:
+                Debug.Log("Gameplay");
                 startMatch = true;
+                MoveTo(state);
                 break;
             case GameState.GameOver:
                 startMatch = false;
@@ -51,6 +81,10 @@ public class NewCameraController : MonoBehaviour {
     }
 
     private void Update() {
+        if (_isLeanTweenPlaying) {
+            return;
+        }
+             
         _followers.transform.position = new Vector3(_followers.transform.position.x, transform.position.y - _followersOffset, _followers.transform.position.z);
 
         //Check if i died

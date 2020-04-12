@@ -1322,6 +1322,25 @@ MonoBehaviour:
   _followers: {fileID: 572924028}
   _deadZoneOffset: 15
   _followersOffset: 20
+  _cameraStates:
+  - state: 0
+    position: {x: 0, y: 12, z: -10}
+    rotation: {x: 0, y: 0, z: 0}
+    positionTime: 2
+    rotationTime: 2
+    easeType: 5
+  - state: 2
+    position: {x: 0, y: 34, z: -8}
+    rotation: {x: -20, y: 0, z: 0}
+    positionTime: 2
+    rotationTime: 2
+    easeType: 5
+  - state: 5
+    position: {x: 0, y: 34, z: -10}
+    rotation: {x: 0, y: 0, z: 0}
+    positionTime: 1
+    rotationTime: 1
+    easeType: 6
   _jumpOffset: 2
   speed: 2
   startMatch: 0
@@ -1417,7 +1436,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361663655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 34, z: -10}
+  m_LocalPosition: {x: 0, y: 12, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 607856390}
