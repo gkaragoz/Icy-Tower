@@ -3535,6 +3535,7 @@ Transform:
   - {fileID: 1379375342}
   - {fileID: 164187678}
   - {fileID: 593463253}
+  - {fileID: 2065082822}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3656,6 +3657,75 @@ MonoBehaviour:
   - parentTransform: {fileID: 593463253}
     name: VFXPumpWalking
     prefab: {fileID: 7257502858996083467, guid: 1de3b055a22c317489120f67dbec816d,
+      type: 3}
+    size: 1
+  - parentTransform: {fileID: 2065082822}
+    name: InGame_Break_My_Best_Score_Yaaay
+    prefab: {fileID: 2021695313738562316, guid: 85b79ae89bac06242b210daf68590edf,
+      type: 3}
+    size: 1
+  - parentTransform: {fileID: 2065082822}
+    name: InGame_Collect_Gold
+    prefab: {fileID: 5485788632695233147, guid: 4b32df25459f73b43aa6853431c82943,
+      type: 3}
+    size: 20
+  - parentTransform: {fileID: 2065082822}
+    name: InGame_Collect_Slot_Powerup
+    prefab: {fileID: 8475148379352019969, guid: 972ecc8eeda691c49aebf092f87c5614,
+      type: 3}
+    size: 5
+  - parentTransform: {fileID: 2065082822}
+    name: InGame_Collect_SuperGold
+    prefab: {fileID: 4564319480541199877, guid: 461522ccd5e23e54cbe6ed3a170a2590,
+      type: 3}
+    size: 5
+  - parentTransform: {fileID: 2065082822}
+    name: InGame_Player_Jump
+    prefab: {fileID: 7092703149574422285, guid: 0878a78ef4e891a408df1ed6bcd057fc,
+      type: 3}
+    size: 1
+  - parentTransform: {fileID: 2065082822}
+    name: InGame_Player_Jump_Combo
+    prefab: {fileID: 2475913707987814985, guid: 3157af7c239539947835a005ae8dec12,
+      type: 3}
+    size: 1
+  - parentTransform: {fileID: 2065082822}
+    name: InGame_PowerUp_BlockSaver
+    prefab: {fileID: 6366279039246624801, guid: ff892e3fc2845774291f9cabf1c8d779,
+      type: 3}
+    size: 1
+  - parentTransform: {fileID: 2065082822}
+    name: InGame_PowerUp_Pump_Jump
+    prefab: {fileID: 8819815151720801432, guid: 6b91f69ac5cac094bbfbedffa141d93b,
+      type: 3}
+    size: 2
+  - parentTransform: {fileID: 2065082822}
+    name: InGame_PowerUp_Pump_Step
+    prefab: {fileID: 696604375945993220, guid: bcd4938ffbaf2224aa517537553051eb, type: 3}
+    size: 5
+  - parentTransform: {fileID: 2065082822}
+    name: InGame_100_Confetti
+    prefab: {fileID: 3961778905987588979, guid: d42ffb48e69aa8744b03475345ccb0c6,
+      type: 3}
+    size: 1
+  - parentTransform: {fileID: 2065082822}
+    name: InGame_Collect_Key
+    prefab: {fileID: 5325024927810590969, guid: 415275bcb4e258e4c94c4f998cc93c74,
+      type: 3}
+    size: 1
+  - parentTransform: {fileID: 2065082822}
+    name: InGame_PowerUp_Rocket
+    prefab: {fileID: 1574362732878667506, guid: 36115c573e7e93c47ba3fd092faa24a0,
+      type: 3}
+    size: 1
+  - parentTransform: {fileID: 2065082822}
+    name: InGame_Ready
+    prefab: {fileID: 1574362732878667506, guid: 36115c573e7e93c47ba3fd092faa24a0,
+      type: 3}
+    size: 1
+  - parentTransform: {fileID: 2065082822}
+    name: InGame_Use_Revive_Key
+    prefab: {fileID: 5772206853340163780, guid: 36999b684458a674f81d9766b95ed789,
       type: 3}
     size: 1
 --- !u!1 &1625300846 stripped
@@ -4245,6 +4315,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992982325}
   m_CullTransparentMesh: 0
+--- !u!1 &2065082821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2065082822}
+  m_Layer: 0
+  m_Name: SFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2065082822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065082821}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1603324854}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2112543045 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5260039548835869551, guid: 4d3693fedb44b8d4693b6dc0ab4e764d,

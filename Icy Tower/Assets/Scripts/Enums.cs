@@ -91,7 +91,8 @@ public enum SoundFXTypes {
     InGame_PowerUp_Rocket,
     InGame_100_Confetti,
     InGame_Break_My_Best_Score_Yaaay,
-    InGame_Use_Revive_Key
+    InGame_Use_Revive_Key,
+    InGame_Ready
 }
 
 

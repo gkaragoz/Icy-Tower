@@ -29,32 +29,36 @@ public class ObjectPooler : MonoBehaviour {
     public Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
     public void InitializePool(string name , bool initialVisibility = false) {
-        Pool pool = pools.Where(p => p.name == name).First();
+        try {
+            Pool pool = pools.Where(p => p.name == name).First();
 
-        if (pool == null) {
-            Debug.LogError("Pool with key " + name + " doesn't exists.");
-            return;
+            if (pool == null) {
+                Debug.LogError("Pool with key " + name + " doesn't exists.");
+                return;
+            }
+
+            if (poolDictionary.ContainsKey(pool.name)) {
+                Debug.LogError("Pool with key " + pool.name + " already exists on dictionary.");
+                return;
+            }
+
+            Queue<GameObject> objectPool = new Queue<GameObject>();
+
+            for (int ii = 0; ii < pool.size; ii++) {
+                GameObject newObject = Instantiate(pool.prefab, pool.parentTransform);
+
+                if (initialVisibility == false)
+                    newObject.SetActive(false);
+
+                objectPool.Enqueue(newObject);
+            }
+
+            poolDictionary.Add(pool.name, objectPool);
+
+            Debug.Log("[OBJECT POOLER] " + pool.name + " pool has been initialized.");
+        } catch (System.Exception e) {
+            Debug.LogError(e.Message);
         }
-
-        if (poolDictionary.ContainsKey(pool.name)) {
-            Debug.LogError("Pool with key " + pool.name + " already exists on dictionary.");
-            return;
-        }
-
-        Queue<GameObject> objectPool = new Queue<GameObject>();
-
-        for (int ii = 0; ii < pool.size; ii++) {
-            GameObject newObject = Instantiate(pool.prefab, pool.parentTransform);
-
-            if(initialVisibility == false)
-                newObject.SetActive(false);
-
-            objectPool.Enqueue(newObject);
-        }
-
-        poolDictionary.Add(pool.name, objectPool);
-
-        Debug.Log("[OBJECT POOLER] " + pool.name + " pool has been initialized.");
     }
 
     public void ClearPool(string name) {
