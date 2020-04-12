@@ -62,6 +62,10 @@ public class GameManager : MonoBehaviour {
                 ObjectPooler.instance.InitializePool(collectable);
             }
 
+            foreach (string soundfxtype in (string[])Enum.GetNames(typeof(SoundFXTypes))) {
+                ObjectPooler.instance.InitializePool(soundfxtype);
+            }
+
             _hasGameObjectsInitialized = true;
         }
     }

@@ -61,7 +61,7 @@ public enum AnimationState {
 }
 
 // Every sound enums has their sound files same named as enum.
-public enum SoundFX {
+public enum SoundFXTypes {
     UI_General_Button_Open_or_Click,// EVERY BUTTON HAS THIS SOUND BUT WANT TO OVERRIDES ARE DIFFERENT.
     UI_General_Button_Close,
     UI_Buy_General,                    // Slot power up, Costume, Booster, Music, Particle
