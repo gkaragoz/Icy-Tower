@@ -36,7 +36,6 @@ public class NewCameraController : MonoBehaviour {
     public bool startMatch = false;
     public bool iCanRotate = false;
     private Coroutine mycor;
-    public int value;
 
     private bool _isLeanTweenPlaying = false;
 
@@ -144,20 +143,20 @@ public class NewCameraController : MonoBehaviour {
         mycor = StartCoroutine(GetPump(value));
     }
 
-    IEnumerator GetPump(int value) {
+    IEnumerator GetPump(int side) {
 
         while (iCanRotate) {
 
             float interpolation = speed * Time.deltaTime;
             Vector3 rotation = this.transform.eulerAngles;
-            rotation.y = 10 * value;
+            rotation.y = 10 * side;
 
-            if (value == 0) {
+            if (side == 0) {
                 rotation.x = 0;
                 rotation.y = 0;
                 rotation.z = 0;
             } else {
-                rotation.x = -25;
+                rotation.x = -20;
             }
 
 

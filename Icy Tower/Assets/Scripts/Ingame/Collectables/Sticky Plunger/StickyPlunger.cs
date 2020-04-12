@@ -68,14 +68,14 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
         if (_playerController._joystick.Horizontal < 0) {
             if (_isCollideWithRightWall) {
                 JumptToOtherWall();
-                Camera.main.GetComponent<NewCameraController>().WallWalk(1);
+                Camera.main.GetComponent<NewCameraController>().WallWalk(-1);
 
             }
         }
         if (_playerController._joystick.Horizontal > 0) {
             if (_isCollideWithLeftWall) {
                 JumptToOtherWall();
-                Camera.main.GetComponent<NewCameraController>().WallWalk(-1);
+                Camera.main.GetComponent<NewCameraController>().WallWalk(1);
 
             }
         }
@@ -85,11 +85,11 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
         _rb.velocity = Vector3.zero;
         if (gameObject.transform.position.x > 0) {
             _rb.AddForce(new Vector3(1f, 1f) * _forceAmount, ForceMode.Impulse);
-            Camera.main.GetComponent<NewCameraController>().WallWalk(-1);
+            Camera.main.GetComponent<NewCameraController>().WallWalk(1);
         }
         else if (gameObject.transform.position.x <= 0) {
             _rb.AddForce(new Vector3(-1f, 1f) * _forceAmount, ForceMode.Impulse);
-            Camera.main.GetComponent<NewCameraController>().WallWalk(1);
+            Camera.main.GetComponent<NewCameraController>().WallWalk(-1);
 
         }
         StartCoroutine(StopStickingToWall());
