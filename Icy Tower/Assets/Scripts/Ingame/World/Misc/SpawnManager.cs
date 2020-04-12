@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpawnManager : MonoBehaviour {
 
@@ -19,6 +18,10 @@ public class SpawnManager : MonoBehaviour {
 
     private float _lastSpawnedWallPos = 30f;
 
+    [SerializeField]
+    [Utils.ReadOnly]
+    private int _lastSpawnedPlatformNumber = 0;
+
     public void SpawnAll() {
         for (int i = 0; i < 10; i++) {
             SpawnPlatform();
@@ -31,6 +34,7 @@ public class SpawnManager : MonoBehaviour {
 
     public void SpawnPlatform() {
         ObjectPooler.instance.SpawnFromPool("Platform");
+        _lastSpawnedPlatformNumber++;
     }
 
     public void SpawnWall() {
