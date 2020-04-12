@@ -57,7 +57,7 @@ public class ObjectPooler : MonoBehaviour {
 
             Debug.Log("[OBJECT POOLER] " + pool.name + " pool has been initialized.");
         } catch (System.Exception e) {
-            Debug.LogError(e.Message);
+            Debug.LogWarning(e.Message);
         }
     }
 

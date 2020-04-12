@@ -63,7 +63,6 @@ public class SpeedUp : MonoBehaviour, IHaveSingleSound {
     private IEnumerator StopSpeedUping() {
         while (true) {
             _duration--;
-            Debug.Log(_duration);
             yield return new WaitForSeconds(1f);
 
             if (_duration <= 0) {
