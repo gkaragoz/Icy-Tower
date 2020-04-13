@@ -14,36 +14,18 @@ public class SpawnManager : MonoBehaviour {
 
     #endregion
 
-    private float _lastSpawnedPlatformPos = 44f;
-
     private float _lastSpawnedWallPos = 30f;
 
-    [SerializeField]
-    [Utils.ReadOnly]
-    private int _lastSpawnedPlatformNumber = 0;
-
     public void SpawnAll() {
-        for (int i = 0; i < 10; i++) {
-            SpawnPlatform();
-        }
+        PlatformManager.instance.SpawnPlatforms();
 
         for (int i = 0; i < 5; i++) {
             SpawnWall();
         }
     }
 
-    public void SpawnPlatform() {
-        ObjectPooler.instance.SpawnFromPool("Platform");
-        _lastSpawnedPlatformNumber++;
-    }
-
     public void SpawnWall() {
         ObjectPooler.instance.SpawnFromPool("Wall", transform.position);
-    }
-
-    public float LastSpawnedPlatformPos {
-        get { return _lastSpawnedPlatformPos; }
-        set { _lastSpawnedPlatformPos = value; }
     }
 
     public float LastSpawnedWallPos {

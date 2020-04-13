@@ -3,11 +3,14 @@ using System.Collections;
 using UnityEngine;
 
 public class CollectableSpawner : MonoBehaviour {
+
     public bool IsRunning { get { return _isRunning; } }
     [SerializeField]
     private float _goldSpawnRate = 3f;
     [SerializeField]
     private float _powerUpSpawnRate= 5f;
+
+    private float _lastSpawnedGoldPosition = 0f;
 
     [Header("Debug")]
     [SerializeField]
@@ -54,7 +57,7 @@ public class CollectableSpawner : MonoBehaviour {
 
     private Vector3 GetRandomSpawnPosition() {
         float x = WorldSettings.instance.GetRandomSpawnPosition().x;
-        float y = SpawnManager.instance.LastSpawnedPlatformPos + 1f;
+        float y = PlatformManager.instance.GetLastSpawnedPlatformPosition().y + 1f;
         float z = -0.5f;
         return new Vector3(x, y, z);
     }

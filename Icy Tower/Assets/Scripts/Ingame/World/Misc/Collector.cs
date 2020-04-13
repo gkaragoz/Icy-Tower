@@ -7,7 +7,7 @@ public class Collector : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Platform") {
             other.gameObject.SetActive(false);
-            SpawnManager.instance.SpawnPlatform();
+            PlatformManager.instance.SpawnPlatform().gameObject.SetActive(true);
         }
         
         else if(other.tag == "WallParent") {

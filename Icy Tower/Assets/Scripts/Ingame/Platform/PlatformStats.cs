@@ -84,7 +84,15 @@ public class PlatformStats : MonoBehaviour {
     #endregion
 
     #region Custom Methods
+    public Vector3 GetRandomScale() {
+        return new Vector3(Random.Range(GetMinScale(), GetMaxScale()),GetThickness(),GetPrefab().transform.localScale.z);
+    }
 
-
+    public Vector3 GetNewPosition(float initialSpawnPos, int lastSpawnedPlatform) {
+        float x = WorldSettings.instance.GetRandomBorderPosition().x;
+        float y = initialSpawnPos + (GetDistanceBetweenPlatforms() * lastSpawnedPlatform);
+        float z = 0;
+        return new Vector3(x, y, z);
+    }
     #endregion
 }

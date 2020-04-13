@@ -29,7 +29,8 @@ public enum Collectables {
     StickyPlunger,
     TimeSlower,
     Umbrella,
-    SuperCoin
+    SuperCoin,
+    Key
 }
 
 public enum VFXTypes {
