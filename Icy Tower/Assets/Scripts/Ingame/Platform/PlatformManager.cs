@@ -36,6 +36,7 @@ public class PlatformManager : MonoBehaviour{
         for (int i = 0; i < ObjectPooler.instance.GetGameObjectsOnPool("Platform").Length; i++) {
             Platform platform = ObjectPooler.instance.SpawnFromPool("Platform").GetComponent<Platform>();
             platform.Floor = ++_floor;
+            platform.SetText();
             platform.SetType(_platformTypeIndex);
             platform.SetScale(_platformStats.GetRandomScale());
             platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor));
@@ -48,8 +49,8 @@ public class PlatformManager : MonoBehaviour{
         platform.Floor = ++_floor;
         if(platform.Floor % 100 == 0 ) {
             _platformTypeIndex++;
-
         }
+        platform.SetText();
         platform.SetType(_platformTypeIndex);
         platform.SetScale(_platformStats.GetRandomScale());
         platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor));
