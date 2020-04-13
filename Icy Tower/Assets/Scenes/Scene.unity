@@ -2886,7 +2886,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.55e-43, y: -1.1212689e+17, z: 7.54e-43, w: -2.5038643}
+  m_BoundingSphereOverride: {x: 7.55e-43, y: -1.1212689e+17, z: 7.54e-43, w: -2.5549812}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -5592,6 +5592,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _floorCountText: {fileID: 0}
 --- !u!114 &795243846482277380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5612,6 +5613,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _floorCountText: {fileID: 0}
 --- !u!23 &839469709753145191
 MeshRenderer:
   m_ObjectHideFlags: 0

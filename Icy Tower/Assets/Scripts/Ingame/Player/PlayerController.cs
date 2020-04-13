@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour, IHaveSingleSound {
     [Utils.ReadOnly]
     [SerializeField]
     private float _horizontal = 0f;
-
+    private int _conffettiAmount = 100;
     private int _conffettiCounter = 1;
 
     private void Awake() {
@@ -80,18 +80,17 @@ public class PlayerController : MonoBehaviour, IHaveSingleSound {
         _playerStats.AddKey(value);
     }
 
-    public void SetScore() {
+    public void SetScore(int value) {
         int currentScore = _playerStats.GetCurrentScore();
-        float characterPositionY = _characterStats.GetCharacterPositionY();
 
-        if ((int)(characterPositionY / 4) % (100 * _conffettiCounter) == 0) {
+        if (value >= _conffettiAmount * _conffettiCounter) {
             _conffettiCounter++;
             PlayVFX();
             PlaySFX(SoundFXTypes.InGame_100_Confetti);
         }
 
-        if (characterPositionY > currentScore) {
-            PlayerStats.SetCurrentScore((int)characterPositionY);
+        if (value > currentScore) {
+            PlayerStats.SetCurrentScore(value);
         }
     }
 

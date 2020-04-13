@@ -83,8 +83,8 @@ public class GameManager : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
     }
 
-    public void SetScore() {
-        _playerController.SetScore();
+    public void SetScore(int value) {
+        _playerController.SetScore(value);
 
         OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
     }
