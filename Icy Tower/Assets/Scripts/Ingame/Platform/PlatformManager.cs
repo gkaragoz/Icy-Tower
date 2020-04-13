@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class PlatformManager : MonoBehaviour{
+public class PlatformManager : MonoBehaviour {
 
     #region Singleton
 
@@ -32,14 +32,14 @@ public class PlatformManager : MonoBehaviour{
     }
 
     public void SpawnPlatforms() {
-        _platforms =new Queue<Platform>();
+        _platforms = new Queue<Platform>();
         for (int i = 0; i < ObjectPooler.instance.GetGameObjectsOnPool("Platform").Length; i++) {
             Platform platform = ObjectPooler.instance.SpawnFromPool("Platform").GetComponent<Platform>();
             platform.Floor = ++_floor;
             platform.SetText();
             platform.SetType(_platformTypeIndex);
             platform.SetScale(_platformStats.GetRandomScale());
-            platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor));
+            platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor, platform.gameObject.transform.localScale.x));
             _platforms.Enqueue(platform);
         }
     }
@@ -47,13 +47,13 @@ public class PlatformManager : MonoBehaviour{
     public Platform SpawnPlatform() {
         Platform platform = _platforms.Dequeue();
         platform.Floor = ++_floor;
-        if(platform.Floor % 100 == 0 ) {
+        if (platform.Floor % 100 == 0) {
             _platformTypeIndex++;
         }
         platform.SetText();
         platform.SetType(_platformTypeIndex);
         platform.SetScale(_platformStats.GetRandomScale());
-        platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor));
+        platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor, platform.gameObject.transform.localScale.x));
         _platforms.Enqueue(platform);
         return platform;
     }

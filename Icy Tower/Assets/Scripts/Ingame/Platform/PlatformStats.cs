@@ -88,8 +88,19 @@ public class PlatformStats : MonoBehaviour {
         return new Vector3(Random.Range(GetMinScale(), GetMaxScale()),GetThickness(),GetPrefab().transform.localScale.z);
     }
 
-    public Vector3 GetNewPosition(float initialSpawnPos, int lastSpawnedPlatform) {
-        float x = WorldSettings.instance.GetRandomBorderPosition().x;
+    public Vector3 GetNewPosition(float initialSpawnPos, int lastSpawnedPlatform,float localScaleX) {
+        float x =WorldSettings.instance.GetRandomBorderPosition().x;
+        if(x >= 0) {
+            if((x + (localScaleX/2)) > WorldSettings.instance.GetMapRightBorderPosition().x) {
+                float distance = (x + (localScaleX / 2)) - WorldSettings.instance.GetMapRightBorderPosition().x;
+                x -= distance;
+            }
+        } else {
+            if((x - (localScaleX /2 )) < WorldSettings.instance.GetMapLeftBorderPosition().x) {
+                float distance = (x - (localScaleX / 2)) - WorldSettings.instance.GetMapLeftBorderPosition().x;
+                x -= distance;
+            }
+        }
         float y = initialSpawnPos + (GetDistanceBetweenPlatforms() * lastSpawnedPlatform);
         float z = 0;
         return new Vector3(x, y, z);

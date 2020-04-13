@@ -133,6 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 37174844}
   - component: {fileID: 37174845}
+  - component: {fileID: 37174847}
+  - component: {fileID: 37174846}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Platform
@@ -167,6 +169,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7, y: 1, z: 8}
   m_Center: {x: 0, y: -0.68, z: 0}
+--- !u!114 &37174846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37174843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6c393dbcd5bc744a0a76f59549d747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _types: []
+  _floorCountText: {fileID: 0}
+--- !u!114 &37174847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37174843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82495dff4b9f3b5479d30e04b4e969d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _platformDefinition_Template: {fileID: 11400000, guid: f6954e28fb05655478b9c6b8b2b9da4d,
+    type: 2}
+  _platform: {fileID: 0}
 --- !u!1 &71368858
 GameObject:
   m_ObjectHideFlags: 0
@@ -2886,7 +2917,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.55e-43, y: -1.1212689e+17, z: 7.54e-43, w: -2.5549812}
+  m_BoundingSphereOverride: {x: -2.3404263e-24, y: 2.3937171e-21, z: -3.0590932e+31,
+    w: NaN}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
