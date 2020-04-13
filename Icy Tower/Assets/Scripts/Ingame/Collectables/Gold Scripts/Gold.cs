@@ -6,10 +6,9 @@ public class Gold : MonoBehaviour, IHaveSingleSound {
     private Transform _player = null;
 
     [SerializeField]
-    private int _value = 1;
+    private int _coinAmount = 1;
     private float _flySpeedDivisor = 5f;
     private float _minFlySpeed = 0.4f;
-    private int _coinScore = 0;
     private bool _hasInteractedWithMagnet = false;
     private Vector3 _initialPosition = Vector3.zero;
     private Quaternion _initialQuaternion = Quaternion.identity;
@@ -19,11 +18,6 @@ public class Gold : MonoBehaviour, IHaveSingleSound {
         _initialQuaternion = transform.localRotation;
     }
 
-    public int Value {
-        get {
-            return _value;
-        }
-    }
     private void FixedUpdate() {
         if (_hasInteractedWithMagnet) {
             FlyToPlayer();
@@ -44,7 +38,7 @@ public class Gold : MonoBehaviour, IHaveSingleSound {
             PlayVFX();
             PlaySFX(SoundFXTypes.InGame_Collect_Gold);
             SetVisibility(false);
-            GameManager.instance.AddGoldToPlayer(_coinScore);
+            GameManager.instance.AddGoldToPlayer(_coinAmount);
             _hasInteractedWithMagnet = false;
         } else if (other.tag == "CoinMagnet") {
             _hasInteractedWithMagnet = true;
