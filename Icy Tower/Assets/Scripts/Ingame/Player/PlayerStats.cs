@@ -111,6 +111,8 @@ public class PlayerStats : MonoBehaviour{
 
     public void LoadData() {
         PlayerData playerData = SaveSystem.LoadPlayer();
+        if (playerData == null)
+            return;
         SetHighScore(playerData.highScore);
         SetGold(playerData.playerGold);
     }
