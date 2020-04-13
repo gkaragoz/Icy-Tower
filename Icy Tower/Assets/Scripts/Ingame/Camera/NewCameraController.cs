@@ -83,7 +83,7 @@ public class NewCameraController : MonoBehaviour {
         if (_isLeanTweenPlaying) {
             return;
         }
-             
+
         _followers.transform.position = new Vector3(_followers.transform.position.x, transform.position.y - _followersOffset, _followers.transform.position.z);
 
         //Check if i died
@@ -106,8 +106,6 @@ public class NewCameraController : MonoBehaviour {
         }
     }
 
-
-
     void NormalMovement() {
         transform.Translate(0, speed * Time.deltaTime, 0);
 
@@ -122,15 +120,23 @@ public class NewCameraController : MonoBehaviour {
     }
 
     void Switcher() {
+
         if (_target.position.y > transform.position.y + _jumpOffset) {
             flyingUP = true;
             canMove = false;
         }
 
-        if (_target.position.y < transform.position.y) {
+        if (_target.position.y < transform.position.y && IsReachStartFloor()) {
             flyingUP = false;
             canMove = true;
         }
+    }
+
+    private bool IsReachStartFloor() {
+        if (_target.position.y > PlatformManager.instance.GetSpawnedPlatformPositionAtFloor(20).y)
+            return true;
+        else
+            return false;
     }
 
     public void WallWalk(int value) {

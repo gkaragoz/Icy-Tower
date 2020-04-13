@@ -60,4 +60,12 @@ public class PlatformManager : MonoBehaviour{
     public Vector3 GetLastSpawnedPlatformPosition() {
         return _platforms.ElementAt(_platforms.Count - 1).transform.position;
     }
+
+    public Vector3 GetSpawnedPlatformPositionAtFloor(int floor) {
+        foreach (Platform platform in _platforms) {
+            if (platform.Floor == floor)
+                return platform.transform.position;
+        }
+        return Vector3.zero;
+    }
 }
