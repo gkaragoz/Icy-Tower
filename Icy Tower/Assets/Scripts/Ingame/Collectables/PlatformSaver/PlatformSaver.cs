@@ -12,12 +12,10 @@ public class PlatformSaver : MonoBehaviour, IHaveSingleSound {
     [SerializeField]
     private Platform[] _platforms;
 
-
     private void Start() {
         _platformSaverStats = GetComponent<PlatformSaverStats>();
         _platformCountToMaximize = _platformSaverStats.GetPlatformCount();
-        LevelManager.instance.OnGameStateChanged += GetPlatforms;
-
+        GameManager.instance.OnGameStateChanged += GetPlatforms;
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -29,8 +27,8 @@ public class PlatformSaver : MonoBehaviour, IHaveSingleSound {
         }
     }
 
-    private void GetPlatforms(GameState state) {
-        if (state == GameState.Gameplay) {
+    private void GetPlatforms(GameState previousState, GameState currentState) {
+        if (currentState == GameState.Gameplay) {
             _platforms = new Platform[ObjectPooler.instance.GetGameObjectsOnPool("Platform").Length];
             for (int i = 0; i < _platforms.Length; i++) {
                 _platforms[i] = ObjectPooler.instance.GetGameObjectsOnPool("Platform")[i].GetComponent<Platform>();

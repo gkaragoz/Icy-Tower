@@ -16,3 +16,5 @@ MonoBehaviour:
   _currentScore: 0
   _highScore: 0
   _gold: 0
+  _key: 0
+  _gem: 0

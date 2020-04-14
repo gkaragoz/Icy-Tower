@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e946f7b21da8ceb48aa47d8f7b1eb052, type: 3}
+  m_Name: MainMenu_to_Gameplay
+  m_EditorClassIdentifier: 
+  state: 0
+  totalTime: 1
+  traversalDatas:
+  - name: Zoom In
+    position: {x: 0, y: 12, z: -8}
+    rotation: {x: -20, y: 0, z: 0}
+    positionTimeWeight: 1
+    rotationTimeWeight: 1
+    easeType: 6
+    _positionFlyTime: 0.16666667
+    _rotationFlyTime: 0.16666667
+  - name: Move To Top
+    position: {x: 0, y: 40, z: -8}
+    rotation: {x: -20, y: 0, z: 0}
+    positionTimeWeight: 4
+    rotationTimeWeight: 4
+    easeType: 6
+    _positionFlyTime: 0.6666667
+    _rotationFlyTime: 0.6666667
+  - name: Zoom Out
+    position: {x: 0, y: 34, z: -12}
+    rotation: {x: 0, y: 0, z: 0}
+    positionTimeWeight: 1
+    rotationTimeWeight: 1
+    easeType: 6
+    _positionFlyTime: 0.16666667
+    _rotationFlyTime: 0.16666667

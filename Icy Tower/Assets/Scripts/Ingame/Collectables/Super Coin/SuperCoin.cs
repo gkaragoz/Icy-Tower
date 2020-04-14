@@ -18,7 +18,9 @@ public class SuperCoin : MonoBehaviour, IPooledObject, IHaveSingleSound {
         if (other.tag == "FullCollider") {
             PlayVFX();
             PlaySFX(SoundFXTypes.InGame_Collect_SuperGold);
-            GameManager.instance.AddGoldToPlayer(_superCoinStats.GetAmount());
+
+            Account.instance.AddGold(_superCoinStats.GetAmount());
+
             gameObject.SetActive(false);
         }
     }

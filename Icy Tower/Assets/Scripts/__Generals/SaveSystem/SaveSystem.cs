@@ -10,9 +10,9 @@ public static class SaveSystem {
             string path = Application.persistentDataPath + "/player.ganover";
             FileStream fileStream;
             fileStream = new FileStream(path, FileMode.OpenOrCreate);
-            PlayerData playerData = new PlayerData(playerStats);
             //TODO:Encryption
-            formatter.Serialize(fileStream, playerData);
+            string json = JsonUtility.ToJson(playerStats);
+            formatter.Serialize(fileStream, json);
             fileStream.Close();
 
         } catch (System.Exception e) {
@@ -20,8 +20,7 @@ public static class SaveSystem {
         }
     }
 
-    public static PlayerData LoadPlayer() {
-
+    public static PlayerStats_SO LoadPlayer() {
         try {
             string path = Application.persistentDataPath + "/player.ganover";
 
@@ -29,7 +28,8 @@ public static class SaveSystem {
                 BinaryFormatter formatter = new BinaryFormatter();
                 FileStream fileStream = new FileStream(path, FileMode.Open);
                 //TODO:Decryption
-                PlayerData playerData = formatter.Deserialize(fileStream) as PlayerData;
+                PlayerStats_SO playerData = ScriptableObject.CreateInstance(typeof(PlayerStats_SO)) as PlayerStats_SO;
+                JsonUtility.FromJsonOverwrite((string)formatter.Deserialize(fileStream), playerData);
                 fileStream.Close();
                 return playerData;
 

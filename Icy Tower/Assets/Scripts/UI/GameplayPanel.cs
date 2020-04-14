@@ -19,7 +19,7 @@ public class GameplayPanel : MonoBehaviour {
     }
 
     private void Start() {
-        GameManager.instance.OnPlayerStatsChanged += OnPlayerStatsChanged;
+        Account.instance.OnPlayerStatsChanged += OnPlayerStatsChanged;
     }
 
     private void OnPlayerStatsChanged(PlayerStats playerStats) {

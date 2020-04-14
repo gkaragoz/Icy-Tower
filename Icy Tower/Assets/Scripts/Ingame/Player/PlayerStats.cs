@@ -1,42 +1,28 @@
 ﻿using UnityEngine;
 
-public class PlayerStats : MonoBehaviour{
-
-    [Header("Initialization")]
-    [SerializeField]
-    private PlayerStats_SO _playerDefinition_Template = null;
+public class PlayerStats : MonoBehaviour {
 
     [Header("Debug")]
     [Utils.ReadOnly]
     [SerializeField]
     private PlayerStats_SO _player = null;
 
-    #region Initializations
-
-    private void Awake() {
-        if (_playerDefinition_Template != null) {
-            _player = Instantiate(_playerDefinition_Template);
-        }
+    public void Init(PlayerStats_SO playerStats_SO) {
+        this._player = playerStats_SO;
     }
-
-    #endregion
 
     #region Increasers
 
-
     public void AddGold(int value) {
         _player.Gold += value;
-         SavePlayer();
     }
     
     public void AddKey(int value) {
         _player.Gold += value;
-        SavePlayer();
     }
 
     public void AddGem(int value) {
         _player.Gem += value;
-        SavePlayer();
     }
 
     #endregion
@@ -53,7 +39,6 @@ public class PlayerStats : MonoBehaviour{
 
     public void SetHighScore(int value) {
         _player.HighScore = value;
-        SavePlayer();
     }
 
     public void SetGold(int value) {
@@ -97,17 +82,5 @@ public class PlayerStats : MonoBehaviour{
     }
 
     #endregion
-
-    public void SavePlayer() {
-        SaveSystem.SavePlayer(_player);
-    }
-
-    public void LoadData() {
-        PlayerData playerData = SaveSystem.LoadPlayer();
-        if (playerData == null)
-            return;
-        SetHighScore(playerData.highScore);
-        SetGold(playerData.playerGold);
-    }
 
 }

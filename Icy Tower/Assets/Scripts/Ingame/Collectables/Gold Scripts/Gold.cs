@@ -38,7 +38,8 @@ public class Gold : MonoBehaviour, IHaveSingleSound {
             PlayVFX();
             PlaySFX(SoundFXTypes.InGame_Collect_Gold);
             SetVisibility(false);
-            GameManager.instance.AddGoldToPlayer(_coinAmount);
+
+            Account.instance.AddGold(_coinAmount);
             _hasInteractedWithMagnet = false;
         } else if (other.tag == "CoinMagnet") {
             _hasInteractedWithMagnet = true;

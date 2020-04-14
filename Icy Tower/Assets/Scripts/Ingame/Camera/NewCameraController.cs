@@ -1,19 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewCameraController : MonoBehaviour {
 
-    [System.Serializable]
-    public class CameraStates {
-        public GameState state;
-        public Vector3 position;
-        public Vector3 rotation;
-        public float positionTime;
-        public float rotationTime;
-        public LeanTweenType easeType;
-    }
-
+    [SerializeField]
+    private CameraState[] _cameraStates = null;
     [SerializeField]
     private Transform _target = null;
     [SerializeField]
@@ -22,9 +16,6 @@ public class NewCameraController : MonoBehaviour {
     private float _deadZoneOffset = 0f;
     [SerializeField]
     private float _followersOffset = 11f;
-
-    [SerializeField]
-    private CameraStates[] _cameraStates = null;
 
     [SerializeField]
     private float _jumpOffset = 0f;
@@ -40,77 +31,74 @@ public class NewCameraController : MonoBehaviour {
     private bool _isLeanTweenPlaying = false;
 
     private void Start() {
-        LevelManager.instance.OnGameStateChanged += OnGameStateChanged;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        GameManager.instance.OnGameStateChanged += OnGameStateChanged;
     }
 
-    private void MoveTo(GameState state) {
-        CameraStates currentState = _cameraStates.Where(a => a.state == state).FirstOrDefault();
-
-        LeanTween.move(this.gameObject, currentState.position, currentState.positionTime).setEase(currentState.easeType);
-        LeanTween.rotate(this.gameObject, currentState.rotation, currentState.rotationTime).setEase(currentState.easeType);
+    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1) {
+        _target = GameObject.FindGameObjectWithTag("Player").transform;
+        _followers = GameObject.FindGameObjectWithTag("Collector").transform;
     }
 
-    private void OnGameStateChanged(GameState state) {
-        switch (state) {
-            case GameState.MainMenu:
-                Debug.Log("MainMenu");
-                MoveTo(state);
-                break;
-            case GameState.GamePaused:
-                break;
-            case GameState.NewGame:
-                Debug.Log("NewGame");
-                MoveTo(state);
-                break;
-            case GameState.RestartGame:
-                break;
-            case GameState.GameplayCountdown:
-                break;
-            case GameState.Gameplay:
-                Debug.Log("Gameplay");
-                startMatch = true;
-                MoveTo(state);
-                break;
-            case GameState.GameOver:
-                startMatch = false;
-                break;
-            default:
-                break;
+    private void OnGameStateChanged(GameState previousState, GameState newState) {
+        Debug.Log("Previous State: " + previousState);
+        Debug.Log("New State: " + newState);
+
+        LeanTween.cancelAll();
+
+        foreach (CameraState cameraState in _cameraStates) {
+            if (cameraState.state == GetCameraState(previousState, newState)) {
+                Debug.Log("OYNAAAAAA " + cameraState.name);
+                cameraState.Run(this.gameObject);
+            }
+        }
+
+        if (newState == GameState.Gameplay) {
+            startMatch = true;
         }
     }
 
     private void Update() {
+        if (_target == null) {
+            return;
+        }
+        
+        if (_followers == null) {
+            return;
+        }
+
         if (_isLeanTweenPlaying) {
             return;
         }
-        if (HasReachedStartFloor()) {
-            _followers.transform.LeanMoveY(transform.position.y - _followersOffset, 1f);
-            
-        //Check if i died
-            if (_target.position.y < transform.position.y - _deadZoneOffset) {
-                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(60, 0, 0), speed * Time.deltaTime);
-                LevelManager.instance.OnClick_RestartGame();
-                return;
+
+        if (GameManager.instance.GetGameState() == GameState.Gameplay) {
+            if (HasReachedStartFloor()) {
+                _followers.transform.LeanMoveY(transform.position.y - _followersOffset, 1f);
+
+                //Check if i died
+                if (_target.position.y < transform.position.y - _deadZoneOffset) {
+                    transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(60, 0, 0), speed * Time.deltaTime);
+                    LevelManager.instance.OnClick_RestartGame();
+                    return;
+                }
             }
-        }
-        
 
-        if (startMatch) {
-            Switcher();
-        }
+            if (startMatch) {
+                Switcher();
+            }
 
-        if (canMove) {
-            NormalMovement();
-        }
+            if (canMove) {
+                NormalMovement();
+            }
 
-        if (flyingUP) {
-            FlyingUp();
+            if (flyingUP) {
+                FlyingUp();
+            }
         }
     }
 
     void NormalMovement() {
         transform.Translate(0, speed * Time.deltaTime, 0);
-
     }
 
     void FlyingUp() {
@@ -118,11 +106,9 @@ public class NewCameraController : MonoBehaviour {
         Vector3 position = this.transform.position;
         position.y = Mathf.Lerp(this.transform.position.y, _target.transform.position.y, interpolation * 2);
         this.transform.position = position;
-
     }
 
     void Switcher() {
-
         if (_target.position.y > transform.position.y + _jumpOffset) {
             flyingUP = true;
             canMove = false;
@@ -171,6 +157,21 @@ public class NewCameraController : MonoBehaviour {
 
             yield return null;
         }
+    }
+
+    private CameraStateEnums GetCameraState(GameState previousState, GameState targetState) {
+        if (previousState == GameState.MainMenu && targetState == GameState.GameplayCountdown)
+            return CameraStateEnums.MainMenu_to_Gameplay;
+        if (previousState == GameState.Gameplay && targetState == GameState.MainMenu)
+            return CameraStateEnums.Gameplay_to_MainMenu;
+        if (previousState == GameState.MainMenu && targetState == GameState.Wardrobe)
+            return CameraStateEnums.MainMenu_to_Wardrobe;
+        if (previousState == GameState.Wardrobe && targetState == GameState.MainMenu)
+            return CameraStateEnums.Wardrobe_to_MainMenu;
+        if (previousState == GameState.Loading && targetState == GameState.MainMenu)
+            return CameraStateEnums.MainMenu_to_MainMenu;
+
+        return CameraStateEnums.None;
     }
 
 }

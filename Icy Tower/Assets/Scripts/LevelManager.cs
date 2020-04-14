@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour{
 
     [Header("Initializations")]
     [SerializeField]
-    private int _countDownTime = 3;
-
-    public Action<GameState> OnGameStateChanged;
-
-    [Header("Debug")]
-    [SerializeField]
-    [Utils.ReadOnly]
-    private GameState _gameState = GameState.MainMenu;
+    private int _countDownTime = 5;
 
     [SerializeField]
     [Utils.ReadOnly]
@@ -32,19 +23,9 @@ public class LevelManager : MonoBehaviour{
 
     #endregion
 
-    public GameState GameStateEnum {
-        get {
-            return _gameState;
-        }
-        private set {
-            _gameState = value;
-            Debug.Log(">>GAME STATE HAS BEEN CHANGED: " + _gameState.ToString());
-            OnGameStateChanged?.Invoke(_gameState);
-        }
-    }
-
     private IEnumerator IStartGameCountdown() {
-        GameStateEnum = GameState.GameplayCountdown;
+        GameManager.instance.SetGameState(GameState.GameplayCountdown);
+
         yield return new WaitForSeconds(_countDownTime);
 
         StartGame();
@@ -52,9 +33,8 @@ public class LevelManager : MonoBehaviour{
 
     private void StartGame() {
         SpawnManager.instance.SpawnAll();
-        GameStateEnum = GameState.Gameplay;
 
-      //  Camera.main.GetComponent<CameraController>().scrollSpeed = 0f;
+        GameManager.instance.SetGameState(GameState.Gameplay);
     }
 
     private void Pause() {
@@ -62,7 +42,7 @@ public class LevelManager : MonoBehaviour{
 
         _isGamePaused = true;
 
-        GameStateEnum = GameState.GamePaused;
+        GameManager.instance.SetGameState(GameState.GamePaused);
     }
 
     private void Unpause() {
@@ -70,11 +50,10 @@ public class LevelManager : MonoBehaviour{
 
         _isGamePaused = false;
 
-        GameStateEnum = GameState.Gameplay;
+        GameManager.instance.SetGameState(GameState.Gameplay);
     }
 
     public void OnClick_NewGame() {
-        GameStateEnum = GameState.NewGame;
         StartCoroutine(IStartGameCountdown());
     }
 
@@ -89,10 +68,7 @@ public class LevelManager : MonoBehaviour{
     }
 
     public void OnClick_RestartGame() {
-        SceneManager.LoadScene("Scene");
         OnClick_NewGame();
-
-        GameStateEnum = GameState.RestartGame;
     }
 
 }

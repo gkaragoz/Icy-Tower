@@ -14,7 +14,9 @@ public class Key : MonoBehaviour, IHaveSingleSound{
         if (other.tag == "FullCollider") {
             PlayVFX();
             PlaySFX(SoundFXTypes.InGame_Collect_Key);
-            GameManager.instance.AddKeyToPlayer(_keyStats.GetAmount());
+
+            Account.instance.AddKey(_keyStats.GetAmount());
+
             gameObject.SetActive(false);
         }
     }

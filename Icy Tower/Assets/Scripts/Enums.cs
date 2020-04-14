@@ -1,11 +1,20 @@
 ﻿public enum GameState {
+    Loading,
     MainMenu,
     GamePaused,
-    NewGame,
-    RestartGame,
     GameplayCountdown,
     Gameplay,
-    GameOver
+    GameOver,
+    Wardrobe
+}
+
+public enum CameraStateEnums {
+    MainMenu_to_Gameplay,
+    Gameplay_to_MainMenu,
+    MainMenu_to_Wardrobe,
+    Wardrobe_to_MainMenu,
+    MainMenu_to_MainMenu,
+    None
 }
 
 public enum GoldHolderTypes {

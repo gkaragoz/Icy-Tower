@@ -1,27 +1,18 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    [Header("Initializations")]
-    [SerializeField]
-    private CollectableSpawner _collectableSpawner = null;
-    [SerializeField]
-    private PlayerController _playerController = null;
-    [SerializeField]
-    private PlayerStats _playerStats = null;
-    [SerializeField]
-    private PlatformStats _platformStats = null;
-    private int _conffettiAmount = 100;
-    private int _conffettiCounter = 1;
+    public Action<GameState, GameState> OnGameStateChanged;
 
-    public Action<PlayerStats> OnPlayerStatsChanged;
+    [SerializeField]
+    private LoadManager _loadManager = null;
 
     [Header("Debug")]
     [SerializeField]
     [Utils.ReadOnly]
-    private bool _hasGameObjectsInitialized = false;
+    private GameState _gameState = GameState.Loading;
 
     #region Singleton
 
@@ -31,88 +22,71 @@ public class GameManager : MonoBehaviour {
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
-        _playerStats.LoadData();
     }
 
     #endregion
 
     private void Start() {
-        LevelManager.instance.OnGameStateChanged += InitializeNewGame;
+        SceneManager.sceneLoaded += OnSceneActivated;
+
+        _loadManager.OnAccountLoaded += OnAccountLoaded;
+        _loadManager.OnSceneReady += OnSceneReady;
+        _loadManager.OnPoolLoaded += OnPoolLoaded;
+
+        _loadManager.LoadAccount();
+        _loadManager.LoadScene();
+        _loadManager.LoadPool();
     }
 
-    private void InitializeNewGame(GameState state) {
-        if (state == GameState.NewGame) {
-            InitializePool();
-        } else if (state == GameState.Gameplay) {
-           // _collectableSpawner.StartGoldSpawns();
-            //_collectableSpawner.StartPowerUpSpawns();
-        }
+
+    private void OnAccountLoaded() {
+        Debug.Log("Account loaded!");
+    }
+
+    private void OnSceneReady() {
+        _loadManager.OnSceneReady -= OnSceneReady;
+        Debug.Log("Ready!");
+    }
+
+    private void OnPoolLoaded() {
+        Debug.Log("Pool loaded!");
+    }
+    private void OnSceneActivated(Scene arg0, LoadSceneMode arg1) {
+        SetGameState(GameState.MainMenu);
     }
 
     private void Update() {
-        int currentFloor = ((int)_playerStats.transform.position.y - (int)PlatformManager.instance.InitialSpawnPosition) /(int) _platformStats.GetDistanceBetweenPlatforms() ;
-        SetScore(currentFloor);
-    }
-
-    private void InitializePool() {
-        if (!_hasGameObjectsInitialized) {
-            ObjectPooler.instance.InitializePool("Platform");
-            ObjectPooler.instance.InitializePool("Wall");
-
-            foreach (string goldType in (string[])Enum.GetNames(typeof(GoldHolderTypes))) {
-                ObjectPooler.instance.InitializePool(goldType, true);
-            }
-
-            foreach (string vfxType in (string[])Enum.GetNames(typeof(VFXTypes))) {
-                ObjectPooler.instance.InitializePool(vfxType);
-            }
-
-            foreach (string collectable in (string[])Enum.GetNames(typeof(Collectables))) {
-                ObjectPooler.instance.InitializePool(collectable);
-            }
-
-            foreach (string soundfxtype in (string[])Enum.GetNames(typeof(SoundFXTypes))) {
-                ObjectPooler.instance.InitializePool(soundfxtype);
-            }
-
-            _hasGameObjectsInitialized = true;
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            _loadManager.OpenLoadedScene();
         }
     }
 
-
-    public void AddGoldToPlayer(int value) {
-        _playerController.AddGold(value);
-
-        OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
+    public GameState GetGameState() {
+        return this._gameState;
     }
 
-    public void AddKeyToPlayer(int value) {
-        _playerController.AddKey(value);
+    public void SetGameState(GameState state) {
+        GameState previousState = this._gameState;
+        this._gameState = state;
 
-        OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
-    }
-
-
-    private void PlayVFX() {
-        ObjectPooler.instance.SpawnFromPool(VFXTypes.VFXConffetti.ToString(), new Vector3(0, _playerStats.transform.position.y, 0));
-    }
-
-    public void PlaySFX(SoundFXTypes sfxType) {
-        ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), _playerStats.transform.position);
-    }
-
-    public void SetScore(int currentFloor) {
-
-        if (_playerStats.GetCurrentScore() <= currentFloor) {
-            _playerStats.SetCurrentScore(currentFloor);
-            OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
+        switch (state) {
+            case GameState.Loading:
+                break;
+            case GameState.MainMenu:
+                break;
+            case GameState.GamePaused:
+                break;
+            case GameState.GameplayCountdown:
+                break;
+            case GameState.Gameplay:
+                break;
+            case GameState.GameOver:
+                break;
+            default:
+                break;
         }
 
-        if (currentFloor >= _conffettiAmount * _conffettiCounter) {
-            _conffettiCounter++;
-            PlayVFX();
-            PlaySFX(SoundFXTypes.InGame_100_Confetti);
-        }
+        OnGameStateChanged?.Invoke(previousState, this._gameState);
     }
 
 }
