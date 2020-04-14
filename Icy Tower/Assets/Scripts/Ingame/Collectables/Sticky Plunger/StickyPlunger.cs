@@ -123,12 +123,16 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
         }
         if (other.tag == "StickyPlunger") {
             _climbTime = _stickyPlungerStats.GetDuration();
+            other.gameObject.SetActive(false);
+            PlaySFX(SoundFXTypes.InGame_Collect_Slot_Powerup);
+            if(_hasUsedStickyPlunger == true) {
+                _climbTime = _stickyPlungerStats.GetDuration();
+                return;
+            }
             _hasUsedStickyPlunger = true;
             JumpToClosestWall();
             PlayVFX();
-            PlaySFX(SoundFXTypes.InGame_Collect_Slot_Powerup);
             PlayLoopableSFX();
-            other.gameObject.SetActive(false);
         }
     }
 
@@ -145,9 +149,7 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
 
             if (_climbTime <= 0) {
                 LeaveWall();
-
-                StopVFX();
-                StopLoopableSFX();
+               
                 break;
             }
         }
@@ -184,6 +186,8 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
         _isCollideWithLeftWall = false;
         _hasUsedStickyPlunger = false;
         Camera.main.GetComponent<NewCameraController>().WallWalk(0);
+        StopVFX();
+        StopLoopableSFX();
 
     }
 

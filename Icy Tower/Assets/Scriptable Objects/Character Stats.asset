@@ -21,4 +21,4 @@ MonoBehaviour:
   _requiredVelocityForComboJump: 10
   _footPositionOffset: 0.5
   _playerPositionY: 0
-  _localGravity: 1
+  _localGravity: 2
