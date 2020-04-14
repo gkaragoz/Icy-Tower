@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerStats))]
-public class PlayerController : MonoBehaviour, IHaveSingleSound {
+public class PlayerController : MonoBehaviour{
 
     public PlayerStats PlayerStats { get { return _playerStats; } }
 
@@ -26,8 +26,7 @@ public class PlayerController : MonoBehaviour, IHaveSingleSound {
     [Utils.ReadOnly]
     [SerializeField]
     private float _horizontal = 0f;
-    private int _conffettiAmount = 100;
-    private int _conffettiCounter = 1;
+
 
     private void Awake() {
         _characterManager = GetComponent<CharacterManager>();
@@ -80,20 +79,6 @@ public class PlayerController : MonoBehaviour, IHaveSingleSound {
         _playerStats.AddKey(value);
     }
 
-    public void SetScore(int value) {
-        int currentScore = _playerStats.GetCurrentScore();
-
-        if (value >= _conffettiAmount * _conffettiCounter) {
-            _conffettiCounter++;
-            PlayVFX();
-            PlaySFX(SoundFXTypes.InGame_100_Confetti);
-        }
-
-        if (value > currentScore) {
-            PlayerStats.SetCurrentScore(value);
-        }
-    }
-
     public void SetMoveLeft(bool moveLeft) {
         _isMovingLeft = moveLeft;
     }
@@ -101,11 +86,4 @@ public class PlayerController : MonoBehaviour, IHaveSingleSound {
         _isMovingRight = moveRight;
     }
 
-    private void PlayVFX() {
-        ObjectPooler.instance.SpawnFromPool(VFXTypes.VFXConffetti.ToString(), new Vector3(0, transform.position.y, 0));
-    }
-
-    public void PlaySFX(SoundFXTypes sfxType) {
-        ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
-    }
 }

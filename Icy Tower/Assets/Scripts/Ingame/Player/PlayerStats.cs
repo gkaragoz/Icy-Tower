@@ -23,13 +23,6 @@ public class PlayerStats : MonoBehaviour{
 
     #region Increasers
 
-    public void AddCurrentScore(int value) {
-        _player.CurrentScore += value;
-
-        if (_player.CurrentScore >= _player.HighScore) {
-            SetHighScore(_player.CurrentScore);
-        }
-    }
 
     public void AddGold(int value) {
         _player.Gold += value;

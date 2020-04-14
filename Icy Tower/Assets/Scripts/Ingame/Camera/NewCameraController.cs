@@ -85,14 +85,15 @@ public class NewCameraController : MonoBehaviour {
         }
         if (HasReachedStartFloor()) {
             _followers.transform.LeanMoveY(transform.position.y - _followersOffset, 1f);
+            
+        //Check if i died
+            if (_target.position.y < transform.position.y - _deadZoneOffset) {
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(60, 0, 0), speed * Time.deltaTime);
+                LevelManager.instance.OnClick_RestartGame();
+                return;
+            }
         }
         
-        //Check if i died
-        if (_target.position.y < transform.position.y - _deadZoneOffset) {
-            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(60, 0, 0), speed * Time.deltaTime);
-            LevelManager.instance.OnClick_RestartGame();
-            return;
-        }
 
         if (startMatch) {
             Switcher();

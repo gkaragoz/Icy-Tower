@@ -107,7 +107,6 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
             if (_hit.transform.tag == _jumpableTag && IsFalling == true) {
                 IsJumping = false;
                 StopLoopVFX();
-                GameManager.instance.SetScore(_hit.collider.gameObject.GetComponent<Platform>().Floor);
             }
         } else {
             IsJumping = true;

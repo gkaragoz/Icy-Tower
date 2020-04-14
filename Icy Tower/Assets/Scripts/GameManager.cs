@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour {
     private PlayerController _playerController = null;
     [SerializeField]
     private PlayerStats _playerStats = null;
+    [SerializeField]
+    private PlatformStats _platformStats = null;
+    private int _conffettiAmount = 100;
+    private int _conffettiCounter = 1;
 
     public Action<PlayerStats> OnPlayerStatsChanged;
 
@@ -40,9 +44,14 @@ public class GameManager : MonoBehaviour {
         if (state == GameState.NewGame) {
             InitializePool();
         } else if (state == GameState.Gameplay) {
-            _collectableSpawner.StartGoldSpawns();
-            _collectableSpawner.StartPowerUpSpawns();
+           // _collectableSpawner.StartGoldSpawns();
+            //_collectableSpawner.StartPowerUpSpawns();
         }
+    }
+
+    private void Update() {
+        int currentFloor = ((int)_playerStats.transform.position.y - (int)PlatformManager.instance.InitialSpawnPosition) /(int) _platformStats.GetDistanceBetweenPlatforms() ;
+        SetScore(currentFloor);
     }
 
     private void InitializePool() {
@@ -83,10 +92,27 @@ public class GameManager : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
     }
 
-    public void SetScore(int value) {
-        _playerController.SetScore(value);
 
-        OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
+    private void PlayVFX() {
+        ObjectPooler.instance.SpawnFromPool(VFXTypes.VFXConffetti.ToString(), new Vector3(0, _playerStats.transform.position.y, 0));
+    }
+
+    public void PlaySFX(SoundFXTypes sfxType) {
+        ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), _playerStats.transform.position);
+    }
+
+    public void SetScore(int currentFloor) {
+
+        if (_playerStats.GetCurrentScore() <= currentFloor) {
+            _playerStats.SetCurrentScore(currentFloor);
+            OnPlayerStatsChanged?.Invoke(_playerController.PlayerStats);
+        }
+
+        if (currentFloor >= _conffettiAmount * _conffettiCounter) {
+            _conffettiCounter++;
+            PlayVFX();
+            PlaySFX(SoundFXTypes.InGame_100_Confetti);
+        }
     }
 
 }

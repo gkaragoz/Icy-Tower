@@ -16,6 +16,7 @@ public class PlatformManager : MonoBehaviour {
     }
 
     #endregion
+
     [SerializeField]
     private float _initialSpawnPosition = 44f;
     [SerializeField]
@@ -23,9 +24,15 @@ public class PlatformManager : MonoBehaviour {
     private PlatformStats _platformStats;
     [SerializeField]
     [Utils.ReadOnly]
+
     private int _floor = 0;
     private int _platformTypeIndex = 0;
     private Queue<Platform> _platforms = null;
+
+    public float InitialSpawnPosition {
+        get { return _initialSpawnPosition; }
+    }
+
 
     private void Start() {
         _platformStats = GetComponent<PlatformStats>();

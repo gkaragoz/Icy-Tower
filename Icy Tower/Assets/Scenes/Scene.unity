@@ -1552,7 +1552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 2112543045}
   _followers: {fileID: 572924028}
-  _deadZoneOffset: 15
+  _deadZoneOffset: 12
   _followersOffset: 20
   _cameraStates:
   - state: 0
@@ -2699,6 +2699,7 @@ MonoBehaviour:
   _collectableSpawner: {fileID: 1830753074}
   _playerController: {fileID: 2112543046}
   _playerStats: {fileID: 2112543052}
+  _platformStats: {fileID: 1538459621}
   _hasGameObjectsInitialized: 0
 --- !u!1 &1019931895
 GameObject:
@@ -3919,7 +3920,7 @@ MonoBehaviour:
     name: Platform
     prefab: {fileID: 8645313060680749039, guid: c3a647a84af2c0240814e432b6d7bfb4,
       type: 3}
-    size: 20
+    size: 40
   - parentTransform: {fileID: 1352614923}
     name: Wall
     prefab: {fileID: 4939431531683005552, guid: 99ce3472dbc0e01478837313fcc6b140,
@@ -4378,9 +4379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5dbd669f1f7d954bb64c2d2c04f5892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _goldSpawnRate: 1
-  _powerUpSpawnRate: 1
-  _isRunning: 0
 --- !u!1001 &1854658518
 PrefabInstance:
   m_ObjectHideFlags: 0

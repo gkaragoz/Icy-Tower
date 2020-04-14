@@ -1,53 +1,20 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class CollectableSpawner : MonoBehaviour {
 
-    public bool IsRunning { get { return _isRunning; } }
-    [SerializeField]
-    private float _goldSpawnRate = 3f;
-    [SerializeField]
-    private float _powerUpSpawnRate= 5f;
+    #region Singleton
 
-    private float _lastSpawnedGoldPosition = 0f;
-
-    [Header("Debug")]
-    [SerializeField]
-    [Utils.ReadOnly]
-    private bool _isRunning = false;
-    [SerializeField]
-    [Utils.ReadOnly]
-    private Coroutine _checkGoldCoroutine = null;
-    [SerializeField]
-    [Utils.ReadOnly]
-    private Coroutine _checkPowerUpCoroutine = null;
-
-    private IEnumerator ICheckGolds() {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(_goldSpawnRate);
-
-        while (true) {
-            yield return waitForSeconds;
-
-            SpawnGold();
-        }
+    public static CollectableSpawner instance;
+    private void Awake() {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
     }
 
-    private IEnumerator ICheckPowerUps() {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(_powerUpSpawnRate);
+    #endregion
 
-        while (true) {
-            yield return waitForSeconds;
-
-            SpawnPowerUps();
-        }
-    }
-
-    private void SpawnGold() {
-        Vector3 randomPosition = GetRandomSpawnPosition();
-
-        ObjectPooler.instance.SpawnFromPool(GetRandomGoldHolderType(), randomPosition, Quaternion.identity);
-    }
 
     private void SpawnPowerUps() {
         Vector3 randomPosition = GetRandomSpawnPosition();
@@ -63,34 +30,15 @@ public class CollectableSpawner : MonoBehaviour {
     }
 
     private string GetRandomGoldHolderType() {
-        int enumLenght = Enum.GetNames(typeof(GoldHolderTypes)).Length;
+        int enumLenght = System.Enum.GetNames(typeof(GoldHolderTypes)).Length;
         int randomType = UnityEngine.Random.Range(0, enumLenght);
-        return Enum.GetName(typeof(GoldHolderTypes), randomType);
+        return System.Enum.GetName(typeof(GoldHolderTypes), randomType);
     }
 
     private string GetRandomPowerUpToSpawn() {
-        int enumLenght = Enum.GetNames(typeof(Collectables)).Length;
+        int enumLenght = System.Enum.GetNames(typeof(Collectables)).Length;
         int randomType = UnityEngine.Random.Range(0, enumLenght);
-        return Enum.GetName(typeof(Collectables), randomType);
-    }
-
-    public void StartGoldSpawns() {
-        if (_checkGoldCoroutine == null) {
-            _checkGoldCoroutine = StartCoroutine(ICheckGolds());
-            _isRunning = true;
-        }
-    }
-
-    public void StartPowerUpSpawns() {
-        if (_checkPowerUpCoroutine == null) {
-            _checkPowerUpCoroutine = StartCoroutine(ICheckPowerUps());
-            _isRunning = true;
-        }
-    }
-
-    public void StopGoldSpawns() {
-        StopCoroutine(_checkGoldCoroutine);
-        _isRunning = false;
+        return System.Enum.GetName(typeof(Collectables), randomType);
     }
 
 }
