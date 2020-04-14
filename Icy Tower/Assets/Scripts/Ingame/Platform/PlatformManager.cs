@@ -63,6 +63,7 @@ public class PlatformManager : MonoBehaviour {
     }
 
     public Vector3 GetSpawnedPlatformPositionAtFloor(int floor) {
+        
         foreach (Platform platform in _platforms) {
             if (platform.Floor == floor)
                 return platform.transform.position;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour{
 
@@ -88,6 +89,7 @@ public class LevelManager : MonoBehaviour{
     }
 
     public void OnClick_RestartGame() {
+        SceneManager.LoadScene("Scene");
         OnClick_NewGame();
 
         GameStateEnum = GameState.RestartGame;

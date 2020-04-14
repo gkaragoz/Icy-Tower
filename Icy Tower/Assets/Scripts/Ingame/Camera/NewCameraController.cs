@@ -83,17 +83,18 @@ public class NewCameraController : MonoBehaviour {
         if (_isLeanTweenPlaying) {
             return;
         }
-
-        _followers.transform.position = new Vector3(_followers.transform.position.x, transform.position.y - _followersOffset, _followers.transform.position.z);
-
+        if (HasReachedStartFloor()) {
+            _followers.transform.LeanMoveY(transform.position.y - _followersOffset, 1f);
+        }
+        
         //Check if i died
         if (_target.position.y < transform.position.y - _deadZoneOffset) {
             transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(60, 0, 0), speed * Time.deltaTime);
+            LevelManager.instance.OnClick_RestartGame();
             return;
         }
 
         if (startMatch) {
-
             Switcher();
         }
 
@@ -126,13 +127,13 @@ public class NewCameraController : MonoBehaviour {
             canMove = false;
         }
 
-        if (_target.position.y < transform.position.y && IsReachStartFloor()) {
+        if (_target.position.y < transform.position.y && HasReachedStartFloor()) {
             flyingUP = false;
             canMove = true;
         }
     }
 
-    private bool IsReachStartFloor() {
+    private bool HasReachedStartFloor() {
         if (_target.position.y > PlatformManager.instance.GetSpawnedPlatformPositionAtFloor(20).y)
             return true;
         else
@@ -165,7 +166,6 @@ public class NewCameraController : MonoBehaviour {
                 rotation.x = -20;
             }
 
-
             this.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(rotation), interpolation * 2);
 
             yield return null;
@@ -173,6 +173,3 @@ public class NewCameraController : MonoBehaviour {
     }
 
 }
-
-
-//T=x-2 R=y10 x-25

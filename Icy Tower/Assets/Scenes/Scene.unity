@@ -1228,8 +1228,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 23.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 572924028}
   - {fileID: 2126290313}
+  - {fileID: 572924028}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1874,7 +1874,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 343136661}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &572924029
 Rigidbody:
@@ -4379,7 +4379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _goldSpawnRate: 1
-  _powerUpSpawnRate: 2
+  _powerUpSpawnRate: 1
   _isRunning: 0
 --- !u!1001 &1854658518
 PrefabInstance:
@@ -4772,7 +4772,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 343136661}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2126290314
 MonoBehaviour:
