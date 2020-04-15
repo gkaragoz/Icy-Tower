@@ -44,6 +44,9 @@ TextureImporter:
   - first:
       213: 9176320843375299377
     second: UI_DailyRewards_NotSelected_Bg
+  - first:
+      213: 42237134112971839
+    second: UI_Long_Bg_Flama
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -143,8 +146,8 @@ TextureImporter:
       name: UI_Button_Play_BG
       rect:
         serializedVersion: 2
-        x: 1260
-        y: 879
+        x: 1149
+        y: 849
         width: 285
         height: 292
       alignment: 0
@@ -164,8 +167,8 @@ TextureImporter:
       name: UI_Button_Settings_BG
       rect:
         serializedVersion: 2
-        x: 1652
-        y: 877
+        x: 1657
+        y: 850
         width: 285
         height: 292
       alignment: 0
@@ -316,7 +319,7 @@ TextureImporter:
         width: 1055
         height: 243
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -324,6 +327,27 @@ TextureImporter:
       bones: []
       spriteID: 13bc5665037d85f70800000000000000
       internalID: 9176320843375299377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Long_Bg_Flama
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 363
+        width: 997
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3c522f137e069000800000000000000
+      internalID: 42237134112971839
       vertices: []
       indices: 
       edges: []
