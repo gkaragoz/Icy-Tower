@@ -17,6 +17,33 @@ TextureImporter:
   - first:
       213: -5769123934347698725
     second: UI_Wardrobe_Background
+  - first:
+      213: -3333287543173532273
+    second: UI_Button_Play_BG
+  - first:
+      213: -2485803791871170643
+    second: UI_Button_Settings_BG
+  - first:
+      213: -3397235928893653228
+    second: UI_Ingame_Button_Text_Bg
+  - first:
+      213: 6328259452929791909
+    second: UI_Slot_Bg
+  - first:
+      213: 7808898641839197354
+    second: UI_Wardrobe_Tab_Bg
+  - first:
+      213: -1632533376822552476
+    second: UI_Wardrobe_Tab_Selected_Bg
+  - first:
+      213: -5769123934347698725
+    second: UI_Wardrobe_Panel_Bg
+  - first:
+      213: -6888488077793617863
+    second: UI_DailyRewards_Selected_Bg
+  - first:
+      213: 9176320843375299377
+    second: UI_DailyRewards_NotSelected_Bg
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -113,13 +140,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_Short_Background
+      name: UI_Button_Play_BG
       rect:
         serializedVersion: 2
-        x: 0
-        y: 775
-        width: 1000
-        height: 1273
+        x: 1260
+        y: 879
+        width: 285
+        height: 292
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,16 +161,37 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Slot_Bg_Selected_03
+      name: UI_Button_Settings_BG
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1015
-        height: 232
+        x: 1652
+        y: 877
+        width: 285
+        height: 292
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da723342f96a08dd0800000000000000
+      internalID: -2485803791871170643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Ingame_Button_Text_Bg
+      rect:
+        serializedVersion: 2
+        x: 1681
+        y: 1807
+        width: 210
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 13, y: 43, z: 17, w: 10}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -155,13 +203,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Slot_Bg_NonActive_03
+      name: UI_Slot_Bg
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 1015
-        height: 232
+        x: 1286
+        y: 1321
+        width: 232
+        height: 310
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,13 +224,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Slot_Bg_04
+      name: UI_Wardrobe_Tab_Bg
       rect:
         serializedVersion: 2
-        x: 29
-        y: 406
-        width: 237
-        height: 328
+        x: 1187
+        y: 1819
+        width: 186
+        height: 183
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,15 +245,36 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Wardrobe_Background
+      name: UI_Wardrobe_Tab_Selected_Bg
       rect:
         serializedVersion: 2
-        x: 1179
-        y: 274
-        width: 869
-        height: 1774
+        x: 1443
+        y: 1819
+        width: 186
+        height: 183
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 468d5861b831859e0800000000000000
+      internalID: -1632533376822552476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wardrobe_Panel_Bg
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 1174
+        width: 1090
+        height: 866
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -213,6 +282,48 @@ TextureImporter:
       bones: []
       spriteID: bdd500c0954ffefa0800000000000000
       internalID: -5769123934347698725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_DailyRewards_Selected_Bg
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 892
+        width: 1055
+        height: 243
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 938199b079c2760a0800000000000000
+      internalID: -6888488077793617863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_DailyRewards_NotSelected_Bg
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 631
+        width: 1055
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13bc5665037d85f70800000000000000
+      internalID: 9176320843375299377
       vertices: []
       indices: 
       edges: []

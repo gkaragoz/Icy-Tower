@@ -163,7 +163,7 @@ TextureImporter:
     second: UI_General_Button_BG_01
   - first:
       213: 1153231485739627187
-    second: UI_Header_Bg_01
+    second: UI_Preparation_Header_Bg
   - first:
       213: -7173719092676448167
     second: UI_General_Button_BG_02
@@ -212,6 +212,36 @@ TextureImporter:
   - first:
       213: -8370698954941881840
     second: UI_Button_Pause
+  - first:
+      213: -3583700648726284267
+    second: UI_General_Button_Bg
+  - first:
+      213: -4415063988978182056
+    second: UI_General_Button_Frame_Bg
+  - first:
+      213: -5132668388981718210
+    second: UI_Icon_Controller
+  - first:
+      213: 2628935191141280533
+    second: UI_Icon_Volume
+  - first:
+      213: 2337282740452662629
+    second: UI_MainScreen_Money_Bg
+  - first:
+      213: 106930806047956593
+    second: UI_Icon_Facebook
+  - first:
+      213: 5506137133047741760
+    second: UI_Icon_GooglePlay
+  - first:
+      213: 715453175921277195
+    second: UI_Icon_Language
+  - first:
+      213: -6782774023629196666
+    second: UI_Medium_Background
+  - first:
+      213: 3062907738086368065
+    second: UI_Icon_PowerUp_Key
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -308,34 +338,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI_Slot_BG_01
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1705
-        width: 920
-        height: 311
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 518355b4f33244ec0800000000000000
-      internalID: -3583700648726284267
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: UI_Long_Background
       rect:
         serializedVersion: 2
-        x: 1144
-        y: 203
-        width: 889
-        height: 1830
+        x: 1041
+        y: 236
+        width: 1000
+        height: 1812
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -353,10 +362,10 @@ TextureImporter:
       name: UI_Icon_Slot_BG
       rect:
         serializedVersion: 2
-        x: 16
-        y: 1503
-        width: 178
-        height: 184
+        x: 30
+        y: 1831
+        width: 184
+        height: 190
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -371,32 +380,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Buy_Button_BG
-      rect:
-        serializedVersion: 2
-        x: 223
-        y: 1529
-        width: 337
-        height: 127
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 80c0f69014244ed80800000000000000
-      internalID: -8222374172573103096
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: UI_Icon_Buy_Gold
       rect:
         serializedVersion: 2
-        x: 600
-        y: 1544
+        x: 800
+        y: 1949
         width: 80
         height: 83
       alignment: 0
@@ -416,8 +404,8 @@ TextureImporter:
       name: UI_Icon_Buy_Gem
       rect:
         serializedVersion: 2
-        x: 724
-        y: 1548
+        x: 928
+        y: 1942
         width: 62
         height: 87
       alignment: 0
@@ -434,76 +422,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Social_Player_Background
-      rect:
-        serializedVersion: 2
-        x: 888
-        y: 1120
-        width: 202
-        height: 334
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 90bf73bdc4e83fa00800000000000000
-      internalID: 789130820466506505
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_Slot_BG_02
-      rect:
-        serializedVersion: 2
-        x: 13
-        y: 771
-        width: 895
-        height: 197
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 921f00e9eb8b71270800000000000000
-      internalID: 8221242773622288681
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_Icon_Social_Friends
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 832
-        width: 104
-        height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 21eb03beff0b36590800000000000000
-      internalID: -7682101926154945006
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: UI_Icon_Wardrobe_Head
       rect:
         serializedVersion: 2
-        x: 7
-        y: 660
-        width: 128
-        height: 69
+        x: 769
+        y: 1417
+        width: 125
+        height: 109
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -521,10 +446,10 @@ TextureImporter:
       name: UI_Icon_Wardrobe_Panths
       rect:
         serializedVersion: 2
-        x: 152
-        y: 657
-        width: 46
-        height: 77
+        x: 770
+        y: 1547
+        width: 125
+        height: 109
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -542,10 +467,10 @@ TextureImporter:
       name: UI_Icon_Wardrobe_Shoes
       rect:
         serializedVersion: 2
-        x: 242
-        y: 672
-        width: 99
-        height: 42
+        x: 898
+        y: 1417
+        width: 125
+        height: 109
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -563,10 +488,10 @@ TextureImporter:
       name: UI_Icon_Wardrobe_TShirts
       rect:
         serializedVersion: 2
-        x: 389
-        y: 657
-        width: 87
-        height: 67
+        x: 898
+        y: 1547
+        width: 125
+        height: 109
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -581,116 +506,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Icon_Wardrobe_Music
-      rect:
-        serializedVersion: 2
-        x: 514
-        y: 656
-        width: 97
-        height: 69
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b33cbaec563921e0800000000000000
-      internalID: -2222185168427535432
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_Icon_Wardrobe_Particles
-      rect:
-        serializedVersion: 2
-        x: 643
-        y: 657
-        width: 76
-        height: 74
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 28f34ea88959de700800000000000000
-      internalID: 571277210143702914
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_Wardrobe_Tab_Selected_Bg
-      rect:
-        serializedVersion: 2
-        x: 915
-        y: 587
-        width: 149
-        height: 176
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e290b9c4336ae640800000000000000
-      internalID: 5110005805578490600
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_Wardrobe_Bg_Line
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 596
-        width: 874
-        height: 22
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e1b294810c8063850800000000000000
-      internalID: 6356277545214225182
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_Social_Score_Bg
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 441
-        width: 196
-        height: 125
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 01d2c2b4c01b0e950800000000000000
-      internalID: 6476370930517683472
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: UI_Button_Close
       rect:
         serializedVersion: 2
-        x: 1032
-        y: 456
+        x: 399
+        y: 1555
         width: 92
         height: 88
       alignment: 0
@@ -707,34 +527,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_General_Button_BG_01
+      name: UI_Preparation_Header_Bg
       rect:
         serializedVersion: 2
-        x: 796
-        y: 298
-        width: 226
-        height: 112
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2f8d016aedd8e600800000000000000
-      internalID: 497891757544804138
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UI_Header_Bg_01
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 122
-        width: 631
-        height: 147
+        x: 1027
+        y: 54
+        width: 628
+        height: 148
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -752,10 +551,10 @@ TextureImporter:
       name: UI_General_Button_BG_02
       rect:
         serializedVersion: 2
-        x: 660
-        y: 72
-        width: 190
-        height: 190
+        x: 285
+        y: 1311
+        width: 192
+        height: 193
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -773,10 +572,10 @@ TextureImporter:
       name: UI_Icon_Back
       rect:
         serializedVersion: 2
-        x: 906
-        y: 168
-        width: 114
-        height: 94
+        x: 515
+        y: 1551
+        width: 119
+        height: 97
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -794,10 +593,10 @@ TextureImporter:
       name: UI_Icon_Play
       rect:
         serializedVersion: 2
-        x: 915
-        y: 49
-        width: 112
-        height: 96
+        x: 649
+        y: 1548
+        width: 119
+        height: 100
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -815,8 +614,8 @@ TextureImporter:
       name: "UI_Icon_V\u0131deoAds"
       rect:
         serializedVersion: 2
-        x: 1219
-        y: 33
+        x: 513
+        y: 1417
         width: 123
         height: 104
       alignment: 0
@@ -836,8 +635,8 @@ TextureImporter:
       name: UI_Icon_Tick
       rect:
         serializedVersion: 2
-        x: 1387
-        y: 49
+        x: 528
+        y: 1306
         width: 85
         height: 83
       alignment: 0
@@ -854,32 +653,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_Icon_Exclamation
-      rect:
-        serializedVersion: 2
-        x: 1516
-        y: 40
-        width: 45
-        height: 103
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8dff3b27345184ed0800000000000000
-      internalID: -2429668619534991400
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: UI_Icon_PowerUp_Umbrella
       rect:
         serializedVersion: 2
-        x: 7
-        y: 1334
+        x: 255
+        y: 1920
         width: 128
         height: 128
       alignment: 0
@@ -899,8 +677,8 @@ TextureImporter:
       name: UI_Icon_PowerUp_Pump
       rect:
         serializedVersion: 2
-        x: 135
-        y: 1334
+        x: 255
+        y: 1791
         width: 128
         height: 128
       alignment: 0
@@ -920,8 +698,8 @@ TextureImporter:
       name: UI_Icon_PowerUp_SlowTimer
       rect:
         serializedVersion: 2
-        x: 269
-        y: 1333
+        x: 389
+        y: 1920
         width: 128
         height: 128
       alignment: 0
@@ -941,8 +719,8 @@ TextureImporter:
       name: UI_Icon_PowerUp_SaverBlock
       rect:
         serializedVersion: 2
-        x: 422
-        y: 1333
+        x: 383
+        y: 1791
         width: 128
         height: 128
       alignment: 0
@@ -962,8 +740,8 @@ TextureImporter:
       name: UI_Icon_PowerUp_Magnet
       rect:
         serializedVersion: 2
-        x: 564
-        y: 1333
+        x: 517
+        y: 1920
         width: 128
         height: 128
       alignment: 0
@@ -983,8 +761,8 @@ TextureImporter:
       name: UI_Icon_PowerUp_Gold
       rect:
         serializedVersion: 2
-        x: 696
-        y: 1333
+        x: 516
+        y: 1791
         width: 128
         height: 128
       alignment: 0
@@ -1004,8 +782,8 @@ TextureImporter:
       name: UI_Icon_PowerUp_Rocket
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1179
+        x: 900
+        y: 1791
         width: 128
         height: 128
       alignment: 0
@@ -1025,8 +803,8 @@ TextureImporter:
       name: UI_Icon_PowerUp_GoldPacket
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1179
+        x: 767
+        y: 1661
         width: 128
         height: 128
       alignment: 0
@@ -1046,8 +824,8 @@ TextureImporter:
       name: UI_Icon_PowerUp_AllPowers
       rect:
         serializedVersion: 2
-        x: 271
-        y: 1179
+        x: 895
+        y: 1661
         width: 128
         height: 128
       alignment: 0
@@ -1067,8 +845,8 @@ TextureImporter:
       name: UI_Icon_PowerUp_Elevator
       rect:
         serializedVersion: 2
-        x: 418
-        y: 1184
+        x: 644
+        y: 1792
         width: 128
         height: 128
       alignment: 0
@@ -1088,8 +866,8 @@ TextureImporter:
       name: UI_Icon_PowerUp_Gold_x2
       rect:
         serializedVersion: 2
-        x: 564
-        y: 1181
+        x: 772
+        y: 1791
         width: 128
         height: 128
       alignment: 0
@@ -1109,8 +887,8 @@ TextureImporter:
       name: UI_Icon_PowerUp_ColorGold
       rect:
         serializedVersion: 2
-        x: 699
-        y: 1181
+        x: 255
+        y: 1661
         width: 128
         height: 128
       alignment: 0
@@ -1130,8 +908,8 @@ TextureImporter:
       name: UI_Icon_PowerUp_Stairs
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1028
+        x: 511
+        y: 1661
         width: 128
         height: 128
       alignment: 0
@@ -1151,8 +929,8 @@ TextureImporter:
       name: UI_Icon_PowerUp_Offline_Timer
       rect:
         serializedVersion: 2
-        x: 132
-        y: 1028
+        x: 639
+        y: 1661
         width: 128
         height: 128
       alignment: 0
@@ -1172,8 +950,8 @@ TextureImporter:
       name: UI_Icon_PowerUp_ConstantCamera
       rect:
         serializedVersion: 2
-        x: 281
-        y: 1028
+        x: 383
+        y: 1661
         width: 128
         height: 128
       alignment: 0
@@ -1193,8 +971,8 @@ TextureImporter:
       name: UI_Icon_PowerUp_SpeedUp
       rect:
         serializedVersion: 2
-        x: 428
-        y: 1027
+        x: 645
+        y: 1920
         width: 128
         height: 128
       alignment: 0
@@ -1214,8 +992,8 @@ TextureImporter:
       name: UI_Button_Pause
       rect:
         serializedVersion: 2
-        x: 1057
-        y: 36
+        x: 646
+        y: 1418
         width: 113
         height: 110
       alignment: 0
@@ -1227,6 +1005,216 @@ TextureImporter:
       bones: []
       spriteID: 012a4fc76ad45db80800000000000000
       internalID: -8370698954941881840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_General_Button_Bg
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1615
+        width: 206
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 518355b4f33244ec0800000000000000
+      internalID: -3583700648726284267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_General_Button_Frame_Bg
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1356
+        width: 212
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 858165ca1ba8ab2c0800000000000000
+      internalID: -4415063988978182056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Controller
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 1287
+        width: 112
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e334ed45b4915c8b0800000000000000
+      internalID: -5132668388981718210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Volume
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 1287
+        width: 112
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51bef7da0aadb7420800000000000000
+      internalID: 2628935191141280533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainScreen_Money_Bg
+      rect:
+        serializedVersion: 2
+        x: 1679
+        y: 139
+        width: 333
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56d155cd442bf6020800000000000000
+      internalID: 2337282740452662629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Facebook
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 3
+        width: 115
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17ed8066005eb7100800000000000000
+      internalID: 106930806047956593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_GooglePlay
+      rect:
+        serializedVersion: 2
+        x: 1801
+        y: 3
+        width: 115
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04df5ebbc8ab96c40800000000000000
+      internalID: 5506137133047741760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Language
+      rect:
+        serializedVersion: 2
+        x: 1926
+        y: 3
+        width: 115
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0976347fdccde900800000000000000
+      internalID: 715453175921277195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Medium_Background
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3
+        width: 1001
+        height: 1273
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 682b5d156febed1a0800000000000000
+      internalID: -6782774023629196666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_PowerUp_Key
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 1533
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 143ee6c1c52a18a20800000000000000
+      internalID: 3062907738086368065
       vertices: []
       indices: 
       edges: []
