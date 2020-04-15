@@ -47,6 +47,12 @@ TextureImporter:
   - first:
       213: 42237134112971839
     second: UI_Long_Bg_Flama
+  - first:
+      213: -780692663052443090
+    second: UI_Joystick_Bg
+  - first:
+      213: -807289307567135800
+    second: UI_Joystick_Handle
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -348,6 +354,48 @@ TextureImporter:
       bones: []
       spriteID: f3c522f137e069000800000000000000
       internalID: 42237134112971839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Joystick_Bg
+      rect:
+        serializedVersion: 2
+        x: 1485
+        y: 227
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e226104c82c6a25f0800000000000000
+      internalID: -780692663052443090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Joystick_Handle
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 329
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c36d77e6aeebc4f0800000000000000
+      internalID: -807289307567135800
       vertices: []
       indices: 
       edges: []
