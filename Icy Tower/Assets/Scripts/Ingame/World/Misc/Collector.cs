@@ -12,6 +12,8 @@ public class Collector : MonoBehaviour {
         else if(other.tag == "WallParent") {
             other.gameObject.SetActive(false);
             SpawnManager.instance.SpawnWall();
+        }else if(other.tag == "Gold") {
+            other.gameObject.SetActive(false);
         }
 
         foreach (string collectable in (string[])System.Enum.GetNames(typeof(Collectables))) {
