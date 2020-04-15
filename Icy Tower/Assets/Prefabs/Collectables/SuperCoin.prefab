@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1028511984}
   m_Layer: 0
   m_Name: SuperCoin
-  m_TagString: Untagged
+  m_TagString: SuperCoin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

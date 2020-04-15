@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
 public class Collector : MonoBehaviour {
@@ -13,6 +12,12 @@ public class Collector : MonoBehaviour {
         else if(other.tag == "WallParent") {
             other.gameObject.SetActive(false);
             SpawnManager.instance.SpawnWall();
+        }
+
+        foreach (string collectable in (string[])System.Enum.GetNames(typeof(Collectables))) {
+            if(other.tag == collectable) {
+                other.gameObject.SetActive(false);
+            }
         }
     }
 }

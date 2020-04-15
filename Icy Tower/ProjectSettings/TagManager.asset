@@ -19,6 +19,7 @@ TagManager:
   - TimeSlower
   - Umbrella
   - Gold
+  - Key
   layers:
   - Default
   - TransparentFX

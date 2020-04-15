@@ -29,6 +29,9 @@ public class PlatformManager : MonoBehaviour {
     private int _platformTypeIndex = 0;
     private Queue<Platform> _platforms = null;
 
+    public Action<int> OnWantedPlatformSpawnedForPowerUp;
+    public Action<int> OnWantedPlatformSpawnedForGold;
+
     public float InitialSpawnPosition {
         get { return _initialSpawnPosition; }
     }
@@ -48,6 +51,12 @@ public class PlatformManager : MonoBehaviour {
             platform.SetScale(_platformStats.GetRandomScale());
             platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor, platform.gameObject.transform.localScale.x));
             _platforms.Enqueue(platform);
+            if (platform.Floor == CollectableSpawner.instance.NextPowerUpSpawnFloor) {
+                OnWantedPlatformSpawnedForPowerUp?.Invoke(platform.Floor);
+            }
+            if (platform.Floor == CollectableSpawner.instance.NextGoldSpawnFloor) {
+                OnWantedPlatformSpawnedForGold?.Invoke(platform.Floor);
+            }
         }
     }
 
@@ -62,6 +71,12 @@ public class PlatformManager : MonoBehaviour {
         platform.SetScale(_platformStats.GetRandomScale());
         platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor, platform.gameObject.transform.localScale.x));
         _platforms.Enqueue(platform);
+        if (platform.Floor == CollectableSpawner.instance.NextPowerUpSpawnFloor) {
+            OnWantedPlatformSpawnedForPowerUp?.Invoke(platform.Floor);
+        }
+        if (platform.Floor == CollectableSpawner.instance.NextGoldSpawnFloor) {
+            OnWantedPlatformSpawnedForGold?.Invoke(platform.Floor);
+        }
         return platform;
     }
 
