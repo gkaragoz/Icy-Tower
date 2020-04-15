@@ -113,7 +113,7 @@ public class NewCameraController : MonoBehaviour {
         _flyingUP = true;
         startMatch = true;
         _canMove = true;
-       // Account.instance.AddKey(-1);
+        Account.instance.AddKey(-1);
     }
 
     void NormalMovement() {
