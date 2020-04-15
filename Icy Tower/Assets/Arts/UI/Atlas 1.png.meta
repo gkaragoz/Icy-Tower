@@ -383,8 +383,8 @@ TextureImporter:
       name: UI_Icon_Buy_Gold
       rect:
         serializedVersion: 2
-        x: 800
-        y: 1949
+        x: 796
+        y: 1943
         width: 80
         height: 83
       alignment: 0
@@ -404,10 +404,10 @@ TextureImporter:
       name: UI_Icon_Buy_Gem
       rect:
         serializedVersion: 2
-        x: 928
+        x: 921
         y: 1942
-        width: 62
-        height: 87
+        width: 80
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
