@@ -22,8 +22,8 @@ public class NewCameraController : MonoBehaviour {
 
     public float speed = 2.0f;
 
-    bool canMove = false;
-    bool flyingUP = false;
+    private bool _canMove = false;
+    private bool _flyingUP = false;
     public bool startMatch = false;
     public bool iCanRotate = false;
     private Coroutine mycor;
@@ -78,6 +78,15 @@ public class NewCameraController : MonoBehaviour {
                 //Check if i died
                 if (_target.position.y < transform.position.y - _deadZoneOffset) {
                     transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(60, 0, 0), speed * Time.deltaTime);
+                    _canMove = false;
+                    startMatch = false;
+
+                    if(Account.instance.GetKey() > 0) {
+                        if(Input.GetKey(KeyCode.Space)) {
+                            Revive();
+                        }
+                        return;
+                    }
                     LevelManager.instance.OnClick_RestartGame();
                     return;
                 }
@@ -87,14 +96,24 @@ public class NewCameraController : MonoBehaviour {
                 Switcher();
             }
 
-            if (canMove) {
+            if (_canMove) {
                 NormalMovement();
             }
 
-            if (flyingUP) {
+            if (_flyingUP) {
                 FlyingUp();
             }
         }
+    }
+
+    private void Revive() {
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+        _target.position = new Vector3(0,(Account.instance.GetCurrentScore() * 4) + PlatformManager.instance.InitialSpawnPosition ,_target.position.z);
+        transform.position = new Vector3(0,_target.position.y, -12);
+        _flyingUP = true;
+        startMatch = true;
+        _canMove = true;
+       // Account.instance.AddKey(-1);
     }
 
     void NormalMovement() {
@@ -110,13 +129,13 @@ public class NewCameraController : MonoBehaviour {
 
     void Switcher() {
         if (_target.position.y > transform.position.y + _jumpOffset) {
-            flyingUP = true;
-            canMove = false;
+            _flyingUP = true;
+            _canMove = false;
         }
 
         if (_target.position.y < transform.position.y && HasReachedStartFloor()) {
-            flyingUP = false;
-            canMove = true;
+            _flyingUP = false;
+            _canMove = true;
         }
     }
 

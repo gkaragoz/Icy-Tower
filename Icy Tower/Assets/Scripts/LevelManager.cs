@@ -35,6 +35,7 @@ public class LevelManager : MonoBehaviour{
         SpawnManager.instance.SpawnAll();
 
         GameManager.instance.SetGameState(GameState.Gameplay);
+        Account.instance.SetCurrentScore(0);
     }
 
     private void Pause() {

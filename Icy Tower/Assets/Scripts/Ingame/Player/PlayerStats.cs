@@ -18,7 +18,7 @@ public class PlayerStats : MonoBehaviour {
     }
     
     public void AddKey(int value) {
-        _player.Gold += value;
+        _player.Key += value;
     }
 
     public void AddGem(int value) {

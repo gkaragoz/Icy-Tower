@@ -2,13 +2,6 @@
 using UnityEngine;
 
 public class CollectableSpawner : MonoBehaviour {
-    [SerializeField]
-    private int _initialPowerUpSpawnFloor = 50;
-    private int _nextPowerUpSpawnFloor = 0;
-
-    [SerializeField]
-    private int _nextGoldSpawnFloor = 0;
-
 
     #region Singleton
 
@@ -22,6 +15,21 @@ public class CollectableSpawner : MonoBehaviour {
 
     #endregion
 
+    [SerializeField]
+    private int _initialPowerUpSpawnFloor = 50;
+    private int _nextPowerUpSpawnFloor = 0;
+
+    [SerializeField]
+    private int _nextGoldSpawnFloor = 0;
+
+    [SerializeField]
+    private int _keySpawnFloor = 0;
+
+    [Header("DEBUG")]
+    [Utils.ReadOnly]
+    [SerializeField]
+    private bool _hasKeySpawned = false;
+
     public int NextPowerUpSpawnFloor {
         get { return _nextPowerUpSpawnFloor; }
     }
@@ -29,11 +37,17 @@ public class CollectableSpawner : MonoBehaviour {
         get { return _nextGoldSpawnFloor; }
     }
 
+    public int KeySpawnFloor {
+        get { return _keySpawnFloor; }
+    }
+
     private void Start() {
         _nextGoldSpawnFloor = CalculateNextGoldOffset();
         _nextPowerUpSpawnFloor = _initialPowerUpSpawnFloor;
+        _keySpawnFloor = CalculateKeySpawnFloor();
         PlatformManager.instance.OnWantedPlatformSpawnedForPowerUp += SpawnPowerUps;
         PlatformManager.instance.OnWantedPlatformSpawnedForGold += SpawnGolds;
+        PlatformManager.instance.OnWantedPlatformSpawnedForKey += SpawnKey;
     }
 
     private void SpawnPowerUps(int floor) {
@@ -41,6 +55,14 @@ public class CollectableSpawner : MonoBehaviour {
 
         ObjectPooler.instance.SpawnFromPool(GetRandomPowerUpToSpawn(), randomPosition);
         _nextPowerUpSpawnFloor += CalculateNextPowerUpOffset();
+    }
+
+    private void SpawnKey(int floor) {
+        if (!_hasKeySpawned) {
+            Vector3 randomPosition = GetRandomSpawnPosition();
+            ObjectPooler.instance.SpawnFromPool("Key", randomPosition);
+            _hasKeySpawned = true;
+        }
     }
 
     private void SpawnGolds(int floor) {
@@ -74,6 +96,10 @@ public class CollectableSpawner : MonoBehaviour {
 
     private int CalculateNextGoldOffset() {
         return Random.Range(1, 11);
+    }
+
+    private int CalculateKeySpawnFloor() {
+        return Random.Range(50, 60);
     }
 
 }

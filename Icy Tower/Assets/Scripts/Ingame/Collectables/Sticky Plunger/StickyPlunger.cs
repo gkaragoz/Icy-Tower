@@ -50,12 +50,6 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
     }
 
     private void Update() {
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _hasUsedStickyPlunger = true;
-        }
-
         if (_hasUsedStickyPlunger) {
             if (_isCollideWithRightWall || _isCollideWithLeftWall) {
                 StickToWall();

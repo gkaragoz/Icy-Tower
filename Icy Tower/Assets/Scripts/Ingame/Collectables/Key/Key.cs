@@ -1,22 +1,14 @@
 ﻿using UnityEngine;
 
-public class Key : MonoBehaviour, IHaveSingleSound{
-    
-    [Utils.ReadOnly]
-    [SerializeField]
-    private KeyStats _keyStats= null;
-
-    private void Start() {
-        _keyStats = GetComponent<KeyStats>();
-    }
+public class Key : MonoBehaviour, IHaveSingleSound,IPooledObject{
+  
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "FullCollider") {
             PlayVFX();
             PlaySFX(SoundFXTypes.InGame_Collect_Key);
-
-            Account.instance.AddKey(_keyStats.GetAmount());
-
+            
+            Account.instance.AddKey(1);
             gameObject.SetActive(false);
         }
     }
@@ -26,5 +18,9 @@ public class Key : MonoBehaviour, IHaveSingleSound{
     }
     private void PlayVFX() {
         ObjectPooler.instance.SpawnFromPool(VFXTypes.VFXCollectGold.ToString(), transform.position);
+    }
+
+    public void OnObjectReused() {
+        gameObject.SetActive(true);
     }
 }

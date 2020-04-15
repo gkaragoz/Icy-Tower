@@ -31,6 +31,7 @@ public class PlatformManager : MonoBehaviour {
 
     public Action<int> OnWantedPlatformSpawnedForPowerUp;
     public Action<int> OnWantedPlatformSpawnedForGold;
+    public Action<int> OnWantedPlatformSpawnedForKey;
 
     public float InitialSpawnPosition {
         get { return _initialSpawnPosition; }
@@ -51,12 +52,14 @@ public class PlatformManager : MonoBehaviour {
             platform.SetScale(_platformStats.GetRandomScale());
             platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor, platform.gameObject.transform.localScale.x));
             _platforms.Enqueue(platform);
-            if (platform.Floor == CollectableSpawner.instance.NextPowerUpSpawnFloor) {
+            if (platform.Floor == CollectableSpawner.instance.NextPowerUpSpawnFloor)
                 OnWantedPlatformSpawnedForPowerUp?.Invoke(platform.Floor);
-            }
-            if (platform.Floor == CollectableSpawner.instance.NextGoldSpawnFloor) {
+
+            if (platform.Floor == CollectableSpawner.instance.NextGoldSpawnFloor)
                 OnWantedPlatformSpawnedForGold?.Invoke(platform.Floor);
-            }
+
+            if (platform.Floor == CollectableSpawner.instance.KeySpawnFloor)
+                OnWantedPlatformSpawnedForKey?.Invoke(platform.Floor);
         }
     }
 
@@ -71,12 +74,15 @@ public class PlatformManager : MonoBehaviour {
         platform.SetScale(_platformStats.GetRandomScale());
         platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor, platform.gameObject.transform.localScale.x));
         _platforms.Enqueue(platform);
-        if (platform.Floor == CollectableSpawner.instance.NextPowerUpSpawnFloor) {
+        if (platform.Floor == CollectableSpawner.instance.NextPowerUpSpawnFloor) 
             OnWantedPlatformSpawnedForPowerUp?.Invoke(platform.Floor);
-        }
-        if (platform.Floor == CollectableSpawner.instance.NextGoldSpawnFloor) {
+
+        if (platform.Floor == CollectableSpawner.instance.NextGoldSpawnFloor) 
             OnWantedPlatformSpawnedForGold?.Invoke(platform.Floor);
-        }
+
+        if (platform.Floor == CollectableSpawner.instance.KeySpawnFloor)
+            OnWantedPlatformSpawnedForKey?.Invoke(platform.Floor);
+
         return platform;
     }
 
