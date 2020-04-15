@@ -9,7 +9,11 @@ public class CountDownPanel : MonoBehaviour{
     [SerializeField]
     private GameObject _gameplayMenu = null;
 
-    private int _countdown = 3;
+    private int _countdown = 0;
+
+    private void OnEnable() {
+        _countdown = LevelManager.instance.CountDownTime;
+    }
 
     private IEnumerator ICountdown() {
         while (true) {

@@ -23,6 +23,10 @@ public class LevelManager : MonoBehaviour{
 
     #endregion
 
+    public int CountDownTime {
+        get { return _countDownTime; }
+    }
+
     private IEnumerator IStartGameCountdown() {
         GameManager.instance.SetGameState(GameState.GameplayCountdown);
 

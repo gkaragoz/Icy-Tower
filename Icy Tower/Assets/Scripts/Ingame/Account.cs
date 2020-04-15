@@ -26,14 +26,13 @@ public class Account : MonoBehaviour {
     private void Start() {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
-
+   
     private void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode) {
         PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         PlayerStats.Init(_playerStats);
 
         Debug.Log("Player stats has been assigned.");
     }
-
     /// <summary>
     /// Read local file or get data from cloud.
     /// </summary>
