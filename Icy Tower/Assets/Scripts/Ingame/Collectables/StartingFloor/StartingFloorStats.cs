@@ -2,23 +2,23 @@
 
 public class StartingFloorStats : MonoBehaviour{
 
-    [Header("Initialization")]
-    [SerializeField]
-    private StartingFloorStats_SO _startingFloor_Template = null;
+    #region Singleton
 
-    [Header("Debug")]
+    public static StartingFloorStats instance;
+    private void Awake() {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+    }
+
+    #endregion
+
     [SerializeField]
-    [Utils.ReadOnly]
     private StartingFloorStats_SO _startingFloor = null;
 
-    #region Initializations
-
-    private void Awake() {
-        if (_startingFloor_Template != null) {
-            _startingFloor = Instantiate(_startingFloor_Template);
-        }
-    }
-    #endregion
+    [SerializeField]
+    private PlatformStats _platformStats = null;
 
     #region Setters
 
@@ -56,5 +56,16 @@ public class StartingFloorStats : MonoBehaviour{
     public int GetFloorMultiplier() {
         return _startingFloor.FloorMultiplier;
     }
+    #endregion
+
+    #region
+
+    public float CalculateStartingPlatformPosition() {
+        if (_startingFloor.Level == 0)
+            return 31; //tower length
+
+        return ((_startingFloor.Level * _startingFloor.FloorMultiplier) * _platformStats.GetDistanceBetweenPlatforms() ) + PlatformManager.instance.InitialSpawnPosition;
+    }
+
     #endregion
 }

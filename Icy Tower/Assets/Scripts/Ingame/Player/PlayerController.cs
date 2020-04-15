@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerStats))]
 public class PlayerController : MonoBehaviour{
@@ -24,6 +25,8 @@ public class PlayerController : MonoBehaviour{
     private int _conffettiAmount = 100;
     private int _conffettiCounter = 1;
 
+    private bool _hasPlayerPositonSet = false;
+
     private void Awake() {
         _characterManager = GetComponent<CharacterManager>();
     }
@@ -32,7 +35,15 @@ public class PlayerController : MonoBehaviour{
         if (GameManager.instance.GetGameState() == GameState.Gameplay) {
             int currentFloor = ((int)transform.position.y - (int)PlatformManager.instance.InitialSpawnPosition) / (int)_platformStats.GetDistanceBetweenPlatforms();
             SetScore(currentFloor);
+            if (!_hasPlayerPositonSet) {
+                SetPlayerInitPosition();
+            }
         }
+    }
+
+    private void SetPlayerInitPosition() {
+        _hasPlayerPositonSet = true;
+        LeanTween.moveY(gameObject, StartingFloorStats.instance.CalculateStartingPlatformPosition() + 3 , 1f);
     }
 
     private void FixedUpdate() {

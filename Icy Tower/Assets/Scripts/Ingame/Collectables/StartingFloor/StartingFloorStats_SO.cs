@@ -7,12 +7,10 @@ public class StartingFloorStats_SO : ScriptableObject {
     private string _name = "Starting Floor";
 
     [SerializeField]
-    [Utils.ReadOnly]
     private int _level = 0;
 
     [SerializeField]
-    [Utils.ReadOnly]
-    private int _floorMultiplier = 0;
+    private int _floorMultiplier = 10;
 
     public string Name {
         get { return _name; }
