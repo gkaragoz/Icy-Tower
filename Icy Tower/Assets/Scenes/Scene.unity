@@ -20994,7 +20994,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: aed477f9b59f47d4182c51b61e997d56, type: 2}
+      objectReference: {fileID: 2100000, guid: e51584e51f5448c42934cfd892c7dbd8, type: 2}
     - target: {fileID: 5260039548835869548, guid: 4d3693fedb44b8d4693b6dc0ab4e764d,
         type: 3}
       propertyPath: _joystick
@@ -21069,7 +21069,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8cbd78ac2c0a378488ce15280585116e, type: 2}
+      objectReference: {fileID: 2100000, guid: dd974f903d761464ba9514e14dfff06b, type: 2}
     - target: {fileID: 7690888175087486135, guid: 4d3693fedb44b8d4693b6dc0ab4e764d,
         type: 3}
       propertyPath: m_LocalRotation.y
@@ -22155,7 +22155,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3f4895f3e79c7042bcdfa104221e94b, type: 2}
+  - {fileID: 2100000, guid: 8fc54cc2f3e7f9946adcaef2f54d206d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
