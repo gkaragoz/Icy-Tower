@@ -26,16 +26,6 @@ public class Umbrella : MonoBehaviour, IHaveSingleSound {
         _flyTime = _umbrellaStats.GetDuration();
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            _flyTime = _umbrellaStats.GetDuration();
-            _hasUsedUmbrella = true;
-            PlayVFX();
-            PlaySFX(SoundFXTypes.InGame_Collect_Slot_Powerup);
-            StartCoroutine(StopFlying());
-        }
-    }
-
     private void FixedUpdate() {
         if (_hasUsedUmbrella) {
             StartFly();
