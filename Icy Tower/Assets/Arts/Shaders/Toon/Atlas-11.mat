@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas-11
+  m_Shader: {fileID: -6465566751694194690, guid: c67065345bff3944884305c0053692a0,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_12514DCE:
+        m_Texture: {fileID: 2800000, guid: d57c04ca20e12334db146f1224026064, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C6F02690:
+        m_Texture: {fileID: 2800000, guid: fc1812a433ced7b4ebc8c17bff5d8382, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_8AB1A5EA_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 02c59b2cd17ea234fa7ccc8d3415bebf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_7E560625: 2.43
+    - Vector1_81C144A7: 1
+    m_Colors:
+    - Color_1ED7CF3E: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 0}
+    - Color_6572B246: {r: 0.40784314, g: 0.40784314, b: 0.40784314, a: 0}
+    - _L1_color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 0}
+    - _L_1_dir: {r: -0.05, g: 85.1, b: -2.05, a: 0}

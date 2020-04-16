@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Scroller
+  m_Shader: {fileID: -6465566751694194690, guid: 23d5646e75caee54da739627bcabf579,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_3395C2C0:
+        m_Texture: {fileID: 2800000, guid: 78d3998176ccafb45892efffc9ceb0f7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Position_Coordinate: 1
+    - Vector1_3A391E8F: 1
+    m_Colors:
+    - Multi_Function: {r: 0, g: 0.1, b: 0, a: 0}
+    - Texture_Scale_tool: {r: 2, g: 2, b: 0, a: 0}
+    - Vector2_6A0F9969: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_8DDB8691: {r: 2, g: 2, b: 0, a: 0}
+    - Vector2_B26F621D: {r: 0, g: 0.1, b: 0, a: 0}
+    - Vector2_CC5EAA0F: {r: 0, g: 0, b: 0, a: 0}
+    - Vector3_542721CB: {r: 0.1, g: 0.1, b: 0.1, a: 0}

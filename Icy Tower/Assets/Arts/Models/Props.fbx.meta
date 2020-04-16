@@ -8,32 +8,32 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Atlas-10
-    second: {fileID: 2100000, guid: 1492e3c7466b019459da04023f1c6144, type: 2}
+    second: {fileID: 2100000, guid: ec0e6e94af0a1714da813a31f923dbae, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Atlas-11
-    second: {fileID: 2100000, guid: 214c6bd6c9a2f8449ac03e1413378a3a, type: 2}
+    second: {fileID: 2100000, guid: f9ba13aeeec63e34aa79e9703e1d8c17, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Atlas-12
-    second: {fileID: 2100000, guid: d19ada2a4ea2a6f4ca5f470f0a33e0f9, type: 2}
+    second: {fileID: 2100000, guid: a873240b32c6bca4f9340f702e805dc3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Atlas-13
-    second: {fileID: 2100000, guid: b83579133c3a34640b5dcba4983360b5, type: 2}
+    second: {fileID: 2100000, guid: 515a5563e08b6a6469ffdbcf748e60a4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Atlas-14
-    second: {fileID: 2100000, guid: 7ce1b876c12d4d941a517e286d7832a0, type: 2}
+    second: {fileID: 2100000, guid: 29eb1825c606a044a9ac7ff6dbaaca81, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Ladders
-    second: {fileID: 2100000, guid: 3274f8b231a54a44a97e0147c864a7a2, type: 2}
+    second: {fileID: 2100000, guid: d2923f0478f419743983a14b7c2332e0, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -110,7 +110,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.044999998
+    globalScale: 4.5
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 1

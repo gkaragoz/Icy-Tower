@@ -8,62 +8,62 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Atlas -8
-    second: {fileID: 2100000, guid: f48f5bedbab892f4588d176065a2dc9c, type: 2}
+    second: {fileID: 2100000, guid: 4763da5562af3ec4aba0a1cff65b4e89, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Atlas-1
-    second: {fileID: 2100000, guid: 2ee05de79b207ee489115b5625a81408, type: 2}
+    second: {fileID: 2100000, guid: 95ab5cd62d849d14bb2d6a5cb0c3f22c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Atlas-2
-    second: {fileID: 2100000, guid: 5fe631bb9764398468df6b4eac451d9b, type: 2}
+    second: {fileID: 2100000, guid: 0596392d2643be0439d5f84a97544632, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Atlas-3
-    second: {fileID: 2100000, guid: bb3dcfe1840f6134f8e2a8d31f0b8c61, type: 2}
+    second: {fileID: 2100000, guid: f088ef3c324dbad47810a9d7dff16b77, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Atlas-4
-    second: {fileID: 2100000, guid: 034ee48e68da3204eb547f9f5a8a0770, type: 2}
+    second: {fileID: 2100000, guid: 7b135a49a3115c14b96c065ada0d4ea5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Atlas-5
-    second: {fileID: 2100000, guid: 2db1324978791a24b849eb313a88749e, type: 2}
+    second: {fileID: 2100000, guid: 7b135a49a3115c14b96c065ada0d4ea5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Atlas-6
-    second: {fileID: 2100000, guid: 12d0da5813b5c70408718d4a360bab90, type: 2}
+    second: {fileID: 2100000, guid: da2f4dd8cc41ad244a0e6b445c5c7e6d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Atlas-7
-    second: {fileID: 2100000, guid: 28e5078092194b442962898e740fe554, type: 2}
+    second: {fileID: 2100000, guid: 5b165a610c371ac4a8c8c23391712a0a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Atlas-9
-    second: {fileID: 2100000, guid: 83b44c72f6754b347965ff9f6efe9bf8, type: 2}
+    second: {fileID: 2100000, guid: 3de2e6e4321df0544acbb81536f5c57b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Bed
-    second: {fileID: 2100000, guid: 015ee2be4ef82a64692614e6f79f4117, type: 2}
+    second: {fileID: 2100000, guid: 29ba2a346c2cd0043a280965bef93565, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Chains
-    second: {fileID: 2100000, guid: b692345987332eb48abae1f05d07fff1, type: 2}
+    second: {fileID: 2100000, guid: 8fc54cc2f3e7f9946adcaef2f54d206d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wardrobe
-    second: {fileID: 2100000, guid: cba05c146dd420743919e0af3fd52841, type: 2}
+    second: {fileID: 2100000, guid: e3f4895f3e79c7042bcdfa104221e94b, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -140,7 +140,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.044999998
+    globalScale: 4.5
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
