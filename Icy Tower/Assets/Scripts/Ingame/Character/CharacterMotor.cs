@@ -50,7 +50,7 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
 
     public bool IsFalling {
         get {
-            return _rb.velocity.y < 0 ? true : false;
+            return _rb.velocity.y <= 0 ? true : false;
         }
     }
 
