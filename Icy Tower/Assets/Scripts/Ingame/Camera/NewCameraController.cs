@@ -90,6 +90,7 @@ public class NewCameraController : MonoBehaviour {
                     transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(60, 0, 0), speed * Time.deltaTime);
                     _canMove = false;
                     startMatch = false;
+                    GameManager.instance.HasPlayerDied = true;
 
                     if(Account.instance.GetKey() > 0) {
                         if(Input.GetKey(KeyCode.Space)) {
@@ -117,6 +118,7 @@ public class NewCameraController : MonoBehaviour {
     }
 
     private void Revive() {
+        GameManager.instance.HasPlayerDied = false;
         transform.rotation = Quaternion.Euler(Vector3.zero);
         _target.position = new Vector3(0,(Account.instance.GetCurrentScore() * 4) + PlatformManager.instance.InitialSpawnPosition ,_target.position.z);
         transform.position = new Vector3(0,_target.position.y, -12);
@@ -124,6 +126,7 @@ public class NewCameraController : MonoBehaviour {
         startMatch = true;
         _canMove = true;
         Account.instance.AddKey(-1);
+        
     }
 
     void NormalMovement() {

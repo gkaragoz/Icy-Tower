@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerStats))]
-public class PlayerController : MonoBehaviour{
+public class PlayerController : MonoBehaviour {
 
     public Joystick _joystick;
 
@@ -43,23 +43,25 @@ public class PlayerController : MonoBehaviour{
 
     private void SetPlayerInitPosition() {
         _hasPlayerPositonSet = true;
-        LeanTween.moveY(gameObject, StartingFloorStats.instance.CalculateStartingPlatformPosition() + 3 , 1f);
+        LeanTween.moveY(gameObject, StartingFloorStats.instance.CalculateStartingPlatformPosition() + 3, 1f);
     }
 
     private void FixedUpdate() {
         if (GameManager.instance.GetGameState() == GameState.Gameplay) {
-            _horizontal = Input.GetAxis("Horizontal");
-            _horizontal = _joystick.Horizontal;
+            if (!GameManager.instance.HasPlayerDied) {
+                _horizontal = Input.GetAxis("Horizontal");
+                _horizontal = _joystick.Horizontal;
 
-            if (_isMovingLeft)
-                MoveLeft();
-            if (_isMovingRight)
-                MoveRight();
-            if (_horizontal != 0) {
-                Move(_horizontal);
+                if (_isMovingLeft)
+                    MoveLeft();
+                if (_isMovingRight)
+                    MoveRight();
+                if (_horizontal != 0) {
+                    Move(_horizontal);
+                }
+                ComboJump();
+                Jump();
             }
-            ComboJump();
-            Jump();
         }
     }
 
