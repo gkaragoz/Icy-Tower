@@ -10,10 +10,10 @@ public class PlatformStats_SO : ScriptableObject {
     private GameObject _prefab;
 
     [SerializeField]
-    private int _maxScale;
+    private float _maxScale;
 
     [SerializeField]
-    private int _minScale;
+    private float _minScale;
     // Movement
     [SerializeField]
     private float _thickness;
@@ -66,12 +66,12 @@ public class PlatformStats_SO : ScriptableObject {
         set { _jumpPower = value; }
     }
 
-    public int MaxScale {
+    public float MaxScale {
         get { return _maxScale; }
         set { _maxScale = value; }
     }
 
-    public int MinScale {
+    public float MinScale {
         get { return _minScale; }
         set { _minScale = value; }
     }
