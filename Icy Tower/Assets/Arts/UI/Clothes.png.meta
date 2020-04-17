@@ -97,16 +97,16 @@ TextureImporter:
     second: Clothes_Top_Long_8
   - first:
       213: -5566232542358664908
-    second: Clothes_Top_Long_9
+    second: Clothes_Top_Short_0
   - first:
       213: 3737192490090388984
-    second: Clothes_Top_Long_10
+    second: Clothes_Top_Short_1
   - first:
       213: 7335355711411455175
-    second: Clothes_Top_Long_11
+    second: Clothes_Top_Short_2
   - first:
       213: 7770002172270960924
-    second: Clothes_Top_Long_12
+    second: Clothes_Top_Short_3
   - first:
       213: 7339327899261220902
     second: Clothes_Hair_0
@@ -884,7 +884,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Clothes_Top_Long_9
+      name: Clothes_Top_Short_0
       rect:
         serializedVersion: 2
         x: 1792
@@ -905,7 +905,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Clothes_Top_Long_10
+      name: Clothes_Top_Short_1
       rect:
         serializedVersion: 2
         x: 0
@@ -926,7 +926,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Clothes_Top_Long_11
+      name: Clothes_Top_Short_2
       rect:
         serializedVersion: 2
         x: 256
@@ -947,7 +947,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Clothes_Top_Long_12
+      name: Clothes_Top_Short_3
       rect:
         serializedVersion: 2
         x: 512
