@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 214e2b2eead586e4dac33eb653937ae6, type: 3}
+  m_Name: BodyDownShort
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: 6f816a9465462954e9c172bffdd8a909, type: 2}
+  colorOfsets:
+  - colorName: Red
+    colorOfset: {x: 0, y: 0}
+  - colorName: Green
+    colorOfset: {x: 0.25, y: 0}
+  - colorName: Purple
+    colorOfset: {x: 0.5, y: 0}
+  - colorName: DarkPurple
+    colorOfset: {x: 0.75, y: 0}
+  - colorName: Gret
+    colorOfset: {x: 0, y: 0.25}
+  - colorName: Aqua
+    colorOfset: {x: 0.25, y: 0.25}
+  - colorName: DarkAqua
+    colorOfset: {x: 0.5, y: 0.25}
+  - colorName: DarkerPink
+    colorOfset: {x: 0.75, y: 0.25}
+  - colorName: SoftRed
+    colorOfset: {x: 0, y: 0.5}
+  - colorName: DarkRed
+    colorOfset: {x: 0.25, y: 0.5}
+  - colorName: Bordo
+    colorOfset: {x: 0.5, y: 0.5}
+  - colorName: RealPink
+    colorOfset: {x: 0.75, y: 0.5}
+  - colorName: SoftGreen
+    colorOfset: {x: 0, y: 0.75}
+  - colorName: Dark Orange
+    colorOfset: {x: 0.25, y: 0.75}
+  - colorName: Orange
+    colorOfset: {x: 0.5, y: 0.75}
+  - colorName: GreenLatern
+    colorOfset: {x: 0.75, y: 0.75}
