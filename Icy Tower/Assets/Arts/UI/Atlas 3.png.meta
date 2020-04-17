@@ -5,6 +5,33 @@ TextureImporter:
   - first:
       213: 685655879777090
     second: UI_Preparation_Bg
+  - first:
+      213: 3530628679387855943
+    second: UI_Icon_Market_KeyA
+  - first:
+      213: -574793847812609652
+    second: UI_Icon_Market_KeyB
+  - first:
+      213: -7014762357490255773
+    second: UI_Icon_Market_KeyC
+  - first:
+      213: -3783505292819354644
+    second: UI_Icon_Market_GoldC
+  - first:
+      213: 4777227949572835147
+    second: UI_Icon_Market_GoldB
+  - first:
+      213: 665689399395619541
+    second: UI_Icon_Market_GoldA
+  - first:
+      213: -3387767234705355724
+    second: UI_Icon_Market_GemA
+  - first:
+      213: -6294986597703507527
+    second: UI_Icon_Market_GemB
+  - first:
+      213: 5131374065487424503
+    second: UI_Icon_Market_GemC
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -109,7 +136,7 @@ TextureImporter:
         width: 999
         height: 1273
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -117,6 +144,195 @@ TextureImporter:
       bones: []
       spriteID: 24bf623b99f620000800000000000000
       internalID: 685655879777090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Market_KeyA
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 525
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74c38bce3105ff030800000000000000
+      internalID: 3530628679387855943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Market_KeyB
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 525
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c89ac027a0ce508f0800000000000000
+      internalID: -574793847812609652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Market_KeyC
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 524
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 368f20a3dce86ae90800000000000000
+      internalID: -7014762357490255773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Market_GoldC
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 301
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceb21b76bf94e7bc0800000000000000
+      internalID: -3783505292819354644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Market_GoldB
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 303
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b474b51628f1c4240800000000000000
+      internalID: 4777227949572835147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Market_GoldA
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 302
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d218b55bf00d3900800000000000000
+      internalID: 665689399395619541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Market_GemA
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 60
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43c0ea136ab3cf0d0800000000000000
+      internalID: -3387767234705355724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Market_GemB
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 61
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b1a90aaa07b3a8a0800000000000000
+      internalID: -6294986597703507527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Market_GemC
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 60
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fba70f768d463740800000000000000
+      internalID: 5131374065487424503
       vertices: []
       indices: 
       edges: []
