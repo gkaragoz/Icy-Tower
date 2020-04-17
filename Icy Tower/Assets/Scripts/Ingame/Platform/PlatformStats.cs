@@ -76,6 +76,10 @@ public class PlatformStats : MonoBehaviour {
         return _platform.Thickness;
     }
 
+    public float GetDepth() {
+        return _platform.Depth;
+    }
+
     public float GetDistanceBetweenPlatforms() {
         return _platform.DistanceBetweenPlatforms;
     }
@@ -85,7 +89,7 @@ public class PlatformStats : MonoBehaviour {
 
     #region Custom Methods
     public Vector3 GetRandomScale() {
-        return new Vector3(Random.Range(GetMinScale(), GetMaxScale()),GetThickness(),GetPrefab().transform.localScale.z);
+        return new Vector3(GetDepth(), GetThickness(), Random.Range(GetMinScale(), GetMaxScale())) ;
     }
 
     public Vector3 GetNewPosition(float initialSpawnPos, int lastSpawnedPlatform,float localScaleX) {

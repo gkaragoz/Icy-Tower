@@ -17,6 +17,8 @@ public class PlatformStats_SO : ScriptableObject {
     // Movement
     [SerializeField]
     private float _thickness;
+    [SerializeField]
+    private float _depth;
 
     [SerializeField]
     private float _movementSpeed = 0;
@@ -41,6 +43,11 @@ public class PlatformStats_SO : ScriptableObject {
     public float Thickness {
         get { return _thickness; }
         set { _thickness = value; }
+    }
+
+    public float Depth {
+        get { return _depth; }
+        set { _depth = value; }
     }
 
     public float DistanceBetweenPlatforms {

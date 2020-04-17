@@ -18,8 +18,8 @@ public class Platform : MonoBehaviour, IPooledObject {
     }
 
 
-    public void SetScale(Vector3 scale) {
-        transform.localScale = scale;
+    public void SetScale(Vector3 scale,int type) {
+        _types[type].transform.localScale = scale;
     }
 
     public void SetPosition(Vector3 position) {

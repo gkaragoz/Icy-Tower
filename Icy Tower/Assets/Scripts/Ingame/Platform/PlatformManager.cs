@@ -49,7 +49,7 @@ public class PlatformManager : MonoBehaviour {
             platform.Floor = ++_floor;
             platform.SetText();
             platform.SetType(_platformTypeIndex);
-            platform.SetScale(_platformStats.GetRandomScale());
+            platform.SetScale(_platformStats.GetRandomScale(), _platformTypeIndex);
             platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor, platform.gameObject.transform.localScale.x));
             _platforms.Enqueue(platform);
             if (platform.Floor == CollectableSpawner.instance.NextPowerUpSpawnFloor)
@@ -71,7 +71,7 @@ public class PlatformManager : MonoBehaviour {
         }
         platform.SetText();
         platform.SetType(_platformTypeIndex);
-        platform.SetScale(_platformStats.GetRandomScale());
+        platform.SetScale(_platformStats.GetRandomScale(), _platformTypeIndex);
         platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor, platform.gameObject.transform.localScale.x));
         _platforms.Enqueue(platform);
         if (platform.Floor == CollectableSpawner.instance.NextPowerUpSpawnFloor) 
