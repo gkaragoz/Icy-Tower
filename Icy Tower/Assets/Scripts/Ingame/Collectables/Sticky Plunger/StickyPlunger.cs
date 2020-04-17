@@ -124,6 +124,7 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
                 return;
             }
             _hasUsedStickyPlunger = true;
+            LevelManager.instance.IsUsingStickyPlumber = true;
             JumpToClosestWall();
             PlayVFX();
             PlayLoopableSFX();
@@ -179,6 +180,7 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
         _isCollideWithRightWall = false;
         _isCollideWithLeftWall = false;
         _hasUsedStickyPlunger = false;
+        LevelManager.instance.IsUsingStickyPlumber = false;
         Camera.main.GetComponent<NewCameraController>().WallWalk(0);
         StopVFX();
         StopLoopableSFX();

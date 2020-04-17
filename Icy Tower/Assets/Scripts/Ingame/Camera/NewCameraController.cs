@@ -27,6 +27,7 @@ public class NewCameraController : MonoBehaviour {
     private bool _hasReachedStartFloor = false;
     public bool startMatch = false;
     public bool iCanRotate = false;
+    private bool _isCollecterMoving = false;
     private Coroutine mycor;
 
     private bool _isLeanTweenPlaying = false;
@@ -59,10 +60,14 @@ public class NewCameraController : MonoBehaviour {
         }
     }
 
-    public void StartFollow() {
-        _followers.transform.LeanMoveY(transform.position.y - _followersOffset, 2f).setOnComplete(()=> { 
-            _followers.transform.SetParent(transform) ;
+    public void CatchCameraPosition() {
+        _followers.transform.LeanMoveY(transform.position.y - _followersOffset, 2f).setOnComplete(() => {
+            _isCollecterMoving = true;
         });
+    }
+    
+    public void StickCollectorToCamera() {
+        _followers.position = new Vector3(_followers.position.x,transform.position.y - _followersOffset,_followers.position.z);
     }
 
     private void Update() {
@@ -81,10 +86,9 @@ public class NewCameraController : MonoBehaviour {
         if (GameManager.instance.GetGameState() == GameState.Gameplay) {
             if (HasReachedStartFloor()) {
                 if (!_hasReachedStartFloor) {
-                    StartFollow();
+                    CatchCameraPosition();
                     _hasReachedStartFloor = true;
                 }
-
                 //Check if i died
                 if (_target.position.y < transform.position.y - _deadZoneOffset) {
                     transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(60, 0, 0), speed * Time.deltaTime);
@@ -102,6 +106,8 @@ public class NewCameraController : MonoBehaviour {
                     return;
                 }
             }
+            if (_isCollecterMoving)
+                StickCollectorToCamera();
 
             if (startMatch) {
                 Switcher();
