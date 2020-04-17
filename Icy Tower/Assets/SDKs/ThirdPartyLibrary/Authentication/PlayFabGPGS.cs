@@ -44,7 +44,7 @@ namespace Library.Authentication.GooglePlay
 
             // Initialize Game Object
             _recoverPopUpMenu = _PopUpMenu;
-            
+
         }
 
         #region AUTHENTICATE
