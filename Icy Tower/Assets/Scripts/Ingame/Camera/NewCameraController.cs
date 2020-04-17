@@ -24,6 +24,7 @@ public class NewCameraController : MonoBehaviour {
 
     private bool _canMove = false;
     private bool _flyingUP = false;
+    private bool _hasReachedStartFloor = false;
     public bool startMatch = false;
     public bool iCanRotate = false;
     private Coroutine mycor;
@@ -58,6 +59,12 @@ public class NewCameraController : MonoBehaviour {
         }
     }
 
+    public void StartFollow() {
+        _followers.transform.LeanMoveY(transform.position.y - _followersOffset, 2f).setOnComplete(()=> { 
+            _followers.transform.SetParent(transform) ;
+        });
+    }
+
     private void Update() {
         if (_target == null) {
             return;
@@ -73,7 +80,10 @@ public class NewCameraController : MonoBehaviour {
 
         if (GameManager.instance.GetGameState() == GameState.Gameplay) {
             if (HasReachedStartFloor()) {
-                _followers.transform.LeanMoveY(transform.position.y - _followersOffset, 1f);
+                if (!_hasReachedStartFloor) {
+                    StartFollow();
+                    _hasReachedStartFloor = true;
+                }
 
                 //Check if i died
                 if (_target.position.y < transform.position.y - _deadZoneOffset) {
