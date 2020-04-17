@@ -20,12 +20,26 @@ public class VFX : MonoBehaviour , IPooledObject{
         _duration = _vfxs[0].main.duration;
     }
 
-    private IEnumerator IStartFollowTarget() {
+    private IEnumerator IStartFollowTarget(bool x = true, bool y = true, bool z = true) {
         while (true) {
             if (_currentTarget == null) {
                 break;
             }
-            transform.position = _currentTarget.position;
+
+            float xPos = 0;
+            float yPos = 0;
+            float zPos = transform.position.z;
+            if (x) {
+                xPos = _currentTarget.position.x;
+            }
+            if (y) {
+                yPos = _currentTarget.position.y;
+            }
+            if (z) {
+                zPos = _currentTarget.position.z;
+            }
+
+            transform.position = new Vector3(xPos, yPos, zPos);
             yield return new WaitForSeconds(0.01f);
         }
         Stop();
@@ -35,9 +49,9 @@ public class VFX : MonoBehaviour , IPooledObject{
         _currentTarget = target;
     }
 
-    public void Play() {
+    public void Play(bool x = true, bool y = true, bool z = true) {
         this.gameObject.SetActive(true);
-        StartCoroutine(IStartFollowTarget());
+        StartCoroutine(IStartFollowTarget(x, y, z));
     }
 
 

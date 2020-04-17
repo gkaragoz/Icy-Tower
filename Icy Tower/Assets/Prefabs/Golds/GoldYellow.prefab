@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1738912027190786653}
   - component: {fileID: 4844792577871921092}
   - component: {fileID: -157391837021166239}
+  - component: {fileID: 7917045371770493187}
   m_Layer: 0
   m_Name: GoldYellow
   m_TagString: Gold
@@ -60,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b83579133c3a34640b5dcba4983360b5, type: 2}
+  - {fileID: 2100000, guid: 515a5563e08b6a6469ffdbcf748e60a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0dbf1498431fc64d876e371c6520792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 1
+  _coinAmount: 1
 --- !u!135 &-157391837021166239
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -107,3 +108,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.7914335
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7917045371770493187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5385645700987993953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856db2a2c2faad248b7e8ba7ba1afdd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _time: 1

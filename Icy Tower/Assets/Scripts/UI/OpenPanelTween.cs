@@ -35,7 +35,7 @@ public class OpenPanelTween : MonoBehaviour {
     }
 
     public void ClosePanel() {
-        LeanTween.scale(gameObject, new Vector3(1, 1 * _closingScale, 1), _closingTime).setEase(_closingType);
+        LeanTween.scale(gameObject, Vector3.one * _closingScale, _closingTime).setEase(_closingType);
     }
 
 }

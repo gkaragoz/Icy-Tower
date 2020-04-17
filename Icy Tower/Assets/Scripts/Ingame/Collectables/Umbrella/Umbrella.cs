@@ -34,7 +34,7 @@ public class Umbrella : MonoBehaviour, IHaveSingleSound {
     private void PlayVFX() {
         _activeVFX = ObjectPooler.instance.SpawnFromPool(VFXTypes.VFXUmbrella.ToString(), transform.position).GetComponent<VFX>();
         _activeVFX.SetTarget(this.transform);
-        _activeVFX.Play();
+        _activeVFX.Play(false, true, false);
     }
 
     private void StopVFX() {

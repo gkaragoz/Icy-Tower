@@ -11,12 +11,21 @@ public class DailyRewardsButtonTween : MonoBehaviour {
     [SerializeField]
     private float _scale = 1.2f;
 
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Z)) {
+            StartScaleAnim();
+        }
+        if (Input.GetKeyDown(KeyCode.X)) {
+            StopScaleAnim();
+        }
+    }
+
     public void StartScaleAnim() {
         LeanTween.scale(gameObject, Vector3.one * _scale, _time).setEase(_type).setLoopPingPong();
     }
 
     public void StopScaleAnim() {
-        LeanTween.cancel(gameObject);
+        gameObject.transform.localScale = Vector3.one;
     }
 
 }
