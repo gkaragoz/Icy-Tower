@@ -15119,7 +15119,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1428541646}
+      - m_Target: {fileID: 1045637368}
         m_MethodName: ChangeController
         m_Mode: 1
         m_Arguments:
@@ -17383,6 +17383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6964afed20ef59840b5a8990ab1c35a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectedControllerType: 0
   _panels:
   - {fileID: 2125933073}
   - {fileID: 1958593687}
@@ -17396,6 +17397,7 @@ MonoBehaviour:
   - {fileID: 1983225073}
   - {fileID: 1110944706}
   _imageOverlayBG: {fileID: 891814081}
+  _settingsPanel: {fileID: 1045637368}
 --- !u!4 &844581650
 Transform:
   m_ObjectHideFlags: 0
@@ -18066,6 +18068,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 867827615}
   m_CullTransparentMesh: 0
+--- !u!1 &874187351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8170153791668043269, guid: 0d230cc8be529a542a08cb878ab14b18,
+    type: 3}
+  m_PrefabInstance: {fileID: 702040687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &891814081
 GameObject:
   m_ObjectHideFlags: 0
@@ -21477,6 +21485,10 @@ MonoBehaviour:
   _generalSettings: {fileID: 453925843}
   _languageSettings: {fileID: 315245505}
   _pnlClose: {fileID: 750519608}
+  _controllerButtonScript: {fileID: 1428541646}
+  _joystickController: {fileID: 874187351}
+  _buttonController: {fileID: 1721320873}
+  _selectedControllerType: 0
 --- !u!1 &1056198700
 GameObject:
   m_ObjectHideFlags: 0
@@ -22919,7 +22931,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1110944704
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29660,7 +29672,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _joystickText: {fileID: 345157393}
   _buttonText: {fileID: 725424342}
-  _selectedControllerType: 0
 --- !u!1 &1433459516
 GameObject:
   m_ObjectHideFlags: 0

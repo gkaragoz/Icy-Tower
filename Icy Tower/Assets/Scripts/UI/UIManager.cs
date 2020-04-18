@@ -4,6 +4,9 @@ using UnityEngine;
 public class UIManager : MonoBehaviour{
 
     [SerializeField]
+    private ControllerType _selectedControllerType = ControllerType.Joystick;
+
+    [SerializeField]
     private Panel[] _panels = null;
 
     [SerializeField]
@@ -11,8 +14,13 @@ public class UIManager : MonoBehaviour{
 
     private Stack<Panel> _panelStack = new Stack<Panel>();
 
+    [SerializeField]
+    private SettingsPanel _settingsPanel = null;
+
     private void Awake() {
         OpenPanel("PnlMainMenu");
+
+        _settingsPanel.SetController(_selectedControllerType);
     }
 
     public void OpenPanel(string panelEnum) {
