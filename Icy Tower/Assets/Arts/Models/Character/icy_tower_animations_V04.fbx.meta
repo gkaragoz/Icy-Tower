@@ -29,37 +29,37 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Body_down_Long2
-    second: {fileID: 2100000, guid: dd974f903d761464ba9514e14dfff06b, type: 2}
+    second: {fileID: 2100000, guid: c9c1c04187cec1f43a30f319bcc6ef40, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Body_down_Mid2
-    second: {fileID: 2100000, guid: 9d9607c349605184b9b278b791297044, type: 2}
+    second: {fileID: 2100000, guid: 7827f2ee1fb79044ca0907a061395558, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Body_down_Short2
-    second: {fileID: 2100000, guid: 64550806b9e345a4fab71a413305415d, type: 2}
+    second: {fileID: 2100000, guid: 6f816a9465462954e9c172bffdd8a909, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Body_full2
-    second: {fileID: 2100000, guid: adcafdc650176b342ac919d64c2339c1, type: 2}
+    second: {fileID: 2100000, guid: b3e67589eb769a348998ede4911c2a25, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Body_up_Short2
-    second: {fileID: 2100000, guid: e51584e51f5448c42934cfd892c7dbd8, type: 2}
+    second: {fileID: 2100000, guid: 37e9916a4e2144941bfcf3a4228f113a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Body_up_long2
-    second: {fileID: 2100000, guid: 2c93cb6996b8cf346a651e61c3e21efc, type: 2}
+    second: {fileID: 2100000, guid: c91af0373e33a184e9f4c6710c8a2c99, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Others1
-    second: {fileID: 2100000, guid: fbe739b5b93c4324ca084897f52ed4b3, type: 2}
+    second: {fileID: 2100000, guid: 7df99fecefaf19947a2b4c0d6af3f08c, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
