@@ -6,7 +6,6 @@ public class BodyGroupNew : MonoBehaviour
 {
     public BodyGroups[] bodyParts;
 
-    public Vector3Int changeColor;
     private void Start()
     {
 
@@ -33,10 +32,7 @@ public class BodyGroupNew : MonoBehaviour
     }
 
 
-    public void CallChoose()
-    {
-        ChooseBodyObject(changeColor.x,changeColor.y,changeColor.z);
-    }
+
 
 }
 
