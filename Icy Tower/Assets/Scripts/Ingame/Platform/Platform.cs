@@ -24,7 +24,7 @@ public class Platform : MonoBehaviour, IPooledObject {
 
     public void SetPosition(Vector3 position, int type) {
 
-        _types[type].transform.position = position;
+        transform.position = position;
     }
 
     public void OnObjectReused() {
