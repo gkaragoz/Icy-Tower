@@ -108,7 +108,8 @@ public enum UIPanels {
     PnlDailyRewards,
     PnlPopupRevive,
     PnlMainMenu,
-    PnlWardrobe
+    PnlWardrobe,
+    PnlGamePlay
 }
 
 public enum TowerProp{
