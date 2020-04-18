@@ -11,16 +11,18 @@ public class LocalizationSystem
         French
     }
 
-    public static Language language = Language.French;
 
     private static Dictionary<string, string> localisedEN;
-    private static Dictionary<string, string> localisedFR;
     private static Dictionary<string, string> localisedTR;
+    private static Dictionary<string, string> localisedFR;
 
     public static bool isInit;
 
 
     public static CSVLoader csvLoader;
+
+    public static Language language = Language.English;
+
 
 
     public static void Init()

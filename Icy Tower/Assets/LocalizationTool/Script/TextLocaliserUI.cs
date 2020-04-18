@@ -12,8 +12,14 @@ public class TextLocaliserUI : MonoBehaviour
     void Start()
     {
         textField = GetComponent<TextMeshProUGUI>();
-        textField.text = localisedString.value;
+        ChangeText();
     }
 
-  
+    public void ChangeText()
+    {
+        textField.text = localisedString.value;
+
+    }
+
+
 }
