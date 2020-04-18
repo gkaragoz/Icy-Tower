@@ -98,6 +98,19 @@ public enum VFXTypes {
     VFXConffetti
 }
 
+public enum UIPanels {
+    PnlGameOver,
+    PnlPause,
+    PnlTimeRewards,
+    PnlPopupYesNo,
+    PnlSettings,
+    PnlMarket,
+    PnlDailyRewards,
+    PnlPopupRevive,
+    PnlMainMenu,
+    PnlWardrobe
+}
+
 public enum TowerProp{
     Skull,
     Torch,
