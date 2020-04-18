@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Scroller
+  m_Name: ScrollerBig
   m_Shader: {fileID: -6465566751694194690, guid: 23d5646e75caee54da739627bcabf579,
     type: 3}
   m_ShaderKeywords: 

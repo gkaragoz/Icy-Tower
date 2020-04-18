@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Atlas_Ladders
-  m_Shader: {fileID: -6465566751694194690, guid: c67065345bff3944884305c0053692a0,
+  m_Shader: {fileID: -6465566751694194690, guid: bcdbb76f0bb56d04495e3d799510b23b,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -21,7 +21,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_12514DCE:
-        m_Texture: {fileID: 2800000, guid: 02c59b2cd17ea234fa7ccc8d3415bebf, type: 3}
+        m_Texture: {fileID: 2800000, guid: d57c04ca20e12334db146f1224026064, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_67E68313:
+        m_Texture: {fileID: 2800000, guid: 18cb5a193fea86545acc80170979e110, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_C6F02690:
@@ -33,10 +37,28 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_7E560625: 2.43
+    - Vector1_183D1D0: 0
+    - Vector1_23D3BAE4: 0.34
+    - Vector1_2BBD5C08: 0
+    - Vector1_38D81354: -0.77
+    - Vector1_41319613: 0
+    - Vector1_492B73E0: 3.48
+    - Vector1_7E560625: 0
     - Vector1_81C144A7: 1
+    - Vector1_89C2D16C: 1
+    - Vector1_AEA63BE4: 0
+    - Vector1_D70DB5C8: 0.11
+    - Vector1_FE66A72E: 0
     m_Colors:
+    - Color_1B04F16D: {r: 0, g: 0, b: 0, a: 0}
     - Color_1ED7CF3E: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 0}
-    - Color_6572B246: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 0}
-    - _L1_color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 0}
-    - _L_1_dir: {r: 36.96, g: 138, b: -26.93, a: 0}
+    - Color_4C22966E: {r: 0.4433962, g: 0.3869259, b: 0.3869259, a: 0}
+    - Color_6572B246: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 0}
+    - Color_8A13D51F: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 0}
+    - Color_9BF63055: {r: 0, g: 0, b: 0, a: 0}
+    - Color_D98EFCF0: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 0}
+    - Vector2_18B1B341: {r: 4.86, g: 0.38, b: 0, a: 0}
+    - Vector2_8049F3CE: {r: -2.42, g: 2.16, b: 0, a: 0}
+    - Vector2_B985E7DD: {r: 0, g: 0, b: 0, a: 0}
+    - _L1_color: {r: 0.6886792, g: 0.5684852, b: 0.5684852, a: 0}
+    - _L_1_dir: {r: 0, g: -1.28, b: 0, a: 0}
