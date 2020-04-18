@@ -41,8 +41,8 @@ public class GameManager : MonoBehaviour {
         _loadManager.OnPoolLoaded += OnPoolLoaded;
 
         _loadManager.LoadAccount();
-        _loadManager.LoadScene();
         _loadManager.LoadPool();
+        _loadManager.LoadScene();
     }
 
 
@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour {
     private void OnSceneReady() {
         _loadManager.OnSceneReady -= OnSceneReady;
         Debug.Log("Ready!");
+
+        _loadManager.OpenLoadedScene();
     }
 
     private void OnPoolLoaded() {
@@ -60,12 +62,6 @@ public class GameManager : MonoBehaviour {
     }
     private void OnSceneActivated(Scene arg0, LoadSceneMode arg1) {
         SetGameState(GameState.MainMenu);
-    }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            _loadManager.OpenLoadedScene();
-        }
     }
 
     public GameState GetGameState() {
