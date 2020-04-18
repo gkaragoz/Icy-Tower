@@ -65,15 +65,19 @@ public class PlatformStats : MonoBehaviour {
         return _platform.JumpPower;
     }
 
-    public int GetMaxScale() {
+    public float GetMaxScale() {
         return _platform.MaxScale;
     }
-    public int GetMinScale() {
+    public float GetMinScale() {
         return _platform.MinScale;
     }
 
     public float GetThickness() {
         return _platform.Thickness;
+    }
+
+    public float GetDepth() {
+        return _platform.Depth;
     }
 
     public float GetDistanceBetweenPlatforms() {
@@ -85,24 +89,27 @@ public class PlatformStats : MonoBehaviour {
 
     #region Custom Methods
     public Vector3 GetRandomScale() {
-        return new Vector3(Random.Range(GetMinScale(), GetMaxScale()),GetThickness(),GetPrefab().transform.localScale.z);
+        return new Vector3(GetDepth(), GetThickness(), Random.Range(GetMinScale(), GetMaxScale())) ;
     }
 
-    public Vector3 GetNewPosition(float initialSpawnPos, int lastSpawnedPlatform,float localScaleX) {
+    public Vector3 GetNewPosition(float initialSpawnPos, int lastSpawnedPlatform,float scaleZ){
         float x =WorldSettings.instance.GetRandomBorderPosition().x;
+        float y = initialSpawnPos + (GetDistanceBetweenPlatforms() * lastSpawnedPlatform);
+        float z = 0;
+
         if(x >= 0) {
-            if((x + (localScaleX/2)) > WorldSettings.instance.GetMapRightBorderPosition().x) {
-                float distance = (x + (localScaleX / 2)) - WorldSettings.instance.GetMapRightBorderPosition().x;
+            float endPosX = x + (scaleZ / 2);
+            if((endPosX) > WorldSettings.instance.GetMapRightBorderPosition().x) {
+                float distance = endPosX - WorldSettings.instance.GetMapRightBorderPosition().x;
                 x -= distance;
             }
         } else {
-            if((x - (localScaleX /2 )) < WorldSettings.instance.GetMapLeftBorderPosition().x) {
-                float distance = (x - (localScaleX / 2)) - WorldSettings.instance.GetMapLeftBorderPosition().x;
+            float endPosX = x - (scaleZ / 2); 
+            if ((endPosX) < WorldSettings.instance.GetMapLeftBorderPosition().x) {
+                float distance = endPosX - WorldSettings.instance.GetMapLeftBorderPosition().x;
                 x -= distance;
             }
         }
-        float y = initialSpawnPos + (GetDistanceBetweenPlatforms() * lastSpawnedPlatform);
-        float z = 0;
         return new Vector3(x, y, z);
     }
     #endregion

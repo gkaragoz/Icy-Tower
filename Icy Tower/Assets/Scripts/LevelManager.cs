@@ -11,6 +11,9 @@ public class LevelManager : MonoBehaviour{
     [Utils.ReadOnly]
     private bool _isGamePaused = false;
 
+    private bool _isUsingUmbrella = false;
+    private bool _isUsingStickyPlumber = false;
+
     #region Singleton
 
     public static LevelManager instance;
@@ -25,6 +28,15 @@ public class LevelManager : MonoBehaviour{
 
     public int CountDownTime {
         get { return _countDownTime; }
+    }
+
+    public bool IsUsingUmbrella {
+        get { return _isUsingUmbrella; }
+        set { _isUsingUmbrella = value; }
+    }
+    public bool IsUsingStickyPlumber {
+        get { return _isUsingStickyPlumber; }
+        set { _isUsingStickyPlumber= value; }
     }
 
     private IEnumerator IStartGameCountdown() {

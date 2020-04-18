@@ -49,6 +49,7 @@ public class Umbrella : MonoBehaviour, IHaveSingleSound {
             PlaySFX(SoundFXTypes.InGame_Collect_Slot_Powerup);
             StartCoroutine(StopFlying());
             other.gameObject.SetActive(false);
+            LevelManager.instance.IsUsingUmbrella = true;
         }
     }
 
@@ -58,6 +59,7 @@ public class Umbrella : MonoBehaviour, IHaveSingleSound {
 
     private void StopFly() {
         _hasUsedUmbrella = false;
+        LevelManager.instance.IsUsingUmbrella = false;
     }
 
     private IEnumerator StopFlying() {

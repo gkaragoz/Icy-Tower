@@ -18,11 +18,11 @@ public class Platform : MonoBehaviour, IPooledObject {
     }
 
 
-    public void SetScale(Vector3 scale) {
-        transform.localScale = scale;
+    public void SetScale(Vector3 scale, int type) {
+        _types[type].transform.localScale = scale;
     }
 
-    public void SetPosition(Vector3 position) {
+    public void SetPosition(Vector3 position, int type) {
 
         transform.position = position;
     }
@@ -35,7 +35,7 @@ public class Platform : MonoBehaviour, IPooledObject {
     public void SetType(int platformTypeIndex) {
         if (platformTypeIndex >= _types.Length - 1)
             return;
-        for (int i = 0; i <_types.Length; i++) {
+        for (int i = 0; i < _types.Length; i++) {
             if (i == platformTypeIndex) {
                 _types[i].SetActive(true);
             } else {
@@ -45,7 +45,7 @@ public class Platform : MonoBehaviour, IPooledObject {
     }
 
     public void SetText() {
-        if(Floor % 10 == 0) {
+        if (Floor % 10 == 0) {
             _floorCountText.text = Floor.ToString();
             _floorCountText.gameObject.SetActive(true);
         } else {

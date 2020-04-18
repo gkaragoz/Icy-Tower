@@ -24,8 +24,10 @@ public class NewCameraController : MonoBehaviour {
 
     private bool _canMove = false;
     private bool _flyingUP = false;
+    private bool _hasReachedStartFloor = false;
     public bool startMatch = false;
     public bool iCanRotate = false;
+    private bool _isCollecterMoving = false;
     private Coroutine mycor;
 
     private bool _isLeanTweenPlaying = false;
@@ -58,6 +60,16 @@ public class NewCameraController : MonoBehaviour {
         }
     }
 
+    public void CatchCameraPosition() {
+        _followers.transform.LeanMoveY(transform.position.y - _followersOffset, 2f).setOnComplete(() => {
+            _isCollecterMoving = true;
+        });
+    }
+    
+    public void StickCollectorToCamera() {
+        _followers.position = new Vector3(_followers.position.x,transform.position.y - _followersOffset,_followers.position.z);
+    }
+
     private void Update() {
         if (_target == null) {
             return;
@@ -73,13 +85,16 @@ public class NewCameraController : MonoBehaviour {
 
         if (GameManager.instance.GetGameState() == GameState.Gameplay) {
             if (HasReachedStartFloor()) {
-                _followers.transform.LeanMoveY(transform.position.y - _followersOffset, 1f);
-
+                if (!_hasReachedStartFloor) {
+                    CatchCameraPosition();
+                    _hasReachedStartFloor = true;
+                }
                 //Check if i died
                 if (_target.position.y < transform.position.y - _deadZoneOffset) {
                     transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(60, 0, 0), speed * Time.deltaTime);
                     _canMove = false;
                     startMatch = false;
+                    GameManager.instance.HasPlayerDied = true;
 
                     if(Account.instance.GetKey() > 0) {
                         if(Input.GetKey(KeyCode.Space)) {
@@ -91,6 +106,8 @@ public class NewCameraController : MonoBehaviour {
                     return;
                 }
             }
+            if (_isCollecterMoving)
+                StickCollectorToCamera();
 
             if (startMatch) {
                 Switcher();
@@ -107,6 +124,7 @@ public class NewCameraController : MonoBehaviour {
     }
 
     private void Revive() {
+        GameManager.instance.HasPlayerDied = false;
         transform.rotation = Quaternion.Euler(Vector3.zero);
         _target.position = new Vector3(0,(Account.instance.GetCurrentScore() * 4) + PlatformManager.instance.InitialSpawnPosition ,_target.position.z);
         transform.position = new Vector3(0,_target.position.y, -12);
@@ -114,6 +132,7 @@ public class NewCameraController : MonoBehaviour {
         startMatch = true;
         _canMove = true;
         Account.instance.AddKey(-1);
+        
     }
 
     void NormalMovement() {

@@ -14,6 +14,13 @@ public class GameManager : MonoBehaviour {
     [Utils.ReadOnly]
     private GameState _gameState = GameState.Loading;
 
+    private bool _hasPlayerDied = false;
+
+    public bool HasPlayerDied {
+        get { return _hasPlayerDied; }
+        set { _hasPlayerDied = value; }
+    }
+
     #region Singleton
 
     public static GameManager instance;

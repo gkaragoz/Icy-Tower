@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: StartingFloor Stats
   m_EditorClassIdentifier: 
   _name: Starting Floor
-  _level: 0
+  _level: 1
   _floorMultiplier: 10
