@@ -57,6 +57,7 @@ public class UIManager : MonoBehaviour{
         UIPanels activePanel = GetActivePanel();
 
         if (activePanel== UIPanels.PnlGamePlay || activePanel == UIPanels.PnlMainMenu) {
+            CloseImageOverlayBG();
             return;
         }
 
