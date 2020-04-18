@@ -53,6 +53,15 @@ TextureImporter:
   - first:
       213: -807289307567135800
     second: UI_Joystick_Handle
+  - first:
+      213: 4967407186691153905
+    second: UI_Slot_Usage_Gameplay
+  - first:
+      213: 1642843743358390460
+    second: UI_Wadrobe_Close
+  - first:
+      213: -6315618726229469845
+    second: UI_Icon_Credits
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -279,9 +288,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6
-        y: 1174
+        y: 1046
         width: 1090
-        height: 866
+        height: 994
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,7 +309,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 892
+        y: 731
         width: 1055
         height: 243
       alignment: 0
@@ -321,9 +330,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 631
-        width: 1055
-        height: 243
+        y: 479
+        width: 1036
+        height: 223
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -342,7 +351,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 21
-        y: 363
+        y: 282
         width: 997
         height: 159
       alignment: 0
@@ -362,12 +371,12 @@ TextureImporter:
       name: UI_Joystick_Bg
       rect:
         serializedVersion: 2
-        x: 1485
-        y: 227
-        width: 512
-        height: 512
+        x: 1558
+        y: 296
+        width: 360
+        height: 360
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -383,12 +392,12 @@ TextureImporter:
       name: UI_Joystick_Handle
       rect:
         serializedVersion: 2
-        x: 1179
-        y: 329
-        width: 256
-        height: 256
+        x: 1226
+        y: 353
+        width: 200
+        height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -396,6 +405,69 @@ TextureImporter:
       bones: []
       spriteID: 8c36d77e6aeebc4f0800000000000000
       internalID: -807289307567135800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Slot_Usage_Gameplay
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 8
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ffd2719486cfe440800000000000000
+      internalID: 4967407186691153905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Wadrobe_Close
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 94
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb099503ead8cc610800000000000000
+      internalID: 1642843743358390460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Icon_Credits
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 102
+        width: 125
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b659946ea3a6a58a0800000000000000
+      internalID: -6315618726229469845
       vertices: []
       indices: 
       edges: []
