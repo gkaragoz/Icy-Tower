@@ -164,4 +164,7 @@ public enum SoundFXTypes {
     InGame_Ready
 }
 
-
+public enum ControllerType {
+    Joystick,
+    Button
+}

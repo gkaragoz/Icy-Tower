@@ -1,20 +1,25 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class SettingsPanel : MonoBehaviour{
 
     [SerializeField]
-    private GameObject _joystickPanel = null;
+    private GameObject _generalSettings = null;
     [SerializeField]
-    private GameObject _buttonsPanel = null;
+    private GameObject _languageSettings = null;
+    [SerializeField]
+    private GameObject _pnlClose = null;
 
-    public void UseButtons() {
-        _joystickPanel.SetActive(false);
-        _buttonsPanel.SetActive(true);
+    public void OpenLanguageSettings() {
+        _generalSettings.SetActive(false);
+        _languageSettings.SetActive(true);
+        _pnlClose.SetActive(false);
     }
 
-    public void UseJoystick() {
-        _joystickPanel.SetActive(true);
-        _buttonsPanel.SetActive(false);
+    public void OpenGeneralSettings() {
+        _generalSettings.SetActive(true);
+        _languageSettings.SetActive(false);
+        _pnlClose.SetActive(true);
     }
 
 }
