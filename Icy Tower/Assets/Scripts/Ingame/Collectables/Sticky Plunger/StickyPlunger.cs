@@ -59,6 +59,10 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
     }
 
     public void ChangeWall() {
+        if (_playerController._joystick == null) {
+            return;
+        }
+
         if (_playerController._joystick.Horizontal < 0) {
             if (_isCollideWithRightWall) {
                 JumptToOtherWall();
