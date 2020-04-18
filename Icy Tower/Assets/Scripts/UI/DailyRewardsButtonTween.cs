@@ -21,7 +21,7 @@ public class DailyRewardsButtonTween : MonoBehaviour {
     }
 
     public void StartScaleAnim() {
-        LeanTween.scale(gameObject, Vector3.one * _scale, _time).setEase(_type).setLoopPingPong();
+        LeanTween.scale(gameObject, Vector3.one * _scale, _time).setEase(_type).setLoopPingPong().setIgnoreTimeScale(true);
     }
 
     public void StopScaleAnim() {

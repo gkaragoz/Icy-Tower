@@ -31,11 +31,11 @@ public class OpenPanelTween : MonoBehaviour {
     }
 
     public void OpenPanel() {
-        LeanTween.scale(gameObject, Vector3.one * _openingScale, _openingTime).setEase(_openingType);
+        LeanTween.scale(gameObject, Vector3.one * _openingScale, _openingTime).setEase(_openingType).setIgnoreTimeScale(true);
     }
 
     public void ClosePanel() {
-        LeanTween.scale(gameObject, Vector3.one * _closingScale, _closingTime).setEase(_closingType);
+        LeanTween.scale(gameObject, Vector3.one * _closingScale, _closingTime).setEase(_closingType).setIgnoreTimeScale(true);
     }
 
 }

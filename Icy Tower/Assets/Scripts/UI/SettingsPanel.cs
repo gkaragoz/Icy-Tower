@@ -11,6 +11,8 @@ public class SettingsPanel : MonoBehaviour{
     private GameObject _pnlClose = null;
     [SerializeField]
     private ControllerButton _controllerButtonScript = null;
+    [SerializeField]
+    private PauseUnpause _pauseUnpause = null;
 
     [SerializeField]
     private GameObject _joystickController = null;
@@ -70,6 +72,14 @@ public class SettingsPanel : MonoBehaviour{
             _controllerButtonScript.SwitchToButton();
             ActivateButtonControllers();
         }
+    }
+
+    public void PauseGame() {
+        _pauseUnpause.Pause();
+    }
+
+    public void UnPauseGame() {
+        _pauseUnpause.Unpuase();
     }
 
     private void ActivateJoystickControllers() {
