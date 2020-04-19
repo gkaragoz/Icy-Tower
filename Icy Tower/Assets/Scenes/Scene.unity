@@ -2077,6 +2077,10 @@ PrefabInstance:
       propertyPath: _closingTime
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 697073987, guid: 75d077c7b40a4544f9fd94548323d2e3, type: 3}
+      propertyPath: _noTween
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 697073988, guid: 75d077c7b40a4544f9fd94548323d2e3, type: 3}
       propertyPath: _openingTime
       value: 0.25
