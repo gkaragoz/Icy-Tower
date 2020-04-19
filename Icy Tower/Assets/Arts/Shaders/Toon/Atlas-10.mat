@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Atlas-10
-  m_Shader: {fileID: -6465566751694194690, guid: c67065345bff3944884305c0053692a0,
+  m_Shader: {fileID: -6465566751694194690, guid: c8f642f4f25bf3540a3bcd03e501e525,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -22,6 +22,10 @@ Material:
     m_TexEnvs:
     - Texture2D_12514DCE:
         m_Texture: {fileID: 2800000, guid: d57c04ca20e12334db146f1224026064, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_36CA1EE6:
+        m_Texture: {fileID: 2800000, guid: dce0be7ef27adb542bbec20b6489829c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_67E68313:
@@ -38,27 +42,36 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_183D1D0: 0
+    - Vector1_23D3BAE4: 8.05
     - Vector1_2BBD5C08: -0.61
     - Vector1_38D81354: 19.15
     - Vector1_41319613: 0.06
+    - Vector1_492B73E0: -0.14
+    - Vector1_7112E4B9: 0.56
     - Vector1_7E560625: 0.1
     - Vector1_81C144A7: 1
     - Vector1_89C2D16C: 0
     - Vector1_AEA63BE4: 0
     - Vector1_C9C25B36: 0
     - Vector1_D70DB5C8: -3.39
+    - Vector1_F1059567: -0.01
     - Vector1_FE66A72E: -0.05
     m_Colors:
     - Color_1B04F16D: {r: 1, g: 1, b: 1, a: 0}
+    - Color_1E0D1C3B: {r: 0.5, g: 0.4551887, b: 0.4551887, a: 0}
     - Color_1ED7CF3E: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 0}
+    - Color_22FB82A1: {r: 0.509434, g: 0.44455323, b: 0.44455323, a: 0}
     - Color_4C22966E: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 0}
     - Color_6572B246: {r: 0.8018868, g: 0.73001957, b: 0.79529715, a: 0}
     - Color_8A13D51F: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0}
     - Color_9BF63055: {r: 0, g: 0, b: 0, a: 0}
     - Color_D98EFCF0: {r: 0.509434, g: 0.509434, b: 0.509434, a: 0}
-    - Vector2_18B1B341: {r: -0.33, g: 0, b: 0, a: 0}
-    - Vector2_8049F3CE: {r: 0.5, g: 0, b: 0, a: 0}
+    - Vector2_18B1B341: {r: -0.23, g: 0, b: 0, a: 0}
+    - Vector2_8049F3CE: {r: -4.46, g: 0, b: 0, a: 0}
     - Vector2_AF48C288: {r: 0.14, g: -1.2, b: 0, a: 0}
+    - Vector2_B1DD369B: {r: -0.78, g: 0, b: 0, a: 0}
     - Vector2_B985E7DD: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_D3F40ABA: {r: 0.22, g: 0, b: 0, a: 0}
+    - Vector3_4A1B5D86: {r: 3.59, g: 1.44, b: 0, a: 0}
     - _L1_color: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 0}
-    - _L_1_dir: {r: 2, g: -1.07, b: 0, a: 0}
+    - _L_1_dir: {r: 0, g: 0, b: 0, a: 0}

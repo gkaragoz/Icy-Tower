@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Atlas_Ladders
-  m_Shader: {fileID: -6465566751694194690, guid: bcdbb76f0bb56d04495e3d799510b23b,
+  m_Shader: {fileID: -6465566751694194690, guid: c8f642f4f25bf3540a3bcd03e501e525,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
