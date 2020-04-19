@@ -259,7 +259,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/GanoverRepo/Third Parth Library/3rd-Party-Library/user.keystore
+  AndroidKeystoreName: D:/GanoverIcy/icytower.keystore
   AndroidKeyaliasName: test
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0

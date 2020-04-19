@@ -75,6 +75,7 @@ public class PlatformManager : MonoBehaviour {
         Vector3 scale = _platformStats.GetRandomScale();
         platform.SetScale(scale, _platformTypeIndex);
         platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor, scale.z),_platformTypeIndex);
+
         _platforms.Enqueue(platform);
         if (platform.Floor == CollectableSpawner.instance.NextPowerUpSpawnFloor) 
             OnWantedPlatformSpawnedForPowerUp?.Invoke(platform.Floor);

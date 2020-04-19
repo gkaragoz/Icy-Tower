@@ -1,6 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+
 [RequireComponent(typeof(PlatformStats))]
 
 public class Platform : MonoBehaviour, IPooledObject {
@@ -23,8 +24,8 @@ public class Platform : MonoBehaviour, IPooledObject {
     }
 
     public void SetPosition(Vector3 position, int type) {
-
         transform.position = position;
+        _types[type].transform.localPosition = new Vector3(UnityEngine.Random.Range(_types[type].transform.localScale.z*2.2f,9- _types[type].transform.localScale.z * 2),0,0); 
     }
 
     public void OnObjectReused() {
