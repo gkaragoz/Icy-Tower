@@ -21,13 +21,7 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
     private BoxCollider _boxCollider;
     [SerializeField]
     [Utils.ReadOnly]
-    private RaycastHit _hit;
-    [SerializeField]
-    [Utils.ReadOnly]
     private bool _isJumping = false;
-    [SerializeField]
-    [Utils.ReadOnly]
-    private bool _isJumpCalled = false;
     [SerializeField]
     [Utils.ReadOnly]
     private CharacterStats _characterStats;
@@ -35,8 +29,7 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
     [Utils.ReadOnly]
     private AnimationState _animationState = AnimationState.Idle;
     [SerializeField]
-    [Utils.ReadOnly]
-    private VFX _activeVFX = null;
+    private ParticleSystem _comboJumpVFX = null;
 
     public AnimationState AnimationStateEnum {
         get {
@@ -105,13 +98,13 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
             return;
 
         if (other.tag == _jumpableTag && IsFalling == true) {
-                _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
-                if (Mathf.Abs(_rb.velocity.x) >= _characterStats.GetRequiredVelocityForComboJump()) {
-                    ComboJump();
-                } else {
-                    Jump();
-                }
+            _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
+            if (Mathf.Abs(_rb.velocity.x) >= _characterStats.GetRequiredVelocityForComboJump()) {
+                ComboJump();
+            } else {
+                Jump();
             }
+        }
     }
 
 
@@ -126,22 +119,11 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
         ObjectPooler.instance.SpawnFromPool(VFXTypes.VFXJump.ToString(), transform.position);
     }
 
-    private void PlayLoopVFX() {
-        _activeVFX = ObjectPooler.instance.SpawnFromPool(VFXTypes.VFXComboJump.ToString(), transform.position).GetComponent<VFX>();
-        _activeVFX.SetTarget(this.transform);
-        _activeVFX.Play();
-    }
-
-    private void StopLoopVFX() {
-        if (_activeVFX == null)
-            return;
-        _activeVFX.Stop();
-    }
 
     public void ComboJump() {
         _rb.AddForce(Vector3.up * _characterStats.GetComboJumpPower(), ForceMode.Impulse);
         AnimationStateEnum = AnimationState.ComboJump;
-        PlayLoopVFX();
+        _comboJumpVFX.Play();
         PlaySFX(SoundFXTypes.InGame_Player_Jump_Combo);
     }
 
