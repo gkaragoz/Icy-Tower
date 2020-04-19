@@ -9,12 +9,15 @@ public class Panel : MonoBehaviour{
         get { return _panel; }
     }
 
+    [SerializeField]
+    private OpenPanelTween _openPanelTween;
+
     public void Open() {
-        this.gameObject.SetActive(true);
+        _openPanelTween.OpenPanel();
     }
 
     public void Close() {
-        this.gameObject.SetActive(false);
+        _openPanelTween.ClosePanel();
     }
 
 }

@@ -3,6 +3,9 @@
 public class OpenPanelTween : MonoBehaviour {
 
     [SerializeField]
+    private bool _noTween = false;
+
+    [SerializeField]
     private LeanTweenType _openingType;
 
     [SerializeField]
@@ -20,22 +23,34 @@ public class OpenPanelTween : MonoBehaviour {
     [SerializeField]
     private float _closingScale = 1.2f;
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.S)) {
-            OpenPanel();
-        }
-
-        if (Input.GetKeyDown(KeyCode.A)) {
-            ClosePanel();
-        }
-    }
-
     public void OpenPanel() {
+        if (_noTween) {
+            transform.localScale = Vector3.one * _openingScale;
+            SetActiveTrue();
+            return;
+        }
+
+        transform.localScale = Vector3.one * _closingScale;
+        SetActiveTrue();
+
         LeanTween.scale(gameObject, Vector3.one * _openingScale, _openingTime).setEase(_openingType).setIgnoreTimeScale(true);
     }
 
     public void ClosePanel() {
-        LeanTween.scale(gameObject, Vector3.one * _closingScale, _closingTime).setEase(_closingType).setIgnoreTimeScale(true);
+        if (_noTween) {
+            SetActiveFalse();
+            return;
+        }
+
+        LeanTween.scale(gameObject, Vector3.one * _closingScale, _closingTime).setEase(_closingType).setIgnoreTimeScale(true).setOnComplete(SetActiveFalse);
+    }
+
+    private void SetActiveTrue() {
+        this.gameObject.SetActive(true);
+    }
+
+    private void SetActiveFalse() {
+        this.gameObject.SetActive(false);
     }
 
 }
