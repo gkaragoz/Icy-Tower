@@ -110,16 +110,19 @@ public class Account : MonoBehaviour {
         return PlayerStats.GetHighScore();
     }
 
-    public int GetGold() {
-        return PlayerStats.GetGold();
+    public int GetCurrencyAmount(VirtualCurrency currencyType) {
+        switch (currencyType) {
+            case VirtualCurrency.Gold:
+                return PlayerStats.GetGold();
+            case VirtualCurrency.Gem:
+                return PlayerStats.GetGem();
+            default:
+                return PlayerStats.GetGold();
+        }
     }
 
     public int GetKey() {
         return PlayerStats.GetKey();
-    }
-
-    public int GetGem() {
-        return PlayerStats.GetGem();
     }
 
 }
