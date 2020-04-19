@@ -25,25 +25,31 @@ public class PlayerController : MonoBehaviour {
     private int _conffettiAmount = 100;
     private int _conffettiCounter = 1;
 
-    private bool _hasPlayerPositonSet = false;
+    private bool _isFirstStart = true;
 
     private void Awake() {
         _characterManager = GetComponent<CharacterManager>();
+    }
+
+    private void Start() {
     }
 
     private void Update() {
         if (GameManager.instance.GetGameState() == GameState.Gameplay) {
             int currentFloor = ((int)transform.position.y - (int)PlatformManager.instance.InitialSpawnPosition) / (int)_platformStats.GetDistanceBetweenPlatforms();
             SetScore(currentFloor);
-            if (!_hasPlayerPositonSet) {
+            if (_isFirstStart) {
                 SetPlayerInitPosition();
+               _isFirstStart = false;
             }
         }
     }
 
     private void SetPlayerInitPosition() {
-        _hasPlayerPositonSet = true;
-        LeanTween.moveY(gameObject, StartingFloorStats.instance.CalculateStartingPlatformPosition() + 3, 1f);
+        if(StartingFloorStats.instance.CalculateStartingPlatformPosition() == 0f) {
+            return;
+        }
+            LeanTween.moveY(gameObject, StartingFloorStats.instance.CalculateStartingPlatformPosition() + 3, 1f);
     }
 
     private void FixedUpdate() {
@@ -59,8 +65,6 @@ public class PlayerController : MonoBehaviour {
                 if (_horizontal != 0) {
                     Move(_horizontal);
                 }
-                ComboJump();
-                Jump();
             }
         }
     }
@@ -69,20 +73,12 @@ public class PlayerController : MonoBehaviour {
         _characterManager.Move(horizontal);
     }
 
-    public void Jump() {
-        _characterManager.Jump();
-    }
-
     public void MoveLeft() {
         _characterManager.MoveLeft();
     }
 
     public void MoveRight() {
         _characterManager.MoveRight();
-    }
-
-    public void ComboJump() {
-        _characterManager.ComboJump();
     }
 
     public void SetMoveLeft(bool moveLeft) {

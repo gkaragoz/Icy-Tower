@@ -21,13 +21,7 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
     private BoxCollider _boxCollider;
     [SerializeField]
     [Utils.ReadOnly]
-    private RaycastHit _hit;
-    [SerializeField]
-    [Utils.ReadOnly]
     private bool _isJumping = false;
-    [SerializeField]
-    [Utils.ReadOnly]
-    private bool _isJumpCalled = false;
     [SerializeField]
     [Utils.ReadOnly]
     private CharacterStats _characterStats;
@@ -35,8 +29,7 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
     [Utils.ReadOnly]
     private AnimationState _animationState = AnimationState.Idle;
     [SerializeField]
-    [Utils.ReadOnly]
-    private VFX _activeVFX = null;
+    private ParticleSystem _comboJumpVFX = null;
 
     public AnimationState AnimationStateEnum {
         get {
@@ -50,7 +43,10 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
 
     public bool IsFalling {
         get {
-            return _rb.velocity.y <= 0 ? true : false;
+            if (_rb.velocity.y < 0) {
+                return true;
+            } else
+                return false;
         }
     }
 
@@ -90,68 +86,45 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
 
     private void FixedUpdate() {
         ApplyLocalGravity();
-
-        SendRay();
         SetCharacterPositionY();
-        
     }
 
     private void ApplyLocalGravity() {
         _rb.AddForce(Vector3.up * Physics.gravity.y * _characterStats.GetLocalGravity(), ForceMode.Acceleration);
     }
 
-    private void SendRay() {
-        Vector3 _leftFoot = new Vector3(_boxCollider.transform.position.x + _characterStats.GetFootPositionOffset(), _boxCollider.transform.position.y, _boxCollider.transform.position.z);
-        Vector3 _rightFoot = new Vector3(_boxCollider.transform.position.x - _characterStats.GetFootPositionOffset(), _boxCollider.transform.position.y, _boxCollider.transform.position.z);
-        if (Physics.Raycast(_leftFoot, Vector3.down, out _hit, CollisionRayDistance) || Physics.Raycast(_rightFoot, Vector3.down, out _hit, CollisionRayDistance)) {
-            if (_hit.transform.tag == _jumpableTag && IsFalling == true) {
-                IsJumping = false;
-                StopLoopVFX();
+    private void OnTriggerEnter(Collider other) {
+        if (GameManager.instance.HasPlayerDied)
+            return;
+
+        if (other.tag == _jumpableTag && IsFalling == true) {
+            _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
+            if (Mathf.Abs(_rb.velocity.x) >= _characterStats.GetRequiredVelocityForComboJump()) {
+                ComboJump();
+            } else {
+                Jump();
             }
-        } else {
-            IsJumping = true;
-            _isJumpCalled = false;
         }
     }
 
+
     public void Jump() {
-        if (!_isJumpCalled) {
-            _isJumpCalled = true;
-            _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
-            _rb.AddForce(Vector3.up * (_characterStats.GetJumpPower() + (Mathf.Abs(_rb.velocity.x) / 3f)), ForceMode.Impulse);
-            AnimationStateEnum = AnimationState.Jump;
-            PlayVFX();
-            PlaySFX(SoundFXTypes.InGame_Player_Jump);
-        }
+        _rb.AddForce(Vector3.up * (_characterStats.GetJumpPower() + (Mathf.Abs(_rb.velocity.x) / 3f)), ForceMode.Impulse);
+        AnimationStateEnum = AnimationState.Jump;
+        PlayVFX();
+        PlaySFX(SoundFXTypes.InGame_Player_Jump);
     }
 
     private void PlayVFX() {
         ObjectPooler.instance.SpawnFromPool(VFXTypes.VFXJump.ToString(), transform.position);
     }
 
-    private void PlayLoopVFX() {
-        _activeVFX = ObjectPooler.instance.SpawnFromPool(VFXTypes.VFXComboJump.ToString(), transform.position).GetComponent<VFX>();
-        _activeVFX.SetTarget(this.transform);
-        _activeVFX.Play();
-    }
-
-    private void StopLoopVFX() {
-        if (_activeVFX == null)
-            return;
-        _activeVFX.Stop();
-    }
 
     public void ComboJump() {
-        if (!_isJumpCalled) {
-            if (Mathf.Abs(_rb.velocity.x) >= _characterStats.GetRequiredVelocityForComboJump()) {
-                _isJumpCalled = true;
-                _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
-                _rb.AddForce(Vector3.up * _characterStats.GetComboJumpPower(), ForceMode.Impulse);
-                AnimationStateEnum = AnimationState.ComboJump;
-                PlayLoopVFX();
-                PlaySFX(SoundFXTypes.InGame_Player_Jump_Combo);
-            }
-        }
+        _rb.AddForce(Vector3.up * _characterStats.GetComboJumpPower(), ForceMode.Impulse);
+        AnimationStateEnum = AnimationState.ComboJump;
+        _comboJumpVFX.Play();
+        PlaySFX(SoundFXTypes.InGame_Player_Jump_Combo);
     }
 
     public void Move(float horizontal) {

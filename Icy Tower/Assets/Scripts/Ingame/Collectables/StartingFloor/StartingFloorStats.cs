@@ -62,7 +62,7 @@ public class StartingFloorStats : MonoBehaviour{
 
     public float CalculateStartingPlatformPosition() {
         if (_startingFloor.Level == 0)
-            return 31; //tower length
+            return 0f; //tower length
 
         return ((_startingFloor.Level * _startingFloor.FloorMultiplier) * _platformStats.GetDistanceBetweenPlatforms() ) + PlatformManager.instance.InitialSpawnPosition;
     }
