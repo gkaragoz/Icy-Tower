@@ -12,10 +12,6 @@ public class CharacterManager : MonoBehaviour {
         _characterMotor = GetComponent<CharacterMotor>();
     }
 
-    private void Update() {
-        HandleColliders();
-    }
-
     public void Move(float horizontal) {
         if (_characterMotor.AnimationStateEnum == AnimationState.LeftRun || _characterMotor.AnimationStateEnum == AnimationState.RightRun)
             return;
@@ -23,38 +19,11 @@ public class CharacterManager : MonoBehaviour {
         _characterMotor.Move(horizontal);
     }
 
-    public void Jump() {
-        if (_characterMotor.IsJumping) {
-            return;
-        }
-
-        _characterMotor.Jump();
-    }
-
-    public void ComboJump() {
-        if (_characterMotor.IsJumping) {
-            return;
-        }
-        _characterMotor.ComboJump();
-    }
-
     public void MoveLeft() {
         _characterMotor.MoveLeft();
     }
     public void MoveRight() {
         _characterMotor.MoveRight();
-    }
-
-    private void HandleColliders() {
-        if (_characterMotor.IsFalling) {
-            SetColliders(true);
-        } else if (_characterMotor.IsJumping) {
-            SetColliders(false);
-        }
-    }
-
-    private void SetColliders(bool status) {
-        _characterMotor.BoxCollider.enabled = status;
     }
 
     private void OnDrawGizmos() {
