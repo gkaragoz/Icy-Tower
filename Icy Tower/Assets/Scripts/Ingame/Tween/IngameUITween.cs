@@ -9,7 +9,7 @@ public class IngameUITween : MonoBehaviour {
     private void Start() {
         transform.localScale = Vector3.zero;
 
-        LeanTween.scale(gameObject, Vector3.one * 0.1f, 0.2f).setDelay(1.25f).setEaseInBounce().setIgnoreTimeScale(true).setOnComplete(PlayHello);
+        LeanTween.scale(gameObject, Vector3.one * 0.1f, 0.2f).setDelay(Random.Range(1f, 1.45f)).setEaseInBounce().setIgnoreTimeScale(true).setOnComplete(PlayHello);
     }
 
     private void PlayHello() {
