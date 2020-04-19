@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Platform
   _prefab: {fileID: 8645313060680749039, guid: c3a647a84af2c0240814e432b6d7bfb4, type: 3}
-  _maxScale: 1.5
-  _minScale: 0.8
+  _maxScale: 8
+  _minScale: 1
   _thickness: 1.25
   _depth: 1
   _movementSpeed: 0

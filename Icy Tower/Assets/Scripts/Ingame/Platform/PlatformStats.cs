@@ -66,10 +66,10 @@ public class PlatformStats : MonoBehaviour {
     }
 
     public float GetMaxScale() {
-        return _platform.MaxScale;
+        return _platform.MaxScale* 0.22f;
     }
     public float GetMinScale() {
-        return _platform.MinScale;
+        return _platform.MinScale*0.22f;
     }
 
     public float GetThickness() {
@@ -93,23 +93,23 @@ public class PlatformStats : MonoBehaviour {
     }
 
     public Vector3 GetNewPosition(float initialSpawnPos, int lastSpawnedPlatform,float scaleZ){
-        float x =WorldSettings.instance.GetRandomBorderPosition().x;
+        float x = -4;//WorldSettings.instance.GetRandomBorderPosition().x;
         float y = initialSpawnPos + (GetDistanceBetweenPlatforms() * lastSpawnedPlatform);
         float z = 0;
 
-        if(x >= 0) {
+       /* if(x >= 0) {
             float endPosX = x + (scaleZ / 2);
             if((endPosX) > WorldSettings.instance.GetMapRightBorderPosition().x) {
                 float distance = endPosX - WorldSettings.instance.GetMapRightBorderPosition().x;
-                x -= distance;
+               // x -= distance;
             }
         } else {
             float endPosX = x - (scaleZ / 2); 
             if ((endPosX) < WorldSettings.instance.GetMapLeftBorderPosition().x) {
                 float distance = endPosX - WorldSettings.instance.GetMapLeftBorderPosition().x;
-                x -= distance;
+                //x -= distance;
             }
-        }
+        }*/
         return new Vector3(x, y, z);
     }
     #endregion

@@ -3,9 +3,9 @@ using UnityEngine.UI;
 using Library.FaceBook;
 using Library.Authentication.GooglePlay;
 using Library.Authentication;
-
 public class Authentication_Example : MonoBehaviour
 {
+
     private PlayfabCustomAuth _customAuth;
 
     private PlayfabFacebook _facebookAuth;
@@ -107,5 +107,6 @@ public class Authentication_Example : MonoBehaviour
     {
         _recoverPopUpGPGSText.text = _gpgsAuth.GetRecoverPopUpText();
     }
+
 
 }
