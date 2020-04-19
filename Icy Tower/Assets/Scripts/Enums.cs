@@ -168,3 +168,8 @@ public enum ControllerType {
     Joystick,
     Button
 }
+
+public enum VirtualCurrency {
+    Gold,
+    Gem
+}

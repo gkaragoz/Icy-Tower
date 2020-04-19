@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84607e4f42c1f4a478551ca522927541, type: 3}
+  m_Name: Market
+  m_EditorClassIdentifier: 
+  _marketItems:
+  - _marketItem: {fileID: 11400000, guid: 7d1ff63a5a2faaf4dbc34506ad995106, type: 2}
+  - _marketItem: {fileID: 11400000, guid: d878ccdfa525c0747b4ab2f4352b259b, type: 2}
+  - _marketItem: {fileID: 11400000, guid: f95d251fd5373ae4b848130afcfb88ad, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 8ec5511975013b64cb26310c7a6a3413, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 74b5166ca2d8a0f458274e8c5ef6c46b, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 0096123c48ec42c42bd537f3f6c586d5, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 7541764e61f85b74c93a6ae364958f93, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 44c9ddb86b28a854bbad2d8247a68887, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 8d55785090dd12a40820ab7325776b93, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 246f6005583f45b4a930e25372c2a91e, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 7374b0b6787e9814fbf7eaf7e7ea00b1, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 27468524a925ff449a1934e2a56be2bb, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 8ba085044c46a7540a00c6ac0d6821b9, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 293727a66b1b8c74db2e0d304fcc95ac, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 04dc37775b6de314196c4a65dc95d2eb, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 622b3335c6263f24aa0924497eb5e1be, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 354b2e5deeac9964cb3a0aa239cb3532, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 569edf1241c8ad34c8e0864a24698999, type: 2}
+  - _marketItem: {fileID: 11400000, guid: 17e1ceef4fca82f458c96a1ca5582fa0, type: 2}
+  - _marketItem: {fileID: 11400000, guid: fdabd09b53dd868468bd2c9effb263fc, type: 2}
+  - _marketItem: {fileID: 11400000, guid: fe5a00e7b1cd58a49bcd5bbd1ca746c9, type: 2}
+  - _marketItem: {fileID: 11400000, guid: b092858af545e474ba3d44c454d06099, type: 2}
+  - _marketItem: {fileID: 11400000, guid: aacd190ba7895264bba311023bfab406, type: 2}
