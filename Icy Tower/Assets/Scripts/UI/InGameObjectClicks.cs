@@ -4,7 +4,7 @@ using UnityEngine;
 public class InGameObjectClicks : MonoBehaviour {
 
     private void Update() {
-        if (Input.GetMouseButtonDown(0) && GameManager.instance.GetGameState() == GameState.MainMenu) {
+        if (Input.GetMouseButtonDown(0) && GameManager.instance.GetGameState() == GameState.MainMenu && UIManager.instance.GetActivePanel() == UIPanels.PnlMainMenu) {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 

@@ -3,6 +3,18 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour{
 
+    #region Singleton
+
+    public static UIManager instance;
+    private void Awake() {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+    }
+
+    #endregion
+
     [SerializeField]
     private ControllerType _selectedControllerType = ControllerType.Joystick;
 
@@ -17,7 +29,7 @@ public class UIManager : MonoBehaviour{
     [SerializeField]
     private SettingsPanel _settingsPanel = null;
 
-    private void Awake() {
+    private void Start() {
         OpenPanel("PnlMainMenu");
 
         _settingsPanel.SetController(_selectedControllerType);
