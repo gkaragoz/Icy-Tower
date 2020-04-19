@@ -30,9 +30,6 @@ public class CharacterStats_SO : ScriptableObject {
     private float _footPositionOffset= 0f;
 
     [SerializeField]
-    private float _playerPositionY= 0f;
-
-    [SerializeField]
     private float _localGravity = 3.5f;
 
     public string Name {
@@ -72,11 +69,6 @@ public class CharacterStats_SO : ScriptableObject {
     public float FootPositionOffset {
         get { return _footPositionOffset; }
         set { _footPositionOffset = value; }
-    }
-
-    public float CharacterPositionY {
-        get { return _playerPositionY; }
-        set { _playerPositionY = value; }
     }
 
     public float LocalGravity {

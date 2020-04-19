@@ -35,12 +35,6 @@ public class CharacterStats : MonoBehaviour {
         // TODO: check maximum values to not go over it.
     }
 
-    public void IncreaseCharacterPosition(float amount) {
-        _character.CharacterPositionY += amount;
-
-        // TODO: check maximum values to not go over it.
-    }
-
     #endregion
 
     #region Decreasers
@@ -84,9 +78,6 @@ public class CharacterStats : MonoBehaviour {
         _character.FootPositionOffset = amount;
     }
 
-    public void SetCharacterPositionY(float value) {
-        _character.CharacterPositionY = value;
-    }
     public void SetFallMultiplier(float value) {
         _character.LocalGravity = value;
     }
@@ -124,10 +115,6 @@ public class CharacterStats : MonoBehaviour {
 
     public float GetFootPositionOffset() {
         return _character.FootPositionOffset;
-    }
-
-    public float GetCharacterPositionY() {
-        return _character.CharacterPositionY;
     }
 
     public float GetLocalGravity() {

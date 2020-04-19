@@ -86,8 +86,8 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
 
     private void FixedUpdate() {
         ApplyLocalGravity();
-        SetCharacterPositionY();
     }
+
 
     private void ApplyLocalGravity() {
         _rb.AddForce(Vector3.up * Physics.gravity.y * _characterStats.GetLocalGravity(), ForceMode.Acceleration);
@@ -147,10 +147,6 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
             _rb.velocity = new Vector3(-_characterStats.GetMaxVelocityX(), _rb.velocity.y, _rb.velocity.z);
 
         _rb.AddForce(new Vector3(1 * _characterStats.GetMovementSpeed(), 0));
-    }
-
-    private void SetCharacterPositionY() {
-        _characterStats.SetCharacterPositionY(gameObject.transform.position.y);
     }
 
     public void PlaySFX(SoundFXTypes sfxType) {
