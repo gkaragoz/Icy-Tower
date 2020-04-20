@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -411,6 +411,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0065fb5c502739747801738181572aeb, type: 2}
   - {fileID: 11400000, guid: 5c25e80485e082441b6696eed6a89a6b, type: 2}
   - {fileID: 11400000, guid: 667a52c7f83b00e4e83fd591b9f65e84, type: 2}
+  - {fileID: 11400000, guid: 6c637d31e5d5532419dd704c2995c9d8, type: 2}
   _target: {fileID: 0}
   _followers: {fileID: 0}
   _deadZoneOffset: 20
@@ -1237,7 +1238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1665261440
 Transform:
   m_ObjectHideFlags: 0

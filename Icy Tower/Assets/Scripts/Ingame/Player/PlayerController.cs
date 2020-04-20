@@ -31,9 +31,6 @@ public class PlayerController : MonoBehaviour {
         _characterManager = GetComponent<CharacterManager>();
     }
 
-    private void Start() {
-    }
-
     private void Update() {
         if (GameManager.instance.GetGameState() == GameState.Gameplay) {
             int currentFloor = ((int)transform.position.y - (int)PlatformManager.instance.InitialSpawnPosition) / (int)_platformStats.GetDistanceBetweenPlatforms();

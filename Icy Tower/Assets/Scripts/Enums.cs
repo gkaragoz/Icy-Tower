@@ -59,6 +59,7 @@ public enum CameraStateEnums {
     MainMenu_to_Wardrobe,
     Wardrobe_to_MainMenu,
     MainMenu_to_MainMenu,
+    GameOver_to_MainMenu,
     None
 }
 

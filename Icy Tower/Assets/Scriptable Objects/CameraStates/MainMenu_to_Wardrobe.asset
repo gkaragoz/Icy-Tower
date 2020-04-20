@@ -13,29 +13,13 @@ MonoBehaviour:
   m_Name: MainMenu_to_Wardrobe
   m_EditorClassIdentifier: 
   state: 2
-  totalTime: 3
+  totalTime: 1
   traversalDatas:
   - name: 
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
-    positionTimeWeight: 0
-    rotationTimeWeight: 0
-    easeType: 0
-    _positionFlyTime: NaN
-    _rotationFlyTime: NaN
-  - name: 
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
-    positionTimeWeight: 0
-    rotationTimeWeight: 0
-    easeType: 0
-    _positionFlyTime: NaN
-    _rotationFlyTime: NaN
-  - name: 
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
-    positionTimeWeight: 0
-    rotationTimeWeight: 0
-    easeType: 0
-    _positionFlyTime: NaN
-    _rotationFlyTime: NaN
+    position: {x: -0.75, y: 10, z: -0.5}
+    rotation: {x: -5, y: 0, z: 0}
+    positionTimeWeight: 1
+    rotationTimeWeight: 1
+    easeType: 1
+    _positionFlyTime: 1
+    _rotationFlyTime: 1

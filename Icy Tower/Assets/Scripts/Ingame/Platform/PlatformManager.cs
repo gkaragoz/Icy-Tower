@@ -43,7 +43,9 @@ public class PlatformManager : MonoBehaviour {
     }
 
     public void SpawnPlatforms() {
+        _floor = 0;
         _platforms = new Queue<Platform>();
+
         for (int i = 0; i < ObjectPooler.instance.GetGameObjectsOnPool("Platform").Length; i++) {
             Platform platform = ObjectPooler.instance.SpawnFromPool("Platform").GetComponent<Platform>();
             platform.Floor = ++_floor;

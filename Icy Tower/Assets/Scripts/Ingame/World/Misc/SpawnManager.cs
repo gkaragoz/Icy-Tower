@@ -17,6 +17,7 @@ public class SpawnManager : MonoBehaviour {
     private float _lastSpawnedWallPos = 30f;
 
     public void SpawnAll() {
+        LastSpawnedWallPos = 30f;
         PlatformManager.instance.SpawnPlatforms();
 
         for (int i = 0; i < 5; i++) {

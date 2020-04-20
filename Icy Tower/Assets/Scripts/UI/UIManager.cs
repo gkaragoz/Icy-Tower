@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour{
+
+    public Action<UIPanels> OnUISceneChanged;
 
     #region Singleton
 
@@ -33,6 +36,15 @@ public class UIManager : MonoBehaviour{
         OpenPanel("PnlMainMenu");
 
         _settingsPanel.SetController(_selectedControllerType);
+
+        GameManager.instance.OnGameStateChanged += OnGameStateChanged;
+    }
+
+    private void OnGameStateChanged(GameState previousState, GameState currentState) {
+        if (currentState == GameState.GameOver) {
+            ClosePanel("PnlGamePlay");
+            OpenPanel("PnlGameOver");
+        }
     }
 
     public void OpenPanel(string panelEnum) {
@@ -42,6 +54,9 @@ public class UIManager : MonoBehaviour{
                 _panelStack.Push(panel);
             } 
         }
+
+        OnUISceneChanged?.Invoke(GetActivePanel());
+
         OpenImageOverlayBG();
     }
 
@@ -56,7 +71,10 @@ public class UIManager : MonoBehaviour{
 
         if (_panelStack.Count == 0) {
             CloseImageOverlayBG();
+            return;
         }
+
+        OnUISceneChanged?.Invoke(GetActivePanel());
     }
 
     public void ClosePanel(string panelEnum) {
@@ -66,7 +84,13 @@ public class UIManager : MonoBehaviour{
                 _panelStack.Pop();
             }
         }
-        CloseImageOverlayBG();
+
+        if (_panelStack.Count == 0) {
+            CloseImageOverlayBG();
+            return;
+        }
+
+        OnUISceneChanged?.Invoke(GetActivePanel());
     }
 
     public UIPanels GetActivePanel() {

@@ -55,6 +55,16 @@ public class GameManager : MonoBehaviour {
     }
     private void OnSceneActivated(Scene arg0, LoadSceneMode arg1) {
         SetGameState(GameState.MainMenu);
+
+        UIManager.instance.OnUISceneChanged += OnUISceneChanged;
+    }
+
+    private void OnUISceneChanged(UIPanels newPanel) {
+        if (newPanel == UIPanels.PnlMainMenu) {
+            SetGameState(GameState.MainMenu);
+        } else if (newPanel == UIPanels.PnlWardrobe) {
+            SetGameState(GameState.Wardrobe);
+        }
     }
 
     public GameState GetGameState() {
@@ -64,6 +74,9 @@ public class GameManager : MonoBehaviour {
     public void SetGameState(GameState state) {
         GameState previousState = this._gameState;
         this._gameState = state;
+
+        Debug.Log("Previous state: " + previousState);
+        Debug.Log("Next state: " + state);
 
         switch (state) {
             case GameState.Loading:

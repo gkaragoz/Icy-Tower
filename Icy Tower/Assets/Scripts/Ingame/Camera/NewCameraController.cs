@@ -36,8 +36,6 @@ public class NewCameraController : MonoBehaviour {
     }
 
     private void OnGameStateChanged(GameState previousState, GameState newState) {
-        LeanTween.cancelAll();
-
         foreach (CameraState cameraState in _cameraStates) {
             if (cameraState.state == GetCameraState(previousState, newState)) {
                 cameraState.Run();
@@ -94,7 +92,9 @@ public class NewCameraController : MonoBehaviour {
                 }
             }
 
-            StickCollectorToCamera();
+            if (_hasReachedStartFloor) {
+                StickCollectorToCamera();
+            }
 
             if (isGamePlayCameraActive) {
                 Switcher();
@@ -159,8 +159,10 @@ public class NewCameraController : MonoBehaviour {
             return CameraStateEnums.MainMenu_to_Wardrobe;
         if (previousState == GameState.Wardrobe && targetState == GameState.MainMenu)
             return CameraStateEnums.Wardrobe_to_MainMenu;
-        if (previousState == GameState.Loading && targetState == GameState.MainMenu)
+        if (previousState == GameState.MainMenu && targetState == GameState.MainMenu)
             return CameraStateEnums.MainMenu_to_MainMenu;
+        if (previousState == GameState.GameOver && targetState == GameState.MainMenu)
+            return CameraStateEnums.GameOver_to_MainMenu;
 
         return CameraStateEnums.None;
     }
