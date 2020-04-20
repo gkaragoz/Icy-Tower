@@ -36,6 +36,8 @@ public class NewCameraController : MonoBehaviour {
     }
 
     private void OnGameStateChanged(GameState previousState, GameState newState) {
+        LeanTween.cancel(gameObject);
+
         foreach (CameraState cameraState in _cameraStates) {
             if (cameraState.state == GetCameraState(previousState, newState)) {
                 cameraState.Run();
