@@ -21,21 +21,13 @@ MonoBehaviour:
     positionTimeWeight: 1
     rotationTimeWeight: 1
     easeType: 6
-    _positionFlyTime: 0.16666667
-    _rotationFlyTime: 0.16666667
+    _positionFlyTime: 0.2
+    _rotationFlyTime: 0.2
   - name: Move To Top
-    position: {x: 0, y: 40, z: -8}
-    rotation: {x: -20, y: 0, z: 0}
+    position: {x: 0, y: 34, z: -12}
+    rotation: {x: 0, y: 0, z: 0}
     positionTimeWeight: 4
     rotationTimeWeight: 4
     easeType: 6
-    _positionFlyTime: 0.6666667
-    _rotationFlyTime: 0.6666667
-  - name: Zoom Out
-    position: {x: 0, y: 34, z: -12}
-    rotation: {x: 0, y: 0, z: 0}
-    positionTimeWeight: 1
-    rotationTimeWeight: 1
-    easeType: 6
-    _positionFlyTime: 0.16666667
-    _rotationFlyTime: 0.16666667
+    _positionFlyTime: 0.8
+    _rotationFlyTime: 0.8

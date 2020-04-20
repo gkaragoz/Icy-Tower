@@ -3497,7 +3497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd17e04cfcdb124baaea304c3d5d954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countDownTime: 8
+  _countDownTime: 4
   _isGamePaused: 0
 --- !u!1001 &1508632035
 PrefabInstance:
@@ -5196,7 +5196,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 49.74 FPS
+  m_text: 52.14 FPS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4634dd7c14f7df147aefd0855d9ccd18, type: 2}
   m_sharedMaterial: {fileID: 2805101894821811369, guid: 4634dd7c14f7df147aefd0855d9ccd18,
