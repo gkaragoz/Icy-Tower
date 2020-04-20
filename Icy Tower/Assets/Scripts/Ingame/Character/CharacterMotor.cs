@@ -9,6 +9,12 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
     private float _collisionRayDistance = 1f;
     [SerializeField]
     private string _jumpableTag = "Platform";
+    [SerializeField]
+    private LayerMask _layerMask;
+    [SerializeField]
+    private float _rayDistance = 0.5f;
+    [SerializeField]
+    private Transform[] _rayPoints = null;
 
     public Action<AnimationState> OnAnimationStateChanged;
 
@@ -84,29 +90,76 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
         _characterStats = GetComponent<CharacterStats>();
     }
 
+    private void Update() {
+        if (IsFalling) {
+            _boxCollider.enabled = true;
+        } else {
+            _boxCollider.enabled = false;
+        }
+    }
+
     private void FixedUpdate() {
         ApplyLocalGravity();
+
+        if (GameManager.instance.HasPlayerDied)
+            return;
+
+        if (IsFalling) {
+            Vector3 dir;
+            Vector3 origin;
+            bool isHit = false;
+
+            for (int ii = 0; ii < _rayPoints.Length; ii++) {
+                origin = _rayPoints[ii].position;
+                dir = new Vector3(origin.x, transform.position.y, origin.z) - origin;
+                isHit = Physics.Raycast(origin, dir.normalized, _rayDistance, _layerMask);
+
+                if (isHit) {
+                    break;
+                }
+            }
+
+            if (isHit) {
+                _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
+                if (Mathf.Abs(_rb.velocity.x) >= _characterStats.GetRequiredVelocityForComboJump()) {
+                    ComboJump();
+                } else {
+                    Jump();
+                }
+            }
+        }
+    }
+
+    private void OnDrawGizmos() {
+        Vector3 dir = Vector3.zero;
+        Vector3 origin = Vector3.zero;
+        bool isHit = false;
+
+        for (int ii = 0; ii < _rayPoints.Length; ii++) {
+            origin = _rayPoints[ii].position;
+            dir = new Vector3(origin.x, transform.position.y, origin.z) - origin;
+            isHit = Physics.Raycast(origin, dir.normalized, _rayDistance, _layerMask);
+
+            if (isHit) {
+                break;
+            }
+        }
+
+        for (int ii = 0; ii < _rayPoints.Length; ii++) {
+            if (_rayPoints[ii].position == origin && isHit) {
+                Gizmos.color = Color.red;
+                Gizmos.DrawRay(origin, dir.normalized * _rayDistance);
+            } else {
+                Gizmos.color = Color.green;
+                Gizmos.DrawRay(_rayPoints[ii].position, dir.normalized * _rayDistance);
+            }
+        }
     }
 
 
     private void ApplyLocalGravity() {
         _rb.AddForce(Vector3.up * Physics.gravity.y * _characterStats.GetLocalGravity(), ForceMode.Acceleration);
     }
-
-    private void OnTriggerEnter(Collider other) {
-        if (GameManager.instance.HasPlayerDied)
-            return;
-
-        if (other.tag == _jumpableTag && IsFalling == true) {
-            _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
-            if (Mathf.Abs(_rb.velocity.x) >= _characterStats.GetRequiredVelocityForComboJump()) {
-                ComboJump();
-            } else {
-                Jump();
-            }
-        }
-    }
-
 
     public void Jump() {
         _rb.AddForce(Vector3.up * (_characterStats.GetJumpPower() + (Mathf.Abs(_rb.velocity.x) / 3f)), ForceMode.Impulse);

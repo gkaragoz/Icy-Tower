@@ -26,13 +26,4 @@ public class CharacterManager : MonoBehaviour {
         _characterMotor.MoveRight();
     }
 
-    private void OnDrawGizmos() {
-        if (_characterMotor == null || _characterMotor.BoxCollider == null) {
-            return;
-        }
-
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawRay(_characterMotor.BoxCollider.transform.position, Vector3.down * _characterMotor.CollisionRayDistance);
-    }
-
 }
