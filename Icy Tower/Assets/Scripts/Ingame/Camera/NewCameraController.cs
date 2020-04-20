@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class NewCameraController : MonoBehaviour {
@@ -21,15 +18,11 @@ public class NewCameraController : MonoBehaviour {
     private float _jumpOffset = 0f;
 
     public float speed = 2.0f;
+    public bool isGamePlayCameraActive = false;
 
     private bool _canMove = false;
     private bool _flyingUP = false;
     private bool _hasReachedStartFloor = false;
-    public bool startMatch = false;
-    public bool iCanRotate = false;
-    private bool _isCollecterMoving = false;
-    private Coroutine mycor;
-
     private bool _isLeanTweenPlaying = false;
 
     private void Start() {
@@ -52,14 +45,12 @@ public class NewCameraController : MonoBehaviour {
         }
 
         if (newState == GameState.Gameplay) {
-            startMatch = true;
+            isGamePlayCameraActive = true;
         }
     }
 
     public void CatchCameraPosition() {
-        _followers.transform.LeanMoveY(transform.position.y - _followersOffset, 2f).setOnComplete(() => {
-            _isCollecterMoving = true;
-        });
+        _followers.transform.LeanMoveY(transform.position.y - _followersOffset, 2f);
     }
     
     public void StickCollectorToCamera() {
@@ -85,12 +76,12 @@ public class NewCameraController : MonoBehaviour {
                     CatchCameraPosition();
                     _hasReachedStartFloor = true;
                 }
+
                 //Check if i died
                 if (_target.position.y < transform.position.y - _deadZoneOffset) {
-                    transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(60, 0, 0), speed * Time.deltaTime);
                     _canMove = false;
-                    startMatch = false;
-                    GameManager.instance.HasPlayerDied = true;
+                    isGamePlayCameraActive = false;
+                    GameManager.instance.SetGameState(GameState.GameOver);
 
                     if(Account.instance.GetKey() > 0) {
                         if(Input.GetKey(KeyCode.Space)) {
@@ -102,10 +93,10 @@ public class NewCameraController : MonoBehaviour {
                     return;
                 }
             }
-            if (_isCollecterMoving)
-                StickCollectorToCamera();
 
-            if (startMatch) {
+            StickCollectorToCamera();
+
+            if (isGamePlayCameraActive) {
                 Switcher();
             }
 
@@ -120,15 +111,13 @@ public class NewCameraController : MonoBehaviour {
     }
 
     private void Revive() {
-        GameManager.instance.HasPlayerDied = false;
         transform.rotation = Quaternion.Euler(Vector3.zero);
         _target.position = new Vector3(0,(Account.instance.GetCurrentScore() * 4) + PlatformManager.instance.InitialSpawnPosition ,_target.position.z);
         transform.position = new Vector3(0,_target.position.y, -12);
         _flyingUP = true;
-        startMatch = true;
+        isGamePlayCameraActive = true;
         _canMove = true;
         Account.instance.AddKey(-1);
-        
     }
 
     void NormalMovement() {
@@ -159,38 +148,6 @@ public class NewCameraController : MonoBehaviour {
             return true;
         else
             return false;
-    }
-
-    public void WallWalk(int value) {
-        if (mycor != null) {
-            iCanRotate = false;
-            StopCoroutine(mycor);
-
-        }
-        iCanRotate = true;
-        mycor = StartCoroutine(GetPump(value));
-    }
-
-    IEnumerator GetPump(int side) {
-
-        while (iCanRotate) {
-
-            float interpolation = speed * Time.deltaTime;
-            Vector3 rotation = this.transform.eulerAngles;
-            rotation.y = 10 * side;
-
-            if (side == 0) {
-                rotation.x = 0;
-                rotation.y = 0;
-                rotation.z = 0;
-            } else {
-                rotation.x = -20;
-            }
-
-            this.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(rotation), interpolation * 2);
-
-            yield return null;
-        }
     }
 
     private CameraStateEnums GetCameraState(GameState previousState, GameState targetState) {

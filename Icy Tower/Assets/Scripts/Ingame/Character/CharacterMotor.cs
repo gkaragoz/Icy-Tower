@@ -88,6 +88,8 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
 
         _boxCollider = GetComponentInChildren<BoxCollider>();
         _characterStats = GetComponent<CharacterStats>();
+
+        Stop();
     }
 
     private void Update() {
@@ -100,9 +102,6 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
 
     private void FixedUpdate() {
         ApplyLocalGravity();
-
-        if (GameManager.instance.HasPlayerDied)
-            return;
 
         if (IsFalling) {
             Vector3 dir;
@@ -161,6 +160,19 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
         _rb.AddForce(Vector3.up * Physics.gravity.y * _characterStats.GetLocalGravity(), ForceMode.Acceleration);
     }
 
+    public void Run() {
+        _rb.isKinematic = false;
+
+        this.enabled = true;
+    }
+
+    public void Stop() {
+        _rb.velocity = Vector3.zero;
+        _rb.isKinematic = true;
+
+        this.enabled = false;
+    }
+
     public void Jump() {
         _rb.AddForce(Vector3.up * (_characterStats.GetJumpPower() + (Mathf.Abs(_rb.velocity.x) / 3f)), ForceMode.Impulse);
         AnimationStateEnum = AnimationState.Jump;
@@ -171,7 +183,6 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
     private void PlayVFX() {
         ObjectPooler.instance.SpawnFromPool(VFXTypes.VFXJump.ToString(), transform.position);
     }
-
 
     public void ComboJump() {
         _rb.AddForce(Vector3.up * _characterStats.GetComboJumpPower(), ForceMode.Impulse);

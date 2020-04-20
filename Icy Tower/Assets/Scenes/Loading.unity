@@ -413,12 +413,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 667a52c7f83b00e4e83fd591b9f65e84, type: 2}
   _target: {fileID: 0}
   _followers: {fileID: 0}
-  _deadZoneOffset: 12
-  _followersOffset: 20
+  _deadZoneOffset: 20
+  _followersOffset: 30
   _jumpOffset: 2
   speed: 2
-  startMatch: 0
-  iCanRotate: 0
+  isGamePlayCameraActive: 0
 --- !u!114 &496398823
 MonoBehaviour:
   m_ObjectHideFlags: 0

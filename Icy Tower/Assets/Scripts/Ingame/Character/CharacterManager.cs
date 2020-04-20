@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(CharacterMotor))]
 public class CharacterManager : MonoBehaviour {
@@ -10,6 +11,18 @@ public class CharacterManager : MonoBehaviour {
 
     private void Awake() {
         _characterMotor = GetComponent<CharacterMotor>();
+
+        GameManager.instance.OnGameStateChanged += OnGameStateChanged;
+    }
+
+    private void OnGameStateChanged(GameState previousState, GameState currentState) {
+        if (currentState == GameState.GameOver) {
+            _characterMotor.Stop();
+        }
+
+        if (currentState == GameState.Gameplay) {
+            _characterMotor.Run();
+        }
     }
 
     public void Move(float horizontal) {
