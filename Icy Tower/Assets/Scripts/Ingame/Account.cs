@@ -25,8 +25,15 @@ public class Account : MonoBehaviour {
 
     private void Start() {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        GameManager.instance.OnGameStateChanged += OnGameStateChanged;
     }
-   
+
+    private void OnGameStateChanged(GameState previousGameState, GameState newGameState) {
+        if (newGameState == GameState.MainMenu) {
+            SaveSystem.SavePlayer(_playerStats);
+        }
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode) {
         PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         PlayerStats.Init(_playerStats);
@@ -45,56 +52,70 @@ public class Account : MonoBehaviour {
         }
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
-        
+
         Debug.Log("User accound has been initialized.");
     }
 
-    public void AddGold(int value) {
+    public void AddGold(int value, bool save = false) {
         PlayerStats.AddGold(value);
 
-        SaveSystem.SavePlayer(_playerStats);
+        if (save)
+            SaveSystem.SavePlayer(_playerStats);
+
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void AddKey(int value) {
+    public void AddKey(int value, bool save = false) {
         PlayerStats.AddKey(value);
 
-        SaveSystem.SavePlayer(_playerStats);
+        if (save)
+            SaveSystem.SavePlayer(_playerStats);
+
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void SetCurrentScore(int value) {
+    public void SetCurrentScore(int value, bool save = false) {
         PlayerStats.SetCurrentScore(value);
 
-        SaveSystem.SavePlayer(_playerStats);
+        if (save)
+            SaveSystem.SavePlayer(_playerStats);
+
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void SetHighScore(int value) {
+    public void SetHighScore(int value, bool save = false) {
         PlayerStats.SetHighScore(value);
 
-        SaveSystem.SavePlayer(_playerStats);
+        if (save)
+            SaveSystem.SavePlayer(_playerStats);
+
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void SetGold(int value) {
+    public void SetGold(int value, bool save = false) {
         PlayerStats.SetGold(value);
 
-        SaveSystem.SavePlayer(_playerStats);
+        if (save)
+            SaveSystem.SavePlayer(_playerStats);
+
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void SetKey(int value) {
+    public void SetKey(int value, bool save = false) {
         PlayerStats.SetKey(value);
 
-        SaveSystem.SavePlayer(_playerStats);
+        if (save)
+            SaveSystem.SavePlayer(_playerStats);
+
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void SetGem(int value) {
+    public void SetGem(int value, bool save = false) {
         PlayerStats.SetGem(value);
 
-        SaveSystem.SavePlayer(_playerStats);
+        if (save)
+            SaveSystem.SavePlayer(_playerStats);
+
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
