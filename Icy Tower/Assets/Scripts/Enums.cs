@@ -2,7 +2,6 @@
     Loading,
     MainMenu,
     GamePaused,
-    GameplayCountdown,
     Gameplay,
     GameOver,
     Wardrobe
@@ -58,7 +57,6 @@ public enum CameraStateEnums {
     Gameplay_to_MainMenu,
     MainMenu_to_Wardrobe,
     Wardrobe_to_MainMenu,
-    MainMenu_to_MainMenu,
     GameOver_to_MainMenu,
     None
 }

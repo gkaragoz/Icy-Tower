@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class NewCameraController : MonoBehaviour {
@@ -18,12 +19,11 @@ public class NewCameraController : MonoBehaviour {
     private float _jumpOffset = 0f;
 
     public float speed = 2.0f;
-    public bool isGamePlayCameraActive = false;
 
+    private bool _isGamePlayCameraActive = false;
     private bool _canMove = false;
-    private bool _flyingUP = false;
+    private bool _isFollowingTarget = false;
     private bool _hasReachedStartFloor = false;
-    private bool _isLeanTweenPlaying = false;
 
     private void Start() {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -41,11 +41,12 @@ public class NewCameraController : MonoBehaviour {
         foreach (CameraState cameraState in _cameraStates) {
             if (cameraState.state == GetCameraState(previousState, newState)) {
                 cameraState.Run();
+                break;
             }
         }
 
         if (newState == GameState.Gameplay) {
-            isGamePlayCameraActive = true;
+            _isGamePlayCameraActive = true;
         }
     }
 
@@ -66,7 +67,7 @@ public class NewCameraController : MonoBehaviour {
             return;
         }
 
-        if (_isLeanTweenPlaying) {
+        if (LeanTween.isTweening(gameObject)) {
             return;
         }
 
@@ -76,29 +77,22 @@ public class NewCameraController : MonoBehaviour {
                     CatchCameraPosition();
                     _hasReachedStartFloor = true;
                 }
+            }
 
-                //Check if i died
-                if (_target.position.y < transform.position.y - _deadZoneOffset) {
-                    _canMove = false;
-                    isGamePlayCameraActive = false;
-                    GameManager.instance.SetGameState(GameState.GameOver);
-
-                    if(Account.instance.GetKey() > 0) {
-                        if(Input.GetKey(KeyCode.Space)) {
-                            Revive();
-                        }
-                        return;
-                    }
-                    LevelManager.instance.OnClick_RestartGame();
-                    return;
-                }
+            //Check if i died
+            if (_target.position.y < transform.position.y - _deadZoneOffset) {
+                _hasReachedStartFloor = false;
+                _canMove = false;
+                _isGamePlayCameraActive = false;
+                GameManager.instance.SetGameState(GameState.GameOver);
+                return;
             }
 
             if (_hasReachedStartFloor) {
                 StickCollectorToCamera();
             }
 
-            if (isGamePlayCameraActive) {
+            if (_isGamePlayCameraActive) {
                 Switcher();
             }
 
@@ -106,8 +100,8 @@ public class NewCameraController : MonoBehaviour {
                 NormalMovement();
             }
 
-            if (_flyingUP) {
-                FlyingUp();
+            if (_isFollowingTarget) {
+                FollowTarget();
             }
         }
     }
@@ -116,8 +110,8 @@ public class NewCameraController : MonoBehaviour {
         transform.rotation = Quaternion.Euler(Vector3.zero);
         _target.position = new Vector3(0,(Account.instance.GetCurrentScore() * 4) + PlatformManager.instance.InitialSpawnPosition ,_target.position.z);
         transform.position = new Vector3(0,_target.position.y, -12);
-        _flyingUP = true;
-        isGamePlayCameraActive = true;
+        _isFollowingTarget = true;
+        _isGamePlayCameraActive = true;
         _canMove = true;
         Account.instance.AddKey(-1);
     }
@@ -126,7 +120,7 @@ public class NewCameraController : MonoBehaviour {
         transform.Translate(0, speed * Time.deltaTime, 0);
     }
 
-    void FlyingUp() {
+    void FollowTarget() {
         float interpolation = speed * Time.deltaTime;
         Vector3 position = this.transform.position;
         position.y = Mathf.Lerp(this.transform.position.y, _target.transform.position.y, interpolation * 2);
@@ -135,12 +129,12 @@ public class NewCameraController : MonoBehaviour {
 
     void Switcher() {
         if (_target.position.y > transform.position.y + _jumpOffset) {
-            _flyingUP = true;
+            _isFollowingTarget = true;
             _canMove = false;
         }
 
         if (_target.position.y < transform.position.y && HasReachedStartFloor()) {
-            _flyingUP = false;
+            _isFollowingTarget = false;
             _canMove = true;
         }
     }
@@ -153,16 +147,14 @@ public class NewCameraController : MonoBehaviour {
     }
 
     private CameraStateEnums GetCameraState(GameState previousState, GameState targetState) {
-        if (previousState == GameState.MainMenu && targetState == GameState.GameplayCountdown)
+        if (previousState == GameState.MainMenu && targetState == GameState.Gameplay)
             return CameraStateEnums.MainMenu_to_Gameplay;
-        if (previousState == GameState.Gameplay && targetState == GameState.MainMenu)
+        if (previousState == GameState.Gameplay && targetState == GameState.MainMenu || previousState == GameState.Loading && targetState == GameState.MainMenu)
             return CameraStateEnums.Gameplay_to_MainMenu;
         if (previousState == GameState.MainMenu && targetState == GameState.Wardrobe)
             return CameraStateEnums.MainMenu_to_Wardrobe;
         if (previousState == GameState.Wardrobe && targetState == GameState.MainMenu)
             return CameraStateEnums.Wardrobe_to_MainMenu;
-        if (previousState == GameState.MainMenu && targetState == GameState.MainMenu)
-            return CameraStateEnums.MainMenu_to_MainMenu;
         if (previousState == GameState.GameOver && targetState == GameState.MainMenu)
             return CameraStateEnums.GameOver_to_MainMenu;
 

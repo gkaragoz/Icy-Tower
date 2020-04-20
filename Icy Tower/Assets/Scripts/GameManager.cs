@@ -75,6 +75,11 @@ public class GameManager : MonoBehaviour {
         GameState previousState = this._gameState;
         this._gameState = state;
 
+        if (previousState == state) {
+            Debug.Log("States are same.");
+            return;
+        }
+
         Debug.Log("Previous state: " + previousState);
         Debug.Log("Next state: " + state);
 
@@ -84,8 +89,6 @@ public class GameManager : MonoBehaviour {
             case GameState.MainMenu:
                 break;
             case GameState.GamePaused:
-                break;
-            case GameState.GameplayCountdown:
                 break;
             case GameState.Gameplay:
                 break;

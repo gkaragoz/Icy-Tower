@@ -20,6 +20,6 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: 0}
     positionTimeWeight: 1
     rotationTimeWeight: 1
-    easeType: 1
+    easeType: 6
     _positionFlyTime: 1
     _rotationFlyTime: 1

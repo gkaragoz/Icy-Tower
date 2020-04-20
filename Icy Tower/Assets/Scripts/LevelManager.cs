@@ -39,14 +39,6 @@ public class LevelManager : MonoBehaviour{
         set { _isUsingStickyPlumber= value; }
     }
 
-    private IEnumerator IStartGameCountdown() {
-        GameManager.instance.SetGameState(GameState.GameplayCountdown);
-
-        yield return new WaitForSeconds(_countDownTime);
-
-        StartGame();
-    }
-
     private void StartGame() {
         SpawnManager.instance.SpawnAll();
 
@@ -54,6 +46,7 @@ public class LevelManager : MonoBehaviour{
         Account.instance.SetCurrentScore(0);
     }
 
+    // UI
     private void Pause() {
         Time.timeScale = 0;
 
@@ -62,6 +55,7 @@ public class LevelManager : MonoBehaviour{
         GameManager.instance.SetGameState(GameState.GamePaused);
     }
 
+    // UI
     private void Unpause() {
         Time.timeScale = 1;
 
@@ -70,10 +64,12 @@ public class LevelManager : MonoBehaviour{
         GameManager.instance.SetGameState(GameState.Gameplay);
     }
 
+    // UI
     public void OnClick_NewGame() {
-        StartCoroutine(IStartGameCountdown());
+        StartGame();
     }
 
+    // UI
     public void OnClick_PauseUnpauseGame() {
         _isGamePaused = !_isGamePaused;
 
@@ -82,10 +78,6 @@ public class LevelManager : MonoBehaviour{
         } else {
             Unpause();
         }
-    }
-
-    public void OnClick_RestartGame() {
-        OnClick_NewGame();
     }
 
 }
