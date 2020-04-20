@@ -10,11 +10,7 @@ public class CameraState : ScriptableObject {
     public float totalTime;
     public CameraTraversalData[] traversalDatas;
 
-    private GameObject _cameraObject;
-
-    public void Run(GameObject target) {
-        this._cameraObject = target;
-
+    public void Run() {
         CalculateWeights();
 
         MoveTo(0);
@@ -46,14 +42,9 @@ public class CameraState : ScriptableObject {
         LeanTween.move(Camera.main.gameObject, targetPosition, targetPositionTime / totalTime)
             .setEase(targetEaseType)
             .setOnComplete(() => {
-                Debug.Log("Movement bitti " + stateIndex);
-
                 stateIndex++;
 
-                Debug.Log("Şuraya gittim " + targetPosition + " süre " + targetPositionTime);
-
                 if (stateIndex < traversalDatas.Length) {
-                    Debug.Log("Yeniyi çağırıyorum. Index: " + stateIndex);
                     MoveTo(stateIndex);
                 }
             });
@@ -67,13 +58,9 @@ public class CameraState : ScriptableObject {
         LeanTween.rotate(Camera.main.gameObject, targetRotation, targetRotationTime / totalTime)
             .setEase(targetEaseType)
             .setOnComplete(() => {
-                Debug.Log("Rotation bitti " + stateIndex);
                 stateIndex++;
 
-                Debug.Log("Şuraya gittim " + targetRotation + " süre " + targetRotationTime);
-
                 if (stateIndex < traversalDatas.Length) {
-                    Debug.Log("Yeniyi çağırıyorum. Index: " + stateIndex);
                     RotateTo(stateIndex);
                 }
             });
