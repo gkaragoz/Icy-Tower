@@ -6,16 +6,13 @@ public class HeadGroup : MonoBehaviour
 {
     public HeadAccesories[] heads;
 
-    public Vector2Int changeHead;
-   
-
     public void ChooseHead(int headIndex, int accesoriesIndex)
     {
         foreach (var head in heads)
         {
             head.head.SetActive(false);
 
-            foreach (var accesorie in head.accesories)
+           foreach (var accesorie in head.accesories)
             {
                 accesorie.SetActive(false);
             }
@@ -23,11 +20,14 @@ public class HeadGroup : MonoBehaviour
         heads[headIndex].head.SetActive(true);
         heads[headIndex].accesories[accesoriesIndex].SetActive(true);
     }
- 
 
-    public void CallChoose()
+
+    private void Update()
     {
-        ChooseHead(changeHead.x,changeHead.y);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ChooseHead(0,2);
+        }
     }
 
 }
