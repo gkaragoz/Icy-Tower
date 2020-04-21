@@ -26,13 +26,11 @@ public class Collector : MonoBehaviour {
         }
 
         if (other.tag == "Platform") {
-            Debug.Log("Collect platform");
             other.gameObject.SetActive(false);
             PlatformManager.instance.SpawnPlatform().gameObject.SetActive(true);
         }
         
         else if(other.tag == "WallParent") {
-            Debug.Log("Collect wall");
             other.gameObject.SetActive(false);
             SpawnManager.instance.SpawnWall();
         }else if(other.tag == "Gold") {
