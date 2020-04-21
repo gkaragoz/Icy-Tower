@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214e2b2eead586e4dac33eb653937ae6, type: 3}
   m_Name: BodyUpShort
   m_EditorClassIdentifier: 
-  _material: {fileID: 2100000, guid: 6f816a9465462954e9c172bffdd8a909, type: 2}
+  _material: {fileID: 2100000, guid: 37e9916a4e2144941bfcf3a4228f113a, type: 2}
   colorOfsets:
   - colorName: Red
     colorOfset: {x: 0, y: 0}

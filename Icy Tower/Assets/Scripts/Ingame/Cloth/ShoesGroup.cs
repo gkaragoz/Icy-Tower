@@ -2,7 +2,6 @@
 
 public class ShoesGroup : MonoBehaviour
 {
-    public int _shoesIndex;
     public ShoesGroups[] shoes;
    
 
