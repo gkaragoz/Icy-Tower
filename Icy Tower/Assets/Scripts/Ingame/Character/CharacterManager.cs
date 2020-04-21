@@ -4,6 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterMotor))]
 public class CharacterManager : MonoBehaviour {
 
+    [SerializeField]
+    private BoxCollider[] _wallColliders = null;
+
     [Header("Debug")]
     [SerializeField]
     [Utils.ReadOnly]
@@ -18,6 +21,12 @@ public class CharacterManager : MonoBehaviour {
         _initialStartPosition = transform.position;
 
         GameManager.instance.OnGameStateChanged += OnGameStateChanged;
+    }
+
+    private void Update() {
+        foreach (BoxCollider wallCollider in _wallColliders) {
+            wallCollider.transform.position = new Vector3(wallCollider.transform.position.x, transform.position.y - (wallCollider.size.y * 0.5f), wallCollider.transform.position.z);
+        }
     }
 
     private void OnGameStateChanged(GameState previousState, GameState currentState) {

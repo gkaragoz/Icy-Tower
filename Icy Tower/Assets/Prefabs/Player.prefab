@@ -5313,6 +5313,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a14b2c22c773248a2d3cb490d731df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _wallColliders:
+  - {fileID: 0}
+  - {fileID: 0}
   _characterMotor: {fileID: 0}
 --- !u!114 &5260039548835869549
 MonoBehaviour:
