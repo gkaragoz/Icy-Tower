@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class PlayerStats : MonoBehaviour {
 
@@ -111,6 +112,14 @@ public class PlayerStats : MonoBehaviour {
 
     public string GetShoesGroup() {
         return _player.ShoesGroup;
+    }
+
+    #endregion
+
+    #region Custom Methods
+
+    public Item GetItemById(int itemId) {
+        return GetItems().Where(item => item.marketItemSO.Id == itemId).SingleOrDefault();
     }
 
     #endregion

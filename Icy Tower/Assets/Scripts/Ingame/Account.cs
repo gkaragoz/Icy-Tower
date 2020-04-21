@@ -119,6 +119,18 @@ public class Account : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
+    public void AddItem(int itemId, bool save = false) {
+        Item item = PlayerStats.GetItemById(itemId);
+        item.count++;
+
+        if (save)
+            SaveSystem.SavePlayer(_playerStats);
+    }
+
+    public void UseItem(int itemId) {
+
+    }
+
     public string GetName() {
         return PlayerStats.GetName();
     }

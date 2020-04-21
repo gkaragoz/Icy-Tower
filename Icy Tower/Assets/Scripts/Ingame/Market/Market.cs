@@ -30,7 +30,7 @@ public class Market : MonoBehaviour {
     }
 
     #region Increasers
-    public void BuyItem(int myCurrencyAmount, int itemId) {
+    public bool BuyItem(int myCurrencyAmount, int itemId) {
         MarketItem item = _market.MarketItems[itemId];
 
         int id = item.GetId();
@@ -40,9 +40,9 @@ public class Market : MonoBehaviour {
         if (costAffordable) {
             item.Buy();
             OnBuyItem?.Invoke(id, price);
-        } else {
-            OnBuyItem?.Invoke(-1, -1);
         }
+
+        return costAffordable;
     }
 
     #endregion
