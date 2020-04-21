@@ -51,10 +51,14 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate() {
         if (GameManager.instance.GetGameState() == GameState.Gameplay) {
-            _horizontal = _joystick.Horizontal;
+            if (UIManager.instance != null) {
+                if (UIManager.instance.SelectedControllerType == ControllerType.Joystick) {
+                    _horizontal = _joystick.Horizontal;
 
-            if (_horizontal != 0) {
-                Move(_horizontal);
+                    if (_horizontal != 0) {
+                        Move(_horizontal);
+                    }
+                }
             }
         }
     }
