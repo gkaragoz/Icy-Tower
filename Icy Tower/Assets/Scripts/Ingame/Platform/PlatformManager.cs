@@ -44,6 +44,7 @@ public class PlatformManager : MonoBehaviour {
 
     public void SpawnPlatforms() {
         _floor = 0;
+        _platformTypeIndex = 0;
         _platforms = new Queue<Platform>();
 
         for (int i = 0; i < ObjectPooler.instance.GetGameObjectsOnPool("Platform").Length; i++) {
