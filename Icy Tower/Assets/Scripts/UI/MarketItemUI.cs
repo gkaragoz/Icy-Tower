@@ -29,8 +29,12 @@ public class MarketItemUI : MonoBehaviour {
 
     public void OnMarketInitialized() {
         // set button on click
-
         SetMarketItem(Market.instance.GetMarketItem(_itemId));
+
+        _btnBuy.onClick.AddListener(() => {
+            _marketItem.Buy();
+        });
+
     }
 
     public void SetMarketItem(MarketItem marketItem) {
