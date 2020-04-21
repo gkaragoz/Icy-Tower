@@ -24,6 +24,12 @@ public class SettingsPanel : MonoBehaviour{
 
     private bool _isJoystickActive = true;
 
+    public ControllerType SelectedControllerType {
+        get {
+            return _selectedControllerType;
+        }
+    }
+
     public void OpenLanguageSettings() {
         _generalSettings.SetActive(false);
         _languageSettings.SetActive(true);

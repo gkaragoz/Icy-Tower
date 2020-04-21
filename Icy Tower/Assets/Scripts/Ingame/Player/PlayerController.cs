@@ -58,6 +58,12 @@ public class PlayerController : MonoBehaviour {
                     if (_horizontal != 0) {
                         Move(_horizontal);
                     }
+                } else if (UIManager.instance.SelectedControllerType == ControllerType.Button) {
+                    if (_isMovingLeft) {
+                        Move(-1f);
+                    } else if (_isMovingRight) {
+                        Move(1f);
+                    }
                 }
             }
         }

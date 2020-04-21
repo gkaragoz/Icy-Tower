@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour{
 
     public ControllerType SelectedControllerType {
         get {
-            return _selectedControllerType;
+            return _settingsPanel.SelectedControllerType;
         }
     }
 
