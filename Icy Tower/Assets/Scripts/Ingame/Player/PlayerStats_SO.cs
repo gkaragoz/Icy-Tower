@@ -29,6 +29,15 @@ public class PlayerStats_SO : ScriptableObject {
     [SerializeField]
     private Item[] _items = null;
 
+    [SerializeField]
+    private string _headGroup = "0";
+
+    [SerializeField]
+    private string _bodyGroup = "0";
+
+    [SerializeField]
+    private string _shoesGroup = "0";
+
     public string Name {
         get { return _name; }
         set { _name = value; }
@@ -62,6 +71,24 @@ public class PlayerStats_SO : ScriptableObject {
     public Item[] Items {
         get { return _items; }
         set { _items = value; }
+    }
+
+    [SerializeField]
+    public string HeadGroup {
+        get { return _headGroup; }
+        set { _headGroup = value; }
+    }
+
+    [SerializeField]
+    public string BodyGroup {
+        get { return _bodyGroup; }
+        set { _bodyGroup = value; }
+    }
+
+    [SerializeField]
+    public string ShoesGroup {
+        get { return _shoesGroup; }
+        set { _shoesGroup = value; }
     }
 
 }

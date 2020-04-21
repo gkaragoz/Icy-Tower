@@ -57,6 +57,18 @@ public class PlayerStats : MonoBehaviour {
         _player.Items = items;
     }
 
+    public void SetHeadGroup(string data) {
+        _player.HeadGroup = data;
+    }
+
+    public void SetBodyGroup(string data) {
+        _player.BodyGroup = data;
+    }
+
+    public void SetShoesGroup(string data) {
+        _player.ShoesGroup = data;
+    }
+
     #endregion
 
     #region Reporters
@@ -87,6 +99,18 @@ public class PlayerStats : MonoBehaviour {
 
     public Item[] GetItems() {
         return _player.Items;
+    }
+
+    public string GetHeadGroup() {
+        return _player.HeadGroup;
+    }
+
+    public string GetBodyGroup() {
+        return _player.BodyGroup;
+    }
+
+    public string GetShoesGroup() {
+        return _player.ShoesGroup;
     }
 
     #endregion

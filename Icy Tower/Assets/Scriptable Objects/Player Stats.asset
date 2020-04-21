@@ -47,3 +47,6 @@ MonoBehaviour:
     count: 0
   - marketItemSO: {fileID: 11400000, guid: 293727a66b1b8c74db2e0d304fcc95ac, type: 2}
     count: 0
+  _headGroup: 0
+  _bodyGroup: 0
+  _shoesGroup: 0
