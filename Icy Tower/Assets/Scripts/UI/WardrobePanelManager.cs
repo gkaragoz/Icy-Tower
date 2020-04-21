@@ -85,11 +85,11 @@ public class WardrobePanelManager : MonoBehaviour
 
     public void ChangeBodyDown(string input)
     {
-        /*First parameter is Hair Id
-  Default Hair    -> 0
-  Blonde Hair     -> 1
-  Red Hair        -> 2  
-*/
+        /*   
+         BodyDownShort     -> 0
+         BodyUpMid      -> 1
+         BodyUpLong      -> 2
+        */
         string[] myStringSplit = input.Split(',');
         int bodyPartGroup = 1; // Down is always 1
         int upStyle = int.Parse(myStringSplit[0]);
