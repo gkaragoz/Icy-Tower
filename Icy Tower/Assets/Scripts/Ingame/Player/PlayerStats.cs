@@ -53,6 +53,10 @@ public class PlayerStats : MonoBehaviour {
         _player.Gem = value;
     }
 
+    public void SetItems(Item[] items) {
+        _player.Items = items;
+    }
+
     #endregion
 
     #region Reporters
@@ -79,6 +83,10 @@ public class PlayerStats : MonoBehaviour {
 
     public int GetGem() {
         return _player.Gem;
+    }
+
+    public Item[] GetItems() {
+        return _player.Items;
     }
 
     #endregion

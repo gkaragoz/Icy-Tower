@@ -26,6 +26,9 @@ public class PlayerStats_SO : ScriptableObject {
     [Utils.ReadOnly]
     private int _gem = 0;
 
+    [SerializeField]
+    private Item[] _items = null;
+
     public string Name {
         get { return _name; }
         set { _name = value; }
@@ -55,4 +58,16 @@ public class PlayerStats_SO : ScriptableObject {
         get { return _gem; }
         set { _gem = value; }
     }
+
+    public Item[] Items {
+        get { return _items; }
+        set { _items = value; }
+    }
+
+}
+
+[System.Serializable]
+public class Item {
+    public MarketItem_SO marketItemSO;
+    public int count;
 }

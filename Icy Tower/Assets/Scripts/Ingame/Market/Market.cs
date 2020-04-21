@@ -3,7 +3,20 @@ using UnityEngine;
 
 public class Market : MonoBehaviour {
 
+    #region Singleton
+
+    public static Market instance;
+    private void Awake() {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+    }
+
+    #endregion
+
     public Action<int, int> OnBuyItem;
+    public Action OnMarketInitialized;
 
     [Header("Debug")]
     [Utils.ReadOnly]
@@ -12,6 +25,8 @@ public class Market : MonoBehaviour {
 
     public void Init(Market_SO marketSO) {
         this._market = marketSO;
+
+        OnMarketInitialized.Invoke();
     }
 
     #region Increasers
@@ -38,6 +53,9 @@ public class Market : MonoBehaviour {
 
     #region Reporters
 
+    public MarketItem GetMarketItem(int itemId) {
+        return _market.MarketItems[itemId];
+    }
 
     #endregion
 

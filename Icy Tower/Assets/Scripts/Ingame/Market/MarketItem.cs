@@ -4,6 +4,8 @@ using UnityEngine;
 [System.Serializable]
 public class MarketItem {
 
+    public Action OnMarketItemUpdated;
+
     [SerializeField]
     private MarketItem_SO _marketItem = null;
 
@@ -15,30 +17,44 @@ public class MarketItem {
 
     public void SetId(int id) {
         this._marketItem.Id = id;
+
+        OnMarketItemUpdated?.Invoke();
     }
 
     public void SetName(string name) {
         this._marketItem.Name = name;
+        
+        OnMarketItemUpdated?.Invoke();
     }
 
     public void SetCurrentPrice(int price) {
         this._marketItem.CurrentPrice = price;
+
+        OnMarketItemUpdated?.Invoke();
     }
 
     public void SetCurrentLevel(int level) {
         this._marketItem.CurrentLevel = level;
+
+        OnMarketItemUpdated?.Invoke();
     }
 
     public void SetCurrencyType(VirtualCurrency currencyType) {
         this._marketItem.Currency = currencyType;
+
+        OnMarketItemUpdated?.Invoke();
     }
 
     public void SetIsInflationable(bool value) {
         this._marketItem.IsInflationable = value;
+
+        OnMarketItemUpdated?.Invoke();
     }
 
     public void SetIsLevelable(bool value) {
         this._marketItem.IsLeveable = value;
+
+        OnMarketItemUpdated?.Invoke();
     }
 
     #endregion
@@ -98,6 +114,8 @@ public class MarketItem {
         }
 
         SetCurrentPrice(newPrice);
+
+        OnMarketItemUpdated?.Invoke();
     }
 
     #endregion

@@ -7,7 +7,7 @@ public static class SaveSystem {
     public static void SavePlayer(PlayerStats_SO playerStats) {
         try {
             BinaryFormatter formatter = new BinaryFormatter();
-            string path = Application.persistentDataPath + "/player.ganover";
+            string path = Application.persistentDataPath + "/player.json";
             FileStream fileStream;
             fileStream = new FileStream(path, FileMode.OpenOrCreate);
             //TODO:Encryption
@@ -22,7 +22,7 @@ public static class SaveSystem {
 
     public static PlayerStats_SO LoadPlayer() {
         try {
-            string path = Application.persistentDataPath + "/player.ganover";
+            string path = Application.persistentDataPath + "/player.json";
 
             if (File.Exists(path)) {
                 BinaryFormatter formatter = new BinaryFormatter();

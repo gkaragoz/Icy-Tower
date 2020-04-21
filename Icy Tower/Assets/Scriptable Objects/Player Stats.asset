@@ -18,3 +18,32 @@ MonoBehaviour:
   _gold: 0
   _key: 0
   _gem: 0
+  _items:
+  - marketItemSO: {fileID: 11400000, guid: 7d1ff63a5a2faaf4dbc34506ad995106, type: 2}
+    count: 0
+  - marketItemSO: {fileID: 11400000, guid: d878ccdfa525c0747b4ab2f4352b259b, type: 2}
+    count: 0
+  - marketItemSO: {fileID: 11400000, guid: f95d251fd5373ae4b848130afcfb88ad, type: 2}
+    count: 0
+  - marketItemSO: {fileID: 11400000, guid: 8ec5511975013b64cb26310c7a6a3413, type: 2}
+    count: 0
+  - marketItemSO: {fileID: 11400000, guid: 74b5166ca2d8a0f458274e8c5ef6c46b, type: 2}
+    count: 0
+  - marketItemSO: {fileID: 11400000, guid: 0096123c48ec42c42bd537f3f6c586d5, type: 2}
+    count: 0
+  - marketItemSO: {fileID: 11400000, guid: 7541764e61f85b74c93a6ae364958f93, type: 2}
+    count: 0
+  - marketItemSO: {fileID: 11400000, guid: 44c9ddb86b28a854bbad2d8247a68887, type: 2}
+    count: 0
+  - marketItemSO: {fileID: 11400000, guid: 8d55785090dd12a40820ab7325776b93, type: 2}
+    count: 0
+  - marketItemSO: {fileID: 11400000, guid: 246f6005583f45b4a930e25372c2a91e, type: 2}
+    count: 0
+  - marketItemSO: {fileID: 11400000, guid: 7374b0b6787e9814fbf7eaf7e7ea00b1, type: 2}
+    count: 0
+  - marketItemSO: {fileID: 11400000, guid: 27468524a925ff449a1934e2a56be2bb, type: 2}
+    count: 0
+  - marketItemSO: {fileID: 11400000, guid: 8ba085044c46a7540a00c6ac0d6821b9, type: 2}
+    count: 0
+  - marketItemSO: {fileID: 11400000, guid: 293727a66b1b8c74db2e0d304fcc95ac, type: 2}
+    count: 0
