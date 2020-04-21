@@ -32,6 +32,12 @@ public class UIManager : MonoBehaviour{
     [SerializeField]
     private SettingsPanel _settingsPanel = null;
 
+    public ControllerType SelectedControllerType {
+        get {
+            return _selectedControllerType;
+        }
+    }
+
     private void Start() {
         OpenPanel("PnlMainMenu");
 

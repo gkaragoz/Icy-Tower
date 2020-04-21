@@ -48,11 +48,4 @@ public class CharacterManager : MonoBehaviour {
         _characterMotor.Move(horizontal);
     }
 
-    public void MoveLeft() {
-        _characterMotor.MoveLeft();
-    }
-    public void MoveRight() {
-        _characterMotor.MoveRight();
-    }
-
 }

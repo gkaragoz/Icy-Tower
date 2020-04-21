@@ -51,13 +51,8 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate() {
         if (GameManager.instance.GetGameState() == GameState.Gameplay) {
-            _horizontal = Input.GetAxis("Horizontal");
             _horizontal = _joystick.Horizontal;
 
-            if (_isMovingLeft)
-                MoveLeft();
-            if (_isMovingRight)
-                MoveRight();
             if (_horizontal != 0) {
                 Move(_horizontal);
             }
@@ -66,14 +61,6 @@ public class PlayerController : MonoBehaviour {
 
     public void Move(float horizontal) {
         _characterManager.Move(horizontal);
-    }
-
-    public void MoveLeft() {
-        _characterManager.MoveLeft();
-    }
-
-    public void MoveRight() {
-        _characterManager.MoveRight();
     }
 
     public void SetMoveLeft(bool moveLeft) {
