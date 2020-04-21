@@ -6,10 +6,6 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
 
     [Header("Initializations")]
     [SerializeField]
-    private float _collisionRayDistance = 1f;
-    [SerializeField]
-    private string _jumpableTag = "Platform";
-    [SerializeField]
     private LayerMask _layerMask;
     [SerializeField]
     private float _rayDistance = 0.5f;
@@ -25,9 +21,6 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
     [SerializeField]
     [Utils.ReadOnly]
     private BoxCollider _boxCollider;
-    [SerializeField]
-    [Utils.ReadOnly]
-    private bool _isJumping = false;
     [SerializeField]
     [Utils.ReadOnly]
     private CharacterStats _characterStats;
@@ -56,33 +49,6 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
         }
     }
 
-    public bool IsJumping {
-        get {
-            return _isJumping;
-        }
-        private set {
-            _isJumping = value;
-        }
-    }
-
-    public bool IsMoving {
-        get {
-            return Input.GetAxis("Horizontal") != 0 ? true : false;
-        }
-    }
-
-    public float CollisionRayDistance {
-        get {
-            return _collisionRayDistance;
-        }
-    }
-
-    public BoxCollider BoxCollider {
-        get {
-            return _boxCollider;
-        }
-    }
-
     private void Awake() {
         _rb = GetComponent<Rigidbody>();
 
@@ -101,8 +67,6 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
     }
 
     private void FixedUpdate() {
-        ApplyLocalGravity();
-
         if (IsFalling) {
             Vector3 dir;
             Vector3 origin;
@@ -153,11 +117,6 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
                 Gizmos.DrawRay(_rayPoints[ii].position, dir.normalized * _rayDistance);
             }
         }
-    }
-
-
-    private void ApplyLocalGravity() {
-        _rb.AddForce(Vector3.up * Physics.gravity.y * _characterStats.GetLocalGravity(), ForceMode.Acceleration);
     }
 
     public void Run() {

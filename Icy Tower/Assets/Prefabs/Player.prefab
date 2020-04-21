@@ -5329,8 +5329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da23779a6d1b2846897d7569542b951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisionRayDistance: 0.55
-  _jumpableTag: Platform
   _layerMask:
     serializedVersion: 2
     m_Bits: 512
@@ -5341,7 +5339,6 @@ MonoBehaviour:
   - {fileID: 1385275624787240323}
   _rb: {fileID: 0}
   _boxCollider: {fileID: 0}
-  _isJumping: 0
   _characterStats: {fileID: 0}
   _animationState: 3
   _comboJumpVFX: {fileID: 2552364317615209437}
