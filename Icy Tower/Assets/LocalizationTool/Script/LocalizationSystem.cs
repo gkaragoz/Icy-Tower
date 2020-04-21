@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 public class LocalizationSystem 
 {
@@ -71,6 +69,7 @@ public class LocalizationSystem
         
     }
 
+#if UNITY_EDITOR
 
     public static void Add(string key,string value)
     {
@@ -124,6 +123,8 @@ public class LocalizationSystem
 
         UpdateDictionaries();
     }
+
+#endif
 
 
 }
