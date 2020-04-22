@@ -16,7 +16,7 @@ public class MarketManager : MonoBehaviour {
 
     #endregion
 
-    public Action<int, int> OnBuyItem;
+    public Action OnBuyItem;
 
     [SerializeField]
     private MarketItem[] _marketDB = null;
@@ -72,6 +72,8 @@ public class MarketManager : MonoBehaviour {
                 default:
                     break;
             }
+
+            OnBuyItem?.Invoke();
         } else {
             // Open not enough virtual currency popup message.
         }
@@ -91,6 +93,8 @@ public class MarketManager : MonoBehaviour {
             item.IncreaseLevel();
 
             Account.instance.Save();
+
+            OnBuyItem?.Invoke();
         } else {
             // Open not enough virtual currency popup message.
         }
@@ -110,6 +114,8 @@ public class MarketManager : MonoBehaviour {
             item.IncreaseStackedAmount();
 
             Account.instance.Save();
+
+            OnBuyItem?.Invoke();
         } else {
             // Open not enough virtual currency popup message.
         }
@@ -129,6 +135,8 @@ public class MarketManager : MonoBehaviour {
             item.OpenClosePermanentItem(true);
 
             Account.instance.Save();
+
+            OnBuyItem?.Invoke();
         } else {
             // Open not enough virtual currency popup message.
         }

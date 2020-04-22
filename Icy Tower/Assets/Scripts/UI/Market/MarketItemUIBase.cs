@@ -22,8 +22,6 @@ public class MarketItemUIBase : MonoBehaviour {
     }
 
     private void SetMarketItem() {
-        Debug.Log("Set Data bro");
-
         this._marketItem = MarketManager.instance.GetMarketItem(_marketItem.GetId());
         this._marketItem.OnMarketItemUpdated += UpdateUI;
 
@@ -31,7 +29,6 @@ public class MarketItemUIBase : MonoBehaviour {
     }
 
     public virtual void UpdateUI() {
-        Debug.Log("Update UI, price, name");
         this._txtPrice.text = this._marketItem.GetCurrentPrice().ToString();
         this._txtName.text = this._marketItem.GetName().ToString();
     }

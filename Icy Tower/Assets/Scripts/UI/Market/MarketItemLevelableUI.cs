@@ -10,8 +10,7 @@ public class MarketItemLevelableUI : MarketItemUIBase {
 
     public override void UpdateUI() {
         base.UpdateUI();
-
-        Debug.Log("Higher layer..... Set level bro");
+        
         this._txtLevel.text = _prefixText + this._marketItem.GetCurrentLevel().ToString();
     }
 
