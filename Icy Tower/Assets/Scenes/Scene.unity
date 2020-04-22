@@ -4906,7 +4906,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 48.82 FPS
+  m_text: 49.29 FPS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4634dd7c14f7df147aefd0855d9ccd18, type: 2}
   m_sharedMaterial: {fileID: 2805101894821811369, guid: 4634dd7c14f7df147aefd0855d9ccd18,
@@ -5690,11 +5690,9 @@ MonoBehaviour:
   _btnBuy: {fileID: 724721848116965077}
   _txtPrice: {fileID: 724721848325567383}
   _txtName: {fileID: 724721848166267475}
-  _txtLevel: {fileID: 724721847109422654}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtLevel: {fileID: 724721847109422654}
 --- !u!224 &724721846550837198
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7224,11 +7222,9 @@ MonoBehaviour:
   _btnBuy: {fileID: 724721847883360649}
   _txtPrice: {fileID: 724721848278611147}
   _txtName: {fileID: 724721848371035407}
-  _txtLevel: {fileID: 724721847280109922}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtLevel: {fileID: 724721847280109922}
 --- !u!224 &724721846772672552
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7513,11 +7509,9 @@ MonoBehaviour:
   _btnBuy: {fileID: 724721847926005548}
   _txtPrice: {fileID: 724721848235393646}
   _txtName: {fileID: 724721848411737002}
-  _txtLevel: {fileID: 724721847321362375}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtLevel: {fileID: 724721847321362375}
 --- !u!224 &724721846799709354
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7574,11 +7568,9 @@ MonoBehaviour:
   _btnBuy: {fileID: 724721847928479484}
   _txtPrice: {fileID: 724721848237736894}
   _txtName: {fileID: 724721848413981306}
-  _txtLevel: {fileID: 724721847323082263}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtLevel: {fileID: 724721847323082263}
 --- !u!222 &724721846809212802
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8657,7 +8649,7 @@ GameObject:
   - component: {fileID: 724721846890044331}
   - component: {fileID: 724721846890044330}
   m_Layer: 5
-  m_Name: txtItemLevel
+  m_Name: txtItemCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9015,11 +9007,9 @@ MonoBehaviour:
   _btnBuy: {fileID: 724721847804604625}
   _txtPrice: {fileID: 724721848633961875}
   _txtName: {fileID: 724721848524760151}
-  _txtLevel: {fileID: 724721847468183610}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtLevel: {fileID: 724721847468183610}
 --- !u!114 &724721846922183956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10116,7 +10106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 724721846978218608}
-  - component: {fileID: 724721846978218610}
+  - component: {fileID: 724721846978218611}
   m_Layer: 5
   m_Name: MarketItem (7)
   m_TagString: Untagged
@@ -10124,7 +10114,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &724721846978218610
+--- !u!114 &724721846978218611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10133,18 +10123,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 724721846978218609}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
+  m_Script: {fileID: 11500000, guid: 53488568c23883a4c8b10b2b1be8ef93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemId: 21
   _btnBuy: {fileID: 724721847745241126}
   _txtPrice: {fileID: 724721848423611748}
   _txtName: {fileID: 724721848599852192}
-  _txtLevel: {fileID: 724721847543005389}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtCount: {fileID: 724721847543005389}
 --- !u!222 &724721846978478723
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15518,7 +15506,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 724721847429927191}
-  - component: {fileID: 724721847429927192}
+  - component: {fileID: 724721847429927193}
   m_Layer: 5
   m_Name: MarketItem (5)
   m_TagString: Untagged
@@ -15549,7 +15537,7 @@ RectTransform:
   m_AnchoredPosition: {x: 260, y: 861.9999}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &724721847429927192
+--- !u!114 &724721847429927193
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15558,18 +15546,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 724721847429927190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
+  m_Script: {fileID: 11500000, guid: 53488568c23883a4c8b10b2b1be8ef93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemId: 16
   _btnBuy: {fileID: 724721848298601281}
   _txtPrice: {fileID: 724721848140195331}
   _txtName: {fileID: 724721847980961735}
-  _txtLevel: {fileID: 724721846890044330}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtCount: {fileID: 724721846890044330}
 --- !u!224 &724721847430825856
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15626,11 +15612,9 @@ MonoBehaviour:
   _btnBuy: {fileID: 724721848299793878}
   _txtPrice: {fileID: 724721848139296916}
   _txtName: {fileID: 724721847979768144}
-  _txtLevel: {fileID: 724721846889106749}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtLevel: {fileID: 724721846889106749}
 --- !u!114 &724721847437254562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16066,11 +16050,9 @@ MonoBehaviour:
   _btnBuy: {fileID: 724721848241990220}
   _txtPrice: {fileID: 724721847932598030}
   _txtName: {fileID: 724721848024989386}
-  _txtLevel: {fileID: 724721846967618215}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtLevel: {fileID: 724721846967618215}
 --- !u!222 &724721847509983505
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16612,7 +16594,7 @@ GameObject:
   - component: {fileID: 724721847543005388}
   - component: {fileID: 724721847543005389}
   m_Layer: 5
-  m_Name: txtItemLevel
+  m_Name: txtItemCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17309,11 +17291,9 @@ MonoBehaviour:
   _btnBuy: {fileID: 724721847018489895}
   _txtPrice: {fileID: 724721847262877029}
   _txtName: {fileID: 724721847103610017}
-  _txtLevel: {fileID: 724721848160708812}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtLevel: {fileID: 724721848160708812}
 --- !u!222 &724721847668054466
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17438,18 +17418,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 724721847678188654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
+  m_Script: {fileID: 11500000, guid: 53488568c23883a4c8b10b2b1be8ef93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemId: 17
   _btnBuy: {fileID: 724721847045281337}
   _txtPrice: {fileID: 724721847237102459}
   _txtName: {fileID: 724721847128195775}
-  _txtLevel: {fileID: 724721848185304786}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtCount: {fileID: 724721848185304786}
 --- !u!114 &724721847702645646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17630,7 +17608,7 @@ GameObject:
   - component: {fileID: 724721847720580508}
   - component: {fileID: 724721847720580509}
   m_Layer: 5
-  m_Name: txtItemLevel
+  m_Name: txtItemCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18240,7 +18218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 724721847799181122}
-  - component: {fileID: 724721847799181124}
+  - component: {fileID: 724721847799181125}
   m_Layer: 5
   m_Name: MarketItem (6)
   m_TagString: Untagged
@@ -18248,7 +18226,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &724721847799181124
+--- !u!114 &724721847799181125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18257,18 +18235,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 724721847799181123}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
+  m_Script: {fileID: 11500000, guid: 53488568c23883a4c8b10b2b1be8ef93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemId: 20
   _btnBuy: {fileID: 724721846922183956}
   _txtPrice: {fileID: 724721847099332694}
   _txtName: {fileID: 724721847275409810}
-  _txtLevel: {fileID: 724721848332772863}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtCount: {fileID: 724721848332772863}
 --- !u!224 &724721847804604624
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18398,7 +18374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 724721847808866695}
-  - component: {fileID: 724721847808866696}
+  - component: {fileID: 724721847808866697}
   m_Layer: 5
   m_Name: MarketItem (4)
   m_TagString: Untagged
@@ -18429,7 +18405,7 @@ RectTransform:
   m_AnchoredPosition: {x: 7.5, y: 862}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &724721847808866696
+--- !u!114 &724721847808866697
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18438,18 +18414,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 724721847808866694}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
+  m_Script: {fileID: 11500000, guid: 53488568c23883a4c8b10b2b1be8ef93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemId: 15
   _btnBuy: {fileID: 724721846915126225}
   _txtPrice: {fileID: 724721847106948755}
   _txtName: {fileID: 724721847266215767}
-  _txtLevel: {fileID: 724721848323060538}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtCount: {fileID: 724721848323060538}
 --- !u!114 &724721847814092594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19023,11 +18997,9 @@ MonoBehaviour:
   _btnBuy: {fileID: 724721846851264781}
   _txtPrice: {fileID: 724721847162764367}
   _txtName: {fileID: 724721847339005323}
-  _txtLevel: {fileID: 724721848396087782}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtLevel: {fileID: 724721848396087782}
 --- !u!224 &724721847883360648
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20825,7 +20797,7 @@ GameObject:
   - component: {fileID: 724721848030613544}
   - component: {fileID: 724721848030613545}
   m_Layer: 5
-  m_Name: txtItemLevel
+  m_Name: txtItemCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20962,11 +20934,9 @@ MonoBehaviour:
   _btnBuy: {fileID: 724721846622090644}
   _txtPrice: {fileID: 724721847401113814}
   _txtName: {fileID: 724721847509983506}
-  _txtLevel: {fileID: 724721848566814079}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtLevel: {fileID: 724721848566814079}
 --- !u!1 &724721848053852326
 GameObject:
   m_ObjectHideFlags: 0
@@ -20976,7 +20946,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 724721848053852327}
-  - component: {fileID: 724721848053852328}
+  - component: {fileID: 724721848053852329}
   m_Layer: 5
   m_Name: MarketItem (8)
   m_TagString: Untagged
@@ -21007,7 +20977,7 @@ RectTransform:
   m_AnchoredPosition: {x: 260, y: 511.9999}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &724721848053852328
+--- !u!114 &724721848053852329
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -21016,18 +20986,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 724721848053852326}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
+  m_Script: {fileID: 11500000, guid: 53488568c23883a4c8b10b2b1be8ef93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemId: 22
   _btnBuy: {fileID: 724721846674326257}
   _txtPrice: {fileID: 724721847352696755}
   _txtName: {fileID: 724721847529035383}
-  _txtLevel: {fileID: 724721848619164186}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtCount: {fileID: 724721848619164186}
 --- !u!114 &724721848056613128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21251,7 +21219,7 @@ GameObject:
   - component: {fileID: 724721848088666016}
   - component: {fileID: 724721848088666017}
   m_Layer: 5
-  m_Name: txtItemLevel
+  m_Name: txtItemCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22950,7 +22918,7 @@ GameObject:
   - component: {fileID: 724721848185304787}
   - component: {fileID: 724721848185304786}
   m_Layer: 5
-  m_Name: txtItemLevel
+  m_Name: txtItemCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23990,7 +23958,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 724721848277245728}
-  - component: {fileID: 724721848277245730}
+  - component: {fileID: 724721848277245731}
   m_Layer: 5
   m_Name: MarketItem (2)
   m_TagString: Untagged
@@ -23998,7 +23966,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &724721848277245730
+--- !u!114 &724721848277245731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24007,18 +23975,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 724721848277245729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
+  m_Script: {fileID: 11500000, guid: 53488568c23883a4c8b10b2b1be8ef93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemId: 19
   _btnBuy: {fileID: 724721847518393718}
   _txtPrice: {fileID: 724721846772918324}
   _txtName: {fileID: 724721846664012272}
-  _txtLevel: {fileID: 724721847720580509}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtCount: {fileID: 724721847720580509}
 --- !u!222 &724721848278611144
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24875,7 +24841,7 @@ GameObject:
   - component: {fileID: 724721848323060539}
   - component: {fileID: 724721848323060538}
   m_Layer: 5
-  m_Name: txtItemLevel
+  m_Name: txtItemCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25161,7 +25127,7 @@ GameObject:
   - component: {fileID: 724721848332772862}
   - component: {fileID: 724721848332772863}
   m_Layer: 5
-  m_Name: txtItemLevel
+  m_Name: txtItemCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27261,7 +27227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 724721848571026068}
-  - component: {fileID: 724721848571026070}
+  - component: {fileID: 724721848571026071}
   m_Layer: 5
   m_Name: MarketItem (3)
   m_TagString: Untagged
@@ -27269,7 +27235,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &724721848571026070
+--- !u!114 &724721848571026071
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -27278,18 +27244,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 724721848571026069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
+  m_Script: {fileID: 11500000, guid: 53488568c23883a4c8b10b2b1be8ef93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemId: 14
   _btnBuy: {fileID: 724721847156977858}
   _txtPrice: {fileID: 724721846864358784}
   _txtName: {fileID: 724721846973523012}
-  _txtLevel: {fileID: 724721848030613545}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtCount: {fileID: 724721848030613545}
 --- !u!114 &724721848599852192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27653,7 +27617,7 @@ GameObject:
   - component: {fileID: 724721848619164187}
   - component: {fileID: 724721848619164186}
   m_Layer: 5
-  m_Name: txtItemLevel
+  m_Name: txtItemCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27884,18 +27848,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 724721848647161117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
+  m_Script: {fileID: 11500000, guid: 53488568c23883a4c8b10b2b1be8ef93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemId: 18
   _btnBuy: {fileID: 724721847083466570}
   _txtPrice: {fileID: 724721846939738632}
   _txtName: {fileID: 724721847031835596}
-  _txtLevel: {fileID: 724721848088666017}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtCount: {fileID: 724721848088666017}
 --- !u!222 &724721848650298544
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28207,11 +28169,9 @@ MonoBehaviour:
   _btnBuy: {fileID: 724721847114312610}
   _txtPrice: {fileID: 724721846903617248}
   _txtName: {fileID: 724721847062855460}
-  _txtLevel: {fileID: 724721848119675721}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtLevel: {fileID: 724721848119675721}
 --- !u!23 &726883412709626262
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44568,8 +44528,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3984649597512305725}
   m_HandleRect: {fileID: 3984649597512305698}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.2884816
+  m_Value: 1.0000004
+  m_Size: 0.28848156
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -46271,18 +46231,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3984649598172466771}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
+  m_Script: {fileID: 11500000, guid: 1061c7d3bedcdc649aba84670e12b895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemId: 9
   _btnBuy: {fileID: 3984649598942508641}
   _txtPrice: {fileID: 3984649598793921162}
   _txtName: {fileID: 3984649597889724883}
-  _txtLevel: {fileID: 0}
-  _txtCount: {fileID: 3984649599160574180}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtCount: {fileID: 3984649599160574180}
 --- !u!114 &3984649598189343736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49106,18 +49064,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3984649598359229551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
+  m_Script: {fileID: 11500000, guid: 1061c7d3bedcdc649aba84670e12b895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemId: 7
   _btnBuy: {fileID: 3984649598056598274}
   _txtPrice: {fileID: 3984649598061575818}
   _txtName: {fileID: 3984649598488517100}
-  _txtLevel: {fileID: 0}
-  _txtCount: {fileID: 3984649597924065938}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtCount: {fileID: 3984649597924065938}
 --- !u!222 &3984649598368704976
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -51193,18 +51149,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3984649598516305263}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
+  m_Script: {fileID: 11500000, guid: 823802a36bc2dd34ba3d9e18d30d71f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemId: -1
   _btnBuy: {fileID: 3984649599407460392}
   _txtPrice: {fileID: 3984649599448546474}
   _txtName: {fileID: 3984649599238322512}
-  _txtLevel: {fileID: 0}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 3984649598284585217}
   _marketItem:
     _marketItem: {fileID: 0}
+  _hasBuyedBefore: 0
 --- !u!224 &3984649598517724610
 RectTransform:
   m_ObjectHideFlags: 0
@@ -55071,7 +55025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00018217078}
+  m_AnchoredPosition: {x: 0, y: -0.0010897018}
   m_SizeDelta: {x: 0, y: 4419}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &3984649598842286593
@@ -56070,18 +56024,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3984649598940111236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
+  m_Script: {fileID: 11500000, guid: 1061c7d3bedcdc649aba84670e12b895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemId: 8
   _btnBuy: {fileID: 3984649599296964369}
   _txtPrice: {fileID: 3984649598006848528}
   _txtName: {fileID: 3984649597950075369}
-  _txtLevel: {fileID: 0}
-  _txtCount: {fileID: 3984649597413397714}
-  _txtUnit: {fileID: 0}
   _marketItem:
     _marketItem: {fileID: 0}
+  _txtCount: {fileID: 3984649597413397714}
 --- !u!224 &3984649598940111239
 RectTransform:
   m_ObjectHideFlags: 0
@@ -63620,18 +63572,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3984649599540517416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
+  m_Script: {fileID: 11500000, guid: 823802a36bc2dd34ba3d9e18d30d71f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemId: -1
   _btnBuy: {fileID: 3984649598715543471}
   _txtPrice: {fileID: 3984649597502173259}
   _txtName: {fileID: 3984649597869263495}
-  _txtLevel: {fileID: 0}
-  _txtCount: {fileID: 0}
-  _txtUnit: {fileID: 3984649599170991032}
   _marketItem:
     _marketItem: {fileID: 0}
+  _hasBuyedBefore: 0
 --- !u!224 &3984649599540517419
 RectTransform:
   m_ObjectHideFlags: 0

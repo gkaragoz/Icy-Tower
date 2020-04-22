@@ -158,4 +158,8 @@ public class Account : MonoBehaviour {
         return PlayerStats.GetKey();
     }
 
+    public Item GetItemById(int itemId) {
+        return PlayerStats.GetItemById(itemId);
+    }
+
 }
