@@ -5,9 +5,14 @@ public class MarketItemLevelableUI : MarketItemUIBase {
 
     [SerializeField]
     private TextMeshProUGUI _txtLevel = null;
+    [SerializeField]
+    private string _prefixText = "Level:";
 
     public override void UpdateUI() {
-        this._txtLevel.text = this._marketItem.GetCurrentLevel().ToString();
+        base.UpdateUI();
+
+        Debug.Log("Higher layer..... Set level bro");
+        this._txtLevel.text = _prefixText + this._marketItem.GetCurrentLevel().ToString();
     }
 
 }

@@ -209,8 +209,10 @@ public class Account : MonoBehaviour {
                 return PlayerStats.GetGold();
             case VirtualCurrency.Gem:
                 return PlayerStats.GetGem();
+            case VirtualCurrency.Key:
+                return PlayerStats.GetKey();
             default:
-                return PlayerStats.GetGold();
+                return 0;
         }
     }
 

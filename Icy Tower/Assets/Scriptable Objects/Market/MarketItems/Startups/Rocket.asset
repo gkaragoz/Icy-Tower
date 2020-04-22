@@ -14,17 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 9
   _name: Rocket
+  _isVirtualCurrency: 0
+  _virtualCurrencyOnReward: 0
+  _virtualCurrencyAmountOnReward: 0
   _currentLevel: 0
-  _maxLevel: 5
-  _levelPriceRepo:
-  - level: 0
-    price: 100
-  - level: 1
-    price: 200
-  - level: 2
-    price: 400
-  - level: 3
-    price: 800
-  - level: 4
-    price: 2000
-  _currencyType: 0
+  _currentPrice: 5000
+  _virtualCurrencyOnBuy: 0
+  _isLevelable: 0
+  _isInflationable: 1
+  _isStackable: 1
+  _stackedAmount: 0
+  _hasPermanentItemPurchased: 0

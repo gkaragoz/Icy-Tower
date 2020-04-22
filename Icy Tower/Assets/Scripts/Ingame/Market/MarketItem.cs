@@ -174,7 +174,7 @@ public class MarketItem {
         int currentLevel = GetCurrentLevel();
         int currentPrice = GetCurrentPrice();
 
-        int newLevel = currentLevel++;
+        int newLevel = ++currentLevel;
         SetCurrentLevel(newLevel);
 
         if (GetIsInflationable()) {
@@ -187,7 +187,7 @@ public class MarketItem {
 
     public void IncreaseStackedAmount() {
         int currentStackedAmount = GetStackedAmount();
-        int newStackedAmount = currentStackedAmount++;
+        int newStackedAmount = ++currentStackedAmount;
         SetStackedAmount(newStackedAmount);
 
         if (GetIsInflationable()) {

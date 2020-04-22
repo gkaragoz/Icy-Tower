@@ -14,21 +14,26 @@ public class MarketItemUIBase : MonoBehaviour {
     private TextMeshProUGUI _txtName = null;
 
     private void Start() {
+        SetMarketItem();
+
         _btnBuy.onClick.AddListener(() => {
             MarketManager.instance.BuyItem(_marketItem.GetId());
         });
     }
 
-    public virtual void UpdateUI() {
-        this._txtPrice.text = this._marketItem.GetCurrentPrice().ToString();
-        this._txtName.text = this._marketItem.GetName().ToString();
-    }
+    private void SetMarketItem() {
+        Debug.Log("Set Data bro");
 
-    public virtual void SetMarketItem(MarketItem marketItem) {
-        this._marketItem = marketItem;
+        this._marketItem = MarketManager.instance.GetMarketItem(_marketItem.GetId());
         this._marketItem.OnMarketItemUpdated += UpdateUI;
 
         UpdateUI();
+    }
+
+    public virtual void UpdateUI() {
+        Debug.Log("Update UI, price, name");
+        this._txtPrice.text = this._marketItem.GetCurrentPrice().ToString();
+        this._txtName.text = this._marketItem.GetName().ToString();
     }
 
 }

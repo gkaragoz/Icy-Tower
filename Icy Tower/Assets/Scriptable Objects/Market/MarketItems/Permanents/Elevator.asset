@@ -18,9 +18,10 @@ MonoBehaviour:
   _virtualCurrencyOnReward: 0
   _virtualCurrencyAmountOnReward: 0
   _currentLevel: 0
-  _currentPrice: 0
+  _currentPrice: 5000
   _virtualCurrencyOnBuy: 0
   _isLevelable: 0
   _isInflationable: 0
   _isStackable: 0
   _stackedAmount: 0
+  _hasPermanentItemPurchased: 0

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 public class MarketManager : MonoBehaviour {
@@ -21,7 +22,7 @@ public class MarketManager : MonoBehaviour {
     private MarketItem[] _marketDB = null;
 
     public void BuyItem(int itemId) {
-        MarketItem item = _marketDB[itemId];
+        MarketItem item = GetMarketItem(itemId);
 
         if (item.GetIsVirtualCurrency()) {
             BuyVirtualCurrency(item);
@@ -65,7 +66,6 @@ public class MarketManager : MonoBehaviour {
                 case VirtualCurrency.Gem:
                     Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Gem);
                     break;
-
                 case VirtualCurrency.Key:
                     Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Key);
                     break;
@@ -135,7 +135,7 @@ public class MarketManager : MonoBehaviour {
     }
 
     public MarketItem GetMarketItem(int itemId) {
-        return _marketDB[itemId];
+        return _marketDB.Where(item => item.GetId() == itemId).SingleOrDefault();
     }
 
     public bool AmIAbleToBuyIt(int myCurrencyAmount, int price) {
