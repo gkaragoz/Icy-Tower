@@ -33,6 +33,9 @@ public class UIManager : MonoBehaviour{
     private SettingsPanel _settingsPanel = null;
 
     [SerializeField]
+    private PnlPopupOpenClose _pnlPopupOpenClose = null;
+
+    [SerializeField]
     private IngameStatistics _ingameStatistics = null;
 
     public ControllerType SelectedControllerType {
@@ -55,6 +58,12 @@ public class UIManager : MonoBehaviour{
             _ingameStatistics.UpdateUI();
             OpenPanel("PnlGameOver");
         }
+    }
+
+    public void OpenPopup(string header, string message) {
+        _pnlPopupOpenClose.SetText(header, message);
+
+        OpenPanel(UIPanels.PnlPopupYesNo.ToString());
     }
 
     public void OpenPanel(string panelEnum) {

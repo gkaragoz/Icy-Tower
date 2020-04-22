@@ -86,6 +86,7 @@ public class MarketManager : MonoBehaviour {
             OnBuyItem?.Invoke();
         } else {
             // Open not enough virtual currency popup message.
+            UIManager.instance.OpenPopup("OH NO!", "Not enough money!");
         }
     }
 
@@ -107,6 +108,7 @@ public class MarketManager : MonoBehaviour {
             OnBuyItem?.Invoke();
         } else {
             // Open not enough virtual currency popup message.
+            UIManager.instance.OpenPopup("OH NO!", "Not enough money!");
         }
     }
 
@@ -128,6 +130,7 @@ public class MarketManager : MonoBehaviour {
             OnBuyItem?.Invoke();
         } else {
             // Open not enough virtual currency popup message.
+            UIManager.instance.OpenPopup("OH NO!", "Not enough money!");
         }
     }
 
@@ -149,6 +152,7 @@ public class MarketManager : MonoBehaviour {
             OnBuyItem?.Invoke();
         } else {
             // Open not enough virtual currency popup message.
+            UIManager.instance.OpenPopup("OH NO!", "Not enough money!");
         }
     }
 
