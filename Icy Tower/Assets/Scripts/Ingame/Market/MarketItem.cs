@@ -27,8 +27,20 @@ public class MarketItem {
         OnMarketItemUpdated?.Invoke();
     }
 
-    public void SetCurrentPrice(int price) {
-        this._marketItem.CurrentPrice = price;
+    public void SetIsVirtualCurrency(bool value) {
+        this._marketItem.IsVirtualCurrency = value;
+
+        OnMarketItemUpdated?.Invoke();
+    }
+
+    public void SetVirtualCurrencyOnReward(VirtualCurrency vc) {
+        this._marketItem.VirtualCurrencyOnReward = vc;
+
+        OnMarketItemUpdated?.Invoke();
+    }
+
+    public void SetVirtualCurrencyAmountOnReward(int value) {
+        this._marketItem.VirtualCurrencyAmountOnReward = value;
 
         OnMarketItemUpdated?.Invoke();
     }
@@ -39,8 +51,20 @@ public class MarketItem {
         OnMarketItemUpdated?.Invoke();
     }
 
-    public void SetCurrencyType(VirtualCurrency currencyType) {
-        this._marketItem.Currency = currencyType;
+    public void SetCurrentPrice(int price) {
+        this._marketItem.CurrentPrice = price;
+
+        OnMarketItemUpdated?.Invoke();
+    }
+
+    public void SetVirtualCurrencyOnBuy(VirtualCurrency currencyType) {
+        this._marketItem.VirtualCurrencyOnBuy = currencyType;
+
+        OnMarketItemUpdated?.Invoke();
+    }
+
+    public void SetIsLevelable(bool value) {
+        this._marketItem.IsLevelable = value;
 
         OnMarketItemUpdated?.Invoke();
     }
@@ -51,8 +75,14 @@ public class MarketItem {
         OnMarketItemUpdated?.Invoke();
     }
 
-    public void SetIsLevelable(bool value) {
-        this._marketItem.IsLeveable = value;
+    public void SetIsStackable(bool value) {
+        this._marketItem.IsStackable = value;
+
+        OnMarketItemUpdated?.Invoke();
+    }
+
+    public void SetStackedAmount(int value) {
+        this._marketItem.StackedAmount = value;
 
         OnMarketItemUpdated?.Invoke();
     }
@@ -68,30 +98,49 @@ public class MarketItem {
         return this._marketItem.Name;
     }
 
-    public int GetCurrentPrice() {
-        return this._marketItem.CurrentPrice;
+    public bool GetIsVirtualCurrency() {
+        return this._marketItem.IsVirtualCurrency;
     }
 
+    public VirtualCurrency GetVirtualCurrencyOnReward() {
+        return this._marketItem.VirtualCurrencyOnReward;
+    }
+
+    public int GetVirtualCurrencyAmountOnReward() {
+        return this._marketItem.VirtualCurrencyAmountOnReward;
+    }
     public int GetCurrentLevel() {
         return this._marketItem.CurrentLevel;
     }
 
-    public VirtualCurrency GetCurrencyType() {
-        return this._marketItem.Currency;
+    public int GetCurrentPrice() {
+        return this._marketItem.CurrentPrice;
     }
+
+    public VirtualCurrency GetVirtualCurrencyOnBuy() {
+        return this._marketItem.VirtualCurrencyOnBuy;
+    }
+    public bool GetIsLevelable() {
+        return this._marketItem.IsLevelable;
+    }
+
     public bool GetIsInflationable() {
         return this._marketItem.IsInflationable;
     }
 
-    public bool GetIsLevelable() {
-        return this._marketItem.IsLeveable;
+    public bool GetIsStackable() {
+        return this._marketItem.IsStackable;
+    }
+
+    public int GetStackedAmount() {
+        return this._marketItem.StackedAmount;
     }
 
     #endregion
 
     #region Custom Methods
 
-    private int CalculatePrice(int level) {
+    private int CalculatePriceByLevel(int level) {
         int currentPrice = this._marketItem.CurrentPrice;
 
         if (level == 0) {
@@ -100,20 +149,40 @@ public class MarketItem {
             return currentPrice * level;
         }
     }
+    private int CalculatePriceByStackedAmount(int stackedAmount) {
+        int currentPrice = this._marketItem.CurrentPrice;
 
-    public void Buy() {
+        if (stackedAmount == 0) {
+            return currentPrice * 2;
+        } else {
+            return currentPrice * stackedAmount;
+        }
+    }
+
+    public void IncreaseLevel() {
         int currentLevel = GetCurrentLevel();
         int currentPrice = GetCurrentPrice();
 
         int newLevel = currentLevel++;
-        int newPrice = currentPrice;
+        SetCurrentLevel(newLevel);
 
-        if (GetIsLevelable() && GetIsInflationable()) {
-            SetCurrentLevel(newLevel);
-            newPrice = CalculatePrice(newLevel);
+        if (GetIsInflationable()) {
+            int newPrice = CalculatePriceByLevel(newLevel);
+            SetCurrentPrice(newPrice);
         }
 
-        SetCurrentPrice(newPrice);
+        OnMarketItemUpdated?.Invoke();
+    }
+
+    public void IncreaseStackedAmount() {
+        int currentStackedAmount = GetStackedAmount();
+        int newStackedAmount = currentStackedAmount++;
+        SetStackedAmount(newStackedAmount);
+
+        if (GetIsInflationable()) {
+            int newPrice = CalculatePriceByStackedAmount(newStackedAmount);
+            SetCurrentPrice(newPrice);
+        }
 
         OnMarketItemUpdated?.Invoke();
     }

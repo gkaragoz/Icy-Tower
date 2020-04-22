@@ -56,6 +56,26 @@ public class Account : MonoBehaviour {
         Debug.Log("User accound has been initialized.");
     }
 
+    public void Save() {
+        SaveSystem.SavePlayer(_playerStats);
+    }
+
+    public void AddVirtualCurrency(int amount, VirtualCurrency vc) {
+        switch (vc) {
+            case VirtualCurrency.Gold:
+                AddGold(amount, true);
+                break;
+            case VirtualCurrency.Gem:
+                AddGem(amount, true);
+                break;
+            case VirtualCurrency.Key:
+                AddKey(amount, true);
+                break;
+            default:
+                break;
+        }
+    }
+
     public void AddGold(int value, bool save = false) {
         PlayerStats.AddGold(value);
 
@@ -65,8 +85,60 @@ public class Account : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
+    public void AddGem(int value, bool save = false) {
+        PlayerStats.AddGem(value);
+
+        if (save)
+            SaveSystem.SavePlayer(_playerStats);
+
+        OnPlayerStatsChanged?.Invoke(PlayerStats);
+    }
+
     public void AddKey(int value, bool save = false) {
         PlayerStats.AddKey(value);
+
+        if (save)
+            SaveSystem.SavePlayer(_playerStats);
+
+        OnPlayerStatsChanged?.Invoke(PlayerStats);
+    }
+
+    public void DecreaseVirtualCurrency(int amount, VirtualCurrency vc) {
+        switch (vc) {
+            case VirtualCurrency.Gold:
+                DecreaseGold(amount, true);
+                break;
+            case VirtualCurrency.Gem:
+                DecreaseGem(amount, true);
+                break;
+            case VirtualCurrency.Key:
+                DecreaseKey(amount, true);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void DecreaseGold(int value, bool save = false) {
+        PlayerStats.DecreaseGold(value);
+
+        if (save)
+            SaveSystem.SavePlayer(_playerStats);
+
+        OnPlayerStatsChanged?.Invoke(PlayerStats);
+    }
+
+    public void DecreaseGem(int value, bool save = false) {
+        PlayerStats.DecreaseGem(value);
+
+        if (save)
+            SaveSystem.SavePlayer(_playerStats);
+
+        OnPlayerStatsChanged?.Invoke(PlayerStats);
+    }
+
+    public void DecreaseKey(int value, bool save = false) {
+        PlayerStats.DecreaseKey(value);
 
         if (save)
             SaveSystem.SavePlayer(_playerStats);
@@ -119,18 +191,6 @@ public class Account : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void AddItem(int itemId, bool save = false) {
-        Item item = PlayerStats.GetItemById(itemId);
-        item.count++;
-
-        if (save)
-            SaveSystem.SavePlayer(_playerStats);
-    }
-
-    public void UseItem(int itemId) {
-
-    }
-
     public string GetName() {
         return PlayerStats.GetName();
     }
@@ -156,10 +216,6 @@ public class Account : MonoBehaviour {
 
     public int GetKey() {
         return PlayerStats.GetKey();
-    }
-
-    public Item GetItemById(int itemId) {
-        return PlayerStats.GetItemById(itemId);
     }
 
 }

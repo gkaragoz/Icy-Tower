@@ -27,7 +27,7 @@ public class PlayerStats_SO : ScriptableObject {
     private int _gem = 0;
 
     [SerializeField]
-    private Item[] _items = null;
+    private MarketItem_SO[] _marketItemsSO = null;
 
     [SerializeField]
     private string _headGroup = "0";
@@ -68,9 +68,9 @@ public class PlayerStats_SO : ScriptableObject {
         set { _gem = value; }
     }
 
-    public Item[] Items {
-        get { return _items; }
-        set { _items = value; }
+    public MarketItem_SO[] MarketItemsSO {
+        get { return _marketItemsSO; }
+        set { _marketItemsSO = value; }
     }
 
     [SerializeField]
@@ -91,10 +91,4 @@ public class PlayerStats_SO : ScriptableObject {
         set { _shoesGroup = value; }
     }
 
-}
-
-[System.Serializable]
-public class Item {
-    public MarketItem_SO marketItemSO;
-    public int count;
 }

@@ -8,15 +8,27 @@ public class MarketItem_SO : ScriptableObject {
     [SerializeField]
     private string _name;
     [SerializeField]
+    private bool _isVirtualCurrency = false;
+    [SerializeField]
+    private VirtualCurrency _virtualCurrencyOnReward;
+    [SerializeField]
+    private int _virtualCurrencyAmountOnReward;
+
+    [SerializeField]
     private int _currentLevel;
     [SerializeField]
     private int _currentPrice;
     [SerializeField]
-    private VirtualCurrency _currencyType;
+    private VirtualCurrency _virtualCurrencyOnBuy;
     [SerializeField]
     private bool _isLevelable = false;
     [SerializeField]
     private bool _isInflationable = false;
+
+    [SerializeField]
+    private bool _isStackable = false;
+    [SerializeField]
+    private int _stackedAmount;
 
     public int Id {
         get { return _id; }
@@ -28,9 +40,19 @@ public class MarketItem_SO : ScriptableObject {
         set { _name = value; }
     }
 
-    public int CurrentPrice {
-        get { return _currentPrice; }
-        set { _currentPrice = value; }
+    public bool IsVirtualCurrency {
+        get { return _isVirtualCurrency; }
+        set { _isVirtualCurrency = value; }
+    }
+
+    public VirtualCurrency VirtualCurrencyOnReward {
+        get { return _virtualCurrencyOnReward; }
+        set { _virtualCurrencyOnReward = value; }
+    }
+
+    public int VirtualCurrencyAmountOnReward {
+        get { return _virtualCurrencyAmountOnReward; }
+        set { _virtualCurrencyAmountOnReward = value; }
     }
 
     public int CurrentLevel {
@@ -38,12 +60,17 @@ public class MarketItem_SO : ScriptableObject {
         set { _currentLevel = value; }
     }
 
-    public VirtualCurrency Currency {
-        get { return _currencyType; }
-        set { _currencyType = value; }
+    public int CurrentPrice {
+        get { return _currentPrice; }
+        set { _currentPrice = value; }
     }
 
-    public bool IsLeveable {
+    public VirtualCurrency VirtualCurrencyOnBuy {
+        get { return _virtualCurrencyOnBuy; }
+        set { _virtualCurrencyOnBuy = value; }
+    }
+
+    public bool IsLevelable {
         get { return _isLevelable; }
         set { _isLevelable = value; }
     }
@@ -52,5 +79,16 @@ public class MarketItem_SO : ScriptableObject {
         get { return _isInflationable; }
         set { _isInflationable = value; }
     }
+
+    public bool IsStackable {
+        get { return _isStackable; }
+        set { _isStackable = value; }
+    }
+
+    public int StackedAmount {
+        get { return _stackedAmount; }
+        set { _stackedAmount = value; }
+    }
+
 
 }

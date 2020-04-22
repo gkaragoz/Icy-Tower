@@ -28,6 +28,38 @@ public class PlayerStats : MonoBehaviour {
 
     #endregion
 
+
+    #region Decreasers
+
+    public void DecreaseGold(int value) {
+        _player.Gold -= value;
+
+        if (_player.Gold < 0) {
+            _player.Gold = 0;
+            Debug.LogWarning("Something got wrong in VC calculation.");
+        }
+    }
+
+    public void DecreaseKey(int value) {
+        _player.Key -= value;
+        
+        if (_player.Key < 0) {
+            _player.Key = 0;
+            Debug.LogWarning("Something got wrong in VC calculation.");
+        }
+    }
+
+    public void DecreaseGem(int value) {
+        _player.Gem -= value;
+
+        if (_player.Gem < 0) {
+            _player.Gem = 0;
+            Debug.LogWarning("Something got wrong in VC calculation.");
+        }
+    }
+
+    #endregion
+
     #region Setters
 
     public void SetCurrentScore(int value) {
@@ -54,8 +86,8 @@ public class PlayerStats : MonoBehaviour {
         _player.Gem = value;
     }
 
-    public void SetItems(Item[] items) {
-        _player.Items = items;
+    public void SetItems(MarketItem_SO[] items) {
+        _player.MarketItemsSO = items;
     }
 
     public void SetHeadGroup(string data) {
@@ -98,8 +130,8 @@ public class PlayerStats : MonoBehaviour {
         return _player.Gem;
     }
 
-    public Item[] GetItems() {
-        return _player.Items;
+    public MarketItem_SO[] GetItems() {
+        return _player.MarketItemsSO;
     }
 
     public string GetHeadGroup() {
@@ -112,14 +144,6 @@ public class PlayerStats : MonoBehaviour {
 
     public string GetShoesGroup() {
         return _player.ShoesGroup;
-    }
-
-    #endregion
-
-    #region Custom Methods
-
-    public Item GetItemById(int itemId) {
-        return GetItems().Where(item => item.marketItemSO.Id == itemId).SingleOrDefault();
     }
 
     #endregion

@@ -7,7 +7,7 @@ public class MarketItemVirtualCurrencyUI : MarketItemUIBase {
     private TextMeshProUGUI _txtCount = null;
 
     public override void UpdateUI() {
-        this._txtCount.text = Account.instance.GetItemById(_itemId).count.ToString();
+        this._txtCount.text = MarketManager.instance.GetMarketItem(_marketItem.GetId()).GetVirtualCurrencyAmountOnReward().ToString();
     }
 
 }

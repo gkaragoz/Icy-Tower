@@ -170,5 +170,6 @@ public enum ControllerType {
 
 public enum VirtualCurrency {
     Gold,
-    Gem
+    Gem,
+    Key
 }
