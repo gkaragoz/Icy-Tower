@@ -18,9 +18,14 @@ public class Platform : MonoBehaviour, IPooledObject {
         set { _floorCountText = value; }
     }
 
-
+    
     public void SetScale(Vector3 scale, int type) {
-        _types[type].transform.localScale = scale;
+
+        Vector3 tempVector = new Vector3( scale.x,scale.y,scale.z-(type*0.058f*3f));
+
+        _types[type].transform.localScale = tempVector;
+
+
     }
 
     public void SetPosition(Vector3 position, int type) {
