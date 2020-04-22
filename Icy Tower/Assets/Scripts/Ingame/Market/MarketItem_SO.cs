@@ -30,6 +30,9 @@ public class MarketItem_SO : ScriptableObject {
     [SerializeField]
     private int _stackedAmount;
 
+    [SerializeField]
+    private bool _hasPermanentItemPurchased = false;
+
     public int Id {
         get { return _id; }
         set { _id = value; }
@@ -88,6 +91,11 @@ public class MarketItem_SO : ScriptableObject {
     public int StackedAmount {
         get { return _stackedAmount; }
         set { _stackedAmount = value; }
+    }
+
+    public bool HasPermanentItemPurchased {
+        get { return _hasPermanentItemPurchased; }
+        set { _hasPermanentItemPurchased = value; }
     }
 
 

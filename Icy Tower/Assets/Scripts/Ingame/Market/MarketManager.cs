@@ -40,6 +40,12 @@ public class MarketManager : MonoBehaviour {
 
             return;
         }
+
+        if (item.GetHasPermanentItemPurchased() == false) {
+            BuyPermanentItem(item);
+
+            return;
+        }
     }
 
     private void BuyVirtualCurrency(MarketItem item) {
@@ -102,6 +108,25 @@ public class MarketManager : MonoBehaviour {
         if (isAffordable) {
             Account.instance.DecreaseVirtualCurrency(item.GetCurrentPrice(), vcOnBuy);
             item.IncreaseStackedAmount();
+
+            Account.instance.Save();
+        } else {
+            // Open not enough virtual currency popup message.
+        }
+    }
+
+    private void BuyPermanentItem(MarketItem item) {
+        VirtualCurrency vcOnBuy = item.GetVirtualCurrencyOnBuy();
+
+        int myMoney = Account.instance.GetCurrencyAmount(vcOnBuy);
+        bool isAffordable = AmIAbleToBuyIt(myMoney, item.GetCurrentPrice());
+
+        // Decrease my money.
+        // Open item.
+        // Save account.
+        if (isAffordable) {
+            Account.instance.DecreaseVirtualCurrency(item.GetCurrentPrice(), vcOnBuy);
+            item.OpenClosePermanentItem(true);
 
             Account.instance.Save();
         } else {

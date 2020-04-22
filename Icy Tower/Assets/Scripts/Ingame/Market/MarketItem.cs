@@ -87,6 +87,12 @@ public class MarketItem {
         OnMarketItemUpdated?.Invoke();
     }
 
+    public void SetHasPermanentItemPurchased(bool value) {
+        this._marketItem.HasPermanentItemPurchased = value;
+
+        OnMarketItemUpdated?.Invoke();
+    }
+
     #endregion
 
     #region Getters
@@ -136,6 +142,11 @@ public class MarketItem {
         return this._marketItem.StackedAmount;
     }
 
+    public bool GetHasPermanentItemPurchased() {
+        return this._marketItem.HasPermanentItemPurchased;
+    }
+
+
     #endregion
 
     #region Custom Methods
@@ -183,6 +194,12 @@ public class MarketItem {
             int newPrice = CalculatePriceByStackedAmount(newStackedAmount);
             SetCurrentPrice(newPrice);
         }
+
+        OnMarketItemUpdated?.Invoke();
+    }
+
+    public void OpenClosePermanentItem(bool value) {
+        SetHasPermanentItemPurchased(value);
 
         OnMarketItemUpdated?.Invoke();
     }
