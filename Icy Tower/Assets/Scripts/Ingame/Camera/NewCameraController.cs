@@ -140,7 +140,9 @@ public class NewCameraController : MonoBehaviour {
     }
 
     private bool HasReachedStartFloor() {
-        if (_target.position.y > PlatformManager.instance.GetSpawnedPlatformPositionAtFloor(20).y)
+        if (PlatformManager.instance.GetSpawnedPlatformAtFloor(20) == null)
+            return true;
+        if (_target.position.y > PlatformManager.instance.GetSpawnedPlatformAtFloor(20).transform.position.y)
             return true;
         else
             return false;

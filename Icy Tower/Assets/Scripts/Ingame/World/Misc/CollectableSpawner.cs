@@ -16,7 +16,7 @@ public class CollectableSpawner : MonoBehaviour {
     #endregion
 
     [SerializeField]
-    private int _initialPowerUpSpawnFloor = 50;
+    private int _initialPowerUpSpawnFloor = 0;
     private int _nextPowerUpSpawnFloor = 0;
 
     [SerializeField]
@@ -91,7 +91,7 @@ public class CollectableSpawner : MonoBehaviour {
     }
 
     private int CalculateNextPowerUpOffset() {
-        return (10 * Random.Range(1, 10)) + Random.Range(0,10);
+        return (1 * Random.Range(1, 5)) + Random.Range(0,5);
     }
 
     private int CalculateNextGoldOffset() {

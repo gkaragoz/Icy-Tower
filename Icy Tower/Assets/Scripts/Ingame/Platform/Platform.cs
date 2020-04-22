@@ -12,7 +12,9 @@ public class Platform : MonoBehaviour, IPooledObject {
     private TextMeshProUGUI _floorCountText = null;
 
     public int Floor { get; set; }
-
+    public GameObject[] Types {
+        get { return _types; }
+    }
     public TextMeshProUGUI FloorCountText {
         get { return _floorCountText; }
         set { _floorCountText = value; }
