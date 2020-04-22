@@ -4906,7 +4906,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10,00 FPS
+  m_text: 48.82 FPS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4634dd7c14f7df147aefd0855d9ccd18, type: 2}
   m_sharedMaterial: {fileID: 2805101894821811369, guid: 4634dd7c14f7df147aefd0855d9ccd18,
@@ -4916,8 +4916,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278512639
-  m_fontColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    rgba: 4278255360
+  m_fontColor: {r: 0, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5686,7 +5686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 12
   _btnBuy: {fileID: 724721848116965077}
   _txtPrice: {fileID: 724721848325567383}
   _txtName: {fileID: 724721848166267475}
@@ -7509,7 +7509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 11
   _btnBuy: {fileID: 724721847926005548}
   _txtPrice: {fileID: 724721848235393646}
   _txtName: {fileID: 724721848411737002}
@@ -9011,7 +9011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 5
   _btnBuy: {fileID: 724721847804604625}
   _txtPrice: {fileID: 724721848633961875}
   _txtName: {fileID: 724721848524760151}
@@ -10136,7 +10136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 21
   _btnBuy: {fileID: 724721847745241126}
   _txtPrice: {fileID: 724721848423611748}
   _txtName: {fileID: 724721848599852192}
@@ -15561,7 +15561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 16
   _btnBuy: {fileID: 724721848298601281}
   _txtPrice: {fileID: 724721848140195331}
   _txtName: {fileID: 724721847980961735}
@@ -15622,7 +15622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 13
   _btnBuy: {fileID: 724721848299793878}
   _txtPrice: {fileID: 724721848139296916}
   _txtName: {fileID: 724721847979768144}
@@ -17441,7 +17441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 17
   _btnBuy: {fileID: 724721847045281337}
   _txtPrice: {fileID: 724721847237102459}
   _txtName: {fileID: 724721847128195775}
@@ -18260,7 +18260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 20
   _btnBuy: {fileID: 724721846922183956}
   _txtPrice: {fileID: 724721847099332694}
   _txtName: {fileID: 724721847275409810}
@@ -18441,7 +18441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 15
   _btnBuy: {fileID: 724721846915126225}
   _txtPrice: {fileID: 724721847106948755}
   _txtName: {fileID: 724721847266215767}
@@ -20958,7 +20958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 10
   _btnBuy: {fileID: 724721846622090644}
   _txtPrice: {fileID: 724721847401113814}
   _txtName: {fileID: 724721847509983506}
@@ -21019,7 +21019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 22
   _btnBuy: {fileID: 724721846674326257}
   _txtPrice: {fileID: 724721847352696755}
   _txtName: {fileID: 724721847529035383}
@@ -24010,7 +24010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 19
   _btnBuy: {fileID: 724721847518393718}
   _txtPrice: {fileID: 724721846772918324}
   _txtName: {fileID: 724721846664012272}
@@ -27281,7 +27281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 14
   _btnBuy: {fileID: 724721847156977858}
   _txtPrice: {fileID: 724721846864358784}
   _txtName: {fileID: 724721846973523012}
@@ -27887,7 +27887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 18
   _btnBuy: {fileID: 724721847083466570}
   _txtPrice: {fileID: 724721846939738632}
   _txtName: {fileID: 724721847031835596}
@@ -44568,8 +44568,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3984649597512305725}
   m_HandleRect: {fileID: 3984649597512305698}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.28664678
+  m_Value: 1.0000001
+  m_Size: 0.2884816
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -46274,7 +46274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 9
   _btnBuy: {fileID: 3984649598942508641}
   _txtPrice: {fileID: 3984649598793921162}
   _txtName: {fileID: 3984649597889724883}
@@ -49109,7 +49109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 7
   _btnBuy: {fileID: 3984649598056598274}
   _txtPrice: {fileID: 3984649598061575818}
   _txtName: {fileID: 3984649598488517100}
@@ -56073,7 +56073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dbe4b84452d0343b95ad8ae7b9a167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemId: -1
+  _itemId: 8
   _btnBuy: {fileID: 3984649599296964369}
   _txtPrice: {fileID: 3984649598006848528}
   _txtName: {fileID: 3984649597950075369}
