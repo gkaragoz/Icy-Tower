@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8510742476376265801}
   - component: {fileID: 4482892215121572144}
   - component: {fileID: 6334605139632638675}
+  - component: {fileID: 4838225374596974661}
   m_Layer: 9
   m_Name: ladder-4
   m_TagString: Platform
@@ -93,6 +94,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2651438, y: 0.15095156, z: 4.76662}
   m_Center: {x: 0.17034864, y: 0.42276046, z: 6.444434e-16}
+--- !u!114 &4838225374596974661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104742139844261719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6497fa0fbc4fe408fab50d7c4625a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementRate: 0
+  MovementSpeed: 2
 --- !u!1 &422413558490561145
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +120,7 @@ GameObject:
   - component: {fileID: 1049895812385508098}
   - component: {fileID: 8292751507169351366}
   - component: {fileID: 3778040437442003006}
+  - component: {fileID: 1297122490220230863}
   m_Layer: 9
   m_Name: ladder-3
   m_TagString: Platform
@@ -186,6 +202,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2671846, y: 0.15706325, z: 4.9305177}
   m_Center: {x: 0.24037874, y: 0.49486446, z: 0.080569506}
+--- !u!114 &1297122490220230863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422413558490561145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6497fa0fbc4fe408fab50d7c4625a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementRate: 0
+  MovementSpeed: 2
 --- !u!1 &746208927469266599
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +228,7 @@ GameObject:
   - component: {fileID: 6115424269435372112}
   - component: {fileID: 9049755587320177988}
   - component: {fileID: 3665015095379706522}
+  - component: {fileID: 8425734200244952484}
   m_Layer: 9
   m_Name: ladder-4.001
   m_TagString: Platform
@@ -279,6 +310,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2777648, y: 0.15504116, z: 4.76662}
   m_Center: {x: 0.14803278, y: 0.4492832, z: 3.2731598e-16}
+--- !u!114 &8425734200244952484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746208927469266599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6497fa0fbc4fe408fab50d7c4625a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementRate: 0
+  MovementSpeed: 2
 --- !u!1 &1245942045750328509
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +336,7 @@ GameObject:
   - component: {fileID: 9221486448266059094}
   - component: {fileID: 7754048467403468068}
   - component: {fileID: 6410988422867642696}
+  - component: {fileID: 3168452042261616344}
   m_Layer: 9
   m_Name: ladder-2
   m_TagString: Platform
@@ -372,6 +418,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2751874, y: 0.15686667, z: 4.6663013}
   m_Center: {x: 0.24438006, y: 0.49496335, z: 0.017991304}
+--- !u!114 &3168452042261616344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245942045750328509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6497fa0fbc4fe408fab50d7c4625a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementRate: 0
+  MovementSpeed: 2
 --- !u!1 &1446910544760075575
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +444,7 @@ GameObject:
   - component: {fileID: 6820489344365023839}
   - component: {fileID: 63645290285827724}
   - component: {fileID: 5188429035290870064}
+  - component: {fileID: 38103593737665265}
   m_Layer: 9
   m_Name: ladder-1
   m_TagString: Platform
@@ -465,6 +526,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2611424, y: 0.14953995, z: 4.7666206}
   m_Center: {x: 0.26686662, y: 0.40021986, z: -0.19204068}
+--- !u!114 &38103593737665265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446910544760075575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6497fa0fbc4fe408fab50d7c4625a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementRate: 0
+  MovementSpeed: 2
 --- !u!1 &3030459300899153203
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +552,7 @@ GameObject:
   - component: {fileID: 3602150185659911453}
   - component: {fileID: 4457288304881671411}
   - component: {fileID: 3978227910852720978}
+  - component: {fileID: 3537246363610058564}
   m_Layer: 9
   m_Name: ladder-5
   m_TagString: Platform
@@ -558,6 +634,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2722217, y: 0.1517309, z: 5.50918}
   m_Center: {x: 0.20128918, y: 0.3589561, z: -6.922216e-16}
+--- !u!114 &3537246363610058564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030459300899153203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6497fa0fbc4fe408fab50d7c4625a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementRate: 0
+  MovementSpeed: 2
 --- !u!1 &3525299315932926851
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,6 +660,7 @@ GameObject:
   - component: {fileID: 5502327893622143045}
   - component: {fileID: 1928849998904012267}
   - component: {fileID: 4764349802039561644}
+  - component: {fileID: 9039743276162021645}
   m_Layer: 9
   m_Name: ladder-6
   m_TagString: Platform
@@ -651,6 +742,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2850617, y: 0.15771866, z: 5.575688}
   m_Center: {x: -0.0038846731, y: 0.18431294, z: 0.031840324}
+--- !u!114 &9039743276162021645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3525299315932926851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6497fa0fbc4fe408fab50d7c4625a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementRate: 0
+  MovementSpeed: 2
 --- !u!1 &3827487950560782704
 GameObject:
   m_ObjectHideFlags: 0

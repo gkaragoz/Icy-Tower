@@ -24,8 +24,21 @@ public class Platform : MonoBehaviour, IPooledObject {
     }
 
     public void SetPosition(Vector3 position, int type) {
+        Vector2 movePoints = new Vector2(_types[type].transform.localScale.z * 2.2f, 8 - _types[type].transform.localScale.z * 2.6f);
         transform.position = position;
-        _types[type].transform.localPosition = new Vector3(UnityEngine.Random.Range(_types[type].transform.localScale.z*2.2f,8- _types[type].transform.localScale.z * 2.6f),0,0); 
+        _types[type].transform.localPosition = new Vector3(UnityEngine.Random.Range(movePoints.x,movePoints.y),0,0);
+        int randomRate1 = UnityEngine.Random.Range(1,100);
+        int randomRate = (type * 10) + ((type - 1) * 4);
+        if (randomRate1 < randomRate)
+        {
+        _types[type].transform.GetComponent<MovingPlatform>().StartMovement(movePoints);
+        }
+        else
+        {
+            _types[type].transform.GetComponent<MovingPlatform>().StopMovement();
+        }
+        
+        
     }
 
     public void OnObjectReused() {
