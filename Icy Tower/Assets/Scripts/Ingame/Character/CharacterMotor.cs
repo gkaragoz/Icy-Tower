@@ -148,6 +148,8 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
         AnimationStateEnum = AnimationState.ComboJump;
         _comboJumpVFX.Play();
         PlaySFX(SoundFXTypes.InGame_Player_Jump_Combo);
+
+        Account.instance.AddCombo(false);
     }
 
     public void Move(float horizontal) {

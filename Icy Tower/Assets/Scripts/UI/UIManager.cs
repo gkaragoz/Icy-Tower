@@ -32,6 +32,9 @@ public class UIManager : MonoBehaviour{
     [SerializeField]
     private SettingsPanel _settingsPanel = null;
 
+    [SerializeField]
+    private IngameStatistics _ingameStatistics = null;
+
     public ControllerType SelectedControllerType {
         get {
             return _settingsPanel.SelectedControllerType;
@@ -49,6 +52,7 @@ public class UIManager : MonoBehaviour{
     private void OnGameStateChanged(GameState previousState, GameState currentState) {
         if (currentState == GameState.GameOver) {
             ClosePanel("PnlGamePlay");
+            _ingameStatistics.UpdateUI();
             OpenPanel("PnlGameOver");
         }
     }

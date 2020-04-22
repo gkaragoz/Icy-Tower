@@ -26,6 +26,10 @@ public class PlayerStats : MonoBehaviour {
         _player.Gem += value;
     }
 
+    public void AddCombo() {
+        _player.Combo++;
+    }
+
     #endregion
 
 
@@ -102,6 +106,10 @@ public class PlayerStats : MonoBehaviour {
         _player.ShoesGroup = data;
     }
 
+    public void SetCombo(int value) {
+        _player.Combo = value;
+    }
+
     #endregion
 
     #region Reporters
@@ -144,6 +152,10 @@ public class PlayerStats : MonoBehaviour {
 
     public string GetShoesGroup() {
         return _player.ShoesGroup;
+    }
+
+    public int GetCombo() {
+        return _player.Combo;
     }
 
     #endregion

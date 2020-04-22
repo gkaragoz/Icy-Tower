@@ -38,6 +38,9 @@ public class PlayerStats_SO : ScriptableObject {
     [SerializeField]
     private string _shoesGroup = "0";
 
+    [SerializeField]
+    private int _combo = 0;
+
     public string Name {
         get { return _name; }
         set { _name = value; }
@@ -89,6 +92,11 @@ public class PlayerStats_SO : ScriptableObject {
     public string ShoesGroup {
         get { return _shoesGroup; }
         set { _shoesGroup = value; }
+    }
+
+    public int Combo {
+        get { return _combo; }
+        set { _combo = value; }
     }
 
 }

@@ -34,6 +34,9 @@ public class Account : MonoBehaviour {
             OnPlayerStatsChanged?.Invoke(PlayerStats);
         }
         if (newGameState == GameState.MainMenu) {
+            ResetCurrentScore();
+            ResetCombo();
+
             SaveSystem.SavePlayer(_playerStats);
             OnPlayerStatsChanged?.Invoke(PlayerStats);
         }
@@ -82,6 +85,15 @@ public class Account : MonoBehaviour {
             default:
                 break;
         }
+    }
+
+    public void AddCombo(bool save = false) {
+        PlayerStats.AddCombo();
+
+        if (save)
+            SaveSystem.SavePlayer(_playerStats);
+
+        OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
     private void AddGold(int value, bool save = false) {
@@ -154,6 +166,13 @@ public class Account : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
+    private void ResetCurrentScore() {
+        SetCurrentScore(0, true);
+    }
+    private void ResetCombo() {
+        SetCombo(0, true);
+    }
+
     public void SetCurrentScore(int value, bool save = false) {
         PlayerStats.SetCurrentScore(value);
 
@@ -165,6 +184,15 @@ public class Account : MonoBehaviour {
 
     public void SetHighScore(int value, bool save = false) {
         PlayerStats.SetHighScore(value);
+
+        if (save)
+            SaveSystem.SavePlayer(_playerStats);
+
+        OnPlayerStatsChanged?.Invoke(PlayerStats);
+    }
+
+    public void SetCombo(int value, bool save = false) {
+        PlayerStats.SetCombo(value);
 
         if (save)
             SaveSystem.SavePlayer(_playerStats);
@@ -199,6 +227,10 @@ public class Account : MonoBehaviour {
 
     public int GetKey() {
         return PlayerStats.GetKey();
+    }
+
+    public int GetCurrentCombos() {
+        return PlayerStats.GetCombo();
     }
 
 }
