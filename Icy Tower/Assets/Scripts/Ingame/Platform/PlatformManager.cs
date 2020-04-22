@@ -72,6 +72,8 @@ public class PlatformManager : MonoBehaviour {
         platform.Floor = ++_floor;
         if (platform.Floor % 100 == 0) {
             _platformTypeIndex++;
+            Camera.main.GetComponent<NewCameraController>().IncreaseCameraSpeed(_platformTypeIndex * 0.16f);
+
         }
         platform.SetText();
         platform.SetType(_platformTypeIndex);

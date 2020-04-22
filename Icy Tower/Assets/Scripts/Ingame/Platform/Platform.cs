@@ -18,14 +18,32 @@ public class Platform : MonoBehaviour, IPooledObject {
         set { _floorCountText = value; }
     }
 
-
+    
     public void SetScale(Vector3 scale, int type) {
-        _types[type].transform.localScale = scale;
+
+        Vector3 tempVector = new Vector3( scale.x,scale.y,scale.z-(type*0.058f*2f));// Zorluk seviyesi kararına göre düzenlecek
+
+        _types[type].transform.localScale = tempVector;
+
+
     }
 
     public void SetPosition(Vector3 position, int type) {
+        Vector2 movePoints = new Vector2(_types[type].transform.localScale.z * 2.2f, 8 - _types[type].transform.localScale.z * 2.6f);
         transform.position = position;
-        _types[type].transform.localPosition = new Vector3(UnityEngine.Random.Range(_types[type].transform.localScale.z*2.2f,8- _types[type].transform.localScale.z * 2.6f),0,0); 
+        _types[type].transform.localPosition = new Vector3(UnityEngine.Random.Range(movePoints.x,movePoints.y),0,0);
+        int randomRate1 = UnityEngine.Random.Range(1,100);
+        int randomRate = (type * 10) + ((type - 1) * 4);
+        if (randomRate1 < randomRate)
+        {
+        _types[type].transform.GetComponent<MovingPlatform>().StartMovement(movePoints);// Gereken atama başlangıçta yapılabilir
+        }
+        else
+        {
+            _types[type].transform.GetComponent<MovingPlatform>().StopMovement();// Gereken atama başlangıçta yapılabilir (Test için buradalar düzenlenecekler)
+        }
+        
+        
     }
 
     public void OnObjectReused() {
