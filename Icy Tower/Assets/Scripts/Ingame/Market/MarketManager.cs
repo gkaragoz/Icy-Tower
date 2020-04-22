@@ -21,6 +21,16 @@ public class MarketManager : MonoBehaviour {
     [SerializeField]
     private MarketItem[] _marketDB = null;
 
+    public MarketItem[] MarketItems {
+        get {
+            return _marketDB;
+        }
+    }
+
+    public void Init(MarketItem[] marketItems) {
+        _marketDB = marketItems;
+    }
+
     public void BuyItem(int itemId) {
         MarketItem item = GetMarketItem(itemId);
 

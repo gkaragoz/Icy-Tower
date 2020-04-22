@@ -113,7 +113,7 @@ public class NewCameraController : MonoBehaviour {
         _isFollowingTarget = true;
         _isGamePlayCameraActive = true;
         _canMove = true;
-        Account.instance.AddKey(-1);
+        Account.instance.DecreaseVirtualCurrency(1, VirtualCurrency.Key);
     }
 
     void NormalMovement() {

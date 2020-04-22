@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class VirtualCurrencyBar : MonoBehaviour {
 
@@ -13,8 +14,15 @@ public class VirtualCurrencyBar : MonoBehaviour {
     private ShadowTextUpdater[] _txtKeys = null;
 
     private void Start() {
+        GameManager.instance.OnGameStateChanged += OnGameStateChanged;
         MarketManager.instance.OnBuyItem += UpdateUI;
         UpdateUI();
+    }
+
+    private void OnGameStateChanged(GameState arg1, GameState currentState) {
+        if (currentState == GameState.MainMenu) {
+            UpdateUI();
+        }
     }
 
     private void UpdateUI() {

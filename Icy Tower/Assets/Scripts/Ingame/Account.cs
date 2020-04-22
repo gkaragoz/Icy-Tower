@@ -29,8 +29,13 @@ public class Account : MonoBehaviour {
     }
 
     private void OnGameStateChanged(GameState previousGameState, GameState newGameState) {
+        if (newGameState == GameState.GameOver) {
+            SaveSystem.SavePlayer(_playerStats);
+            OnPlayerStatsChanged?.Invoke(PlayerStats);
+        }
         if (newGameState == GameState.MainMenu) {
             SaveSystem.SavePlayer(_playerStats);
+            OnPlayerStatsChanged?.Invoke(PlayerStats);
         }
     }
 
@@ -46,9 +51,11 @@ public class Account : MonoBehaviour {
     public void Init() {
         PlayerStats_SO readedSO = SaveSystem.LoadPlayer();
         if (readedSO == null) {
+            _playerStats.MarketItems = MarketManager.instance.MarketItems;
             SaveSystem.SavePlayer(_playerStats);
         } else {
             _playerStats = readedSO;
+            MarketManager.instance.Init(_playerStats.MarketItems);
         }
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
@@ -58,6 +65,7 @@ public class Account : MonoBehaviour {
 
     public void Save() {
         SaveSystem.SavePlayer(_playerStats);
+        OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
     public void AddVirtualCurrency(int amount, VirtualCurrency vc) {
@@ -76,7 +84,7 @@ public class Account : MonoBehaviour {
         }
     }
 
-    public void AddGold(int value, bool save = false) {
+    private void AddGold(int value, bool save = false) {
         PlayerStats.AddGold(value);
 
         if (save)
@@ -85,7 +93,7 @@ public class Account : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void AddGem(int value, bool save = false) {
+    private void AddGem(int value, bool save = false) {
         PlayerStats.AddGem(value);
 
         if (save)
@@ -94,7 +102,7 @@ public class Account : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void AddKey(int value, bool save = false) {
+    private void AddKey(int value, bool save = false) {
         PlayerStats.AddKey(value);
 
         if (save)
@@ -119,7 +127,7 @@ public class Account : MonoBehaviour {
         }
     }
 
-    public void DecreaseGold(int value, bool save = false) {
+    private void DecreaseGold(int value, bool save = false) {
         PlayerStats.DecreaseGold(value);
 
         if (save)
@@ -128,7 +136,7 @@ public class Account : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void DecreaseGem(int value, bool save = false) {
+    private void DecreaseGem(int value, bool save = false) {
         PlayerStats.DecreaseGem(value);
 
         if (save)
@@ -137,7 +145,7 @@ public class Account : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void DecreaseKey(int value, bool save = false) {
+    private void DecreaseKey(int value, bool save = false) {
         PlayerStats.DecreaseKey(value);
 
         if (save)
@@ -157,33 +165,6 @@ public class Account : MonoBehaviour {
 
     public void SetHighScore(int value, bool save = false) {
         PlayerStats.SetHighScore(value);
-
-        if (save)
-            SaveSystem.SavePlayer(_playerStats);
-
-        OnPlayerStatsChanged?.Invoke(PlayerStats);
-    }
-
-    public void SetGold(int value, bool save = false) {
-        PlayerStats.SetGold(value);
-
-        if (save)
-            SaveSystem.SavePlayer(_playerStats);
-
-        OnPlayerStatsChanged?.Invoke(PlayerStats);
-    }
-
-    public void SetKey(int value, bool save = false) {
-        PlayerStats.SetKey(value);
-
-        if (save)
-            SaveSystem.SavePlayer(_playerStats);
-
-        OnPlayerStatsChanged?.Invoke(PlayerStats);
-    }
-
-    public void SetGem(int value, bool save = false) {
-        PlayerStats.SetGem(value);
 
         if (save)
             SaveSystem.SavePlayer(_playerStats);

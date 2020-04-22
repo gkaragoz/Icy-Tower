@@ -8,7 +8,7 @@ public class Key : MonoBehaviour, IHaveSingleSound,IPooledObject{
             PlayVFX();
             PlaySFX(SoundFXTypes.InGame_Collect_Key);
             
-            Account.instance.AddKey(1);
+            Account.instance.AddVirtualCurrency(1, VirtualCurrency.Key);
             gameObject.SetActive(false);
         }
     }

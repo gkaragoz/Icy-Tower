@@ -19,7 +19,7 @@ public class SuperCoin : MonoBehaviour, IPooledObject, IHaveSingleSound {
             PlayVFX();
             PlaySFX(SoundFXTypes.InGame_Collect_SuperGold);
 
-            Account.instance.AddGold(_superCoinStats.GetAmount());
+            Account.instance.AddVirtualCurrency(_superCoinStats.GetAmount(), VirtualCurrency.Gold);
 
             gameObject.SetActive(false);
         }

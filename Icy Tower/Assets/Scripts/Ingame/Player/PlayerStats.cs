@@ -86,8 +86,8 @@ public class PlayerStats : MonoBehaviour {
         _player.Gem = value;
     }
 
-    public void SetItems(MarketItem_SO[] items) {
-        _player.MarketItemsSO = items;
+    public void SetItems(MarketItem[] items) {
+        _player.MarketItems = items;
     }
 
     public void SetHeadGroup(string data) {
@@ -130,8 +130,8 @@ public class PlayerStats : MonoBehaviour {
         return _player.Gem;
     }
 
-    public MarketItem_SO[] GetItems() {
-        return _player.MarketItemsSO;
+    public MarketItem[] GetItems() {
+        return _player.MarketItems;
     }
 
     public string GetHeadGroup() {

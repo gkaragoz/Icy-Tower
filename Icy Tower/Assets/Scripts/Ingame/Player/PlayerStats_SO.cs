@@ -27,7 +27,7 @@ public class PlayerStats_SO : ScriptableObject {
     private int _gem = 0;
 
     [SerializeField]
-    private MarketItem_SO[] _marketItemsSO = null;
+    private MarketItem[] _marketItems = null;
 
     [SerializeField]
     private string _headGroup = "0";
@@ -68,9 +68,9 @@ public class PlayerStats_SO : ScriptableObject {
         set { _gem = value; }
     }
 
-    public MarketItem_SO[] MarketItemsSO {
-        get { return _marketItemsSO; }
-        set { _marketItemsSO = value; }
+    public MarketItem[] MarketItems {
+        get { return _marketItems; }
+        set { _marketItems = value; }
     }
 
     [SerializeField]
