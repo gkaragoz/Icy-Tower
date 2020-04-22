@@ -28,6 +28,7 @@ public class LoadManager : MonoBehaviour {
     public void LoadPool() {
         ObjectPooler.instance.InitializePool("Platform");
         ObjectPooler.instance.InitializePool("Wall");
+        ObjectPooler.instance.InitializePool("Key");
 
         foreach (string goldType in (string[])Enum.GetNames(typeof(GoldHolderTypes))) {
             ObjectPooler.instance.InitializePool(goldType, true);

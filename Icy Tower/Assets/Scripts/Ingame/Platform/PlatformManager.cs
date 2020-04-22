@@ -37,6 +37,9 @@ public class PlatformManager : MonoBehaviour {
         get { return _initialSpawnPosition; }
     }
 
+    public int PlatformTypeIndex {
+        get { return _platformTypeIndex; }
+    }
 
     private void Start() {
         _platformStats = GetComponent<PlatformStats>();
@@ -98,11 +101,12 @@ public class PlatformManager : MonoBehaviour {
         return _platforms.ElementAt(_platforms.Count - 1).transform.position;
     }
 
-    public Vector3 GetSpawnedPlatformPositionAtFloor(int floor) {
+    public Platform GetSpawnedPlatformAtFloor(int floor) {
         foreach (Platform platform in _platforms) {
             if (platform.Floor == floor)
-                return platform.transform.position;
+                return platform;
         }
-        return Vector3.zero;
+        return null;
     }
+
 }

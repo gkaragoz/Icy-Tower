@@ -83,7 +83,7 @@ public enum Collectables {
     TimeSlower,
     Umbrella,
     SuperCoin,
-    Key
+
 }
 
 public enum VFXTypes {
