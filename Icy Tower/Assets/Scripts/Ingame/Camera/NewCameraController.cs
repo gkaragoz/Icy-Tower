@@ -161,4 +161,11 @@ public class NewCameraController : MonoBehaviour {
         return CameraStateEnums.None;
     }
 
+
+
+    public void IncreaseCameraSpeed(float value)
+    {
+        speed += value;
+    }
+
 }

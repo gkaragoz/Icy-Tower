@@ -21,7 +21,7 @@ public class Platform : MonoBehaviour, IPooledObject {
     
     public void SetScale(Vector3 scale, int type) {
 
-        Vector3 tempVector = new Vector3( scale.x,scale.y,scale.z-(type*0.058f*3f));
+        Vector3 tempVector = new Vector3( scale.x,scale.y,scale.z-(type*0.058f*2f));// Zorluk seviyesi kararına göre düzenlecek
 
         _types[type].transform.localScale = tempVector;
 
@@ -36,11 +36,11 @@ public class Platform : MonoBehaviour, IPooledObject {
         int randomRate = (type * 10) + ((type - 1) * 4);
         if (randomRate1 < randomRate)
         {
-        _types[type].transform.GetComponent<MovingPlatform>().StartMovement(movePoints);
+        _types[type].transform.GetComponent<MovingPlatform>().StartMovement(movePoints);// Gereken atama başlangıçta yapılabilir
         }
         else
         {
-            _types[type].transform.GetComponent<MovingPlatform>().StopMovement();
+            _types[type].transform.GetComponent<MovingPlatform>().StopMovement();// Gereken atama başlangıçta yapılabilir (Test için buradalar düzenlenecekler)
         }
         
         
