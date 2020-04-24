@@ -162,8 +162,12 @@ public class WardrobeItemUI : MonoBehaviour {
 
     private void SetAlphaOfIcon(bool high) {
         if (high) {
+            _imgPriceIcon.color = _activeColor;
+            _txtPrice.color = _activeColor;
             _imgItemIcon.color = _activeColor;
         } else {
+            _imgPriceIcon.color = _disabledColor;
+            _txtPrice.color = _disabledColor;
             _imgItemIcon.color = _disabledColor;
         }
     }

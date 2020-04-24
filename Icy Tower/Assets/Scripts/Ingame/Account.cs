@@ -46,9 +46,6 @@ public class Account : MonoBehaviour {
         PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         PlayerStats.Init(_playerStats);
 
-        AddVirtualCurrency(123123, VirtualCurrency.Gem);
-        AddVirtualCurrency(123123, VirtualCurrency.Gold);
-        AddVirtualCurrency(123123, VirtualCurrency.Key);
         Debug.Log("Player stats has been assigned.");
     }
     /// <summary>
@@ -63,10 +60,6 @@ public class Account : MonoBehaviour {
             _playerStats = readedSO;
             MarketManager.instance.Init(_playerStats.MarketItems);
         }
-
-        _playerStats.Gold = 123123;
-        _playerStats.Gem = 123123;
-        _playerStats.Key = 123123;
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
 
