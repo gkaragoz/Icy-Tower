@@ -50,7 +50,6 @@ public class WardrobeItemUI : MonoBehaviour {
 
                 containsMe = splittedStrings.Any(idStr => idStr == _clothHeadMapping.id);
                 costAffordable = ExtensionMethods.AmIAbleToBuyIt(myMoney, _clothHeadMapping.price);
-                Debug.Log("HEAD:" + _clothHeadMapping.id + " " + containsMe + " gurkan " + ++WardrobePanelManager.gurkan);
                 break;
             case ClothType.Body:
                 string bodyItemsString = Account.instance.GetClothItems(ClothType.Body);
