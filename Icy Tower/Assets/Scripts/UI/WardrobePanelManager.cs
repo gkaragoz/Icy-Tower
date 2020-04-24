@@ -1,54 +1,97 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
-public class WardrobePanelManager : MonoBehaviour
-{
-    [SerializeField]
-    private BodyGroupNew _bodyGroup;
-    [SerializeField]
-    private HeadGroup _headGroup;
-    [SerializeField]
-    private ShoesGroup _shoesGroup;
+public class WardrobePanelManager : MonoBehaviour {
 
+    #region Singleton
 
-    [SerializeField]
-    private Sprite _wardrobeSelected;
-    [SerializeField]
-    private Sprite _wardrobeNormal;
-    [SerializeField]
-    private Image[] _tabButtons;
-    [SerializeField]
-    private GameObject[] _wardrobeObjectPanel;
-    [SerializeField]
-    private Image[] _buttonInsideImage;
-
-
-    public void ChooseTab(int index)
-    {
-        foreach (var item in _tabButtons)
-        {
-            item.sprite = _wardrobeNormal;
-        }
-        _tabButtons[index].sprite = _wardrobeSelected;
-
-        foreach (var panel in _wardrobeObjectPanel)
-        {
-            panel.SetActive(false);
-
-        }
-        _wardrobeObjectPanel[index].SetActive(true);
-
-        foreach (var buttonImage in _buttonInsideImage)
-        {
-            buttonImage.color = new Color32(126,126,126,255);
-        }
-
-        _buttonInsideImage[index].color = new Color32(56,107,20,255);
+    public static WardrobePanelManager instance;
+    private void Awake() {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
     }
 
-    public void ChangeHair(string values)
+    #endregion
+
+    public static int gurkan = 0;
+
+    [SerializeField]
+    private BodyGroupNew _bodyGroup = null;
+    [SerializeField]
+    private HeadGroup _headGroup = null;
+    [SerializeField]
+    private ShoesGroup _shoesGroup = null;
+
+    public void Buy(object data, ClothType clothType) {
+        int myMoney = Account.instance.GetCurrencyAmount(VirtualCurrency.Gold);
+
+        switch (clothType) {
+            case ClothType.Head:
+                ClothHeadMapping headData = (ClothHeadMapping)data;
+
+                if (ExtensionMethods.AmIAbleToBuyIt(myMoney, headData.price)) {
+                    Account.instance.DecreaseVirtualCurrency(headData.price, VirtualCurrency.Gold);
+                    Account.instance.AddCloth(ClothType.Head, headData.id, true);
+                    Account.instance.Save();
+                }
+
+                break;
+            case ClothType.Body:
+                ClothBodyMapping bodyData = (ClothBodyMapping)data;
+
+                if (ExtensionMethods.AmIAbleToBuyIt(myMoney, bodyData.price)) {
+                    Account.instance.DecreaseVirtualCurrency(bodyData.price, VirtualCurrency.Gold);
+                    Account.instance.AddCloth(ClothType.Body, bodyData.id, true);
+                    Account.instance.Save();
+                }
+
+                break;
+            case ClothType.Shoe:
+                ClothShoeMapping shoeData = (ClothShoeMapping)data;
+
+                if (ExtensionMethods.AmIAbleToBuyIt(myMoney, shoeData.price)) {
+                    Account.instance.DecreaseVirtualCurrency(shoeData.price, VirtualCurrency.Gold);
+                    Account.instance.AddCloth(ClothType.Shoe, shoeData.id, true);
+                    Account.instance.Save();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void Use(object data, ClothType clothType) {
+        string values = string.Empty;
+
+        switch (clothType) {
+            case ClothType.Head:
+                ClothHeadMapping headData = (ClothHeadMapping)data;
+
+                values = headData.headId + "," + headData.accesoryId;
+                ChangeHair(values);
+
+                break;
+            case ClothType.Body:
+                ClothBodyMapping bodyData = (ClothBodyMapping)data;
+
+                values = bodyData.bodyGroup + "," + bodyData.style + "," + bodyData.color;
+                ChangeBody(values);
+
+                break;
+            case ClothType.Shoe:
+                ClothShoeMapping shoeData = (ClothShoeMapping)data;
+
+                values = shoeData.id;
+
+                ChangeShoes(values);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void ChangeHair(string values)
     {
         /*First parameter is Hair Id
             Default Hair    -> 0
@@ -69,35 +112,16 @@ public class WardrobePanelManager : MonoBehaviour
 
     }
 
-    public void ChangeBodyUp(string input)
-    {
-        /*First parameter is Hair Id
-          BodyUpShort     -> 0
-          BodyUpLong      -> 1
-       */
+    private void ChangeBody(string input) {
         string[] myStringSplit = input.Split(',');
-        int bodyPartGroup = 0; // Up is always 0
-        int upStyle =int.Parse( myStringSplit[0]);
-        int color =int.Parse( myStringSplit[1]);
-        _bodyGroup.ChooseBodyObject(bodyPartGroup, upStyle,color);
-
-    }
-
-    public void ChangeBodyDown(string input)
-    {
-        /*   
-         BodyDownShort     -> 0
-         BodyUpMid      -> 1
-         BodyUpLong      -> 2
-        */
-        string[] myStringSplit = input.Split(',');
-        int bodyPartGroup = 1; // Down is always 1
-        int upStyle = int.Parse(myStringSplit[0]);
-        int color = int.Parse(myStringSplit[1]);
+        int bodyPartGroup = int.Parse(myStringSplit[0]);
+        int upStyle = int.Parse(myStringSplit[1]);
+        int color = int.Parse(myStringSplit[2]);
         _bodyGroup.ChooseBodyObject(bodyPartGroup, upStyle, color);
+
     }
 
-    public void ChangeShoes(int id)
+    private void ChangeShoes(string id)
     {
         _shoesGroup.ChangeShoes(id);
     }

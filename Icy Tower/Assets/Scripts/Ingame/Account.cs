@@ -46,6 +46,9 @@ public class Account : MonoBehaviour {
         PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         PlayerStats.Init(_playerStats);
 
+        AddVirtualCurrency(123123, VirtualCurrency.Gem);
+        AddVirtualCurrency(123123, VirtualCurrency.Gold);
+        AddVirtualCurrency(123123, VirtualCurrency.Key);
         Debug.Log("Player stats has been assigned.");
     }
     /// <summary>
@@ -61,6 +64,10 @@ public class Account : MonoBehaviour {
             MarketManager.instance.Init(_playerStats.MarketItems);
         }
 
+        _playerStats.Gold = 123123;
+        _playerStats.Gem = 123123;
+        _playerStats.Key = 123123;
+
         OnPlayerStatsChanged?.Invoke(PlayerStats);
 
         Debug.Log("User accound has been initialized.");
@@ -68,6 +75,15 @@ public class Account : MonoBehaviour {
 
     public void Save() {
         SaveSystem.SavePlayer(_playerStats);
+        OnPlayerStatsChanged?.Invoke(PlayerStats);
+    }
+
+    public void AddCloth(ClothType clothType, string id, bool save = false) {
+        PlayerStats.AddClothItem(clothType, id);
+
+        if (save)
+            SaveSystem.SavePlayer(_playerStats);
+
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
@@ -231,6 +247,19 @@ public class Account : MonoBehaviour {
 
     public int GetCurrentCombos() {
         return PlayerStats.GetCombo();
+    }
+
+    public string GetClothItems(ClothType clothType) {
+        switch (clothType) {
+            case ClothType.Head:
+                return PlayerStats.GetHeadGroup();
+            case ClothType.Body:
+                return PlayerStats.GetBodyGroup();
+            case ClothType.Shoe:
+                return PlayerStats.GetShoesGroup();
+            default:
+                return string.Empty;
+        }
     }
 
 }

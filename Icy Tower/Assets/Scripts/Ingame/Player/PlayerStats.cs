@@ -158,6 +158,39 @@ public class PlayerStats : MonoBehaviour {
         return _player.Combo;
     }
 
+    public string GetClothItems(ClothType clothType) {
+        switch (clothType) {
+            case ClothType.Head:
+                return _player.HeadGroup;
+            case ClothType.Body:
+                return _player.BodyGroup;
+            case ClothType.Shoe:
+                return _player.ShoesGroup;
+            default:
+                return string.Empty;
+        }
+    }
+
+    #endregion
+
+    #region Add
+
+    public void AddClothItem(ClothType clothType, string itemId) {
+        switch (clothType) {
+            case ClothType.Head:
+                _player.HeadGroup += "," + itemId; 
+                break;
+            case ClothType.Body:
+                _player.BodyGroup += "," + itemId;
+                break;
+            case ClothType.Shoe:
+                _player.ShoesGroup += "," + itemId; 
+                break;
+            default:
+                break;
+        }
+    }
+
     #endregion
 
 }

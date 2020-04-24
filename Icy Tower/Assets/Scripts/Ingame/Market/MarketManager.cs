@@ -65,7 +65,7 @@ public class MarketManager : MonoBehaviour {
         int rewardAmount = item.GetVirtualCurrencyAmountOnReward();
 
         int myMoney = Account.instance.GetCurrencyAmount(vcOnBuy);
-        bool isAffordable = AmIAbleToBuyIt(myMoney, item.GetCurrentPrice());
+        bool isAffordable = ExtensionMethods.AmIAbleToBuyIt(myMoney, item.GetCurrentPrice());
 
         // Add the virtual currency to my account.
         if (isAffordable) {
@@ -94,7 +94,7 @@ public class MarketManager : MonoBehaviour {
         VirtualCurrency vcOnBuy = item.GetVirtualCurrencyOnBuy();
 
         int myMoney = Account.instance.GetCurrencyAmount(vcOnBuy);
-        bool isAffordable = AmIAbleToBuyIt(myMoney, item.GetCurrentPrice());
+        bool isAffordable = ExtensionMethods.AmIAbleToBuyIt(myMoney, item.GetCurrentPrice());
 
         // Decrease my money.
         // Increase level.
@@ -116,7 +116,7 @@ public class MarketManager : MonoBehaviour {
         VirtualCurrency vcOnBuy = item.GetVirtualCurrencyOnBuy();
 
         int myMoney = Account.instance.GetCurrencyAmount(vcOnBuy);
-        bool isAffordable = AmIAbleToBuyIt(myMoney, item.GetCurrentPrice());
+        bool isAffordable = ExtensionMethods.AmIAbleToBuyIt(myMoney, item.GetCurrentPrice());
 
         // Decrease my money.
         // Increase my stacked amount.
@@ -138,7 +138,7 @@ public class MarketManager : MonoBehaviour {
         VirtualCurrency vcOnBuy = item.GetVirtualCurrencyOnBuy();
 
         int myMoney = Account.instance.GetCurrencyAmount(vcOnBuy);
-        bool isAffordable = AmIAbleToBuyIt(myMoney, item.GetCurrentPrice());
+        bool isAffordable = ExtensionMethods.AmIAbleToBuyIt(myMoney, item.GetCurrentPrice());
 
         // Decrease my money.
         // Open item.
@@ -158,14 +158,6 @@ public class MarketManager : MonoBehaviour {
 
     public MarketItem GetMarketItem(int itemId) {
         return _marketDB.Where(item => item.GetId() == itemId).SingleOrDefault();
-    }
-
-    public bool AmIAbleToBuyIt(int myCurrencyAmount, int price) {
-        if (myCurrencyAmount - price < 0) {
-            return false;
-        } else {
-            return true;
-        }
     }
 
 }

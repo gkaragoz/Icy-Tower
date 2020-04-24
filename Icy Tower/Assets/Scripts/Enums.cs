@@ -7,49 +7,15 @@
     Wardrobe
 }
 
-public enum ClothUpTypes {
-    None,
-    Long,
-    Short
+public enum ClothType {
+    Head,
+    Body,
+    Shoe
 }
 
-public enum ClothDownTypes {
-    None,
-    Mid,
-    Short
-}
-
-public enum ClothShoeTypes {
-
-}
-
-public enum ClothAccesoryTypes {
-    Crown01,
-    Crown02
-}
-
-public enum ClothHairTypes {
-    Crown01,
-    Crown02
-}
-
-public enum ClothColors {
-    c_0_0,
-    c_1_0,
-    c_2_0,
-    c_3_0,
-    c_0_1,
-    c_1_1,
-    c_2_1,
-    c_3_1,
-    c_0_2,
-    c_1_2,
-    c_2_2,
-    c_3_2,
-    c_0_3,
-    c_1_3,
-    c_2_3,
-    c_3_3
+public enum WardrobeItemUIMode {
+    Use,
+    Buy
 }
 
 public enum CameraStateEnums {
