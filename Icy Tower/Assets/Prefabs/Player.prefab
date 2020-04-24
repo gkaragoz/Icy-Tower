@@ -5316,6 +5316,7 @@ MonoBehaviour:
   _wallColliders:
   - {fileID: 0}
   - {fileID: 0}
+  _initialWardrobeStartPosition: {x: -1.314, y: 9.395, z: 1.181}
   _characterMotor: {fileID: 0}
 --- !u!114 &5260039548835869549
 MonoBehaviour:
@@ -5740,7 +5741,7 @@ PrefabInstance:
     - target: {fileID: 6520111067727177601, guid: 3b00629c0473ae6488bfec02791b4cb4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6520111067727177601, guid: 3b00629c0473ae6488bfec02791b4cb4,
         type: 3}
@@ -5750,7 +5751,7 @@ PrefabInstance:
     - target: {fileID: 6520111067727177601, guid: 3b00629c0473ae6488bfec02791b4cb4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6520111067727177601, guid: 3b00629c0473ae6488bfec02791b4cb4,
         type: 3}
@@ -5765,7 +5766,7 @@ PrefabInstance:
     - target: {fileID: 6520111067727177601, guid: 3b00629c0473ae6488bfec02791b4cb4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 6520111067727177601, guid: 3b00629c0473ae6488bfec02791b4cb4,
         type: 3}
