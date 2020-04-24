@@ -7,7 +7,10 @@ public class Collector : MonoBehaviour {
     [SerializeField]
     private bool _isCollectorActive = false;
 
+    private Vector3 _initialStartPosition = Vector3.zero;
+
     private void Start() {
+        _initialStartPosition = transform.position;
         GameManager.instance.OnGameStateChanged += OnGameStateChanged;
     }
 
@@ -16,6 +19,7 @@ public class Collector : MonoBehaviour {
             _isCollectorActive = false;
         }
         if (currentState == GameState.Gameplay) {
+            transform.position = _initialStartPosition;
             _isCollectorActive = true;
         }
     }

@@ -92,24 +92,11 @@ public class PlatformStats : MonoBehaviour {
         return new Vector3(GetDepth(), GetThickness(), Random.Range(GetMinScale(), GetMaxScale())) ;
     }
 
-    public Vector3 GetNewPosition(float initialSpawnPos, int lastSpawnedPlatform,float scaleZ){
-        float x = -4;//WorldSettings.instance.GetRandomBorderPosition().x;
+    public Vector3 GetNewPosition(float initialSpawnPos, int lastSpawnedPlatform){
+        float x = -4;
         float y = initialSpawnPos + (GetDistanceBetweenPlatforms() * lastSpawnedPlatform);
         float z = 0;
 
-       /* if(x >= 0) {
-            float endPosX = x + (scaleZ / 2);
-            if((endPosX) > WorldSettings.instance.GetMapRightBorderPosition().x) {
-                float distance = endPosX - WorldSettings.instance.GetMapRightBorderPosition().x;
-               // x -= distance;
-            }
-        } else {
-            float endPosX = x - (scaleZ / 2); 
-            if ((endPosX) < WorldSettings.instance.GetMapLeftBorderPosition().x) {
-                float distance = endPosX - WorldSettings.instance.GetMapLeftBorderPosition().x;
-                //x -= distance;
-            }
-        }*/
         return new Vector3(x, y, z);
     }
     #endregion

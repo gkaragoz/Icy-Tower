@@ -46,6 +46,7 @@ public class PlatformManager : MonoBehaviour {
     }
 
     public void SpawnPlatforms() {
+        Debug.Log("200 bu.");
         _floor = 0;
         _platformTypeIndex = 0;
         _platforms = new Queue<Platform>();
@@ -57,7 +58,7 @@ public class PlatformManager : MonoBehaviour {
             platform.SetType(_platformTypeIndex);
             Vector3 scale = _platformStats.GetRandomScale();
             platform.SetScale(scale, _platformTypeIndex);
-            platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor, scale.z),_platformTypeIndex);
+            platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor), _platformTypeIndex);
             _platforms.Enqueue(platform);
             if (platform.Floor == CollectableSpawner.instance.NextPowerUpSpawnFloor)
                 OnWantedPlatformSpawnedForPowerUp?.Invoke(platform.Floor);
@@ -71,18 +72,18 @@ public class PlatformManager : MonoBehaviour {
     }
 
     public Platform SpawnPlatform() {
+        Debug.Log("200 değil bu.");
         Platform platform = _platforms.Dequeue();
         platform.Floor = ++_floor;
         if (platform.Floor % 100 == 0) {
             _platformTypeIndex++;
-            Camera.main.GetComponent<NewCameraController>().IncreaseCameraSpeed(_platformTypeIndex * 0.16f);
-
+            Camera.main.GetComponent<NewCameraController>().IncreaseCameraSpeed(_platformTypeIndex * 0.16f); // Düzenlencek
         }
         platform.SetText();
         platform.SetType(_platformTypeIndex);
         Vector3 scale = _platformStats.GetRandomScale();
         platform.SetScale(scale, _platformTypeIndex);
-        platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor, scale.z),_platformTypeIndex);
+        platform.SetPosition(_platformStats.GetNewPosition(_initialSpawnPosition, _floor),_platformTypeIndex);
 
         _platforms.Enqueue(platform);
         if (platform.Floor == CollectableSpawner.instance.NextPowerUpSpawnFloor) 
