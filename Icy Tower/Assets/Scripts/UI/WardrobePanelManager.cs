@@ -23,6 +23,17 @@ public class WardrobePanelManager : MonoBehaviour {
     [SerializeField]
     private ShoesGroup _shoesGroup = null;
 
+    private void Start() {
+        WearDefaults();
+    }
+
+    private void WearDefaults() {
+        _bodyGroup.ChooseBodyObject(0, 1, 0);
+        _bodyGroup.ChooseBodyObject(1, 2, 0);
+        _headGroup.ChooseHead(0, 0);
+        _shoesGroup.ChooseShoes(0);
+    }
+
     public void Buy(object data, ClothType clothType) {
         int myMoney = Account.instance.GetCurrencyAmount(VirtualCurrency.Gold);
 
@@ -123,7 +134,8 @@ public class WardrobePanelManager : MonoBehaviour {
 
     private void ChangeShoes(string id)
     {
-        _shoesGroup.ChangeShoes(id);
+        int idIndex = int.Parse(id);
+        _shoesGroup.ChooseShoes(idIndex);
     }
 
 }

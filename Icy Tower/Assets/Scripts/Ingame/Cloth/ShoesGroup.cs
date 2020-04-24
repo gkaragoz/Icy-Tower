@@ -1,30 +1,19 @@
 ﻿using UnityEngine;
 
-public class ShoesGroup : MonoBehaviour
-{
+public class ShoesGroup : MonoBehaviour {
     public ShoesGroups[] shoes;
-   
 
-    public void ChangeShoes(string shoesIndex)
-    {
-        foreach (var shoe in shoes)
-        {
+    public void ChooseShoes(int shoesIndex) {
+        foreach (var shoe in shoes) {
             shoe.shoesObject.SetActive(false);
         }
-        Debug.Log(shoes[int.Parse(shoesIndex)].shoesName+" is weared!");
-        shoes[int.Parse(shoesIndex)].shoesObject.SetActive(true);
+        Debug.Log(shoes[shoesIndex].shoesName + " is weared!");
+        shoes[shoesIndex].shoesObject.SetActive(true);
     }
-
 }
 
-
-
-
-
-
 [System.Serializable]
-public struct ShoesGroups
-{
+public struct ShoesGroups {
     public string shoesName;
     public GameObject shoesObject;
 
