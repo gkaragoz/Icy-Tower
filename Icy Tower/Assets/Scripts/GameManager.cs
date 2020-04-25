@@ -29,30 +29,72 @@ public class GameManager : MonoBehaviour {
     private void Start() {
         SceneManager.sceneLoaded += OnSceneActivated;
 
+        _loadManager.OnPlayFabAuthenticationSuccess += OnPlayFabAuthenticationSuccess;
+        _loadManager.OnPlayFabAuthenticationFailed += OnPlayFabAuthenticationFailed;
+        _loadManager.OnGPGSAuthenticationSuccess += OnGPGSAuthenticationSuccess;
+        _loadManager.OnGPGSAuthenticationFailed += OnGPGSAuthenticationFailed;
+
         _loadManager.OnAccountLoaded += OnAccountLoaded;
         _loadManager.OnSceneReady += OnSceneReady;
         _loadManager.OnPoolLoaded += OnPoolLoaded;
+
+        if (Library.Authentication.PlayfabCustomAuth.ISGuestAccount() && Facebook.Unity.FB.IsLoggedIn == false) {
+            _loadManager.AuthanticateToPlayFab();
+        } else {
+            _loadManager.AuthanticateToGPGS();
+        }
+    }
+
+    private void OnPlayFabAuthenticationSuccess(string actionMessage) {
+        Debug.Log("OnPlayFabAuthenticationSuccess: " + actionMessage);
+
+        _loadManager.AuthanticateToGPGS();
+    }
+
+    private void OnPlayFabAuthenticationFailed(string actionMessage) {
+        Debug.Log("OnPlayFabAuthenticationFailed: " + actionMessage);
+
+        _loadManager.AuthanticateToGPGS();
+    }
+
+    private void OnGPGSAuthenticationSuccess(string actionMessage) {
+        Debug.Log("OnGPGSAuthenticationSuccess: " + actionMessage);
 
         _loadManager.LoadAccount();
         _loadManager.LoadPool();
         _loadManager.LoadScene();
     }
 
+    private void OnGPGSAuthenticationFailed(string actionMessage) {
+        Debug.Log("OnGPGSAuthenticationFailed: " + actionMessage);
+
+        _loadManager.LoadAccount();
+        _loadManager.LoadPool();
+        _loadManager.LoadScene();
+    }
 
     private void OnAccountLoaded() {
-        Debug.Log("Account loaded!");
+        _loadManager.OnAccountLoaded -= OnAccountLoaded;
+        Debug.Log("OnAccountLoaded!");
     }
 
     private void OnSceneReady() {
         _loadManager.OnSceneReady -= OnSceneReady;
-        Debug.Log("Ready!");
+        Debug.Log("OnSceneReady!");
+
+        _loadManager.OnPlayFabAuthenticationSuccess -= OnPlayFabAuthenticationSuccess;
+        _loadManager.OnPlayFabAuthenticationFailed -= OnPlayFabAuthenticationFailed;
+        _loadManager.OnGPGSAuthenticationSuccess -= OnGPGSAuthenticationSuccess;
+        _loadManager.OnGPGSAuthenticationFailed -= OnGPGSAuthenticationFailed;
 
         _loadManager.OpenLoadedScene();
     }
 
     private void OnPoolLoaded() {
-        Debug.Log("Pool loaded!");
+        _loadManager.OnPoolLoaded -= OnPoolLoaded;
+        Debug.Log("OnPoolLoaded!");
     }
+
     private void OnSceneActivated(Scene arg0, LoadSceneMode arg1) {
         SetGameState(GameState.MainMenu);
 
