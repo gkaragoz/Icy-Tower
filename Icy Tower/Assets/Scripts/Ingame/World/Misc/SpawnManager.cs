@@ -33,4 +33,13 @@ public class SpawnManager : MonoBehaviour {
         get { return _lastSpawnedWallPos; }
         set { _lastSpawnedWallPos = value; }
     }
+
+    public void ResetWalls()
+    {
+        GameObject[] walls = ObjectPooler.instance.GetGameObjectsOnPool("Wall");
+        foreach (var item in walls)
+        {
+            item.SetActive(false);
+        }
+    }
 }
