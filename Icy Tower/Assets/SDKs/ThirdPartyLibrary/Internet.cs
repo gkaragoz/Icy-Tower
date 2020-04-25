@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using UnityEngine;
 
-public class Internet
+public class Internet 
 {
     // Check Internet Connection
     public static bool ConnectionTest()

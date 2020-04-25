@@ -7,21 +7,14 @@ namespace Library.Authentication.GooglePlay
     using GooglePlayGames;
 
     using GooglePlayGames.BasicApi;
-
+    using System;
     using UnityEngine;
 
-    public class PlayFabGPGS
+    public class GooglePlayGameService
     {
-        // Store Recover PopUp Menu Ref.
-        private GameObject _recoverPopUpMenu;
-
-        // Popup Text
-        private string _popUpText;
-
-        // Store loggedIn status
         private bool LoggedIn;
 
-        public PlayFabGPGS(GameObject _PopUpMenu)
+        public GooglePlayGameService()
         {
             // The following grants profile access to the Google Play Games SDK.
             // Note: If you also want to capture the player's Google email, be sure to add
@@ -42,14 +35,12 @@ namespace Library.Authentication.GooglePlay
             //Initialize the Auth. status
             LoggedIn = false;
 
-            // Initialize Game Object
-            _recoverPopUpMenu = _PopUpMenu;
-
+            //RememberGoogleAccount();
         }
 
         #region AUTHENTICATE
 
-        public void LoginPlayGameService(bool linkAction)
+        public void LoginPlayGameService(bool linkAction, Action<bool, string, bool> actionStatus)
         {
             //Authenticate the user request
             Social.localUser.Authenticate((bool success) => {
@@ -63,7 +54,7 @@ namespace Library.Authentication.GooglePlay
 
                     if (linkAction) // is GPGS Linking Action ?
                     {
-                        LinkWithGooglePlayAccount(serverAuthCode);
+                        LinkWithGooglePlayAccount(serverAuthCode, actionStatus);
                     }
 
                     else
@@ -76,7 +67,9 @@ namespace Library.Authentication.GooglePlay
 
                 else
                 {
-                    Debug.Log("Google Failed to Authorize your login");
+                    //Debug.Log("Google Failed to Authorize your login");
+
+                    actionStatus(false, "Google Failed to Authorize your login", false);
                 }
 
             });
@@ -85,6 +78,8 @@ namespace Library.Authentication.GooglePlay
         // GPGS login data with PlayFab Integration.
         public void LoginWithGoogleAccout(string authCode)
         {
+            GetPlayerCombinedInfoRequestParams requestParams = PlayfabCustomAuth.LoginPayloadRequestSetter();
+
             //PlayFab Google Account Integration
             PlayFabClientAPI.LoginWithGoogleAccount(new LoginWithGoogleAccountRequest()
             {
@@ -92,7 +87,9 @@ namespace Library.Authentication.GooglePlay
 
                 ServerAuthCode = authCode,
 
-                CreateAccount = true
+                CreateAccount = true,
+
+                InfoRequestParameters = requestParams
 
             }, (result) =>
 
@@ -104,6 +101,10 @@ namespace Library.Authentication.GooglePlay
                 Debug.Log("[6] Logged in as " + Social.localUser.userName);
 
                 LoggedIn = true; // Logged in user
+
+                PlayfabCustomAuth.PlayFabID = result.PlayFabId; // Update PlayFabID
+
+                PlayfabCustomAuth.UserDisplayName = result.InfoResultPayload.PlayerProfile.DisplayName; // Update DisplayName
 
                 PlayerPrefs.SetString("GPGSAUTH", "success"); // PlayFab GPGS Auth succeed.
 
@@ -132,7 +133,7 @@ namespace Library.Authentication.GooglePlay
         {
             if (LoggedInBefore())
             {
-                LoginPlayGameService(false); // Login Google Acc. automaticly
+                LoginPlayGameService(false, null); // Login Google Acc. automaticly
             }
         }
 
@@ -157,7 +158,7 @@ namespace Library.Authentication.GooglePlay
         #region LINK - UNLINK
 
         // Link user account with GPGS
-        private void LinkWithGooglePlayAccount(string authCode)
+        private void LinkWithGooglePlayAccount(string authCode, Action<bool, string, bool> actionStatus)
         {
             PlayFabClientAPI.LinkGoogleAccount(new LinkGoogleAccountRequest()
             {
@@ -166,7 +167,7 @@ namespace Library.Authentication.GooglePlay
             }, (result) =>
 
             {
-                Debug.Log("Account Linked With Google Play Succeed.");
+                //Debug.Log("Account Linked With Google Play Succeed.");
 
                 PlayerPrefs.SetString("GPGSAUTH", "success"); // PlayFab GPGS Auth succeed.
 
@@ -174,30 +175,56 @@ namespace Library.Authentication.GooglePlay
 
                 //Request PlayFab DisplayName
                 this.SetDisplayName(Social.localUser.userName);
+
+                actionStatus(true, "Account Linked With Google Play Succeed.", false);
             },
 
-            OnPlayFabLinkError); // Error Callback
+            (error) =>
+            {
+                OnPlayFabLinkError(error, actionStatus);
+            });
 
         }
 
-        private void OnPlayFabLinkError(PlayFabError error)
+        private void OnPlayFabLinkError(PlayFabError error, Action<bool, string, bool> actionStatus)
         {
             // Specified Error Code
             if (error.Error == PlayFabErrorCode.LinkedAccountAlreadyClaimed) // GPGS Acc. is already used by another user.
             {
-                Debug.LogError("The Google Play Account is already used by another user.");
+                if (PlayfabCustomAuth.ISGuestAccount())
+                {
+                    Debug.LogError("The Google Play Account is already used by another user.");
 
-                AccountRecoverWithGPGS(); // Account Recover with GPGS Account.
+                    actionStatus(false, "Do you want to load " + Social.localUser.userName + "'s game ?", true);
+                }
+
+                else
+                {
+                    actionStatus(false, error.GenerateErrorReport(), false);
+
+                    // Logout from PlayGames
+                    PlayGamesPlatform.Instance.SignOut();
+
+                    LoggedIn = false; // Logged in user -> false
+                }
+
             }
 
             else
             {
-                Debug.LogError(error.GenerateErrorReport());
+                //Debug.LogError(error.GenerateErrorReport());
+
+                actionStatus(false, error.GenerateErrorReport(), false);
+
+                // Logout from PlayGames
+                PlayGamesPlatform.Instance.SignOut();
+
+                LoggedIn = false; // Logged in user -> false
             }
         }
 
         // UnLink user account with GPGS
-        public void UnLinkWithGooglePlayAccount()
+        public void UnLinkWithGooglePlayAccount(Action<bool,string> actionStatus)
         {
             PlayFabClientAPI.UnlinkGoogleAccount(new UnlinkGoogleAccountRequest()
             {
@@ -212,10 +239,14 @@ namespace Library.Authentication.GooglePlay
                 //Reset Display Name
                 this.ResetDisplayName();
 
-                Debug.Log("Account UnLinked With Google Play Succeed.");
+                actionStatus(true, "Account UnLinked With Google Play Succeed.");
             },
 
-            OnPlayFabError); // Error Callback
+            (error) =>
+            {
+                actionStatus(false, error.GenerateErrorReport());
+
+            }); // Error Callback
 
         }
 
@@ -245,6 +276,8 @@ namespace Library.Authentication.GooglePlay
             Debug.Log("Display Name Changed: " + result.DisplayName);
 
             PlayerPrefs.SetString("DISPLAYNAME_GPGS", result.DisplayName);
+
+            PlayfabCustomAuth.UserDisplayName = result.DisplayName;
         }
 
         /******************************************RESET**********************************************/
@@ -267,6 +300,8 @@ namespace Library.Authentication.GooglePlay
         private void OnResetDisplayNameSuccess(UpdateUserTitleDisplayNameResult result)
         {
             Debug.Log("Display Name Changed: " + result.DisplayName);
+
+            PlayfabCustomAuth.UserDisplayName = result.DisplayName;
         }
 
         private void ResetDisplayName()
@@ -294,34 +329,14 @@ namespace Library.Authentication.GooglePlay
 
         #region ACCOUNT RECOVER
 
-        // Initialize Recover Acc. Action
-        private void AccountRecoverWithGPGS()
-        {
-            Debug.Log("Do you want to load " + Social.localUser.userName + "'s game ?");
-
-            // Debug.LogWarning("Warning: progress in the current game will be saved. You can load the current game by next login.");
-
-            _popUpText = "Do you want to load " + Social.localUser.userName + "'s game ?";
-
-            // Create PopUp
-            RecoverPopUpMenu(true);
-        }
-
-        // Handle PopUpMenu Visibility
-        private void RecoverPopUpMenu(bool Visibilty)
-        {
-            // Enable PopUp Menu
-            _recoverPopUpMenu.SetActive(Visibilty);
-        }
-
         // User wants to recover account, Recover it.  *** Yes Click Event ***
         public void RecoverAccount()
         {
-            // Hidden PopUp Menu
-            RecoverPopUpMenu(false);
-
             PlayGamesPlatform.Instance.GetAnotherServerAuthCode(true, (string serverAuthCode) =>
             {
+                // Login Accout
+                Debug.Log("Account Recovered.");
+
                 Debug.Log("New Server Auth Code: " + serverAuthCode);
 
                 //Login in with PlayFab
@@ -333,20 +348,10 @@ namespace Library.Authentication.GooglePlay
         // User dont want to recover accout, Keep current.  *** No Click Event ***
         public void DontRecoverAccount()
         {
-            // Hidden PopUp Menu
-            RecoverPopUpMenu(false);
-
             // Logout from PlayGames
             PlayGamesPlatform.Instance.SignOut();
 
             LoggedIn = false; // Logged in user -> false
-
-        }
-
-        // PopUp Text
-        public string GetRecoverPopUpText()
-        {
-            return _popUpText;
         }
 
         #endregion
