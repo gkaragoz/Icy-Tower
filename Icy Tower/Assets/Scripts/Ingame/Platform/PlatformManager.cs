@@ -46,7 +46,6 @@ public class PlatformManager : MonoBehaviour {
     }
 
     public void SpawnPlatforms() {
-        Debug.Log("200 bu.");
         _floor = 0;
         _platformTypeIndex = 0;
         _platforms = new Queue<Platform>();
@@ -72,7 +71,7 @@ public class PlatformManager : MonoBehaviour {
     }
 
     public Platform SpawnPlatform() {
-        Debug.Log("200 değil bu.");
+
         Platform platform = _platforms.Dequeue();
         platform.Floor = ++_floor;
         if (platform.Floor % 100 == 0) {
