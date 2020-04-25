@@ -18,7 +18,7 @@ namespace Library.FaceBook
 
         #region AUTHENTICATON
 
-        public FacebookService(GameObject PopUpMenu)
+        public FacebookService()
         {
             //DebugLogHandler("Initializing Facebook..."); // logs the given message and displays it on the screen using OnGUI method
 
