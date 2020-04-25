@@ -15,6 +15,12 @@ namespace Library.Authentication
 
         private string _userName;
 
+        // Can be used after success login
+        public static string UserDisplayName { get; set; }
+
+        // Can be used after success login
+        public static string PlayFabID { get; set; }
+
         #region REGISTER
 
         /**************************************************************************************************************/
@@ -138,8 +144,18 @@ namespace Library.Authentication
             {
                 #if UNITY_ANDROID // On Android
 
+                GetPlayerCombinedInfoRequestParams requestParams = LoginPayloadRequestSetter();
+
                 //Login Request with Android Device
-                var requestAndroid = new LoginWithAndroidDeviceIDRequest { AndroidDeviceId = ReturnMobileID(), CreateAccount = true };
+                var requestAndroid = new LoginWithAndroidDeviceIDRequest {
+
+                    AndroidDeviceId = ReturnMobileID(),
+
+                    CreateAccount = true,
+
+                    InfoRequestParameters = requestParams
+                };
+
 
                 PlayFabClientAPI.LoginWithAndroidDeviceID(requestAndroid, OnLoginMobileSuccess, OnLoginMobileFailure);
 
@@ -158,7 +174,7 @@ namespace Library.Authentication
         }
 
         //Android - Login Failure CallBack Function
-        private void OnLoginMobileFailure(PlayFabError error)
+        private static void OnLoginMobileFailure(PlayFabError error)
         {
             Debug.LogError("Mobile Login Error Report: " + error.GenerateErrorReport());
         }
@@ -169,6 +185,12 @@ namespace Library.Authentication
             Debug.Log("Login with DeviceID request completed Succesfuly.");
 
             SetDisplayName(result.PlayFabId); // Set Display Name
+
+            UserDisplayName = result.InfoResultPayload.PlayerProfile.DisplayName; // Update DisplayName
+
+            PlayFabID = result.PlayFabId; // Update PlayFabID
+
+            Debug.Log(UserDisplayName + "   " + PlayFabID);
         }
 
         //Get Mobile Unique ID
@@ -217,7 +239,7 @@ namespace Library.Authentication
         #region LINK - UNLINK
 
         // Link Account with MobileIDs
-        private void LinkWithMobileID()
+        public static void LinkWithMobileID()
         {
             #if UNITY_ANDROID // On ANDROID
 
@@ -232,11 +254,15 @@ namespace Library.Authentication
                 Debug.Log("Account Linked With Android DeviceID Succeed.");
             },
 
-            OnLoginMobileFailure); // Error Callback
+            (error) =>
+            {
+                Debug.LogError("Link with MobileDeviceID: " + error.GenerateErrorReport());
 
-            #endif
+            }); // Error Callback
 
-            #if UNITY_IOS // On IOS
+#endif
+
+#if UNITY_IOS // On IOS
 
             //Link user account with IOS ID
             PlayFabClientAPI.LinkIOSDeviceID(new LinkIOSDeviceIDRequest()
@@ -251,11 +277,11 @@ namespace Library.Authentication
 
                 OnLoginMobileFailure); // Error Callback
 
-                #endif
+#endif
         }
 
         // UnLink Account with MobileIDs
-        public void UnLinkWithMobileID()
+        public static void UnLinkWithMobileID()
         {
             #if UNITY_ANDROID // On ANDROID
 
@@ -270,7 +296,11 @@ namespace Library.Authentication
                 Debug.Log("Account UnLinked With Android DeviceID Succeed.");
             },
 
-            OnLoginMobileFailure); // Error Callback
+            (error)=>
+            {
+                Debug.LogError("Unlink with MobileDeviceID: " + error.GenerateErrorReport());
+
+            }); // Error Callback
 
             #endif
 
@@ -322,6 +352,8 @@ namespace Library.Authentication
             Debug.Log("Display Name Changed: " + result.DisplayName);
 
             PlayerPrefs.SetString("DISPLAYNAME_GUEST", result.DisplayName);
+
+            UserDisplayName = result.DisplayName;
         }
 
         #endregion
@@ -347,6 +379,29 @@ namespace Library.Authentication
             PlayerPrefs.DeleteKey("EMAIL");
 
             PlayerPrefs.DeleteKey("PASSWORD");
+        }
+
+        public static bool ISGuestAccount()
+        {
+            if (UserDisplayName.Equals("Guest " + PlayFabID))
+                return true; // Guest Account
+
+            return false;
+        }
+
+        public static GetPlayerCombinedInfoRequestParams LoginPayloadRequestSetter()
+        {
+            GetPlayerCombinedInfoRequestParams ınfoRequestParams = new GetPlayerCombinedInfoRequestParams();
+
+            ınfoRequestParams.GetPlayerProfile = true;
+
+            PlayerProfileViewConstraints viewConstraints = new PlayerProfileViewConstraints();
+
+            viewConstraints.ShowDisplayName = true;
+
+            ınfoRequestParams.ProfileConstraints = viewConstraints;
+
+            return ınfoRequestParams;
         }
 
     }
