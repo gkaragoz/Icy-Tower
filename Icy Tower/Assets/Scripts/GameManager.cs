@@ -108,6 +108,7 @@ public class GameManager : MonoBehaviour {
             /// I found just this state to make my spawn floor 0
             /// 
             CollectableSpawner.instance.ResetGoldSpawnFloor();
+            SpawnManager.instance.ResetWalls();
 
         } else if (newPanel == UIPanels.PnlWardrobe) {
             SetGameState(GameState.Wardrobe);
