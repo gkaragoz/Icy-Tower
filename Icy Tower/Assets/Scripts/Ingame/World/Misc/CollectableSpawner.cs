@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class CollectableSpawner : MonoBehaviour {
+public class CollectableSpawner : MonoBehaviour
+{
 
     #region Singleton
 
     public static CollectableSpawner instance;
-    private void Awake() {
+    private void Awake()
+    {
         if (instance == null)
             instance = this;
         else if (instance != this)
@@ -17,6 +19,7 @@ public class CollectableSpawner : MonoBehaviour {
 
     [SerializeField]
     private int _initialPowerUpSpawnFloor = 0;
+    [SerializeField]
     private int _nextPowerUpSpawnFloor = 0;
 
     [SerializeField]
@@ -30,18 +33,22 @@ public class CollectableSpawner : MonoBehaviour {
     [SerializeField]
     private bool _hasKeySpawned = false;
 
-    public int NextPowerUpSpawnFloor {
+    public int NextPowerUpSpawnFloor
+    {
         get { return _nextPowerUpSpawnFloor; }
     }
-    public int NextGoldSpawnFloor {
+    public int NextGoldSpawnFloor
+    {
         get { return _nextGoldSpawnFloor; }
     }
 
-    public int KeySpawnFloor {
+    public int KeySpawnFloor
+    {
         get { return _keySpawnFloor; }
     }
 
-    private void Start() {
+    private void Start()
+    {
         _nextGoldSpawnFloor = CalculateNextGoldOffset();
         _nextPowerUpSpawnFloor = _initialPowerUpSpawnFloor;
         _keySpawnFloor = CalculateKeySpawnFloor();
@@ -50,56 +57,76 @@ public class CollectableSpawner : MonoBehaviour {
         PlatformManager.instance.OnWantedPlatformSpawnedForKey += SpawnKey;
     }
 
-    private void SpawnPowerUps(int floor) {
+    private void SpawnPowerUps(int floor)
+    {
         Vector3 randomPosition = GetRandomSpawnPosition();
 
         ObjectPooler.instance.SpawnFromPool(GetRandomPowerUpToSpawn(), randomPosition);
         _nextPowerUpSpawnFloor += CalculateNextPowerUpOffset();
     }
 
-    private void SpawnKey(int floor) {
-        if (!_hasKeySpawned) {
+    private void SpawnKey(int floor)
+    {
+        if (!_hasKeySpawned)
+        {
             Vector3 randomPosition = GetRandomSpawnPosition();
             ObjectPooler.instance.SpawnFromPool("Key", randomPosition);
             _hasKeySpawned = true;
         }
     }
 
-    private void SpawnGolds(int floor) {
+    private void SpawnGolds(int floor)
+    {
         Vector3 randomPosition = GetRandomSpawnPosition();
         ObjectPooler.instance.SpawnFromPool(GetRandomGoldHolderType(), randomPosition);
         _nextGoldSpawnFloor += CalculateNextGoldOffset();
     }
 
-    private Vector3 GetRandomSpawnPosition() {
+    private Vector3 GetRandomSpawnPosition()
+    {
         float x = WorldSettings.instance.GetRandomSpawnPosition().x;
         float y = PlatformManager.instance.GetLastSpawnedPlatformPosition().y + 1f;
         float z = -0.5f;
         return new Vector3(x, y, z);
     }
 
-    private string GetRandomGoldHolderType() {
+    private string GetRandomGoldHolderType()
+    {
         int enumLenght = System.Enum.GetNames(typeof(GoldHolderTypes)).Length;
         int randomType = Random.Range(0, enumLenght);
         return System.Enum.GetName(typeof(GoldHolderTypes), randomType);
     }
 
-    private string GetRandomPowerUpToSpawn() {
+    private string GetRandomPowerUpToSpawn()
+    {
         int enumLenght = System.Enum.GetNames(typeof(Collectables)).Length;
         int randomType = Random.Range(0, enumLenght);
         return System.Enum.GetName(typeof(Collectables), randomType);
     }
 
-    private int CalculateNextPowerUpOffset() {
-        return (1 * Random.Range(1, 5)) + Random.Range(0,5);
+    private int CalculateNextPowerUpOffset()
+    {
+        return (1 * Random.Range(1, 5)) + Random.Range(0, 5);
     }
 
-    private int CalculateNextGoldOffset() {
+    private int CalculateNextGoldOffset()
+    {
         return Random.Range(1, 11);
     }
 
-    private int CalculateKeySpawnFloor() {
+    private int CalculateKeySpawnFloor()
+    {
         return Random.Range(50, 60);
+    }
+
+
+    public void ResetGoldSpawnFloor()
+    {
+        _nextGoldSpawnFloor = CalculateNextGoldOffset();
+        _nextPowerUpSpawnFloor = _initialPowerUpSpawnFloor;
+        _keySpawnFloor = CalculateKeySpawnFloor();
+        
+     
     }
 
 }
