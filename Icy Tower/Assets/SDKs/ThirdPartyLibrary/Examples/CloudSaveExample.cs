@@ -1,4 +1,5 @@
 ﻿using Library.CloudSave;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,13 +9,17 @@ public class CloudSaveExample : MonoBehaviour
 
     public void GetSingleUserData() // Get Single User Data 
     {
-        CloudSaveOnDataTable.GetSingleUserData("coin",
-            (result) => {
-                Debug.Log(result);
-            },
-            (errorMessage) => {
-                Debug.Log(errorMessage);
-            });
+        CloudSaveOnDataTable.GetSingleUserData("coin", singleUserDataSuccessCallback, singleUserDataErrorCallback);
+    }
+
+    private void singleUserDataErrorCallback(string error) // Get Single User Data error Callback
+    {
+        Debug.Log(error);
+    }
+
+    private void singleUserDataSuccessCallback(string success) // Get Single User Data Success Callback
+    {
+        Debug.Log(success);
     }
 
     /*******************************************************************************************************************/
@@ -23,30 +28,40 @@ public class CloudSaveExample : MonoBehaviour
     {
         List<string> keyList = new List<string>() { "health", "coin", "gem" };
 
-        CloudSaveOnDataTable.GetManyUserData(keyList,
-            (result) => {
-                foreach (var data in result) {
-                    Debug.Log(data);
-                }
-            },
-            (errorMessage) => {
-                Debug.Log(errorMessage);
-            });
+        CloudSaveOnDataTable.GetManyUserData(keyList, manyUserDataSuccessCallback, manyUserDataErrorCallback);
+    }
+
+    private void manyUserDataErrorCallback(string error)
+    {
+        Debug.Log(error);
+    }
+
+    private void manyUserDataSuccessCallback(ArrayList result)
+    {
+        foreach (var data in result)
+        {
+            Debug.Log(data);
+        }
     }
 
     /*******************************************************************************************************************/
 
     public void GetAllUserData() // Get All User Data 
     {
-        CloudSaveOnDataTable.GetAllUserData(
-            (result) => {
-                foreach (var data in result) {
-                    Debug.Log(data);
-                }
-            },
-            (errorMessage) => {
-                Debug.Log(errorMessage);
-            });
+        CloudSaveOnDataTable.GetAllUserData(allUserDataSuccessCallback, allUserDataErrorCallback);
+    }
+
+    private void allUserDataErrorCallback(string error)
+    {
+        Debug.Log(error);
+    }
+
+    private void allUserDataSuccessCallback(ArrayList result)
+    {
+        foreach (var data in result)
+        {
+            Debug.Log(data);
+        }
     }
 
     /*******************************************************************************************************************/
@@ -69,7 +84,7 @@ public class CloudSaveExample : MonoBehaviour
 
     /*******************************************************************************************************************/
 
-    private void Update()
+    void Update()
     {
         if (Input.GetKey("w")) // Get Single User Data
         {

@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+using Library.Advertisement.Admob;
+using System;
+using GoogleMobileAds.Api;
 using Library.Advertisement.UnityAd;
 
 public class AdverstisementExample : MonoBehaviour
@@ -9,17 +12,18 @@ public class AdverstisementExample : MonoBehaviour
 
     private RewardedVideoAD _rewardedADs;
 
-    private void Awake()
+    void Awake()
     {
          _bannerADs = new BannerAD();
 
          _videoADs = new VideoADs();
 
         _rewardedADs = new RewardedVideoAD();
+
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
         if (Input.GetKey("w")) // Interstitial
         {
@@ -35,6 +39,7 @@ public class AdverstisementExample : MonoBehaviour
         {
             _rewardedADs.LoadAndShowRewardedVideoAd();
         }
+        
     }
 
 }

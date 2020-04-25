@@ -35,7 +35,7 @@ namespace Library.Authentication.GooglePlay
             //Initialize the Auth. status
             LoggedIn = false;
 
-            RememberGoogleAccount();
+            //RememberGoogleAccount();
         }
 
         #region AUTHENTICATE

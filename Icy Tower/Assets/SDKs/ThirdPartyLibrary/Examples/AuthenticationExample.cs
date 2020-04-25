@@ -6,19 +6,19 @@ using Library.Authentication;
 
 public class AuthenticationExample : MonoBehaviour
 {
-    private PlayfabCustomAuth _customAuth;
+    private PlayfabCustomAuth customAuth;
 
-    private FacebookService _facebookAuth;
+    private FacebookService facebookAuth;
 
-    private GooglePlayGameService _gpgsAuth;
+    private GooglePlayGameService gpgsAuth;
 
     private void Awake()
     {
-        _customAuth = new PlayfabCustomAuth();
+        customAuth = new PlayfabCustomAuth();
 
-        _facebookAuth = new FacebookService(RecoverPopUpMenu);
+        facebookAuth = new FacebookService(RecoverPopUpMenu);
 
-        _gpgsAuth = new GooglePlayGameService();
+        gpgsAuth = new GooglePlayGameService();
 
         ConnectGooglePlayButton.onClick.AddListener(ConnectGooglePlay);
 
@@ -37,19 +37,56 @@ public class AuthenticationExample : MonoBehaviour
     private void Start()
     {
         // LoggedIn before with GPGS
-        if (_gpgsAuth.LoggedInBefore())
+        if (gpgsAuth.LoggedInBefore())
         {
             /// GooglePlayGameService handles automatically Login with GPGS
             Debug.Log("GPGS login in automatically...");
+
+            // Link GPGS Acc.
+            gpgsAuth.LoginPlayGameService(
+
+                linkAction: false,
+
+                (actionResult, actionMessage, actionRecover) =>
+                {
+                    if (actionResult) // Request completed with no error ( Succeed )
+                    {
+                        
+                    }
+
+                    else // Request completed failure
+                    {
+                       
+                    }
+
+                });
+
         }
 
         // Not LoggedIn before with GPGS
         else
-        {   
-            /// Login as Guest with Unique DeviceID
-            _customAuth.AnonymousLogin(false);
+        {
+            Debug.Log("Mobile Device login automatically...");
 
-            Debug.Log("Mobile Device login in automatically...");
+            /// Login as Guest with Unique DeviceID
+            customAuth.AnonymousLogin(
+
+                linkAction: false,
+
+                (actionResult, actionMessage) =>
+                {
+                    if (actionResult) // Request completed with no error ( Succeed )
+                    {
+
+                    }
+
+                    else // Request completed failure
+                    {
+
+                    }
+
+                });
+
         }
     }
 
@@ -65,10 +102,10 @@ public class AuthenticationExample : MonoBehaviour
     {
         ConnectGooglePlayButton.interactable = false; // Disable Button
 
-        if (_gpgsAuth.GetLoggedIn()) // Loggedin with GPGS
+        if (gpgsAuth.GetLoggedIn()) // Loggedin with GPGS
         {
             // UnLink GPGS Request
-            _gpgsAuth.UnLinkWithGooglePlayAccount(
+            gpgsAuth.UnLinkWithGooglePlayAccount(
 
                 (actionResult,actionMessage) =>
                 {
@@ -91,7 +128,7 @@ public class AuthenticationExample : MonoBehaviour
         else // Not Loggedin with GPGS, Connect with it.
         {
             // Link GPGS Acc.
-            _gpgsAuth.LoginPlayGameService(
+            gpgsAuth.LoginPlayGameService(
                 
                 linkAction: true,
 
@@ -126,10 +163,10 @@ public class AuthenticationExample : MonoBehaviour
     {
         ConnectFacebookButton.interactable = false;
 
-        if (_facebookAuth.GetLoggedIn()) // Loggedin with Facebook
+        if (facebookAuth.GetLoggedIn()) // Loggedin with Facebook
         {
             // UnLink Facebook Acc.
-            _facebookAuth.UnLinkWithFacebook(
+            facebookAuth.UnLinkWithFacebook(
 
                 (actionResult, actionMessage) =>
                 {
@@ -151,7 +188,7 @@ public class AuthenticationExample : MonoBehaviour
         else
         {   
             // Link Facebook Acc.
-            _facebookAuth.AuthLogin(
+            facebookAuth.AuthLogin(
                 
                 linkAction: true,
 
@@ -215,16 +252,17 @@ public class AuthenticationExample : MonoBehaviour
 
     public void RecoverAccountWithFacebook() // Recover with Facebook -> YES
     {
-        _facebookAuth.RecoverAccount(
+        facebookAuth.RecoverAccount(
 
             (success, actionMessage) =>
             {
-                if (success) // Recover Success
+                if (!success) // Recover Success
                 {
                     // User succesfully recover account.
 
                     // DO WHATEVER YOU WANNA DO HERE, AFTER RECOVERING
                 }
+
                 else // Recover Failed
                 {
                     // Can be shown new pop up here
@@ -246,7 +284,7 @@ public class AuthenticationExample : MonoBehaviour
 
     public void DontRecoverAccountWithFacebook() // Recover with Facebook -> NO
     {
-        _facebookAuth.DontRecoverAccount();
+        facebookAuth.DontRecoverAccount();
 
         RecoverPopUpYesButton.onClick.RemoveListener(RecoverAccountWithFacebook);
 
@@ -268,7 +306,7 @@ public class AuthenticationExample : MonoBehaviour
 
     public void RecoverAccountWithGPGS() // Recover with Google Play -> YES
     {
-        _gpgsAuth.RecoverAccount();
+        gpgsAuth.RecoverAccount();
 
         RecoverPopUpYesButton.onClick.RemoveListener(RecoverAccountWithGPGS);
 
@@ -279,7 +317,7 @@ public class AuthenticationExample : MonoBehaviour
 
     public void DontRecoverAccountWithGPGS() // Recover with Google Play -> NO
     {
-        _gpgsAuth.DontRecoverAccount();
+        gpgsAuth.DontRecoverAccount();
 
         RecoverPopUpYesButton.onClick.RemoveListener(RecoverAccountWithGPGS);
 

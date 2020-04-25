@@ -132,12 +132,12 @@ namespace Library.Authentication
 
         /**************************************************************************************************************/
 
-        public void AnonymousLogin(bool linkAction)
+        public void AnonymousLogin(bool linkAction, Action<bool, string> actionStatus)
         {
 
             if (linkAction) // is this Link Mobile ID action ?
             {
-                LinkWithMobileID(); // Link with MobileID
+                LinkWithMobileID(actionStatus); // Link with MobileID
             }
 
             else
@@ -156,8 +156,29 @@ namespace Library.Authentication
                     InfoRequestParameters = requestParams
                 };
 
+                PlayFabClientAPI.LoginWithAndroidDeviceID(requestAndroid, 
+                    
+                    (result) =>
+                    {
+                        Debug.Log("Login with DeviceID request completed Succesfuly.");
 
-                PlayFabClientAPI.LoginWithAndroidDeviceID(requestAndroid, OnLoginMobileSuccess, OnLoginMobileFailure);
+                        SetDisplayName(result.PlayFabId); // Set Display Name
+
+                        UserDisplayName = result.InfoResultPayload.PlayerProfile.DisplayName; // Update DisplayName
+
+                        PlayFabID = result.PlayFabId; // Update PlayFabID
+
+                        Debug.Log(UserDisplayName + "   " + PlayFabID);
+
+                        actionStatus(true, "Login with DeviceID request completed Succesfuly.");
+                    },
+
+                    (error) =>
+                    {
+                        Debug.LogError("Mobile Login Error Report: " + error.GenerateErrorReport());
+
+                        actionStatus(false, error.GenerateErrorReport());
+                    });
 
                 #endif
 
@@ -171,26 +192,6 @@ namespace Library.Authentication
                 #endif
             }
 
-        }
-
-        //Android - Login Failure CallBack Function
-        private static void OnLoginMobileFailure(PlayFabError error)
-        {
-            Debug.LogError("Mobile Login Error Report: " + error.GenerateErrorReport());
-        }
-
-        //Android - Login Success CallBack Function
-        private void OnLoginMobileSuccess(LoginResult result)
-        {
-            Debug.Log("Login with DeviceID request completed Succesfuly.");
-
-            SetDisplayName(result.PlayFabId); // Set Display Name
-
-            UserDisplayName = result.InfoResultPayload.PlayerProfile.DisplayName; // Update DisplayName
-
-            PlayFabID = result.PlayFabId; // Update PlayFabID
-
-            Debug.Log(UserDisplayName + "   " + PlayFabID);
         }
 
         //Get Mobile Unique ID
@@ -239,7 +240,7 @@ namespace Library.Authentication
         #region LINK - UNLINK
 
         // Link Account with MobileIDs
-        public static void LinkWithMobileID()
+        public static void LinkWithMobileID(Action<bool, string> actionStatus)
         {
             #if UNITY_ANDROID // On ANDROID
 
@@ -252,17 +253,21 @@ namespace Library.Authentication
 
             {
                 Debug.Log("Account Linked With Android DeviceID Succeed.");
+
+                actionStatus(true, "Account Linked With Android DeviceID Succeed.");
             },
 
             (error) =>
             {
                 Debug.LogError("Link with MobileDeviceID: " + error.GenerateErrorReport());
 
+                actionStatus(false, error.GenerateErrorReport());
+
             }); // Error Callback
 
-#endif
+        #endif
 
-#if UNITY_IOS // On IOS
+        #if UNITY_IOS // On IOS
 
             //Link user account with IOS ID
             PlayFabClientAPI.LinkIOSDeviceID(new LinkIOSDeviceIDRequest()
@@ -277,7 +282,7 @@ namespace Library.Authentication
 
                 OnLoginMobileFailure); // Error Callback
 
-#endif
+        #endif
         }
 
         // UnLink Account with MobileIDs

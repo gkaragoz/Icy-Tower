@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Library.Social;
 using Library.Social.Leaderboard;
+using System;
 
 public class LeaderboardExample : MonoBehaviour
 {
@@ -66,22 +69,26 @@ public class LeaderboardExample : MonoBehaviour
 
     public void GetGlobalLeaderboard() // Get Global Leaderboard
     {
-        PlayFabLeaderboard.GetLeaderboardGlobal(50, "LEADERBOARD_01", 
-            (result) => {
-                foreach (var player in result) {
-                    Debug.Log("Display Name: { " + player.DisplayName + " }" + " Avatar URL: { " + player.AvatarUrl + " }" + " Position: { " + player.Position + " }" + " StatValue: { " + player.StatValue + " }");
-                }
-            },
+        PlayFabLeaderboard.GetLeaderboardGlobal(50, "LEADERBOARD_01", GlobalLeaderboardResultCallback, GlobalLeaderboardErrorCallback);
+    }
 
-            (errorMessage) => {
-                Debug.LogError(errorMessage);
-            });
+    private void GlobalLeaderboardResultCallback(List<ResultPlayer> resultPlayers) // Success Callback
+    {
+        foreach (var player in resultPlayers)
+        {
+            Debug.Log("Display Name: { " + player.DisplayName + " }" + " Avatar URL: { " + player.AvatarUrl + " }" + " Position: { " + player.Position + " }" + " StatValue: { " + player.StatValue + " }");
+        }
+    }
+
+    private void GlobalLeaderboardErrorCallback(string error) // Error Callback
+    {
+        Debug.LogError(error);
     }
 
     /*******************************************************************************************************************/
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
         if (Input.GetKey("w")) // Initialize Leaderboard
         {
