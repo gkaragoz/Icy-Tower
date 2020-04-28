@@ -6184,6 +6184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialPowerUpSpawnFloor: 50
+  _nextPowerUpSpawnFloor: 0
   _nextGoldSpawnFloor: 0
   _keySpawnFloor: 0
   _hasKeySpawned: 0
@@ -7210,7 +7211,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 53.35 FPS
+  m_text: 49.91 FPS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4634dd7c14f7df147aefd0855d9ccd18, type: 2}
   m_sharedMaterial: {fileID: 2805101894821811369, guid: 4634dd7c14f7df147aefd0855d9ccd18,
@@ -62429,7 +62430,7 @@ GameObject:
   - component: {fileID: 3984649599319589867}
   - component: {fileID: 3984649599319589864}
   m_Layer: 5
-  m_Name: btnSoundOnOff
+  m_Name: btnGooglePlayGames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63546,6 +63547,7 @@ GameObject:
   - component: {fileID: 3984649599418446362}
   - component: {fileID: 3984649599418446357}
   - component: {fileID: 88}
+  - component: {fileID: 3984649599418446361}
   m_Layer: 5
   m_Name: PnlSettings
   m_TagString: Untagged
@@ -63553,6 +63555,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &3984649599418446361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3984649599418446360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b34f88bc7732d4898987232fa7d7a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _btnConnectGooglePlay: {fileID: 3984649599319589864}
+  _btnConnectFacebook: {fileID: 3984649598729184234}
+  _txtGooglePlay: {fileID: 3984649598250357122}
+  _txtFacebook: {fileID: 3984649598233301895}
 --- !u!114 &3984649599418446362
 MonoBehaviour:
   m_ObjectHideFlags: 0

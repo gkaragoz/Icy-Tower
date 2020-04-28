@@ -12,7 +12,7 @@ namespace Library.Authentication.GooglePlay
 
     public class GooglePlayGameService
     {
-        private bool LoggedIn;
+        public static bool LoggedIn { get; private set; }
 
         public GooglePlayGameService()
         {
