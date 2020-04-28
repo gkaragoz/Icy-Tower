@@ -21,6 +21,9 @@ namespace Library.Authentication
         // Can be used after success login
         public static string PlayFabID { get; set; }
 
+        // Can be used after success login
+        public static bool IsFreshAccount { get; private set; }
+
         #region REGISTER
 
         /**************************************************************************************************************/
@@ -162,13 +165,15 @@ namespace Library.Authentication
                     {
                         Debug.Log("Login with DeviceID request completed Succesfuly.");
 
-                        SetDisplayName(result.PlayFabId); // Set Display Name
+                        //SetDisplayName(result.PlayFabId); // Set Display Name
 
-                        UserDisplayName = result.InfoResultPayload.PlayerProfile.DisplayName; // Update DisplayName
+                        //UserDisplayName = result.InfoResultPayload.PlayerProfile.DisplayName; // Update DisplayName
 
                         PlayFabID = result.PlayFabId; // Update PlayFabID
 
                         Debug.Log(UserDisplayName + "   " + PlayFabID);
+
+                        IsFreshAccount = result.NewlyCreated;
 
                         actionStatus(true, "Login with DeviceID request completed Succesfuly.");
                     },

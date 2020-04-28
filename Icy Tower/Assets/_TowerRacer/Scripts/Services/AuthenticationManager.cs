@@ -42,14 +42,14 @@ public class AuthenticationManager : MonoBehaviour {
                 (actionResult, actionMessage, actionRecover) => {
                     if (actionResult) // Request completed with no error ( Succeed )
                     {
-                        callback(AuthenticationEventType.Success, AuthenticationType.GooglePlayGameServices);
-
                         Debug.Log("GPGS login succeed: " + actionMessage);
+
+                        callback(AuthenticationEventType.Success, AuthenticationType.GooglePlayGameServices);
                     } else // Request completed failure
                     {
-                        callback(AuthenticationEventType.Failed, AuthenticationType.GooglePlayGameServices);
-
                         Debug.Log("GPGS login failed: " + actionMessage);
+
+                        callback(AuthenticationEventType.Failed, AuthenticationType.GooglePlayGameServices);
                     }
                 });
         }
@@ -66,14 +66,14 @@ public class AuthenticationManager : MonoBehaviour {
                 (actionResult, actionMessage) => {
                     if (actionResult) // Request completed with no error ( Succeed )
                     {
-                        callback(AuthenticationEventType.Success, AuthenticationType.PlayFab);
-
                         Debug.Log("Anonymous succeed: " + actionMessage);
+
+                        callback(AuthenticationEventType.Success, AuthenticationType.PlayFab);
                     } else // Request completed failure
                     {
-                        callback(AuthenticationEventType.Failed, AuthenticationType.PlayFab);
-
                         Debug.Log("Anonymous login failed: " + actionMessage);
+
+                        callback(AuthenticationEventType.Failed, AuthenticationType.PlayFab);
                     }
                 });
         }

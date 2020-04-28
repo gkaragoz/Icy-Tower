@@ -67,6 +67,26 @@ public class GameManager : MonoBehaviour {
     private void OnPlayFabAccountInitializationSuccess() {
         Debug.Log("OnPlayFabAccountInitializationSuccess!");
 
+        Leaderboard.GetScores(
+            (resultCallback) => {
+                if (resultCallback.Count == 0) {
+                    Leaderboard.InitializeLeaderboard();
+                }
+            },
+            (errorCallback) => {
+                Leaderboard.InitializeLeaderboard();
+            });
+
+        Leaderboard.GetGlobalLeaderboard(
+            50,
+            (resultCallback) => {
+                foreach (var player in resultCallback) {
+                    Debug.Log("Display Name: { " + player.DisplayName + " }" + " Position: { " + player.Position + " }" + " StatValue: { " + player.StatValue + " }");
+                }
+            },
+            (errorCallback) => {
+            });
+
         _loadManager.LoadAccount(false);
     }
 

@@ -107,8 +107,6 @@ namespace Library.Social.Leaderboard
             //The ResultPlayer List.
             List<ResultPlayer> resultPlayers = new List<ResultPlayer>();
 
-            //The ResultPlayer Elem.
-            ResultPlayer userData = new ResultPlayer();
 
             PlayFabClientAPI.GetLeaderboardAroundPlayer(new GetLeaderboardAroundPlayerRequest
             {
@@ -121,8 +119,10 @@ namespace Library.Social.Leaderboard
 
             (result) => { // Leaderboard access succeed.
 
-                foreach (PlayerLeaderboardEntry player in result.Leaderboard)
-                {
+                foreach (PlayerLeaderboardEntry player in result.Leaderboard) {
+                    //The ResultPlayer Elem.
+                    ResultPlayer userData = new ResultPlayer();
+
                     userData.DisplayName = player.DisplayName; //Display Name
 
                     userData.AvatarUrl = player.Profile.AvatarUrl; //Player URL
