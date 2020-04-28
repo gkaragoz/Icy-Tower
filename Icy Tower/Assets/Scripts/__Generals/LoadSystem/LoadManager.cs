@@ -60,8 +60,8 @@ public class LoadManager : MonoBehaviour {
         AllowSceneActivation(true);
     }
 
-    public void LoadAccount() {
-        Account.instance.Init();
+    public void LoadAccount(bool isOfflineMode) {
+        Account.instance.Init(isOfflineMode);
 
         OnAccountLoaded?.Invoke();
     }

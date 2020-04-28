@@ -29,6 +29,7 @@ public class Account : MonoBehaviour {
     }
 
     private void OnGameStateChanged(GameState previousGameState, GameState newGameState) {
+        Debug.Log("En son?");
         if (newGameState == GameState.GameOver) {
             SaveSystem.SavePlayer(_playerStats);
             OnPlayerStatsChanged?.Invoke(PlayerStats);
@@ -43,15 +44,20 @@ public class Account : MonoBehaviour {
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode) {
+        Debug.Log("En orta?");
         PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         PlayerStats.Init(_playerStats);
 
         Debug.Log("Player stats has been assigned.");
     }
+
     /// <summary>
     /// Read local file or get data from cloud.
     /// </summary>
-    public void Init() {
+    public void Init(bool isOfflineMode) {
+        Debug.Log("En ilk?");
+        Debug.Log("Account will initializing in offline mode...");
+
         PlayerStats_SO readedSO = SaveSystem.LoadPlayer();
         if (readedSO == null) {
             _playerStats.MarketItems = MarketManager.instance.MarketItems;
@@ -59,6 +65,10 @@ public class Account : MonoBehaviour {
         } else {
             _playerStats = readedSO;
             MarketManager.instance.Init(_playerStats.MarketItems);
+        }
+
+        if (isOfflineMode == false) {
+            CloudSaver.Sync(_playerStats);
         }
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
@@ -178,6 +188,7 @@ public class Account : MonoBehaviour {
     private void ResetCurrentScore() {
         SetCurrentScore(0, true);
     }
+
     private void ResetCombo() {
         SetCombo(0, true);
     }

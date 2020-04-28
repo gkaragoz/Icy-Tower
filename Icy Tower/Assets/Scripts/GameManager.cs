@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour {
     #endregion
 
     private void Start() {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
         _loadManager.OnGPGSAccountInitializationBegin += OnGPGSAccountInitializationBegin;
         _loadManager.OnGPGSAccountInitializationSuccess += OnGPGSAccountInitializationSuccess;
         _loadManager.OnGPGSAccountInitiailzationFailed += OnGPGSAccountInitiailzationFailed;
@@ -39,10 +41,6 @@ public class GameManager : MonoBehaviour {
         _loadManager.OnSceneReady += OnSceneReady;
         _loadManager.OnPoolLoaded += OnPoolLoaded;
 
-        _loadManager.LoadScene();
-        _loadManager.LoadAccount();
-        _loadManager.LoadPool();
-
         _loadManager.InitAuth();
     }
 
@@ -52,10 +50,14 @@ public class GameManager : MonoBehaviour {
 
     private void OnGPGSAccountInitializationSuccess() {
         Debug.Log("OnGPGSAccountInitializationSuccess!");
+
+        _loadManager.LoadAccount(false);
     }
 
     private void OnGPGSAccountInitiailzationFailed() {
         Debug.Log("OnGPGSAccountInitiailzationFailed!");
+
+        _loadManager.LoadAccount(true);
     }
 
     private void OnPlayFabAccountInitializationBegin() {
@@ -64,37 +66,43 @@ public class GameManager : MonoBehaviour {
 
     private void OnPlayFabAccountInitializationSuccess() {
         Debug.Log("OnPlayFabAccountInitializationSuccess!");
+
+        _loadManager.LoadAccount(false);
     }
 
     private void OnPlayFabAccountInitiailzationFailed() {
         Debug.Log("OnPlayFabAccountInitiailzationFailed!");
+
+        _loadManager.LoadAccount(true);
     }
 
     private void OnAccountLoaded() {
         _loadManager.OnAccountLoaded -= OnAccountLoaded;
         Debug.Log("OnAccountLoaded!");
+
+        _loadManager.LoadPool();
     }
 
     private void OnSceneReady() {
         _loadManager.OnSceneReady -= OnSceneReady;
         Debug.Log("OnSceneReady!");
 
-        bool HasAuthInitialiationCompleted = false;
-        if (HasAuthInitialiationCompleted) {
-            _loadManager.OpenLoadedScene();
+        _loadManager.OpenLoadedScene();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        if (scene.name == "Scene") {
+            UIManager.instance.OnUISceneChanged += OnUISceneChanged;
 
             SetGameState(GameState.MainMenu);
-
-            UIManager.instance.OnUISceneChanged += OnUISceneChanged;
-        } else {
-            // TODO POPUP
-            Debug.Log("Auth process failed. Not gonna load scene.");
         }
     }
 
     private void OnPoolLoaded() {
         _loadManager.OnPoolLoaded -= OnPoolLoaded;
         Debug.Log("OnPoolLoaded!");
+
+        _loadManager.LoadScene();
     }
 
     private void OnUISceneChanged(UIPanels newPanel) {
