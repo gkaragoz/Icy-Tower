@@ -220,10 +220,6 @@ public class Account : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public string GetName() {
-        return PlayerStats.GetName();
-    }
-
     public int GetCurrentScore() {
         return PlayerStats.GetCurrentScore();
     }

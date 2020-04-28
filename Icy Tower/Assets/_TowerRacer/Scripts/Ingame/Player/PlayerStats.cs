@@ -114,10 +114,6 @@ public class PlayerStats : MonoBehaviour {
 
     #region Reporters
 
-    public string GetName() {
-        return _player.Name;
-    }
-
     public int GetCurrentScore() {
         return _player.CurrentScore;
     }

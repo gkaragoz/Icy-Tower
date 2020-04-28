@@ -4,9 +4,6 @@
 public class PlayerStats_SO : ScriptableObject {
 
     [SerializeField]
-    private string _name = "Player";
-
-    [SerializeField]
     [Utils.ReadOnly]
     private int _currentScore = 0;
 
@@ -40,11 +37,6 @@ public class PlayerStats_SO : ScriptableObject {
 
     [SerializeField]
     private int _combo = 0;
-
-    public string Name {
-        get { return _name; }
-        set { _name = value; }
-    }
 
     public int CurrentScore {
         get { return _currentScore; }

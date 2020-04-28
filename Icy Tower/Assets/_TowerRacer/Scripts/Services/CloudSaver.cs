@@ -51,18 +51,31 @@ public class CloudSaver {
     }
 
     // Add New User Data
-    public static void AddUserNewData(Dictionary<string, string> data) {
+    public static void AddOrUpdateUserDatas(Dictionary<string, string> data) {
         CloudSaveOnDataTable.SetUserData(data);
     }
 
     public static void Sync(PlayerStats_SO playerStats) {
         PropertyInfo[] propertyInfos;
-        propertyInfos = typeof(PlayerStats_SO).GetProperties(BindingFlags.Public);
+        propertyInfos = playerStats.GetType().GetProperties();
 
-        foreach (PropertyInfo propertyInfo in propertyInfos) {
-            Debug.Log(propertyInfo.Name);
+        Dictionary<string, string> playerData = new Dictionary<string, string>();
+
+        // -2 because hideFlags and name that comes from MonoBehaviour base class.
+        for (int ii = 0; ii < propertyInfos.Length - 2; ii++) {
+            //if (propertyInfos[ii].PropertyType == typeof(MarketItem[])) {
+            //    for (int jj = 0; jj < playerStats.MarketItems.Length; jj++) {
+            //        Debug.Log(playerStats.MarketItems[jj].GetName());
+            //    }
+            //}
+
+            string propertyName = propertyInfos[ii].Name;
+            string propertyValue = playerStats.GetType().GetProperty(propertyName).GetValue(playerStats, null).ToString();
+
+            playerData.Add(propertyName, propertyValue);
         }
-    }
 
+        AddOrUpdateUserDatas(playerData);
+    }
 
 }
