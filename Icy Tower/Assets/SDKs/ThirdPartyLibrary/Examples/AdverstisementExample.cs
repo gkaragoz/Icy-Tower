@@ -22,24 +22,16 @@ public class AdverstisementExample : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey("w")) // Interstitial
-        {
-            _videoADs.LoadAndShowVideoAD();
-        }
+    public void LoadAndShowVideoAD() {
+        _videoADs.LoadAndShowVideoAD();
+    }
 
-        else if (Input.GetKey("s"))
-        {
-            _bannerADs.LoadAndShowBannerAd();
-        }
+    public void LoadAndShowBannderAD() {
+        _bannerADs.LoadAndShowBannerAd();
+    }
 
-        else if (Input.GetKey("d"))
-        {
-            _rewardedADs.LoadAndShowRewardedVideoAd();
-        }
-        
+    public void LoadAndShowRewardedVideoAD() {
+        _rewardedADs.LoadAndShowRewardedVideoAd();
     }
 
 }

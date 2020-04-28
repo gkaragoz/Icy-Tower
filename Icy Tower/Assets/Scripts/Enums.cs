@@ -7,6 +7,18 @@
     Wardrobe
 }
 
+public enum AuthenticationEventType {
+    Begin,
+    Success,
+    Failed
+}
+
+public enum AuthenticationType {
+    GooglePlayGameServices,
+    Facebook,
+    PlayFab
+}
+
 public enum ClothType {
     Head,
     Body,

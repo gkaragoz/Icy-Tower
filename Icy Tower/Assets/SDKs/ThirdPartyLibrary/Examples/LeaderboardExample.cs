@@ -85,34 +85,4 @@ public class LeaderboardExample : MonoBehaviour
         Debug.LogError(error);
     }
 
-    /*******************************************************************************************************************/
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey("w")) // Initialize Leaderboard
-        {
-            InitializeLeaderboard();
-        }
-
-        else if (Input.GetKey("s")) // Submit Many Scores
-        {
-            SubmitManyScores();
-        }
-
-        else if (Input.GetKey("d")) // Submit Scores
-        {
-            SubmitSingleScore();
-        }
-
-        else if (Input.GetKey("a")) // Submit Scores
-        {
-            GetScores();
-        }
-
-        else if (Input.GetKey("e")) // Get Global Leaderboard
-        {
-            GetGlobalLeaderboard();
-        }
-    }
 }

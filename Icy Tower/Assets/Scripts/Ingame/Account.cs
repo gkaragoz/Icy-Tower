@@ -63,7 +63,7 @@ public class Account : MonoBehaviour {
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
 
-        Debug.Log("User accound has been initialized.");
+        Debug.Log("User account has been initialized.");
     }
 
     public void Save() {

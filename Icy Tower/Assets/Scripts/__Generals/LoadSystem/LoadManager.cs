@@ -5,11 +5,56 @@ using UnityEngine.SceneManagement;
 
 public class LoadManager : MonoBehaviour {
 
+    public Action OnGPGSAccountInitializationBegin;
+    public Action OnGPGSAccountInitializationSuccess;
+    public Action OnGPGSAccountInitiailzationFailed;
+
+    public Action OnPlayFabAccountInitializationBegin;
+    public Action OnPlayFabAccountInitializationSuccess;
+    public Action OnPlayFabAccountInitiailzationFailed;
+
     public Action OnAccountLoaded;
     public Action OnPoolLoaded;
     public Action OnSceneReady;
 
     private AsyncOperation _asyncOperation;
+
+    public void InitAuth() {
+        AuthenticationManager.instance.InitAuth((eventType, authType) => {
+            switch (eventType) {
+                case AuthenticationEventType.Begin:
+                    switch (authType) {
+                        case AuthenticationType.GooglePlayGameServices:
+                            OnGPGSAccountInitializationBegin?.Invoke();
+                            break;
+                        case AuthenticationType.PlayFab:
+                            OnPlayFabAccountInitializationBegin?.Invoke();
+                            break;
+                    }
+                    break;
+                case AuthenticationEventType.Success:
+                    switch (authType) {
+                        case AuthenticationType.GooglePlayGameServices:
+                            OnGPGSAccountInitializationSuccess?.Invoke();
+                            break;
+                        case AuthenticationType.PlayFab:
+                            OnPlayFabAccountInitializationSuccess?.Invoke();
+                            break;
+                    }
+                    break;
+                case AuthenticationEventType.Failed:
+                    switch (authType) {
+                        case AuthenticationType.GooglePlayGameServices:
+                            OnGPGSAccountInitiailzationFailed?.Invoke();
+                            break;
+                        case AuthenticationType.PlayFab:
+                            OnPlayFabAccountInitiailzationFailed?.Invoke();
+                            break;
+                    }
+                    break;
+            }
+        });
+    }
 
     public void OpenLoadedScene() {
         AllowSceneActivation(true);

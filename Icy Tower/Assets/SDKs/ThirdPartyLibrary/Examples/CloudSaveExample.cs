@@ -84,31 +84,4 @@ public class CloudSaveExample : MonoBehaviour
 
     /*******************************************************************************************************************/
 
-    void Update()
-    {
-        if (Input.GetKey("w")) // Get Single User Data
-        {
-            GetSingleUserData();
-        }
-
-        else if (Input.GetKey("s")) // Get Many User Data
-        {
-            GetManyUserData();
-        }
-
-        else if (Input.GetKey("d")) // Get All Data
-        {
-            GetAllUserData();
-        }
-
-        else if (Input.GetKey("a")) // Remove User Data
-        {
-            RemoveUserData();
-        }
-
-        else if (Input.GetKey("e")) // Add User New Data
-        {
-            AddUserNewData();
-        }
-    }
 }

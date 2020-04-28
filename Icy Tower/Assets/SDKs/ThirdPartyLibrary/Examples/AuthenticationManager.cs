@@ -8,6 +8,9 @@ public class AuthenticationManager : MonoBehaviour {
     private PlayfabCustomAuth _customAuth;
     private GooglePlayGameService _gpgsAuth;
 
+    [SerializeField]
+    private LoadManager _loadManager = null;
+
     public static AuthenticationManager instance;
 
     private void Awake() {
@@ -23,26 +26,57 @@ public class AuthenticationManager : MonoBehaviour {
     /**************************************************************************************************/
     // AUTHENTICATION
 
-    public void AuthenticateToPlayFab(Action<bool, string> actionResultCallback = null) {
-        Debug.Log("Mobile Device login in progress...");
+    public void InitAuth(Action<AuthenticationEventType, AuthenticationType> callback) {
+        Debug.Log("Accounts are checking...");
 
-        /// Login as Guest with Unique DeviceID
-        _customAuth.AnonymousLogin(
-            linkAction: false,
+        // LoggedIn before with GPGS
+        if (_gpgsAuth.LoggedInBefore()) {
+            Debug.Log("An account found, trying to login...");
+            callback(AuthenticationEventType.Begin, AuthenticationType.GooglePlayGameServices);
 
-            (actionResult, actionMessage) => {
-                actionResultCallback?.Invoke(actionResult, actionMessage);
-            });
-    }
+            /// GooglePlayGameService handles automatically Login with GPGS
+            Debug.Log("GPGS login in...");
+            // Link GPGS Acc.
+            _gpgsAuth.LoginPlayGameService(
+                linkAction: false,
+                (actionResult, actionMessage, actionRecover) => {
+                    if (actionResult) // Request completed with no error ( Succeed )
+                    {
+                        callback(AuthenticationEventType.Success, AuthenticationType.GooglePlayGameServices);
 
-    public void AuthenticateToGPGS(Action<bool, string> actionResultCallback = null) {
-        Debug.Log("GPGS login in progress...");
+                        Debug.Log("GPGS login succeed: " + actionMessage);
+                    } else // Request completed failure
+                    {
+                        callback(AuthenticationEventType.Failed, AuthenticationType.GooglePlayGameServices);
 
-        _gpgsAuth.LoginPlayGameService(
-            linkAction: false,
-            (actionResult, actionMessage, actionRecover) => {
-                actionResultCallback?.Invoke(actionResult, actionMessage);
-            });
+                        Debug.Log("GPGS login failed: " + actionMessage);
+                    }
+                });
+        }
+
+        // Not LoggedIn before with GPGS
+        else {
+            Debug.Log("Trying to preparing credentials for anonymous account and login in...");
+            callback(AuthenticationEventType.Begin, AuthenticationType.PlayFab);
+
+            Debug.Log("Anonymous login in...");
+            /// Login as Guest with Unique DeviceID
+            _customAuth.AnonymousLogin(
+                linkAction: false,
+                (actionResult, actionMessage) => {
+                    if (actionResult) // Request completed with no error ( Succeed )
+                    {
+                        callback(AuthenticationEventType.Success, AuthenticationType.PlayFab);
+
+                        Debug.Log("Anonymous succeed: " + actionMessage);
+                    } else // Request completed failure
+                    {
+                        callback(AuthenticationEventType.Failed, AuthenticationType.PlayFab);
+
+                        Debug.Log("Anonymous login failed: " + actionMessage);
+                    }
+                });
+        }
     }
 
 }
