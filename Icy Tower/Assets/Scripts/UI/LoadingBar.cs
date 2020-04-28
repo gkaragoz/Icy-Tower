@@ -45,4 +45,5 @@ public class LoadingBar : MonoBehaviour {
     private void UpdateFillBar() {
         _image.fillAmount = _totalProgress / 100;
     }
+
 }

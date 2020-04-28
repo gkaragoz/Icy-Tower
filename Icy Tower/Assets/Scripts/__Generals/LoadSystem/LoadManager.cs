@@ -5,38 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class LoadManager : MonoBehaviour {
 
-    public Action<string> OnPlayFabAuthenticationSuccess;   //1
-    public Action<string> OnPlayFabAuthenticationFailed;    //1
-    public Action<string> OnGPGSAuthenticationSuccess;      //2
-    public Action<string> OnGPGSAuthenticationFailed;       //2
-
-    public Action OnAccountLoaded;                          //3
-    public Action OnPoolLoaded;                             //4
-    public Action OnSceneReady;                             //5
+    public Action OnAccountLoaded;
+    public Action OnPoolLoaded;
+    public Action OnSceneReady;
 
     private AsyncOperation _asyncOperation;
-
-    public void AuthanticateToPlayFab() {
-        AuthenticationManager.instance.AuthenticateToPlayFab(
-            (actionResult, actionMessage) => {
-                if (actionResult) {
-                    OnPlayFabAuthenticationSuccess.Invoke(actionMessage);
-                } else {
-                    OnPlayFabAuthenticationFailed?.Invoke(actionMessage);
-                }
-            });
-    }
-
-    public void AuthanticateToGPGS() {
-        AuthenticationManager.instance.AuthenticateToGPGS(
-            (actionResult, actionMessage) => {
-                if (actionResult) {
-                    OnGPGSAuthenticationSuccess?.Invoke(actionMessage);
-                } else {
-                    OnGPGSAuthenticationFailed?.Invoke(actionMessage);
-                }
-            });
-    }
 
     public void OpenLoadedScene() {
         AllowSceneActivation(true);
@@ -89,7 +62,7 @@ public class LoadManager : MonoBehaviour {
         while (!_asyncOperation.isDone) {
             // Check if the load has finished
             if (_asyncOperation.progress >= 0.9f) {
-                //OnSceneReady?.Invoke();
+                OnSceneReady?.Invoke();
                 break;
             }
             yield return null;
