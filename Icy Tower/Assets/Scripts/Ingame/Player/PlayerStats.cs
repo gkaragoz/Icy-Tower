@@ -110,6 +110,25 @@ public class PlayerStats : MonoBehaviour {
         _player.Combo = value;
     }
 
+    public void SetCurrentShoes(string data)
+    {
+        _player.CurrentShoes = data;
+    }
+    public void SetCurrentHead(string data)
+    {
+        _player.CurrentHead = data;
+    }
+    public void SetCurrentBodyUp(string data)
+    {
+        _player.CurrentBodyUp = data;
+    }
+
+    public void SetCurrentBodyDown(string data)
+    {
+        _player.CurrentBodyDown = data;
+    }
+
+
     #endregion
 
     #region Reporters
@@ -170,6 +189,25 @@ public class PlayerStats : MonoBehaviour {
                 return string.Empty;
         }
     }
+
+
+    public string GetCurrentBodyUp()
+    {
+        return _player.CurrentBodyUp;
+    }
+    public string GetCurrentBodyDown()
+    {
+        return _player.CurrentBodyDown;
+    }
+    public string GetCurrentHead()
+    {
+        return _player.CurrentHead;
+    }
+    public string GetCurrentShoes()
+    {
+        return _player.CurrentShoes;
+    }
+
 
     #endregion
 

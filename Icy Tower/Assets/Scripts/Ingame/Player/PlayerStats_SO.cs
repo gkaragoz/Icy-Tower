@@ -38,6 +38,42 @@ public class PlayerStats_SO : ScriptableObject {
     [SerializeField]
     private string _shoesGroup = "0";
 
+
+    [SerializeField]
+    private string _currentHead = "0";
+
+    [SerializeField]
+    private string _currentBodyUp = "0";
+
+    [SerializeField]
+    private string _currentBodyDown = "0";
+
+    [SerializeField]
+    private string _currentShoes = "0";
+
+    public string CurrentHead
+    {
+        get { return _currentHead; }
+        set { _currentHead = value; }
+    }
+    public string CurrentBodyUp
+    {
+        get { return _currentBodyUp; }
+        set { _currentBodyUp = value; }
+    }
+    public string CurrentBodyDown
+    {
+        get { return _currentBodyDown; }
+        set { _currentBodyDown = value; }
+    }
+
+    public string CurrentShoes  
+    {
+        get { return _currentShoes; }
+        set { _currentShoes = value; }
+    }
+
+
     [SerializeField]
     private int _combo = 0;
 
