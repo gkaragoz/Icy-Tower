@@ -73,6 +73,22 @@ public class LeaderboardUI : MonoBehaviour {
         }
     }
 
+    private void OrderFacebookData() {
+        if (_facebookResultPlayers == null) {
+            return;
+        }
+
+        _facebookResultPlayers = _facebookResultPlayers.OrderBy(p => p.Position).ToList();
+    }
+
+    private void OrderGlobalData() {
+        if (_globalResultPlayers == null) {
+            return;
+        }
+
+        _globalResultPlayers = _globalResultPlayers.OrderBy(p => p.Position).ToList();
+    }
+
     private void OnFetchFacebookDataCompleted(int index, int isSuccess) {
         _isFacebookReady[index] = isSuccess;
 
@@ -82,6 +98,7 @@ public class LeaderboardUI : MonoBehaviour {
         }
 
         if (_isFacebookReady[0] == 1 && _isFacebookReady[1] == 1) {
+            OrderFacebookData();
             SetOrderVisibilityForFacebook();
 
             _globalListObj.SetActive(false);
@@ -104,7 +121,9 @@ public class LeaderboardUI : MonoBehaviour {
         }
 
         if (_isGlobalReady[0] == 1 && _isGlobalReady[1] == 1) {
+            OrderGlobalData();
             SetOrderVisibilityForGlobal();
+
             _facebookListObj.SetActive(false);
             _globalListObj.SetActive(true);
         } else {
