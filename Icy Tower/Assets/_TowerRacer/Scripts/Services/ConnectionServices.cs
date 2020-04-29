@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Library.Authentication.GooglePlay;
+using Library.GooglePlay;
 using Library.FaceBook;
 using System;
 
@@ -25,7 +25,7 @@ public class ConnectionServices : MonoBehaviour {
 
     // Connect Google Play
     public void ConnectGooglePlay(Action onFinished) {
-        if (_gpgsAuth.GetLoggedIn()) // Loggedin with GPGS
+        if (GooglePlayGameService.LoggedIn) // Loggedin with GPGS
         {
             // UnLink GPGS Request
             _gpgsAuth.UnLinkWithGooglePlayAccount(

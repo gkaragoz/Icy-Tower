@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
+using Library.Authentication;
 
-namespace Library.Authentication.GooglePlay
+namespace Library.GooglePlay
 {
     using GooglePlayGames;
 
@@ -362,11 +363,7 @@ namespace Library.Authentication.GooglePlay
             return PlayGamesPlatform.Instance.GetUserDisplayName();
         }
 
-        //Return Auth. Status
-        public bool GetLoggedIn()
-        {
-            return LoggedIn;
-        }
     }
+
 }
 

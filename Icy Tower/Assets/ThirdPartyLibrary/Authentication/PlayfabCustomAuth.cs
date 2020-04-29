@@ -165,13 +165,9 @@ namespace Library.Authentication
                     {
                         Debug.Log("Login with DeviceID request completed Succesfuly.");
 
-                        //SetDisplayName(result.PlayFabId); // Set Display Name
-
-                        //UserDisplayName = result.InfoResultPayload.PlayerProfile.DisplayName; // Update DisplayName
+                        SetDisplayName(result.PlayFabId); // Set Display Name
 
                         PlayFabID = result.PlayFabId; // Update PlayFabID
-
-                        Debug.Log(UserDisplayName + "   " + PlayFabID);
 
                         IsFreshAccount = result.NewlyCreated;
 
@@ -384,7 +380,7 @@ namespace Library.Authentication
         }
 
         //Remove Player Stored Auth. Data
-        public void RemovePlayerStoredAuthData()
+        public static void RemovePlayerStoredAuthData()
         {
             PlayerPrefs.DeleteKey("EMAIL");
 

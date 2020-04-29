@@ -20,7 +20,7 @@ public class ConnectionServicesUI : MonoBehaviour {
     [SerializeField]
     private TextMeshProUGUI _txtFacebook = null;
     private void Start() {
-        if (Library.Authentication.GooglePlay.GooglePlayGameService.LoggedIn) {
+        if (Library.GooglePlay.GooglePlayGameService.LoggedIn) {
             // Set button text.
             _txtGooglePlay.text = "Bağlı";
         } else {
@@ -40,7 +40,7 @@ public class ConnectionServicesUI : MonoBehaviour {
         _btnConnectGooglePlay.interactable = false;
 
         ConnectionServices.instance.ConnectGooglePlay(() => {
-            if (Library.Authentication.GooglePlay.GooglePlayGameService.LoggedIn) {
+            if (Library.GooglePlay.GooglePlayGameService.LoggedIn) {
                 // Set button text.
                 _txtGooglePlay.text = "Bağlı";
                 _btnConnectGooglePlay.interactable = true;

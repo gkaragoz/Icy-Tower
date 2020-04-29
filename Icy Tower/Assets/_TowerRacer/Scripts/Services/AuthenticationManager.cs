@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using Library.Authentication.GooglePlay;
 using Library.Authentication;
+using Library.GooglePlay;
 using System;
 
 public class AuthenticationManager : MonoBehaviour {
