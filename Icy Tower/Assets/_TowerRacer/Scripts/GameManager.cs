@@ -77,16 +77,6 @@ public class GameManager : MonoBehaviour {
                 Leaderboard.InitializeLeaderboard();
             });
 
-        Leaderboard.GetGlobalLeaderboard(
-            50,
-            (resultCallback) => {
-                foreach (var player in resultCallback) {
-                    Debug.Log("Display Name: { " + player.DisplayName + " }" + " Position: { " + player.Position + " }" + " StatValue: { " + player.StatValue + " }");
-                }
-            },
-            (errorCallback) => {
-            });
-
         _loadManager.LoadAccount(false);
     }
 

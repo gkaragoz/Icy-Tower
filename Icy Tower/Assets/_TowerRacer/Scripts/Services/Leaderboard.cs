@@ -32,9 +32,50 @@ public class Leaderboard {
             });
     }
 
-    // Get Global Leaderboard
-    public static void GetGlobalLeaderboard(int maxResultCount, Action<List<ResultPlayer>> resultCallback, Action<string> errorCallback) {
+    // Get Global Leaderboard that around me as a center
+    public static void GetGlobalLeaderboardAroundMe(int maxResultCount, Action<List<ResultPlayer>> resultCallback, Action<string> errorCallback) {
         PlayFabLeaderboard.GetLeaderboardGlobal(
+            maxResultCount,
+            Strings.LEADERBOARD_01,
+            (result) => {
+                resultCallback(result);
+            },
+            (errorMessage) => {
+                errorCallback(errorMessage);
+            });
+    }
+
+    // Get Global Leaderboard by Position around
+    public static void GetGlobalLeaderboardTrimByPosition(int startPosition, int maxResultCount, Action<List<ResultPlayer>> resultCallback, Action<string> errorCallback) {
+        PlayFabLeaderboard.GetLeaderboardGlobal(
+            startPosition,
+            maxResultCount,
+            Strings.LEADERBOARD_01,
+            (result) => {
+                resultCallback(result);
+            },
+            (errorMessage) => {
+                errorCallback(errorMessage);
+            });
+    }
+
+    // Get Facebook Leaderboard that around me as a center
+    public static void GetFacebookLeaderboardAroundMe(int maxResultCount, Action<List<ResultPlayer>> resultCallback, Action<string> errorCallback) {
+        PlayFabLeaderboard.GetLeaderboardFacebookandFriends(
+            maxResultCount,
+            Strings.LEADERBOARD_01,
+            (result) => {
+                resultCallback(result);
+            },
+            (errorMessage) => {
+                errorCallback(errorMessage);
+            });
+    }
+
+    // Get Facebook Leaderboard by Position around
+    public static void GetFacebookLeaderboardTrimByPosition(int startPosition, int maxResultCount, Action<List<ResultPlayer>> resultCallback, Action<string> errorCallback) {
+        PlayFabLeaderboard.GetLeaderboardFacebookandFriends(
+            startPosition,
             maxResultCount,
             Strings.LEADERBOARD_01,
             (result) => {

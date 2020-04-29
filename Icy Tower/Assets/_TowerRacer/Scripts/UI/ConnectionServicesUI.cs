@@ -53,17 +53,18 @@ public class ConnectionServicesUI : MonoBehaviour {
     }
 
     public void ConnectToFacebook() {
-        ConnectionServices.instance.ConnectFacebook(() => {
-            if (Facebook.Unity.FB.IsLoggedIn) {
-                // Set button text.
-                _txtFacebook.text = "Bağlı";
-                _btnConnectFacebook.interactable = true;
-            } else {
-                // Set button text.
-                _txtFacebook.text = "Bağlı Değil";
-                _btnConnectFacebook.interactable = true;
-            }
-        });
+        ConnectionServices.instance.ConnectFacebook(
+            (isLinked) => {
+                if (isLinked) {
+                    // Set button text.
+                    _txtFacebook.text = "Bağlı";
+                    _btnConnectFacebook.interactable = true;
+                } else {
+                    // Set button text.
+                    _txtFacebook.text = "Bağlı Değil";
+                    _btnConnectFacebook.interactable = true;
+                }
+            });
     }
 
 

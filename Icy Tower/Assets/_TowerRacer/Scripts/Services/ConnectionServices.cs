@@ -63,8 +63,8 @@ public class ConnectionServices : MonoBehaviour {
     }
 
     // Connect Facebook
-    public void ConnectFacebook(Action onFinished) {
-        if (_facebookAuth.GetLoggedIn()) // Loggedin with Facebook
+    public void ConnectFacebook(Action<bool> isLinkedCallback) {
+        if (FacebookService.GetLoggedIn()) // Loggedin with Facebook
         {
             // UnLink Facebook Acc.
             _facebookAuth.UnLinkWithFacebook(
@@ -73,11 +73,11 @@ public class ConnectionServices : MonoBehaviour {
                     if (actionResult) // Request completed success
                     {
                         Debug.Log(actionMessage);
-                        onFinished();
+                        isLinkedCallback(false);
                     } else // Request completed failure
                     {
                         Debug.LogError(actionMessage);
-                        onFinished();
+                        isLinkedCallback(true);
                     }
                 });
         } else {
@@ -90,11 +90,11 @@ public class ConnectionServices : MonoBehaviour {
                     if (actionResult) // Request completed with no error ( Succeed )
                     {
                         Debug.Log(actionMessage);
-                        onFinished();
+                        isLinkedCallback(true);
                     } else // Request completed failure
                     {
                         Debug.Log(actionMessage);
-                        onFinished();
+                        isLinkedCallback(false);
                     }
                 });
         }
