@@ -86,7 +86,8 @@ public enum UIPanels {
     PnlPopupRevive,
     PnlMainMenu,
     PnlWardrobe,
-    PnlGamePlay
+    PnlGamePlay,
+    PnlLeaderboard
 }
 
 public enum TowerProp{
