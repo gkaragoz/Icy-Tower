@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour {
             /// 
             CollectableSpawner.instance.ResetGoldSpawnFloor();
             SpawnManager.instance.ResetWalls();
+            Camera.main.GetComponent<NewCameraController>().ResetCamera();
 
         } else if (newPanel == UIPanels.PnlWardrobe) {
             SetGameState(GameState.Wardrobe);

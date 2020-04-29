@@ -24,7 +24,7 @@ public class WardrobePanelManager : MonoBehaviour {
     private ShoesGroup _shoesGroup = null;
 
     private void Start() {
-        WearDefaults();
+        InitClothes();
     }
 
     private void WearDefaults() {
@@ -32,6 +32,14 @@ public class WardrobePanelManager : MonoBehaviour {
         _bodyGroup.ChooseBodyObject(1, 2, 0);
         _headGroup.ChooseHead(0, 0);
         _shoesGroup.ChooseShoes(0);
+    }
+
+    private void InitClothes()
+    {
+        ChangeHair(Account.instance.PlayerStats.GetCurrentHead());
+        ChangeBody(Account.instance.PlayerStats.GetCurrentBodyDown());
+        ChangeBody(Account.instance.PlayerStats.GetCurrentBodyUp());
+        ChangeShoes(Account.instance.PlayerStats.GetCurrentShoes());
     }
 
     public void Buy(object data, ClothType clothType) {
@@ -120,6 +128,10 @@ public class WardrobePanelManager : MonoBehaviour {
         int idx = int.Parse(myStringSplit[0]);
         int idy = int.Parse(myStringSplit[1]);
          _headGroup.ChooseHead(idx,idy);
+        //Set Current Clothes String
+
+        Account.instance.PlayerStats.SetCurrentHead(values);
+
 
     }
 
@@ -130,12 +142,26 @@ public class WardrobePanelManager : MonoBehaviour {
         int color = int.Parse(myStringSplit[2]);
         _bodyGroup.ChooseBodyObject(bodyPartGroup, upStyle, color);
 
+        //Sory For this :(
+        if (bodyPartGroup==1)
+        {
+            Account.instance.PlayerStats.SetCurrentBodyDown(input);
+        }
+
+        if (bodyPartGroup == 0)
+        {
+            Account.instance.PlayerStats.SetCurrentBodyUp(input);
+        }
+
+
     }
 
     private void ChangeShoes(string id)
     {
         int idIndex = int.Parse(id);
         _shoesGroup.ChooseShoes(idIndex);
+        //Set Current Clothes String
+        Account.instance.PlayerStats.SetCurrentShoes(id);
     }
 
 }

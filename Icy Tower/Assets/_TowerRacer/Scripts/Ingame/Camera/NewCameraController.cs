@@ -170,4 +170,9 @@ public class NewCameraController : MonoBehaviour {
         speed += value;
     }
 
+    public void ResetCamera()
+    {
+        speed = 2;
+    }
+
 }
