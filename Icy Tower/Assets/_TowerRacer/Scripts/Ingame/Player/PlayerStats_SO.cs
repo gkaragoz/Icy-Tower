@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Newtonsoft.Json;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "Player Stats", menuName = "Scriptable Objects/Player Stats")]
 public class PlayerStats_SO : ScriptableObject {
@@ -24,7 +25,11 @@ public class PlayerStats_SO : ScriptableObject {
     private int _gem = 0;
 
     [SerializeField]
+    [JsonIgnore]
     private MarketItem[] _marketItems = null;
+
+    [SerializeField]
+    private int _combo = 0;
 
     [SerializeField]
     private string _headGroup = "0";
@@ -37,13 +42,13 @@ public class PlayerStats_SO : ScriptableObject {
 
 
     [SerializeField]
-    private string _currentHead = "0";
+    private string _currentHead = "0,0";
 
     [SerializeField]
-    private string _currentBodyUp = "0";
+    private string _currentBodyUp = "0,1,0";
 
     [SerializeField]
-    private string _currentBodyDown = "0";
+    private string _currentBodyDown = "1,2,0";
 
     [SerializeField]
     private string _currentShoes = "0";
@@ -70,10 +75,6 @@ public class PlayerStats_SO : ScriptableObject {
         set { _currentShoes = value; }
     }
 
-
-    [SerializeField]
-    private int _combo = 0;
-
     public int CurrentScore {
         get { return _currentScore; }
         set { _currentScore = value; }
@@ -99,24 +100,22 @@ public class PlayerStats_SO : ScriptableObject {
         set { _gem = value; }
     }
 
+    [JsonIgnore]
     public MarketItem[] MarketItems {
         get { return _marketItems; }
         set { _marketItems = value; }
     }
 
-    [SerializeField]
     public string HeadGroup {
         get { return _headGroup; }
         set { _headGroup = value; }
     }
 
-    [SerializeField]
     public string BodyGroup {
         get { return _bodyGroup; }
         set { _bodyGroup = value; }
     }
 
-    [SerializeField]
     public string ShoesGroup {
         get { return _shoesGroup; }
         set { _shoesGroup = value; }

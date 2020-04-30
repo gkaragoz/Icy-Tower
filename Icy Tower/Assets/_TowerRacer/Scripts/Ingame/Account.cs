@@ -29,7 +29,6 @@ public class Account : MonoBehaviour {
     }
 
     private void OnGameStateChanged(GameState previousGameState, GameState newGameState) {
-        Debug.Log("En son?");
         if (newGameState == GameState.GameOver) {
             SaveSystem.SavePlayer(_playerStats);
             OnPlayerStatsChanged?.Invoke(PlayerStats);
@@ -44,7 +43,6 @@ public class Account : MonoBehaviour {
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode) {
-        Debug.Log("En orta?");
         PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         PlayerStats.Init(_playerStats);
 
@@ -55,18 +53,34 @@ public class Account : MonoBehaviour {
     /// Read local file or get data from cloud.
     /// </summary>
     public void Init(bool isOfflineMode) {
-        Debug.Log("En ilk?");
         Debug.Log("Account will initializing in offline mode...");
 
         PlayerStats_SO readedSO = SaveSystem.LoadPlayer();
+
+        // First time save or local file is broken
         if (readedSO == null) {
+            // Just please take local unity market items and assert into my player.
             _playerStats.MarketItems = MarketManager.instance.MarketItems;
+
+            // Save my new stats and market and CREATE my local file for the first time.
             SaveSystem.SavePlayer(_playerStats);
-        } else {
+        } 
+        // I have a local file.
+        else {
+            // Please load local file to my runtime player.
             _playerStats = readedSO;
-            MarketManager.instance.Init(_playerStats.MarketItems);
+
+            // Is there any fetched data from cloud?
+            if (MarketManager.instance.IsFetchedByOnline) {
+                // Set cloud market data to my runtime player.
+                _playerStats.MarketItems = MarketManager.instance.MarketItems;
+            } else {
+                // Probably I'm in offline mode or market has been broken. So set my market items via my local file.
+                MarketManager.instance.Init(_playerStats.MarketItems);
+            }
         }
 
+        // If I'm in online mode, always sync and override the cloud.
         if (isOfflineMode == false) {
             CloudSaver.Sync(_playerStats);
         }

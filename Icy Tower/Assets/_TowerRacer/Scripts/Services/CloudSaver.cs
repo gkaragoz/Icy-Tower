@@ -56,26 +56,19 @@ public class CloudSaver {
     }
 
     public static void Sync(PlayerStats_SO playerStats) {
-        PropertyInfo[] propertyInfos;
-        propertyInfos = playerStats.GetType().GetProperties();
-
-        Dictionary<string, string> playerData = new Dictionary<string, string>();
-
-        // -2 because hideFlags and name that comes from MonoBehaviour base class.
-        for (int ii = 0; ii < propertyInfos.Length - 2; ii++) {
-            //if (propertyInfos[ii].PropertyType == typeof(MarketItem[])) {
-            //    for (int jj = 0; jj < playerStats.MarketItems.Length; jj++) {
-            //        Debug.Log(playerStats.MarketItems[jj].GetName());
-            //    }
-            //}
-
-            string propertyName = propertyInfos[ii].Name;
-            string propertyValue = playerStats.GetType().GetProperty(propertyName).GetValue(playerStats, null).ToString();
-
-            playerData.Add(propertyName, propertyValue);
+        string playerStatsJson = JsonUtility.ToJson(playerStats);
+        MarketItem_SO[] marketItemSOs = new MarketItem_SO[playerStats.MarketItems.Length];
+        for (int ii = 0; ii < marketItemSOs.Length; ii++) {
+            marketItemSOs[ii] = playerStats.MarketItems[ii].GetMarketItemSO();
         }
 
-        AddOrUpdateUserDatas(playerData);
+        DataRepo data = new DataRepo() {
+            PlayerStatsSO = playerStats,
+            MarketItemSOs = marketItemSOs
+        };
+
+        string dataJson = Newtonsoft.Json.JsonConvert.SerializeObject(data);
+        AddOrUpdateUserDatas(new Dictionary<string, string>() { { "dataJson", dataJson } });
     }
 
 }

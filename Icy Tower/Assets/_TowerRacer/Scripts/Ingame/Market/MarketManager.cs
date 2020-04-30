@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PlayFab.ClientModels;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -19,6 +21,9 @@ public class MarketManager : MonoBehaviour {
     public Action OnBuyItem;
 
     [SerializeField]
+    private bool _isFetchedByOnline = false;
+
+    [SerializeField]
     private MarketItem[] _marketDB = null;
 
     public MarketItem[] MarketItems {
@@ -27,8 +32,32 @@ public class MarketManager : MonoBehaviour {
         }
     }
 
+    public bool IsFetchedByOnline {
+        get {
+            return _isFetchedByOnline;
+        }
+    }
+
     public void Init(MarketItem[] marketItems) {
+        _isFetchedByOnline = false;
+
         _marketDB = marketItems;
+    }
+
+    public void Init(List<CatalogItem> marketItems) {
+        _isFetchedByOnline = true;
+
+        List<MarketItem_SO> tempList = new List<MarketItem_SO>();
+        foreach (var marketItem in marketItems) {
+            var tempMarketItem = Newtonsoft.Json.JsonConvert.DeserializeObject<MarketItem_SO>(marketItem.CustomData);
+            tempList.Add(tempMarketItem);
+
+            Debug.Log(marketItem.CustomData);
+        }
+
+        for (int ii = 0; ii < tempList.Count; ii++) {
+            _marketDB[ii].Init(tempList[ii]);
+        }
     }
 
     public void BuyItem(int itemId) {

@@ -45,6 +45,12 @@ public class MarketItem {
         OnMarketItemUpdated?.Invoke();
     }
 
+    public void SetInflationMultiplier(float value) {
+        this._marketItem.InflationMultiplier = value;
+
+        OnMarketItemUpdated?.Invoke();
+    }
+
     public void SetCurrentLevel(int level) {
         this._marketItem.CurrentLevel = level;
 
@@ -115,6 +121,11 @@ public class MarketItem {
     public int GetVirtualCurrencyAmountOnReward() {
         return this._marketItem.VirtualCurrencyAmountOnReward;
     }
+
+    public float GetInflationMultiplier() {
+        return this._marketItem.InflationMultiplier;
+    }
+
     public int GetCurrentLevel() {
         return this._marketItem.CurrentLevel;
     }
@@ -146,6 +157,9 @@ public class MarketItem {
         return this._marketItem.HasPermanentItemPurchased;
     }
 
+    public MarketItem_SO GetMarketItemSO() {
+        return this._marketItem;
+    }
 
     #endregion
 

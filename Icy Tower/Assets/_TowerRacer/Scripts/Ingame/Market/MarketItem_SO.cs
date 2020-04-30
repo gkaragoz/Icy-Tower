@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "Market Item", menuName = "Scriptable Objects/Market Item")]
 public class MarketItem_SO : ScriptableObject {
@@ -10,15 +12,19 @@ public class MarketItem_SO : ScriptableObject {
     [SerializeField]
     private bool _isVirtualCurrency = false;
     [SerializeField]
+    [JsonConverter(typeof(StringEnumConverter))]
     private VirtualCurrency _virtualCurrencyOnReward;
     [SerializeField]
     private int _virtualCurrencyAmountOnReward;
 
     [SerializeField]
+    private float _inflationMultiplier = 1f;
+    [SerializeField]
     private int _currentLevel;
     [SerializeField]
     private int _currentPrice;
     [SerializeField]
+    [JsonConverter(typeof(StringEnumConverter))]
     private VirtualCurrency _virtualCurrencyOnBuy;
     [SerializeField]
     private bool _isLevelable = false;
@@ -56,6 +62,11 @@ public class MarketItem_SO : ScriptableObject {
     public int VirtualCurrencyAmountOnReward {
         get { return _virtualCurrencyAmountOnReward; }
         set { _virtualCurrencyAmountOnReward = value; }
+    }
+
+    public float InflationMultiplier {
+        get { return _inflationMultiplier; }
+        set { _inflationMultiplier = value; }
     }
 
     public int CurrentLevel {
