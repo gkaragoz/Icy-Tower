@@ -9,14 +9,17 @@ using LoginResult = PlayFab.ClientModels.LoginResult;
 using System;
 using Library.Authentication;
 
-namespace Library.FaceBook {
-    public class FacebookService {
+namespace Library.FaceBook
+{
+    public class FacebookService
+    {
         // Holds the latest message to be displayed on the screen.
         private string _debugMessage;
 
         #region AUTHENTICATON
 
-        public FacebookService() {
+        public FacebookService()
+        {
             //DebugLogHandler("Initializing Facebook..."); // logs the given message and displays it on the screen using OnGUI method
 
             // This call is required before any other calls to the Facebook API. We pass in the callback to be invoked once initialization is finished
@@ -27,18 +30,21 @@ namespace Library.FaceBook {
         }
 
         //Control User's Auth. Status
-        public static bool GetLoggedIn() {
+        public static bool GetLoggedIn()
+        {
             return FB.IsLoggedIn;
         }
 
-        private void OnFacebookInitialized() {
+        private void OnFacebookInitialized()
+        {
             // Once Facebook SDK is initialized, if we are logged in, we log out to demonstrate the entire authentication cycle.
             if (GetLoggedIn())
                 FB.LogOut();
         }
 
         //Facebook Auth. Handler
-        public void AuthLogin(bool linkAction, Action<bool, string, bool> actionStatus) {
+        public void AuthLogin(bool linkAction, Action<bool, string, bool> actionStatus)
+        {
             DebugLogHandler("Logging into Facebook...");
 
             // We invoke basic login procedure and pass in the callback to process the result
@@ -46,25 +52,38 @@ namespace Library.FaceBook {
 
                 null,
 
-                (result) => {
+                (result) =>
+
+                {
                     // If result has no errors, it means we have authenticated in Facebook successfully
-                    if ((result == null || string.IsNullOrEmpty(result.Error)) && !result.Cancelled) {
+                    if ((result == null || string.IsNullOrEmpty(result.Error)) && !result.Cancelled)
+                    {
                         DebugLogHandler("Facebook Auth Complete! Access Token: " + AccessToken.CurrentAccessToken.TokenString + "\nLogging into PlayFab...");
 
                         if (linkAction) // is this Facebook Linking Action ?
                         {
                             LinkWithFacebook(AccessToken.CurrentAccessToken.TokenString, actionStatus); // Link Accout with Facebook
-                        } else {
+                        }
+
+                        else
+                        {
                             PlayFabFacebookLogin(AccessToken.CurrentAccessToken.TokenString); // Just Login with Facebook
                         }
-                    } else {
-                        if (actionStatus != null) {
+                    }
+
+                    else
+                    {
+                        if(actionStatus != null)
+                        { 
                             actionStatus(false, "Facebook Auth Failed: " + result.Error + "\n" + result.RawResult, false);
-                        } else {
+                        }
+
+                        else
+                        {
                             //If Facebook authentication failed, we stop the cycle with the message
                             DebugLogHandler("Facebook Auth Failed: " + result.Error + "\n" + result.RawResult, true);
                         }
-
+                        
                     }
 
                 }
@@ -74,14 +93,16 @@ namespace Library.FaceBook {
         }
 
         //Logout from Facebook and reset Facebook Auth. procedure.
-        public void AuthLogout() {
+        public void AuthLogout()
+        {
             DebugLogHandler("Logout from Facebook...");
 
             FB.LogOut();
         }
 
         //Login with Facebook
-        public void PlayFabFacebookLogin(string token) {
+        public void PlayFabFacebookLogin(string token)
+        {
             /* We proceed with making a call to PlayFab API. We pass in current Facebook AccessToken and let it create
             and account using CreateAccount flag set to true. We also pass the callback for Success and Failure results*/
 
@@ -90,16 +111,19 @@ namespace Library.FaceBook {
         }
 
         // When processing both results, we just set the message, explaining what's going on.
-        private void OnPlayfabFacebookAuthComplete(LoginResult result) {
+        private void OnPlayfabFacebookAuthComplete(LoginResult result)
+        {
             DebugLogHandler("PlayFab Facebook Auth Complete. Session ticket: " + result.SessionTicket);
         }
 
-        private void OnPlayfabFacebookAuthFailed(PlayFabError error) {
+        private void OnPlayfabFacebookAuthFailed(PlayFabError error)
+        {
             DebugLogHandler("PlayFab Facebook Auth Failed: " + error.GenerateErrorReport(), true);
         }
 
         //Fuction that handles the console display MESSAGE based on Auth Process's Action's Output.
-        private void DebugLogHandler(string message, bool error = false) {
+        private void DebugLogHandler(string message, bool error = false)
+        {
             //The Log Message
             _debugMessage = message;
 
@@ -113,7 +137,8 @@ namespace Library.FaceBook {
         }
 
         // Set-Up PayloadData
-        private GetPlayerCombinedInfoRequestParams InfoRequest() {
+        private GetPlayerCombinedInfoRequestParams InfoRequest()
+        {
             GetPlayerCombinedInfoRequestParams request = new GetPlayerCombinedInfoRequestParams();
 
             request.GetPlayerProfile = true;
@@ -126,9 +151,11 @@ namespace Library.FaceBook {
         #region SHARE
 
         //Function that manages Facebook Share Service
-        public void Share(string URL) {
+        public void Share(string URL)
+        {
             //If the user loggedIn Facebook, We control the Callback.
-            if (GetLoggedIn()) {
+            if (GetLoggedIn())
+            {
                 URL = "https://www.youtube.com/watch?v=BVomQtrtMTM"; // FOR TEST
 
                 //Share Request with FB.ShareLink
@@ -143,17 +170,24 @@ namespace Library.FaceBook {
                     null,   // Content Photo URL
 
                     callback: OnFacebookShared); // CallBack
-            } else
+            }
+
+            else
                 AuthLogin(false, null); //Facebook Auth. Handler
 
         }
 
         //Facebook Share Callback method to catch the errors.
-        private void OnFacebookShared(IShareResult result) {
+        private void OnFacebookShared(IShareResult result)
+        {
             // If result has no errors, it means we have shared the Content in Facebook successfully
-            if (!result.Cancelled) {
+            if (!result.Cancelled)
+            {
                 DebugLogHandler("Facebook Sharing Completed Successfully!");
-            } else {
+            }
+
+            else
+            {
                 // If Facebook Sharing failed, we stop the cycle with the message
                 DebugLogHandler("Facebook Sharing Failed: " + result.Error + "\n" + result.RawResult, true);
             }
@@ -165,9 +199,11 @@ namespace Library.FaceBook {
         #region INVITATION
 
         //Facebook Invite Friends to Game
-        public void Invite() {
+        public void Invite()
+        {
             //If the user loggedIn Facebook, We control the Callback.
-            if (GetLoggedIn()) {
+            if (GetLoggedIn())
+            {
                 //FOR TEST*********************
                 string Message = "Come on and Play!";
 
@@ -185,17 +221,24 @@ namespace Library.FaceBook {
 
                     );
 
-            } else
+            }
+
+            else
                 AuthLogin(false, null); //Facebook Auth. Handler
 
         }
 
         //Facebook Invitation Callback method to catch the errors.
-        private void OnFacebookInvited(IAppRequestResult result) {
+        private void OnFacebookInvited(IAppRequestResult result)
+        {
             // If result has no errors, it means we have shared the Content in Facebook successfully
-            if (!(result.RequestID == null || string.IsNullOrEmpty(result.RequestID))) {
+            if (!(result.RequestID == null || string.IsNullOrEmpty(result.RequestID)))
+            {
                 DebugLogHandler("Facebook Invitation Completed Successfully!" + " RequestID: " + result.RequestID);
-            } else {
+            }
+
+            else
+            {
                 // If Facebook Sharing failed, we stop the cycle with the message
                 DebugLogHandler("Facebook Invitation Failed: " + result.Error + "\n" + result.RawResult, true);
             }
@@ -207,7 +250,8 @@ namespace Library.FaceBook {
         #region FRIENDS
 
         //API Request to find players in User's Facebook Friend List.
-        public void FetchFriends() {
+        public void FetchFriends()
+        {
             string query = "/me/friends";
 
             //The Facebook Request gets friends whose play the current game.
@@ -224,7 +268,8 @@ namespace Library.FaceBook {
         }
 
         //Facebook FetchFriends Callback method to catch the errors.
-        private void OnFacebookFetchFriends(IGraphResult result) {
+        private void OnFacebookFetchFriends(IGraphResult result)
+        {
             //"FriendsText" stores request answer info.
             string FriendsText = string.Empty;
 
@@ -234,13 +279,17 @@ namespace Library.FaceBook {
             var FriendList = (List<object>)Dictionary["data"];
 
             //Get Player name whose play this game.
-            foreach (var dict in FriendList) {
+            foreach (var dict in FriendList)
+            {
                 FriendsText += " ( " + ((Dictionary<string, object>)dict)["name"] + " )";
             }
 
-            if (string.IsNullOrEmpty(FriendsText)) {
+            if (string.IsNullOrEmpty(FriendsText))
+            {
                 DebugLogHandler("Facebook GetFriends Failed" + result.Error + "\n" + result.RawResult, true);
-            } else
+            }
+
+            else
                 DebugLogHandler("Facebook FetchFriends Completed Successfully!" + "\n" + FriendsText);
         }
 
@@ -249,12 +298,15 @@ namespace Library.FaceBook {
         #region LINK - UNLINK
 
         // Link account with Facebook
-        public void LinkWithFacebook(string accessToken, Action<bool, string, bool> actionStatus) {
+        public void LinkWithFacebook(string accessToken, Action<bool, string, bool> actionStatus)
+        {
             PlayFabClientAPI.LinkFacebookAccount(new LinkFacebookAccountRequest() // Facebook Linking Request
             {
                 AccessToken = accessToken
 
-            }, (result) => {
+            }, (result) =>
+
+            {
                 //Request Facebook DisplayName
                 this.GetFacebookDisplayName();
 
@@ -263,7 +315,8 @@ namespace Library.FaceBook {
                 //Debug.Log("Account Linked With Facebook Succeed.");
             },
 
-            (error) => {
+            (error) => 
+            { 
                 OnPlayfabFacebookLinkFailed(error, actionStatus);
 
             }); // Error Callback
@@ -271,30 +324,39 @@ namespace Library.FaceBook {
         }
 
         // Link Error Callback
-        private void OnPlayfabFacebookLinkFailed(PlayFabError error, Action<bool, string, bool> actionStatus) {
+        private void OnPlayfabFacebookLinkFailed(PlayFabError error, Action<bool, string, bool> actionStatus)
+        {
             // Specified Error Code for RECOVER
             if (error.Error == PlayFabErrorCode.LinkedAccountAlreadyClaimed) // Facebook Acc. is already used by another user.
             {
                 Debug.LogWarning("The Facebook Account is already used by another user.");
 
                 // Get User Name
-                FB.API("me?fields=name", HttpMethod.GET,
-
-                    (result) => {
+                FB.API("me?fields=name", HttpMethod.GET, 
+                    
+                    (result) =>
+                    {
                         // If result has no errors
-                        if (string.IsNullOrEmpty(result.Error)) {
+                        if (string.IsNullOrEmpty(result.Error))
+                        {
                             if (PlayfabCustomAuth.ISGuestAccount()) // If the account is not guest
                             {
                                 string fbName = result.ResultDictionary["name"].ToString();
 
                                 actionStatus(false, "Do you want to load " + fbName + "'s game ?", true);
-                            } else {
+                            }
+
+                            else
+                            {
                                 actionStatus(false, error.GenerateErrorReport(), false);
 
                                 FB.LogOut(); // LOGOUT FACEBOOK
                             }
+                            
+                        }
 
-                        } else {
+                        else
+                        {
                             // If Facebook request failed, we stop the cycle with the message
                             actionStatus(false, "Facebook Failed: " + result.Error + "\n" + result.RawResult, false);
 
@@ -302,7 +364,10 @@ namespace Library.FaceBook {
                         }
                     });
 
-            } else {
+            }
+
+            else
+            {
                 // Debug.LogError(error.GenerateErrorReport());
 
                 actionStatus(false, error.GenerateErrorReport(), false);
@@ -312,10 +377,14 @@ namespace Library.FaceBook {
         }
 
         // Unlink account with Facebook
-        public void UnLinkWithFacebook(Action<bool, string> actionStatus) {
-            PlayFabClientAPI.UnlinkFacebookAccount(new UnlinkFacebookAccountRequest() {
+        public void UnLinkWithFacebook(Action<bool, string> actionStatus)
+        {
+            PlayFabClientAPI.UnlinkFacebookAccount(new UnlinkFacebookAccountRequest()
+            {
 
-            }, (result) => {
+            }, (result) =>
+
+            {
                 FB.LogOut(); // Logout Facebook
 
                 // Reset Display Name for Facebook
@@ -326,7 +395,8 @@ namespace Library.FaceBook {
                 // Debug.Log("Account UnLinked With Facebook Succeed.");
             },
 
-            (error) => {
+            (error) =>
+            {
                 actionStatus(false, "PlayFab Facebook Auth Failed: " + error.GenerateErrorReport());
 
                 // Debug.LogError("PlayFab Facebook Auth Failed: " + error.GenerateErrorReport());
@@ -341,18 +411,24 @@ namespace Library.FaceBook {
         /*********************************************SET*******************************************/
 
         // Get DisplayName Request to Facebook
-        private void GetFacebookDisplayName() {
+        private void GetFacebookDisplayName()
+        {
             FB.API("me?fields=name", HttpMethod.GET, GetFacebookData);
         }
 
-        private void GetFacebookData(IGraphResult result) {
+        private void GetFacebookData(IGraphResult result)
+        {
             // If result has no errors
-            if (string.IsNullOrEmpty(result.Error)) {
+            if (string.IsNullOrEmpty(result.Error))
+            {
                 string fbName = result.ResultDictionary["name"].ToString();
 
                 //PlayFab Set DisplayName Request
                 this.SetDisplayName(fbName);
-            } else {
+            }
+
+            else
+            {
                 // If Facebook request failed, we stop the cycle with the message
                 DebugLogHandler("Facebook Failed: " + result.Error + "\n" + result.RawResult, true);
             }
@@ -360,7 +436,8 @@ namespace Library.FaceBook {
         }
 
         // Set DisplayName Request to PlayFab
-        private void SetDisplayName(string displayName) {
+        private void SetDisplayName(string displayName)
+        {
             //Display Name Request
             var requestDisplayName = new UpdateUserTitleDisplayNameRequest { DisplayName = displayName };
 
@@ -368,12 +445,14 @@ namespace Library.FaceBook {
         }
 
         //Display Name Error Callback
-        private void OnDisplayNameFailure(PlayFabError error) {
+        private void OnDisplayNameFailure(PlayFabError error)
+        {
             Debug.LogError("Display Name Change Error: " + error.GenerateErrorReport());
         }
 
         //Display Name Succeed Callback
-        private void OnDisplayNameSuccess(UpdateUserTitleDisplayNameResult result) {
+        private void OnDisplayNameSuccess(UpdateUserTitleDisplayNameResult result)
+        {
             Debug.Log("Display Name Changed: " + result.DisplayName);
 
             PlayerPrefs.SetString("DISPLAYNAME_FACEBOOK", result.DisplayName);
@@ -381,23 +460,27 @@ namespace Library.FaceBook {
 
         /******************************************RESET**********************************************/
 
-
+           
         // Reset DisplayName
-        private void ResetDisplayName() {
+        private void ResetDisplayName()
+        {
             PlayerPrefs.DeleteKey("DISPLAYNAME_FACEBOOK");
 
             // Reset as GPGS DisplayName
-            if (PlayerPrefs.HasKey("DISPLAYNAME_GPGS")) {
+            if (PlayerPrefs.HasKey("DISPLAYNAME_GPGS"))
+            {
                 ResetDisplayName(PlayerPrefs.GetString("DISPLAYNAME_GPGS"));
             }
 
             // Reset as Guest DisplayName
-            else {
+            else
+            {
                 ResetDisplayName(PlayerPrefs.GetString("DISPLAYNAME_GUEST"));
             }
         }
 
-        private void ResetDisplayName(string displayName) {
+        private void ResetDisplayName(string displayName)
+        {
             //Display Name Request
             var requestDisplayName = new UpdateUserTitleDisplayNameRequest { DisplayName = displayName };
 
@@ -405,18 +488,21 @@ namespace Library.FaceBook {
         }
 
         // Reset DisplayName Error Callback
-        private void OnResetDisplayNameFailure(PlayFabError error) {
+        private void OnResetDisplayNameFailure(PlayFabError error)
+        {
             Debug.LogError(error.GenerateErrorReport());
         }
 
         // Reset DisplayName Callback
-        private void OnResetDisplayNameSuccess(UpdateUserTitleDisplayNameResult result) {
+        private void OnResetDisplayNameSuccess(UpdateUserTitleDisplayNameResult result)
+        {
             Debug.Log("Display Name Changed: " + result.DisplayName);
 
             PlayfabCustomAuth.UserDisplayName = result.DisplayName;
         }
 
-        public static bool IsLinkedWithFacebook() {
+        public static bool IsLinkedWithFacebook()
+        {
             return PlayerPrefs.HasKey("DISPLAYNAME_FACEBOOK");
         }
 
@@ -427,7 +513,8 @@ namespace Library.FaceBook {
         #region ACCOUNT RECOVER
 
         // User wants to recover account, Recover it.  *** Yes Click Event ***
-        public void RecoverAccount(Action<bool, string> actionStatus) {
+        public void RecoverAccount(Action<bool, string> actionStatus)
+        {
             // Login Accout
             Debug.Log("Account Recovered.");
 
@@ -439,7 +526,8 @@ namespace Library.FaceBook {
         }
 
         // User dont want to recover accout, Keep current.  *** No Click Event ***
-        public void DontRecoverAccount() {
+        public void DontRecoverAccount()
+        {
             // Logout Facebook
             FB.LogOut();
         }

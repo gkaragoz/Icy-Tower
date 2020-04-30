@@ -171,7 +171,8 @@ namespace Library.Authentication
 
                         IsFreshAccount = result.NewlyCreated;
 
-                        if (!IsFreshAccount) {
+                        if (!IsFreshAccount)
+                        {
                             UserDisplayName = result.InfoResultPayload.PlayerProfile.DisplayName;
                         }
 
