@@ -146,6 +146,9 @@ public class MarketItem {
         return this._marketItem.HasPermanentItemPurchased;
     }
 
+    public MarketItem_SO GetMarketItemSO() {
+        return this._marketItem;
+    }
 
     #endregion
 
