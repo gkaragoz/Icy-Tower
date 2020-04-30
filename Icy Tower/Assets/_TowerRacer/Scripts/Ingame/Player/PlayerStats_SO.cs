@@ -42,13 +42,13 @@ public class PlayerStats_SO : ScriptableObject {
 
 
     [SerializeField]
-    private string _currentHead = "0";
+    private string _currentHead = "0,0";
 
     [SerializeField]
-    private string _currentBodyUp = "0";
+    private string _currentBodyUp = "0,1,0";
 
     [SerializeField]
-    private string _currentBodyDown = "0";
+    private string _currentBodyDown = "1,2,0";
 
     [SerializeField]
     private string _currentShoes = "0";
