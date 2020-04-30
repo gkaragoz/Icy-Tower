@@ -16908,7 +16908,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 52.82 FPS
+  m_text: 51.55 FPS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4634dd7c14f7df147aefd0855d9ccd18, type: 2}
   m_sharedMaterial: {fileID: 2805101894821811369, guid: 4634dd7c14f7df147aefd0855d9ccd18,
@@ -87685,7 +87685,7 @@ PrefabInstance:
     - target: {fileID: 9010691031704855691, guid: 1e6c5e673d79b754e838423658bf611d,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 1152
       objectReference: {fileID: 0}
     - target: {fileID: 9010691031704855691, guid: 1e6c5e673d79b754e838423658bf611d,
         type: 3}
@@ -87695,7 +87695,7 @@ PrefabInstance:
     - target: {fileID: 9010691031704855691, guid: 1e6c5e673d79b754e838423658bf611d,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9010691031704855691, guid: 1e6c5e673d79b754e838423658bf611d,
         type: 3}
@@ -87705,7 +87705,7 @@ PrefabInstance:
     - target: {fileID: 9010691031704855691, guid: 1e6c5e673d79b754e838423658bf611d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9010691031704855691, guid: 1e6c5e673d79b754e838423658bf611d,
         type: 3}
