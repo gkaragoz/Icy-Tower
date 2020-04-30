@@ -73,6 +73,7 @@ public class UIManager : MonoBehaviour{
             if(panel.PanelEnum.ToString() == panelEnum) {
                 panel.Open();
                 _panelStack.Push(panel);
+                break;
             } 
         }
 
@@ -103,6 +104,7 @@ public class UIManager : MonoBehaviour{
             if (panel.PanelEnum.ToString() == panelEnum) {
                 panel.Close();
                 _panelStack.Pop();
+                break;
             }
         }
 
@@ -121,7 +123,7 @@ public class UIManager : MonoBehaviour{
     private void OpenImageOverlayBG() {
         UIPanels activePanel = GetActivePanel();
 
-        if (activePanel== UIPanels.PnlGamePlay || activePanel == UIPanels.PnlMainMenu) {
+        if (activePanel== UIPanels.PnlGamePlay || activePanel == UIPanels.PnlMainMenu || activePanel == UIPanels.PnlPopupYesNo) {
             CloseImageOverlayBG();
             return;
         }
