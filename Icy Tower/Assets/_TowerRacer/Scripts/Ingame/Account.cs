@@ -52,46 +52,38 @@ public class Account : MonoBehaviour {
     /// <summary>
     /// Read local file or get data from cloud.
     /// </summary>
-    public void Init(bool isOfflineMode) {
-        Debug.Log("Account will initializing in offline mode...");
+    public void Init(bool hasFetchedData) {
+        Debug.Log("Account will initializing...");
 
         PlayerStats_SO readedSO = SaveSystem.LoadPlayer();
 
-        // First time save or local file is broken
+        // First time saving game data or local file is broken and creating one.
         if (readedSO == null) {
-            // Just please take local unity market items and assert into my player.
             _playerStats.MarketItems = MarketManager.instance.MarketItems;
-
-            // Save my new stats and market and CREATE my local file for the first time.
-            SaveSystem.SavePlayer(_playerStats);
         } 
-        // I have a local file.
+        // I have a local file. I played before.
         else {
             // Please load local file to my runtime player.
             _playerStats = readedSO;
-
-            // Is there any fetched data from cloud?
-            if (MarketManager.instance.IsFetchedByOnline) {
-                // Set cloud market data to my runtime player.
-                _playerStats.MarketItems = MarketManager.instance.MarketItems;
-            } else {
-                // Probably I'm in offline mode or market has been broken. So set my market items via my local file.
-                MarketManager.instance.Init(_playerStats.MarketItems);
-            }
+            MarketManager.instance.InitBy(_playerStats.MarketItems);
         }
 
-        // If I'm in online mode, always sync and override the cloud.
-        if (isOfflineMode == false) {
-            CloudSaver.Sync(_playerStats);
+        // Is there any fetched data from cloud?
+        if (hasFetchedData) {
+            // Override cloud market fields to my local.
+            MarketManager.instance.OverrideFetchedData();
         }
 
-        OnPlayerStatsChanged?.Invoke(PlayerStats);
+        // Save my new stats and market and CREATE or UPDATE my local file.
+        Save();
 
-        Debug.Log("User account has been initialized.");
+        Debug.Log("User account & market has been initialized.");
     }
 
     public void Save() {
         SaveSystem.SavePlayer(_playerStats);
+        CloudSaver.Sync(_playerStats);
+
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 

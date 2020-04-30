@@ -21,10 +21,9 @@ public class MarketManager : MonoBehaviour {
     public Action OnBuyItem;
 
     [SerializeField]
-    private bool _isFetchedByOnline = false;
-
-    [SerializeField]
     private MarketItem[] _marketDB = null;
+    [SerializeField]
+    private List<MarketItem_SO> _tempCatalogItems = new List<MarketItem_SO>();
 
     public MarketItem[] MarketItems {
         get {
@@ -32,31 +31,26 @@ public class MarketManager : MonoBehaviour {
         }
     }
 
-    public bool IsFetchedByOnline {
-        get {
-            return _isFetchedByOnline;
-        }
-    }
-
-    public void Init(MarketItem[] marketItems) {
-        _isFetchedByOnline = false;
-
+    public void InitBy(MarketItem[] marketItems) {
         _marketDB = marketItems;
+
+        _marketDB = _marketDB.OrderBy(i => i.GetId()).ToArray();
     }
 
-    public void Init(List<CatalogItem> marketItems) {
-        _isFetchedByOnline = true;
+    public void SetTempFetchedData(List<CatalogItem> marketItems) {
+        _tempCatalogItems = new List<MarketItem_SO>();
 
-        List<MarketItem_SO> tempList = new List<MarketItem_SO>();
-        foreach (var marketItem in marketItems) {
-            var tempMarketItem = Newtonsoft.Json.JsonConvert.DeserializeObject<MarketItem_SO>(marketItem.CustomData);
-            tempList.Add(tempMarketItem);
-
-            Debug.Log(marketItem.CustomData);
+        for (int ii = 0; ii < marketItems.Count; ii++) {
+            MarketItem_SO marketItemSO = Newtonsoft.Json.JsonConvert.DeserializeObject<MarketItem_SO>(marketItems[ii].CustomData);
+            _tempCatalogItems.Add(marketItemSO);
         }
+        _tempCatalogItems = _tempCatalogItems.OrderBy(i => i.Id).ToList();
+    }
 
-        for (int ii = 0; ii < tempList.Count; ii++) {
-            _marketDB[ii].Init(tempList[ii]);
+    public void OverrideFetchedData() {
+        for (int ii = 0; ii < _tempCatalogItems.Count; ii++) {
+            _marketDB[ii].SetInitialPrice(_tempCatalogItems[ii].InitialPrice);
+            _marketDB[ii].SetInflationMultiplier(_tempCatalogItems[ii].InflationMultiplier);
         }
     }
 

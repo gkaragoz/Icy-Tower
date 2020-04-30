@@ -87,7 +87,8 @@ public enum UIPanels {
     PnlMainMenu,
     PnlWardrobe,
     PnlGamePlay,
-    PnlLeaderboard
+    PnlLeaderboard,
+    PnlSelectablePowerups
 }
 
 public enum TowerProp{

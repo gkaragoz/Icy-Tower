@@ -10,6 +10,7 @@ public class MarketItem {
     private MarketItem_SO _marketItem = null;
 
     public void Init(MarketItem_SO marketItem_SO) {
+        this._marketItem = ScriptableObject.CreateInstance("MarketItem_SO") as MarketItem_SO;
         this._marketItem = marketItem_SO;
     }
 
@@ -48,11 +49,33 @@ public class MarketItem {
     public void SetInflationMultiplier(float value) {
         this._marketItem.InflationMultiplier = value;
 
+        if (GetIsStackable()) {
+            SetCurrentPrice(CalculatePriceByStackedAmount(GetStackedAmount()));
+        }
+        if (GetIsLevelable()) {
+            SetCurrentPrice(CalculatePriceByLevel(GetCurrentLevel()));
+        }
+
         OnMarketItemUpdated?.Invoke();
     }
 
     public void SetCurrentLevel(int level) {
         this._marketItem.CurrentLevel = level;
+
+        OnMarketItemUpdated?.Invoke();
+    }
+
+    public void SetInitialPrice(int price) {
+        this._marketItem.InitialPrice = price;
+
+        SetCurrentPrice(price);
+
+        if (GetIsStackable()) {
+            SetCurrentPrice(CalculatePriceByStackedAmount(GetStackedAmount()));
+        }
+        if (GetIsLevelable()) {
+            SetCurrentPrice(CalculatePriceByLevel(GetCurrentLevel()));
+        }
 
         OnMarketItemUpdated?.Invoke();
     }
@@ -130,6 +153,10 @@ public class MarketItem {
         return this._marketItem.CurrentLevel;
     }
 
+    public int GetInitialPrice() {
+        return this._marketItem.InitialPrice;
+    }
+
     public int GetCurrentPrice() {
         return this._marketItem.CurrentPrice;
     }
@@ -167,20 +194,22 @@ public class MarketItem {
 
     private int CalculatePriceByLevel(int level) {
         int currentPrice = this._marketItem.CurrentPrice;
+        int finalPrice = (int)(GetInitialPrice() * level * GetInflationMultiplier());
 
-        if (level == 0) {
-            return currentPrice * 2;
+        if (level == 1) {
+            return currentPrice;
         } else {
-            return currentPrice * level;
+            return finalPrice;
         }
     }
     private int CalculatePriceByStackedAmount(int stackedAmount) {
         int currentPrice = this._marketItem.CurrentPrice;
+        int finalPrice = (int)(GetInitialPrice() * stackedAmount * GetInflationMultiplier());
 
         if (stackedAmount == 0) {
-            return currentPrice * 2;
+            return currentPrice;
         } else {
-            return currentPrice * stackedAmount;
+            return finalPrice;
         }
     }
 

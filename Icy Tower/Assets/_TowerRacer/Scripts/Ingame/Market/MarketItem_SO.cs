@@ -20,6 +20,8 @@ public class MarketItem_SO : ScriptableObject {
     [SerializeField]
     private float _inflationMultiplier = 1f;
     [SerializeField]
+    private int _initialPrice;
+    [SerializeField]
     private int _currentLevel;
     [SerializeField]
     private int _currentPrice;
@@ -72,6 +74,11 @@ public class MarketItem_SO : ScriptableObject {
     public int CurrentLevel {
         get { return _currentLevel; }
         set { _currentLevel = value; }
+    }
+
+    public int InitialPrice {
+        get { return _initialPrice; }
+        set { _initialPrice = value; }
     }
 
     public int CurrentPrice {

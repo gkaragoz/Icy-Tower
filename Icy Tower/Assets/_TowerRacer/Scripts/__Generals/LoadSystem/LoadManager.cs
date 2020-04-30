@@ -63,7 +63,7 @@ public class LoadManager : MonoBehaviour {
     public void FetchMarket(Action<bool> isSuccess) {
         MarketService.instance.Fetch(
             (items) => {
-                MarketManager.instance.Init(items);
+                MarketManager.instance.SetTempFetchedData(items);
                 isSuccess(true);
             },
             (errorMessage) => {
@@ -71,8 +71,8 @@ public class LoadManager : MonoBehaviour {
             });
     }
 
-    public void LoadAccount(bool isOfflineMode) {
-        Account.instance.Init(isOfflineMode);
+    public void LoadAccount(bool hasFetchedData) {
+        Account.instance.Init(hasFetchedData);
 
         OnAccountLoaded?.Invoke();
     }
