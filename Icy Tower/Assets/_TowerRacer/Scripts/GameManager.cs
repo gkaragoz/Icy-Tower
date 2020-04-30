@@ -53,14 +53,14 @@ public class GameManager : MonoBehaviour {
 
         _loadManager.FetchMarket(
             (isSuccess) => {
-                _loadManager.LoadAccount(false);
+                _loadManager.LoadAccount(isSuccess);
             });
     }
 
     private void OnGPGSAccountInitiailzationFailed() {
         Debug.Log("OnGPGSAccountInitiailzationFailed!");
 
-        _loadManager.LoadAccount(true);
+        _loadManager.LoadAccount(false);
     }
 
     private void OnPlayFabAccountInitializationBegin() {
@@ -80,17 +80,16 @@ public class GameManager : MonoBehaviour {
                 Leaderboard.InitializeLeaderboard();
             });
 
-
         _loadManager.FetchMarket(
             (isSuccess) => {
-                _loadManager.LoadAccount(false);
+                _loadManager.LoadAccount(isSuccess);
             });
     }
 
     private void OnPlayFabAccountInitiailzationFailed() {
         Debug.Log("OnPlayFabAccountInitiailzationFailed!");
 
-        _loadManager.LoadAccount(true);
+        _loadManager.LoadAccount(false);
     }
 
     private void OnAccountLoaded() {

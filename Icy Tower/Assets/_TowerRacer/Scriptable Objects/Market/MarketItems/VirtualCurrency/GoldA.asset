@@ -17,8 +17,10 @@ MonoBehaviour:
   _isVirtualCurrency: 1
   _virtualCurrencyOnReward: 0
   _virtualCurrencyAmountOnReward: 500
+  _inflationMultiplier: 1.1
+  _initialPrice: 10
   _currentLevel: 0
-  _currentPrice: 10
+  _currentPrice: 0
   _virtualCurrencyOnBuy: 1
   _isLevelable: 0
   _isInflationable: 0

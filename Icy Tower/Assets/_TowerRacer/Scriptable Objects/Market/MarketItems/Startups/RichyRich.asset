@@ -17,11 +17,13 @@ MonoBehaviour:
   _isVirtualCurrency: 0
   _virtualCurrencyOnReward: 0
   _virtualCurrencyAmountOnReward: 0
-  _currentLevel: 0
-  _currentPrice: 100
+  _inflationMultiplier: 1.1
+  _initialPrice: 100
+  _currentLevel: 1
+  _currentPrice: 0
   _virtualCurrencyOnBuy: 0
   _isLevelable: 0
   _isInflationable: 1
   _isStackable: 1
-  _stackedAmount: 2
+  _stackedAmount: 0
   _hasPermanentItemPurchased: 0
