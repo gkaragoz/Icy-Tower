@@ -15,56 +15,18 @@ public class StartingFloorStats : MonoBehaviour{
     #endregion
 
     [SerializeField]
-    private StartingFloorStats_SO _startingFloor = null;
+    private MarketItem _marketItem= null;
 
     [SerializeField]
     private PlatformStats _platformStats = null;
 
-    #region Setters
-
-    public void SetName(string name) {
-        _startingFloor.Name = name;
-    }
-    public void SetLevel(int level) {
-        _startingFloor.Level = level;
-    }
-    
-    public void SetFloorMultiplier(int multiplier) {
-        _startingFloor.FloorMultiplier = multiplier;
-    }
-
-    #endregion
-
-    #region Increasers
-
-    public void LevelUp() {
-        _startingFloor.Level += 1;
-    }
-
-    #endregion
-
-    #region Getters
-
-    public string GetName() {
-        return _startingFloor.Name;
-    }
-
-    public int GetLevel() {
-        return _startingFloor.Level;
-    }
-
-    public int GetFloorMultiplier() {
-        return _startingFloor.FloorMultiplier;
-    }
-    #endregion
-
-    #region
+    #region Custom Methods
 
     public float CalculateStartingPlatformPosition() {
-        if (_startingFloor.Level == 0)
+        if (_marketItem.GetCurrentLevel() == 0)
             return 0f; 
 
-        return ((_startingFloor.Level * _startingFloor.FloorMultiplier) * _platformStats.GetDistanceBetweenPlatforms() ) + PlatformManager.instance.InitialSpawnPosition;
+        return ((_marketItem.GetCurrentLevel() * 10f) * _platformStats.GetDistanceBetweenPlatforms() ) + PlatformManager.instance.InitialSpawnPosition;
     }
 
     #endregion

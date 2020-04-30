@@ -2,22 +2,19 @@
 
 public class PlatformSaver : MonoBehaviour, IHaveSingleSound {
 
-    [Utils.ReadOnly]
     [SerializeField]
-    private PlatformSaverStats _platformSaverStats = null;
-    [Utils.ReadOnly]
+    private MarketItem _marketItem= null;
     [SerializeField]
-    private int _platformCountToMaximize;
+    private int _platformCountToMaximize = 0;
 
 
     private void Start() {
-        _platformSaverStats = GetComponent<PlatformSaverStats>();
-        _platformCountToMaximize = _platformSaverStats.GetPlatformCount();
+        _marketItem.OnMarketItemUpdated += CalculateNewStats;
+        CalculateNewStats();
     }
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "PlatformSaver") {
-            _platformCountToMaximize = _platformSaverStats.GetPlatformCount();
             MaximizePlatformScale();
             PlaySFX(SoundFXTypes.InGame_PowerUp_BlockSaver);
             other.gameObject.SetActive(false);
@@ -39,5 +36,9 @@ public class PlatformSaver : MonoBehaviour, IHaveSingleSound {
 
     public void PlaySFX(SoundFXTypes sfxType) {
         ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
+    }
+
+    private void CalculateNewStats() {
+        _platformCountToMaximize += _marketItem.GetCurrentLevel();
     }
 }

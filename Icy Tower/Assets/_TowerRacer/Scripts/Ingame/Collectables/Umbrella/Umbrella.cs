@@ -8,22 +8,24 @@ public class Umbrella : MonoBehaviour, IHaveSingleSound {
     [Utils.ReadOnly]
     [SerializeField]
     private Rigidbody _rb = null;
-    [Utils.ReadOnly]
     [SerializeField]
-    private UmbrellaStats _umbrellaStats = null;
+    private MarketItem _marketItem= null;
     [Utils.ReadOnly]
     [SerializeField]
     private bool _hasUsedUmbrella = false;
     [SerializeField]
-    [Utils.ReadOnly]
     private float _flyTime = 0f;
+    private float _tempFlyTime = 0f;
+    private float _flySpeed = 15f;
+
 
     private VFX _activeVFX;
 
     private void Start() {
+        _marketItem.OnMarketItemUpdated += CalculateNewStats;
+        CalculateNewStats();
+        _tempFlyTime = _flyTime;
         _rb = GetComponentInParent<Rigidbody>();
-        _umbrellaStats = GetComponent<UmbrellaStats>();
-        _flyTime = _umbrellaStats.GetDuration();
     }
 
     private void FixedUpdate() {
@@ -43,7 +45,7 @@ public class Umbrella : MonoBehaviour, IHaveSingleSound {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Umbrella") {
-            _flyTime = _umbrellaStats.GetDuration();
+            _tempFlyTime = _flyTime;
             _hasUsedUmbrella = true;
             PlayVFX();
             PlaySFX(SoundFXTypes.InGame_Collect_Slot_Powerup);
@@ -54,21 +56,21 @@ public class Umbrella : MonoBehaviour, IHaveSingleSound {
     }
 
     private void StartFly() {
-        _rb.velocity = new Vector3(_rb.velocity.x, _umbrellaStats.GetMoveSpeed(), _rb.velocity.z);
+        _rb.velocity = new Vector3(_rb.velocity.x, _flySpeed, _rb.velocity.z);
     }
 
     private void StopFly() {
         _hasUsedUmbrella = false;
         LevelManager.instance.IsUsingUmbrella = false;
+        _tempFlyTime = _flyTime;
     }
 
     private IEnumerator StopFlying() {
         while (true) {
-            _flyTime--;
-            Debug.Log(_flyTime);
+            _tempFlyTime--;
             yield return new WaitForSeconds(1f);
 
-            if (_flyTime <= 0) {
+            if (_tempFlyTime <= 0) {
                 StopFly();
                 StopVFX();
                 break;
@@ -78,5 +80,10 @@ public class Umbrella : MonoBehaviour, IHaveSingleSound {
 
     public void PlaySFX(SoundFXTypes sfxType) {
         ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
+    }
+    
+    private void CalculateNewStats() {
+        _flyTime += _marketItem.GetCurrentLevel();
+        _tempFlyTime = _flyTime;
     }
 }

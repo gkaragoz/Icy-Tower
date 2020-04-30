@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2261084838768535808}
   - component: {fileID: -57731845289294358}
   - component: {fileID: 2566035226399811746}
-  - component: {fileID: -1356606786121524391}
   m_Layer: 0
   m_Name: SuperCoin
   m_TagString: SuperCoin
@@ -107,19 +106,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f2de54e83af74448e868c27a0dada9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _superCoinStats: {fileID: 0}
---- !u!114 &-1356606786121524391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6058881711128533146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 910071d0b6524ce409f8710873749cc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _superCoin_Template: {fileID: 11400000, guid: d1b6e0ced7324954fb7e4c13915aa8a1,
-    type: 2}
-  _superCoin: {fileID: 0}
+  _marketItem:
+    _marketItem: {fileID: 11400000, guid: f95d251fd5373ae4b848130afcfb88ad, type: 2}

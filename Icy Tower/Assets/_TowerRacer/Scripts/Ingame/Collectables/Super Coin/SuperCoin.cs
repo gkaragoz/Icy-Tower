@@ -2,12 +2,13 @@
 
 public class SuperCoin : MonoBehaviour, IPooledObject, IHaveSingleSound {
 
-    [Utils.ReadOnly]
     [SerializeField]
-    private SuperCoinStats _superCoinStats = null;
+    private MarketItem _marketItem= null;
+    private int _currencyAmount = 25;
 
     private void Start() {
-        _superCoinStats = GetComponent<SuperCoinStats>();
+        _marketItem.OnMarketItemUpdated += CalculateNewStats;
+        CalculateNewStats();
     }
 
     private void PlayVFX() {
@@ -19,7 +20,7 @@ public class SuperCoin : MonoBehaviour, IPooledObject, IHaveSingleSound {
             PlayVFX();
             PlaySFX(SoundFXTypes.InGame_Collect_SuperGold);
 
-            Account.instance.AddVirtualCurrency(_superCoinStats.GetAmount(), VirtualCurrency.Gold);
+            Account.instance.AddVirtualCurrency(_currencyAmount, VirtualCurrency.Gold);
 
             gameObject.SetActive(false);
         }
@@ -31,5 +32,9 @@ public class SuperCoin : MonoBehaviour, IPooledObject, IHaveSingleSound {
 
     public void PlaySFX(SoundFXTypes sfxType) {
         ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
+    }
+
+    private void CalculateNewStats() {
+        _currencyAmount = _currencyAmount * _marketItem.GetCurrentLevel();
     }
 }

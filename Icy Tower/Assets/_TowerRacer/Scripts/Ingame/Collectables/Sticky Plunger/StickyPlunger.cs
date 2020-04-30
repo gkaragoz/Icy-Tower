@@ -11,12 +11,12 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
     private float _forceAmount = 7f;
 
     [Header("DEBUG")]
-    [Utils.ReadOnly]
     [SerializeField]
-    private StickyPlungerStats _stickyPlungerStats = null;
-    [Utils.ReadOnly]
+    private MarketItem _marketItem= null;
     [SerializeField]
-    private float _climbTime = 0;
+    private float _climbTime = 0f;
+    private float _tempClimbTime = 0f;
+    private float _moveSpeed = 15f;
     [Utils.ReadOnly]
     [SerializeField]
     private bool _hasUsedStickyPlunger = false;
@@ -41,10 +41,12 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
     private VFX _activeVFX;
     private Sound _activeSFX;
 
+
     private void Start() {
+        _marketItem.OnMarketItemUpdated += CalculateNewStats;
+        CalculateNewStats();
+        _tempClimbTime = _climbTime;
         _rb = GetComponentInParent<Rigidbody>();
-        _stickyPlungerStats = GetComponent<StickyPlungerStats>();
-        _climbTime = _stickyPlungerStats.GetDuration(); 
         _characterMotor = GetComponentInParent<CharacterMotor>();
         _playerController = GetComponentInParent<PlayerController>();
     }
@@ -113,11 +115,11 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
             }
         }
         if (other.tag == "StickyPlunger") {
-            _climbTime = _stickyPlungerStats.GetDuration();
+            _tempClimbTime = _climbTime;
             other.gameObject.SetActive(false);
             PlaySFX(SoundFXTypes.InGame_Collect_Slot_Powerup);
             if(_hasUsedStickyPlunger == true) {
-                _climbTime = _stickyPlungerStats.GetDuration();
+                _tempClimbTime = _climbTime;
                 return;
             }
             _hasUsedStickyPlunger = true;
@@ -130,16 +132,16 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
 
     private void StickToWall() {
         _player.position = new Vector3(_wallPositionX, _player.position.y, _player.position.z);
-        _rb.velocity = Vector3.up * _stickyPlungerStats.GetMoveSpeed();
+        _rb.velocity = Vector3.up * _moveSpeed;
     }
 
     private IEnumerator StopStickingToWall() {
         while (true) {
-            _climbTime--;
+            _tempClimbTime--;
 
             yield return new WaitForSeconds(1f);
 
-            if (_climbTime <= 0) {
+            if (_tempClimbTime <= 0) {
                 LeaveWall();
                
                 break;
@@ -194,5 +196,10 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
 
     public void PlaySFX(SoundFXTypes sfxType) {
         ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
+    }
+
+    private void CalculateNewStats() {
+        _climbTime = _climbTime + _marketItem.GetCurrentLevel();
+        _tempClimbTime = _climbTime;
     }
 }
