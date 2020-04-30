@@ -346,7 +346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c335ffb08464e684ab390deca6fb1885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isFetchedByOnline: 0
   _marketDB:
   - _marketItem: {fileID: 11400000, guid: 7541764e61f85b74c93a6ae364958f93, type: 2}
   - _marketItem: {fileID: 11400000, guid: 0096123c48ec42c42bd537f3f6c586d5, type: 2}
@@ -373,6 +372,7 @@ MonoBehaviour:
   - _marketItem: {fileID: 11400000, guid: fdabd09b53dd868468bd2c9effb263fc, type: 2}
   - _marketItem: {fileID: 11400000, guid: c754845dc3da6214babb49986ffb2899, type: 2}
   - _marketItem: {fileID: 11400000, guid: f8d7db3c86b17c04c869cb327ff20a07, type: 2}
+  _tempCatalogItems: []
 --- !u!114 &400179100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,6 +438,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.882353, g: 0.098039225, b: 0.58431375, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -533,7 +534,6 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_CameraOutput: 0
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
@@ -545,6 +545,7 @@ MonoBehaviour:
   m_AntialiasingQuality: 2
   m_StopNaN: 1
   m_Dithering: 0
+  m_ClearDepth: 1
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
@@ -1062,6 +1063,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1261,6 +1263,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.68235296, g: 0.3372549, b: 0.63529414, a: 0.5176471}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1409,6 +1412,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1745,6 +1749,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9333334, g: 0.69411767, b: 0.43137258, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
