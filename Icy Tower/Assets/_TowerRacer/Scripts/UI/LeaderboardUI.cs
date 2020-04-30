@@ -210,13 +210,95 @@ public class LeaderboardUI : MonoBehaviour {
 
     private void SetOrderVisibilityForGlobal() {
         for (int ii = 0; ii < _globalPlayersUI.Length; ii++) {
-            if (ii >= _globalResultPlayers.Count) {
-                _globalPlayersUI[ii].SetActive(false);
+            if (IsThereMoreThanEightPlayer()) {
+                if (AmILast()) {
+
+                    for (int i = 0; i < 3; i++) {
+                        _globalPlayersUI[i].SetData(_globalResultPlayers[i]);
+                        _globalPlayersUI[i].SetActive(true);
+                    }
+
+                    for (int j = 2; j <= 5; j++) {
+                        _globalPlayersUI[_globalPlayersUI.Length - j].SetData((_globalResultPlayers[_globalResultPlayers.Count - j]));
+                        _globalPlayersUI[_globalPlayersUI.Length - j].SetActive(true);
+                    }
+                    
+                    _globalPlayersUI[_globalPlayersUI.Length - 1].SetData((_globalResultPlayers[_globalResultPlayers.Count - 1]));
+                    _globalPlayersUI[_globalPlayersUI.Length - 1].SetActive(true);
+
+                }else if(GetPlayerCountLowerThanMe() == 1) {
+
+                    for (int i = 0; i < 3; i++) {
+                        _globalPlayersUI[i].SetData(_globalResultPlayers[i]);
+                        _globalPlayersUI[i].SetActive(true);
+                    }
+
+                    for (int j = 3; j <= 5; j++) {
+                        _globalPlayersUI[_globalPlayersUI.Length - j].SetData((_globalResultPlayers[_globalResultPlayers.Count - j]));
+                        _globalPlayersUI[_globalPlayersUI.Length - j].SetActive(true);
+                    }
+
+                    _globalPlayersUI[_globalPlayersUI.Length - 2].SetData((_globalResultPlayers[_globalResultPlayers.Count - 2]));
+                    _globalPlayersUI[_globalPlayersUI.Length - 2].SetActive(true);
+
+                    _globalPlayersUI[_globalPlayersUI.Length - 1].SetData((_globalResultPlayers[_globalResultPlayers.Count - 1]));
+                    _globalPlayersUI[_globalPlayersUI.Length - 1].SetActive(true);
+
+                } else {
+
+                    for (int i = 0; i < 3; i++) {
+                        _globalPlayersUI[i].SetData(_globalResultPlayers[i]);
+                        _globalPlayersUI[i].SetActive(true);
+                    }
+
+                    for (int j = 4; j <= 5; j++) {
+                        _globalPlayersUI[_globalPlayersUI.Length - j].SetData((_globalResultPlayers[_globalResultPlayers.Count - j]));
+                        _globalPlayersUI[_globalPlayersUI.Length - j].SetActive(true);
+                    }
+
+                    _globalPlayersUI[_globalPlayersUI.Length - 3].SetData((_globalResultPlayers[_globalResultPlayers.Count - 3]));
+                    _globalPlayersUI[_globalPlayersUI.Length - 3].SetActive(true);
+
+                    _globalPlayersUI[_globalPlayersUI.Length - 2].SetData((_globalResultPlayers[_globalResultPlayers.Count - 2]));
+                    _globalPlayersUI[_globalPlayersUI.Length - 2].SetActive(true);
+
+                    _globalPlayersUI[_globalPlayersUI.Length - 1].SetData((_globalResultPlayers[_globalResultPlayers.Count - 1]));
+                    _globalPlayersUI[_globalPlayersUI.Length - 1].SetActive(true);
+
+                }
             } else {
                 _globalPlayersUI[ii].SetData(_globalResultPlayers[ii]);
                 _globalPlayersUI[ii].SetActive(true);
             }
         }
+    }
+
+    public bool IsThereMoreThanEightPlayer() {
+        if (_globalResultPlayers.Count > 7) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    private bool AmILast() {
+        if (_globalResultPlayers[_globalResultPlayers.Count - 1].UserID == Library.Authentication.PlayfabCustomAuth.PlayFabID) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private int GetPlayerCountLowerThanMe() {
+        int meIndex = -1;
+        for (int ii = 0; ii < _globalResultPlayers.Count; ii++) {
+            if (_globalResultPlayers[ii].UserID == Library.Authentication.PlayfabCustomAuth.PlayFabID) {
+                meIndex = ii;
+            }
+        }
+
+        return (_globalResultPlayers.Count - 1) - meIndex; 
     }
 
 }
