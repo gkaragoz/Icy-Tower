@@ -40,7 +40,6 @@ public class PlayerStats_SO : ScriptableObject {
     [SerializeField]
     private string _shoesGroup = "0";
 
-
     [SerializeField]
     private string _currentHead = "0,0";
 

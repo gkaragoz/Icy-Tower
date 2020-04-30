@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -60,6 +61,16 @@ public class LoadManager : MonoBehaviour {
         AllowSceneActivation(true);
     }
 
+    public void FetchVC(Action<bool, Dictionary<string, int>> isSuccess) {
+        Library.PlayerData.Currency.VirtualCurrency.GetUserVirtualCurrencies(
+            (vcDict) => {
+                isSuccess(true, vcDict);
+            },
+            (errorMessage) => {
+                isSuccess(false, null);
+            });
+    }
+
     public void FetchMarket(Action<bool> isSuccess) {
         MarketService.instance.Fetch(
             (items) => {
@@ -71,8 +82,8 @@ public class LoadManager : MonoBehaviour {
             });
     }
 
-    public void LoadAccount(bool hasFetchedData) {
-        Account.instance.Init(hasFetchedData);
+    public void LoadAccount(bool hasFetchedData, Dictionary<string, int> vcData) {
+        Account.instance.Init(hasFetchedData, vcData);
 
         OnAccountLoaded?.Invoke();
     }

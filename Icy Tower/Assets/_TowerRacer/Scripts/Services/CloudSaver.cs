@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Reflection;
 
 public class CloudSaver {
 
@@ -40,9 +39,6 @@ public class CloudSaver {
         CloudSaveOnDataTable.GetAllUserData(
             (resultCallback) => {
                 success(resultCallback);
-                foreach (var data in resultCallback) {
-                    Debug.Log(data);
-                }
             }, 
             (errorCallback) => {
                 error(errorCallback);

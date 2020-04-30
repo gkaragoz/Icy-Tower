@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,8 +23,11 @@ public class Account : MonoBehaviour {
 
     [SerializeField]
     private PlayerStats_SO _playerStats = null;
+    public PlayFabVCRewardsHandler RewardsVCRepo { get; set; }
 
     private void Start() {
+        RewardsVCRepo = new PlayFabVCRewardsHandler();
+
         SceneManager.sceneLoaded += OnSceneLoaded;
         GameManager.instance.OnGameStateChanged += OnGameStateChanged;
     }
@@ -52,7 +56,7 @@ public class Account : MonoBehaviour {
     /// <summary>
     /// Read local file or get data from cloud.
     /// </summary>
-    public void Init(bool hasFetchedData) {
+    public void Init(bool hasFetchedData, Dictionary<string, int> fetchedVCData) {
         Debug.Log("Account will initializing...");
 
         PlayerStats_SO readedSO = SaveSystem.LoadPlayer();
@@ -72,6 +76,8 @@ public class Account : MonoBehaviour {
         if (hasFetchedData) {
             // Override cloud market fields to my local.
             MarketManager.instance.OverrideFetchedData();
+            // Check VC rewards.
+            AddVirtualCurrency(fetchedVCData);
         }
 
         // Save my new stats and market and CREATE or UPDATE my local file.
@@ -96,19 +102,47 @@ public class Account : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void AddVirtualCurrency(int amount, VirtualCurrency vc) {
+    public void AddVirtualCurrency(int amount, VirtualCurrency vc, bool save = false) {
         switch (vc) {
             case VirtualCurrency.Gold:
-                AddGold(amount, true);
+                AddGold(amount, save);
                 break;
             case VirtualCurrency.Gem:
-                AddGem(amount, true);
+                AddGem(amount, save);
                 break;
             case VirtualCurrency.Key:
-                AddKey(amount, true);
+                AddKey(amount, save);
                 break;
             default:
                 break;
+        }
+    }
+
+    public void AddVirtualCurrency(Dictionary<string, int> data) {
+        RewardsVCRepo = new PlayFabVCRewardsHandler();
+
+        foreach (KeyValuePair<string, int> vc in data) {
+            if (vc.Value == 0) {
+                continue;
+            }
+
+            Library.PlayerData.Currency.VirtualCurrency.SubtractUserVirtualCurrency(
+            () => {
+                RewardsVCRepo.HasRewardCollected = true;
+
+                if (vc.Key == PlayFabCurrencyCodes.GD.ToString()) {
+                    RewardsVCRepo.RewardedGold = vc.Value;
+                } else if (vc.Key == PlayFabCurrencyCodes.GM.ToString()) {
+                    RewardsVCRepo.RewardedGem = vc.Value;
+                } else if (vc.Key == PlayFabCurrencyCodes.KY.ToString()) {
+                    RewardsVCRepo.RewardedKey = vc.Value;
+                }
+            },
+            (errorAction) => {
+
+            },
+            vc.Key,
+            vc.Value);
         }
     }
 
@@ -116,7 +150,7 @@ public class Account : MonoBehaviour {
         PlayerStats.AddCombo();
 
         if (save)
-            SaveSystem.SavePlayer(_playerStats);
+            Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
@@ -125,7 +159,7 @@ public class Account : MonoBehaviour {
         PlayerStats.AddGold(value);
 
         if (save)
-            SaveSystem.SavePlayer(_playerStats);
+            Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
@@ -134,7 +168,7 @@ public class Account : MonoBehaviour {
         PlayerStats.AddGem(value);
 
         if (save)
-            SaveSystem.SavePlayer(_playerStats);
+            Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
@@ -143,7 +177,7 @@ public class Account : MonoBehaviour {
         PlayerStats.AddKey(value);
 
         if (save)
-            SaveSystem.SavePlayer(_playerStats);
+            Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
@@ -168,7 +202,7 @@ public class Account : MonoBehaviour {
         PlayerStats.DecreaseGold(value);
 
         if (save)
-            SaveSystem.SavePlayer(_playerStats);
+            Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
@@ -177,7 +211,7 @@ public class Account : MonoBehaviour {
         PlayerStats.DecreaseGem(value);
 
         if (save)
-            SaveSystem.SavePlayer(_playerStats);
+            Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
@@ -186,7 +220,7 @@ public class Account : MonoBehaviour {
         PlayerStats.DecreaseKey(value);
 
         if (save)
-            SaveSystem.SavePlayer(_playerStats);
+            Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
@@ -203,7 +237,7 @@ public class Account : MonoBehaviour {
         PlayerStats.SetCurrentScore(value);
 
         if (save)
-            SaveSystem.SavePlayer(_playerStats);
+            Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
@@ -212,7 +246,7 @@ public class Account : MonoBehaviour {
         PlayerStats.SetHighScore(value);
 
         if (save)
-            SaveSystem.SavePlayer(_playerStats);
+            Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }

@@ -80,6 +80,8 @@ public class MarketManager : MonoBehaviour {
 
             return;
         }
+
+        Account.instance.Save();
     }
 
     private void BuyVirtualCurrency(MarketItem item) {

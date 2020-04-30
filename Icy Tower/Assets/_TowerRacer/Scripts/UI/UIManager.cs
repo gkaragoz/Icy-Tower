@@ -49,6 +49,8 @@ public class UIManager : MonoBehaviour{
 
         _settingsPanel.SetController(_selectedControllerType);
 
+        Account.instance.RewardsVCRepo.CheckRewards();
+
         GameManager.instance.OnGameStateChanged += OnGameStateChanged;
     }
 

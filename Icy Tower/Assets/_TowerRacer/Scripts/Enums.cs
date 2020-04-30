@@ -154,3 +154,9 @@ public enum VirtualCurrency {
     Key,
     Real
 }
+
+public enum PlayFabCurrencyCodes {
+    GD,
+    GM,
+    KY
+}
