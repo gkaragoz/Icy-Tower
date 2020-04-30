@@ -3,45 +3,50 @@ using UnityEngine;
 
 public class CoinMagnet : MonoBehaviour, IHaveSingleSound {
 
-    [Utils.ReadOnly]
     [SerializeField]
-    private CoinMagnetStats _coinMagnetStats = null;
-    [Utils.ReadOnly]
+    private MarketItem _marketItem = null;
     [SerializeField]
     private float _radius = 0f;
-    [Utils.ReadOnly]
     [SerializeField]
     private float _duration = 0f;
+    [SerializeField]
+    private float _tempDuration = 0f;
     [SerializeField]
     private SphereCollider _collider = null;
     [SerializeField]
     private GameObject _coinMagnet = null;
 
+    private bool isMagnetActive = false;
+
     private VFX _activeVFX;
 
     private void Start() {
-        _coinMagnetStats = GetComponent<CoinMagnetStats>();
+        _marketItem.OnMarketItemUpdated += CalculateNewStats;
+        CalculateNewStats();
+        _tempDuration = _duration;
         _collider = GetComponentInChildren<SphereCollider>();
-        _radius = _coinMagnetStats.GetRadius();
         _collider.radius = _radius;
-        _duration = _coinMagnetStats.GetDuration();
         _coinMagnet.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "CoinMagnet") {
-            _duration = _coinMagnetStats.GetDuration();
-
-            ActivateCoinMagnet();
             PlayVFX();
             PlaySFX(SoundFXTypes.InGame_Collect_Slot_Powerup);
-
-            StartCoroutine(StopCoinMagnet());
             other.gameObject.SetActive(false);
+
+            if (isMagnetActive) {
+                _tempDuration = _duration;
+                return;
+            }
+
+            ActivateCoinMagnet();
+            StartCoroutine(StopCoinMagnet());
         }
     }
 
     private void ActivateCoinMagnet() {
+        isMagnetActive = true;
         _coinMagnet.SetActive(true);
     }
 
@@ -56,15 +61,17 @@ public class CoinMagnet : MonoBehaviour, IHaveSingleSound {
     }
 
     private void DeactivateCoinMagnet() {
+        isMagnetActive = false;
         _coinMagnet.SetActive(false);
+        _tempDuration = _duration;
     }
 
     private IEnumerator StopCoinMagnet() {
         while (true) {
-            _duration--;
+            _tempDuration--;
             yield return new WaitForSeconds(1f);
 
-            if (_duration <= 0) {
+            if (_tempDuration <= 0) {
                 DeactivateCoinMagnet();
                 StopVFX();
                 break;
@@ -74,6 +81,11 @@ public class CoinMagnet : MonoBehaviour, IHaveSingleSound {
 
     public void PlaySFX(SoundFXTypes sfxType) {
         ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
+    }
+
+    private void CalculateNewStats() {
+        _duration = _duration + _marketItem.GetCurrentLevel();
+        _radius = _radius + (_marketItem.GetCurrentLevel() / 10);
     }
 
 }

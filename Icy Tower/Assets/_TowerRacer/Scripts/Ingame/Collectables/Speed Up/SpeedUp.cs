@@ -7,24 +7,26 @@ public class SpeedUp : MonoBehaviour, IHaveSingleSound {
     [Utils.ReadOnly]
     [SerializeField]
     private CharacterStats _characterStats = null;
-    [Utils.ReadOnly]
     [SerializeField]
-    private SpeedUpStats _speedUpStats = null;
-    [Utils.ReadOnly]
+    private MarketItem _marketItem = null;
     [SerializeField]
     private float _duration = 0f;
+    private float _tempDuration = 0f;
+    private float _speedAmount = 3f;
+
 
     private VFX _activeVFX;
 
     private void Start() {
+        _marketItem.OnMarketItemUpdated += CalculateNewStats;
+        CalculateNewStats();
+        _tempDuration = _duration;
         _characterStats = GetComponentInParent<CharacterStats>();
-        _speedUpStats = GetComponent<SpeedUpStats>();
-        _duration = _speedUpStats.GetDuration();
     }
 
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag =="SpeedUp") {
+        if (other.tag == "SpeedUp") {
             IncreaseCharacterSpeed();
             PlayVFX();
             PlaySFX(SoundFXTypes.InGame_Collect_Slot_Powerup);
@@ -49,23 +51,23 @@ public class SpeedUp : MonoBehaviour, IHaveSingleSound {
 
     private void SetCharacterSpeedToNormal() {
         _characterStats.SetMovementSpeed(CalculateSpeedDecrease());
-        _duration = _speedUpStats.GetDuration();
+        _tempDuration = _duration;
     }
 
     private float CalculateSpeedIncrease() {
-        return _characterStats.GetMovementSpeed() + _speedUpStats.GetSpeedAmount(); 
+        return _characterStats.GetMovementSpeed() + _speedAmount;
     }
 
     private float CalculateSpeedDecrease() {
-        return _characterStats.GetMovementSpeed() - _speedUpStats.GetSpeedAmount();
+        return _characterStats.GetMovementSpeed() - _speedAmount;
     }
 
     private IEnumerator StopSpeedUping() {
         while (true) {
-            _duration--;
+            _tempDuration--;
             yield return new WaitForSeconds(1f);
 
-            if (_duration <= 0) {
+            if (_tempDuration <= 0) {
                 SetCharacterSpeedToNormal();
                 StopVFX();
                 break;
@@ -75,5 +77,10 @@ public class SpeedUp : MonoBehaviour, IHaveSingleSound {
 
     public void PlaySFX(SoundFXTypes sfxType) {
         ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
+    }
+
+    private void CalculateNewStats() {
+        _duration = _duration + _marketItem.GetCurrentLevel();
+        _tempDuration = _duration;
     }
 }

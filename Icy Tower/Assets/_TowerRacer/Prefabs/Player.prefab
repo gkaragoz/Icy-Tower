@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1425937754}
   - component: {fileID: 1425937756}
-  - component: {fileID: 1425937755}
   - component: {fileID: 7711584337921815442}
   m_Layer: 0
   m_Name: TimeSlower
@@ -45,23 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5a7f075ac0e3147979bef5bcfc5438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeSlower: {fileID: 0}
-  _duration: 0
---- !u!114 &1425937755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425937753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93ec4ba488b8f8d478c5b352f0696def, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeSlower_Template: {fileID: 11400000, guid: b4188325636daae4b961948aa9e519db,
-    type: 2}
-  _timeSlower: {fileID: 0}
+  _marketItem:
+    _marketItem: {fileID: 11400000, guid: d878ccdfa525c0747b4ab2f4352b259b, type: 2}
+  _duration: 3
 --- !u!65 &7711584337921815442
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -129,7 +114,6 @@ GameObject:
   m_Component:
   - component: {fileID: 802687397605174616}
   - component: {fileID: 802687397605174618}
-  - component: {fileID: 802687397605174617}
   - component: {fileID: 5260039548040071461}
   m_Layer: 0
   m_Name: Umbrella
@@ -165,23 +149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 0}
-  _umbrellaStats: {fileID: 0}
+  _marketItem:
+    _marketItem: {fileID: 11400000, guid: 7d1ff63a5a2faaf4dbc34506ad995106, type: 2}
   _hasUsedUmbrella: 0
-  _flyTime: 0
---- !u!114 &802687397605174617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802687397605174623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9639c7b347077804cbb9c95794ced848, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  umbrella_Template: {fileID: 11400000, guid: c5b00ad56fc17694c86112d6b3c09ce3, type: 2}
-  _umbrella: {fileID: 0}
+  _flyTime: 5
 --- !u!65 &5260039548040071461
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -205,7 +176,6 @@ GameObject:
   m_Component:
   - component: {fileID: 802687397620052567}
   - component: {fileID: 802687397620052561}
-  - component: {fileID: 802687397620052560}
   - component: {fileID: 5260039547938591655}
   m_Layer: 0
   m_Name: SpeedUp
@@ -241,22 +211,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterStats: {fileID: 0}
-  _speedUpStats: {fileID: 0}
-  _duration: 0
---- !u!114 &802687397620052560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802687397620052566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6a02a1e5ea642d418098ee195df9adf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedUp_Template: {fileID: 11400000, guid: 4c96104d270615743a084260df72f1e8, type: 2}
-  _speedUp: {fileID: 0}
+  _marketItem:
+    _marketItem: {fileID: 11400000, guid: 74b5166ca2d8a0f458274e8c5ef6c46b, type: 2}
+  _duration: 3
 --- !u!65 &5260039547938591655
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5063,7 +5020,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 281070880916137493}
-  - component: {fileID: 5260039548371790373}
   - component: {fileID: 5260039548371790374}
   - component: {fileID: 5260039548371790368}
   m_Layer: 0
@@ -5087,21 +5043,6 @@ Transform:
   m_Father: {fileID: 5260039548835869551}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5260039548371790373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2642037717139389307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08db3acb9ae5e4342a28e93457e4ab02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stickyPlunger_Template: {fileID: 11400000, guid: 81f714a6ff95d0540a28243736d32cd1,
-    type: 2}
-  _stickyPlunger: {fileID: 0}
 --- !u!114 &5260039548371790374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5116,8 +5057,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 5260039548835869551}
   _forceAmount: 10
-  _stickyPlungerStats: {fileID: 0}
-  _climbTime: 0
+  _marketItem:
+    _marketItem: {fileID: 11400000, guid: 8ec5511975013b64cb26310c7a6a3413, type: 2}
+  _climbTime: 5
   _hasUsedStickyPlunger: 0
   _isCollideWithRightWall: 0
   _isCollideWithLeftWall: 0
@@ -5148,7 +5090,6 @@ GameObject:
   - component: {fileID: 2543307567182584137}
   - component: {fileID: 7791939007102948659}
   - component: {fileID: 802687397148859733}
-  - component: {fileID: 802687397148859735}
   m_Layer: 0
   m_Name: CoinMagnetManager
   m_TagString: Untagged
@@ -5183,9 +5124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 417dff6162a4a564f8e60c2206e44739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinMagnetStats: {fileID: 0}
-  _radius: 0
-  _duration: 0
+  _marketItem:
+    _marketItem: {fileID: 11400000, guid: 7541764e61f85b74c93a6ae364958f93, type: 2}
+  _radius: 3
+  _duration: 3
+  _tempDuration: 0
   _collider: {fileID: 802687396728824940}
   _coinMagnet: {fileID: 802687396728824946}
 --- !u!65 &802687397148859733
@@ -5201,21 +5144,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.6, z: 0}
---- !u!114 &802687397148859735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5132881799811541480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd3d9300adb9794c9d65605995ab509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _coinMagnet_Template: {fileID: 11400000, guid: be9edb98ed072f644bd48f87efd7b2b4,
-    type: 2}
-  _coinMagnet: {fileID: 0}
 --- !u!1 &5260039548835869550
 GameObject:
   m_ObjectHideFlags: 0
@@ -5438,7 +5366,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5260039549554800984}
-  - component: {fileID: 5260039549554800985}
   - component: {fileID: 5260039549554800990}
   - component: {fileID: 5260039549554800991}
   m_Layer: 0
@@ -5462,21 +5389,6 @@ Transform:
   m_Father: {fileID: 5260039548835869551}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5260039549554800985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5260039549554800987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc877fa31e3ac274d83e4292bfbf7274, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _platformSaver_Template: {fileID: 11400000, guid: bbdf3546e35fc3d4dbc2329ec795df46,
-    type: 2}
-  _platformSaver: {fileID: 0}
 --- !u!114 &5260039549554800990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5489,8 +5401,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83bf86c68f57e2489fba4b271baa7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _platformSaverStats: {fileID: 0}
-  _platformCountToMaximize: 0
+  _marketItem:
+    _marketItem: {fileID: 11400000, guid: 0096123c48ec42c42bd537f3f6c586d5, type: 2}
+  _platformCountToMaximize: 2
 --- !u!65 &5260039549554800991
 BoxCollider:
   m_ObjectHideFlags: 0

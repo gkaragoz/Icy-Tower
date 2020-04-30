@@ -4,16 +4,17 @@ using UnityEngine;
 public class TimeSlower : MonoBehaviour, IHaveSingleSound {
 
     [Header("DEBUG")]
-    [Utils.ReadOnly]
     [SerializeField]
-    private TimeSlowerStats _timeSlower = null;
+    private MarketItem _marketItem= null;
     [SerializeField]
-    [Utils.ReadOnly]
     private float _duration = 0f;
+    private float _tempDuration = 0f;
+    private float _slowAmount = 2f;
 
     private void Start() {
-        _timeSlower = GetComponent<TimeSlowerStats>();
-        _duration = _timeSlower.GetDuration();
+        _marketItem.OnMarketItemUpdated += CalculateNewStats;
+        CalculateNewStats();
+        _tempDuration = _duration;
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -25,27 +26,21 @@ public class TimeSlower : MonoBehaviour, IHaveSingleSound {
     }
 
     private void SlowTime() {
-        _timeSlower.SetScrollSpeed(CalculateScrollSpeed());
-     //   Camera.main.GetComponent<CameraController>().scrollSpeed = _timeSlower.GetScrollSpeed();
-        StartCoroutine(StopSlowingTime());
+        //TODO : divide cameraSpeed by _slowAmount;
     }
 
     private void SpeedUpTime() {
-        _timeSlower.SetScrollSpeed(2f);
-     //   Camera.main.GetComponent<CameraController>().scrollSpeed = _timeSlower.GetScrollSpeed();
-        _duration = _timeSlower.GetDuration();
+        //TODO : multiplie cameraSpeed by _slowAmount;
+        _tempDuration = _duration;
     }
 
-    private float CalculateScrollSpeed() {
-        return _timeSlower.GetScrollSpeed() / _timeSlower.GetSlowAmount();
-    }
 
     private IEnumerator StopSlowingTime() {
         while (true) {
-            _duration--;
+            _tempDuration--;
             yield return new WaitForSeconds(1f);
 
-            if (_duration <= 0) {
+            if (_tempDuration <= 0) {
                 SpeedUpTime();
                 break;
             }
@@ -54,5 +49,10 @@ public class TimeSlower : MonoBehaviour, IHaveSingleSound {
 
     public void PlaySFX(SoundFXTypes sfxType) {
         ObjectPooler.instance.SpawnFromPool(sfxType.ToString(), transform.position);
+    }
+
+    private void CalculateNewStats() {
+        _duration += _marketItem.GetCurrentLevel();
+        _tempDuration = _duration;
     }
 }
