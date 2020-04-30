@@ -60,6 +60,17 @@ public class LoadManager : MonoBehaviour {
         AllowSceneActivation(true);
     }
 
+    public void FetchMarket(Action<bool> isSuccess) {
+        MarketService.instance.Fetch(
+            (items) => {
+                MarketManager.instance.Init(items);
+                isSuccess(true);
+            },
+            (errorMessage) => {
+                isSuccess(false);
+            });
+    }
+
     public void LoadAccount(bool isOfflineMode) {
         Account.instance.Init(isOfflineMode);
 

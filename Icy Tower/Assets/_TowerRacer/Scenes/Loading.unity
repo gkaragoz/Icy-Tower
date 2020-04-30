@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 400179097}
   - component: {fileID: 400179098}
   - component: {fileID: 400179099}
+  - component: {fileID: 400179100}
   m_Layer: 0
   m_Name: _Account
   m_TagString: Untagged
@@ -345,6 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c335ffb08464e684ab390deca6fb1885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isFetchedByOnline: 0
   _marketDB:
   - _marketItem: {fileID: 11400000, guid: 7541764e61f85b74c93a6ae364958f93, type: 2}
   - _marketItem: {fileID: 11400000, guid: 0096123c48ec42c42bd537f3f6c586d5, type: 2}
@@ -371,6 +373,18 @@ MonoBehaviour:
   - _marketItem: {fileID: 11400000, guid: fdabd09b53dd868468bd2c9effb263fc, type: 2}
   - _marketItem: {fileID: 11400000, guid: c754845dc3da6214babb49986ffb2899, type: 2}
   - _marketItem: {fileID: 11400000, guid: f8d7db3c86b17c04c869cb327ff20a07, type: 2}
+--- !u!114 &400179100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400179096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b2c57d0efe86bc468de6629a8bb0903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &494499385
 GameObject:
   m_ObjectHideFlags: 0

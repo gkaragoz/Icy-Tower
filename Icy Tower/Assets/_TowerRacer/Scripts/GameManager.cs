@@ -51,7 +51,10 @@ public class GameManager : MonoBehaviour {
     private void OnGPGSAccountInitializationSuccess() {
         Debug.Log("OnGPGSAccountInitializationSuccess!");
 
-        _loadManager.LoadAccount(false);
+        _loadManager.FetchMarket(
+            (isSuccess) => {
+                _loadManager.LoadAccount(false);
+            });
     }
 
     private void OnGPGSAccountInitiailzationFailed() {
@@ -77,7 +80,11 @@ public class GameManager : MonoBehaviour {
                 Leaderboard.InitializeLeaderboard();
             });
 
-        _loadManager.LoadAccount(false);
+
+        _loadManager.FetchMarket(
+            (isSuccess) => {
+                _loadManager.LoadAccount(false);
+            });
     }
 
     private void OnPlayFabAccountInitiailzationFailed() {

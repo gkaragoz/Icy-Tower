@@ -18,6 +18,8 @@ public class MarketItem_SO : ScriptableObject {
     private int _virtualCurrencyAmountOnReward;
 
     [SerializeField]
+    private float _inflationMultiplier = 1f;
+    [SerializeField]
     private int _currentLevel;
     [SerializeField]
     private int _currentPrice;
@@ -60,6 +62,11 @@ public class MarketItem_SO : ScriptableObject {
     public int VirtualCurrencyAmountOnReward {
         get { return _virtualCurrencyAmountOnReward; }
         set { _virtualCurrencyAmountOnReward = value; }
+    }
+
+    public float InflationMultiplier {
+        get { return _inflationMultiplier; }
+        set { _inflationMultiplier = value; }
     }
 
     public int CurrentLevel {
