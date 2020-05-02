@@ -99,6 +99,7 @@ public class Account : MonoBehaviour {
             MarketItemSOs = marketItemSOs
         };
 
+        SaveGame.Encode = true;
         SaveGame.Save<DataRepo>("Data", dataRepo);
         CloudSaver.Sync(dataRepo);
 
