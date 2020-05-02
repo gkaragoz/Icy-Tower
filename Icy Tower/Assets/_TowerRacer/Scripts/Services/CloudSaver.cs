@@ -51,20 +51,10 @@ public class CloudSaver {
         CloudSaveOnDataTable.SetUserData(data);
     }
 
-    public static void Sync(PlayerStats_SO playerStats) {
-        string playerStatsJson = JsonUtility.ToJson(playerStats);
-        MarketItem_SO[] marketItemSOs = new MarketItem_SO[playerStats.MarketItems.Length];
-        for (int ii = 0; ii < marketItemSOs.Length; ii++) {
-            marketItemSOs[ii] = playerStats.MarketItems[ii].GetMarketItemSO();
-        }
+    public static void Sync(DataRepo dataRepo) {
+        string dataJson = Newtonsoft.Json.JsonConvert.SerializeObject(dataRepo);
 
-        DataRepo data = new DataRepo() {
-            PlayerStatsSO = playerStats,
-            MarketItemSOs = marketItemSOs
-        };
-
-        string dataJson = Newtonsoft.Json.JsonConvert.SerializeObject(data);
-        AddOrUpdateUserDatas(new Dictionary<string, string>() { { "dataJson", dataJson } });
+        AddOrUpdateUserDatas(new Dictionary<string, string>() { { "Data", dataJson } });
     }
 
 }

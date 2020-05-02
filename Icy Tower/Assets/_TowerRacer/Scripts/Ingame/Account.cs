@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BayatGames.SaveGameFree;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -34,14 +35,14 @@ public class Account : MonoBehaviour {
 
     private void OnGameStateChanged(GameState previousGameState, GameState newGameState) {
         if (newGameState == GameState.GameOver) {
-            SaveSystem.SavePlayer(_playerStats);
+            Save();
             OnPlayerStatsChanged?.Invoke(PlayerStats);
         }
         if (newGameState == GameState.MainMenu) {
             ResetCurrentScore();
             ResetCombo();
 
-            SaveSystem.SavePlayer(_playerStats);
+            Save();
             OnPlayerStatsChanged?.Invoke(PlayerStats);
         }
     }
@@ -59,17 +60,17 @@ public class Account : MonoBehaviour {
     public void Init(bool hasFetchedData, Dictionary<string, int> fetchedVCData) {
         Debug.Log("Account will initializing...");
 
-        PlayerStats_SO readedSO = SaveSystem.LoadPlayer();
+        DataRepo dataRepo = SaveGame.Load<DataRepo>("Data");
 
         // First time saving game data or local file is broken and creating one.
-        if (readedSO == null) {
+        if (dataRepo == null) {
             _playerStats = ScriptableObject.CreateInstance(typeof(PlayerStats_SO)) as PlayerStats_SO;
             _playerStats.MarketItems = MarketManager.instance.MarketItems;
         }
         // I have a local file. I played before.
         else {
             // Please load local file to my runtime player.
-            _playerStats = readedSO;
+            _playerStats = dataRepo.PlayerStatsSO;
             MarketManager.instance.InitBy(_playerStats.MarketItems);
         }
 
@@ -88,8 +89,18 @@ public class Account : MonoBehaviour {
     }
 
     public void Save() {
-        SaveSystem.SavePlayer(_playerStats);
-        CloudSaver.Sync(_playerStats);
+        MarketItem_SO[] marketItemSOs = new MarketItem_SO[_playerStats.MarketItems.Length];
+        for (int ii = 0; ii < marketItemSOs.Length; ii++) {
+            marketItemSOs[ii] = _playerStats.MarketItems[ii].GetMarketItemSO();
+        }
+
+        DataRepo dataRepo = new DataRepo() {
+            PlayerStatsSO = _playerStats,
+            MarketItemSOs = marketItemSOs
+        };
+
+        SaveGame.Save<DataRepo>("Data", dataRepo);
+        CloudSaver.Sync(dataRepo);
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
@@ -98,7 +109,7 @@ public class Account : MonoBehaviour {
         PlayerStats.AddClothItem(clothType, id);
 
         if (save)
-            SaveSystem.SavePlayer(_playerStats);
+            Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
@@ -256,7 +267,7 @@ public class Account : MonoBehaviour {
         PlayerStats.SetCombo(value);
 
         if (save)
-            SaveSystem.SavePlayer(_playerStats);
+            Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
