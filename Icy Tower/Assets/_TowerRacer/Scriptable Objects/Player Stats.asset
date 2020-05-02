@@ -22,7 +22,7 @@ MonoBehaviour:
   _headGroup: 0
   _bodyGroup: 0
   _shoesGroup: 0
-  _currentHead: 0
-  _currentBodyUp: 0
-  _currentBodyDown: 0
+  _currentHead: 0,0
+  _currentBodyUp: 0,1,0
+  _currentBodyDown: 1,2,0
   _currentShoes: 0

@@ -63,8 +63,9 @@ public class Account : MonoBehaviour {
 
         // First time saving game data or local file is broken and creating one.
         if (readedSO == null) {
+            _playerStats = ScriptableObject.CreateInstance(typeof(PlayerStats_SO)) as PlayerStats_SO;
             _playerStats.MarketItems = MarketManager.instance.MarketItems;
-        } 
+        }
         // I have a local file. I played before.
         else {
             // Please load local file to my runtime player.
