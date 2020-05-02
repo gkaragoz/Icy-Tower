@@ -134,6 +134,8 @@ public class MarketManager : MonoBehaviour {
                     break;
             }
 
+            Account.instance.DecreaseVirtualCurrency(item.GetCurrentPrice(), vcOnBuy);
+
             OnBuyItem?.Invoke();
         } else {
             // Open not enough virtual currency popup message.
