@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
             int currentFloor = ((int)transform.position.y - (int)PlatformManager.instance.InitialSpawnPosition) / (int)_platformStats.GetDistanceBetweenPlatforms();
             SetScore(currentFloor);
             if (_isFirstStart) {
-                SetPlayerInitPosition();
+ //               SetPlayerInitPosition();
                _isFirstStart = false;
             }
         }
