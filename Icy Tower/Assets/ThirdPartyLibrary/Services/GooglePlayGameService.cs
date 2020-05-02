@@ -190,7 +190,7 @@ namespace Library.GooglePlay
         private void OnPlayFabLinkError(PlayFabError error, Action<bool, string, bool> actionStatus)
         {
             // Specified Error Code
-            if (error.Error == PlayFabErrorCode.LinkedAccountAlreadyClaimed) // GPGS Acc. is already used by another user.
+            if (error.Error == PlayFabErrorCode.LinkedAccountAlreadyClaimed && false) // GPGS Acc. is already used by another user.
             {
                 if (PlayfabCustomAuth.ISGuestAccount())
                 {

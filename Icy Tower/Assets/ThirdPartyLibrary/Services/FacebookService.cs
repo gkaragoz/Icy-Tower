@@ -327,7 +327,7 @@ namespace Library.FaceBook
         private void OnPlayfabFacebookLinkFailed(PlayFabError error, Action<bool, string, bool> actionStatus)
         {
             // Specified Error Code for RECOVER
-            if (error.Error == PlayFabErrorCode.LinkedAccountAlreadyClaimed) // Facebook Acc. is already used by another user.
+            if (error.Error == PlayFabErrorCode.LinkedAccountAlreadyClaimed && false) // Facebook Acc. is already used by another user.
             {
                 Debug.LogWarning("The Facebook Account is already used by another user.");
 
