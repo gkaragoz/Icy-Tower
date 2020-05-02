@@ -54,11 +54,41 @@ public class MarketManager : MonoBehaviour {
         }
     }
 
-    public void BuyItem(int itemId) {
+    public void ProcessBuy(int itemId) {
         MarketItem item = GetMarketItem(itemId);
 
         if (item.GetIsVirtualCurrency()) {
+            BuyVirtualCurrencyViaRealMoney(item);
+
+            Account.instance.Save();
+
+            return;
+        }
+
+        BuyPermanentItemViaRealMoney(item);
+
+        Account.instance.Save();
+    }
+
+    public void BuyItem(int itemId) {
+        MarketItem item = GetMarketItem(itemId);
+
+        if (item.GetVirtualCurrencyOnBuy() == VirtualCurrency.Real) {
+            if (item.GetHasPermanentItemPurchased() == true) {
+                return;
+            }
+
+            MarketService.instance.BuyItem(item.GetId());
+
+            Account.instance.Save();
+
+            return;
+        }
+
+        if (item.GetIsVirtualCurrency()) {
             BuyVirtualCurrency(item);
+
+            Account.instance.Save();
 
             return;
         }
@@ -66,22 +96,18 @@ public class MarketManager : MonoBehaviour {
         if (item.GetIsLevelable()) {
             BuyLevelable(item);
 
+            Account.instance.Save();
+
             return;
         }
 
         if (item.GetIsStackable()) {
             BuyStackable(item);
 
-            return;
-        }
-
-        if (item.GetHasPermanentItemPurchased() == false) {
-            BuyPermanentItem(item);
+            Account.instance.Save();
 
             return;
         }
-
-        Account.instance.Save();
     }
 
     private void BuyVirtualCurrency(MarketItem item) {
@@ -114,6 +140,27 @@ public class MarketManager : MonoBehaviour {
             UIManager.instance.OpenPopup("OH NO!", "Not enough money!");
         }
     }
+    private void BuyVirtualCurrencyViaRealMoney(MarketItem item) {
+        VirtualCurrency vcOnReward = item.GetVirtualCurrencyOnReward();
+        int rewardAmount = item.GetVirtualCurrencyAmountOnReward();
+
+        // Add the virtual currency to my account.
+        switch (vcOnReward) {
+            case VirtualCurrency.Gold:
+                Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Gold);
+                break;
+            case VirtualCurrency.Gem:
+                Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Gem);
+                break;
+            case VirtualCurrency.Key:
+                Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Key);
+                break;
+            default:
+                break;
+        }
+
+        OnBuyItem?.Invoke();
+    }
 
     private void BuyLevelable(MarketItem item) {
         VirtualCurrency vcOnBuy = item.GetVirtualCurrencyOnBuy();
@@ -127,8 +174,6 @@ public class MarketManager : MonoBehaviour {
         if (isAffordable) {
             Account.instance.DecreaseVirtualCurrency(item.GetCurrentPrice(), vcOnBuy);
             item.IncreaseLevel();
-
-            Account.instance.Save();
 
             OnBuyItem?.Invoke();
         } else {
@@ -149,9 +194,7 @@ public class MarketManager : MonoBehaviour {
         if (isAffordable) {
             Account.instance.DecreaseVirtualCurrency(item.GetCurrentPrice(), vcOnBuy);
             item.IncreaseStackedAmount();
-
-            Account.instance.Save();
-
+            
             OnBuyItem?.Invoke();
         } else {
             // Open not enough virtual currency popup message.
@@ -159,26 +202,12 @@ public class MarketManager : MonoBehaviour {
         }
     }
 
-    private void BuyPermanentItem(MarketItem item) {
-        VirtualCurrency vcOnBuy = item.GetVirtualCurrencyOnBuy();
-
-        int myMoney = Account.instance.GetCurrencyAmount(vcOnBuy);
-        bool isAffordable = ExtensionMethods.AmIAbleToBuyIt(myMoney, item.GetCurrentPrice());
-
-        // Decrease my money.
+    private void BuyPermanentItemViaRealMoney(MarketItem item) {
         // Open item.
         // Save account.
-        if (isAffordable) {
-            Account.instance.DecreaseVirtualCurrency(item.GetCurrentPrice(), vcOnBuy);
-            item.OpenClosePermanentItem(true);
+        item.OpenClosePermanentItem(true);
 
-            Account.instance.Save();
-
-            OnBuyItem?.Invoke();
-        } else {
-            // Open not enough virtual currency popup message.
-            UIManager.instance.OpenPopup("OH NO!", "Not enough money!");
-        }
+        OnBuyItem?.Invoke();
     }
 
     public MarketItem GetMarketItem(int itemId) {

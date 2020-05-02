@@ -34,6 +34,8 @@ public class MarketService : MonoBehaviour {
 
     private AndroidIAP _androidIAP;
 
+    public bool IsOnlineMarketActive { get; private set; }
+
     public void Fetch(Action<List<CatalogItem>> items, Action<string> errorMessage) {
         _androidIAP.InitializeIAPItems(
             (actionSuccess) => {
@@ -52,26 +54,36 @@ public class MarketService : MonoBehaviour {
             });
     }
 
+    public void BuyItem(int itemId) {
+        _androidIAP.BuyProduct(itemId.ToString());
+    }
+
     private void OnServiceInitializeSucceed() {
+        IsOnlineMarketActive = true;
+
         // SERVICES ARE READY TO PURCHASE PROCESS
 
         //_androidIAP.BuyProduct("PRODUCT_WEAPON");
     }
 
     private void OnServiceInitializeFailed(string error) {
+        IsOnlineMarketActive = false;
+
         Debug.LogError("OnServiceInitializeFailed! : " + error);
     }
 
-    private void OnValidationSucceed() {
-        Debug.LogError("OnValidationSucceed!");
+    private void OnValidationSucceed(string id) {
+        Debug.LogError("OnValidationSucceed! : " + id);
+
+        MarketManager.instance.ProcessBuy(int.Parse(id));
     }
 
     private void OnValidationFailed(string error) {
         Debug.LogError("OnValidationFailed! : " + error);
     }
 
-    private void OnPurchaseSucceed() {
-        Debug.LogError("OnPurchaseSucceed!");
+    private void OnPurchaseSucceed(string id) {
+        Debug.LogError("OnPurchaseSucceed! : " + id);
     }
 
     private void OnPurchaseFailed(string error) {
