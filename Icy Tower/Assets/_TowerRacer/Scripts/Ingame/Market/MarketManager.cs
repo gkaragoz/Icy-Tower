@@ -31,8 +31,16 @@ public class MarketManager : MonoBehaviour {
         }
     }
 
-    public void InitBy(MarketItem[] marketItems) {
-        _marketDB = marketItems;
+    public void InitBy(MarketItem_SO[] marketItems) {
+        if (marketItems == null) {
+            for (int ii = 0; ii < _marketDB.Length; ii++) {
+                _marketDB[ii].Init(null);
+            }
+        } else {
+            for (int ii = 0; ii < marketItems.Length; ii++) {
+                _marketDB[ii].Init(marketItems[ii]);
+            }
+        }
 
         _marketDB = _marketDB.OrderBy(i => i.GetId()).ToArray();
     }

@@ -60,19 +60,25 @@ public class Account : MonoBehaviour {
     public void Init(bool hasFetchedData, Dictionary<string, int> fetchedVCData) {
         Debug.Log("Account will initializing...");
 
-        DataRepo dataRepo = SaveGame.Load<DataRepo>("Data");
+        DataRepo dataRepo = null;
+        if (SaveGame.Exists("Data")) {
+            string jsonData = SaveGame.Load<string>("Data");
+            dataRepo = Newtonsoft.Json.JsonConvert.DeserializeObject<DataRepo>(jsonData);
+        }
 
         // First time saving game data or local file is broken and creating one.
         if (dataRepo == null) {
             _playerStats = ScriptableObject.CreateInstance(typeof(PlayerStats_SO)) as PlayerStats_SO;
-            _playerStats.MarketItems = MarketManager.instance.MarketItems;
+            MarketManager.instance.InitBy(null);
         }
         // I have a local file. I played before.
         else {
             // Please load local file to my runtime player.
             _playerStats = dataRepo.PlayerStatsSO;
-            MarketManager.instance.InitBy(_playerStats.MarketItems);
+            MarketManager.instance.InitBy(dataRepo.MarketItemSOs);
         }
+
+        _playerStats.MarketItems = MarketManager.instance.MarketItems;
 
         // Is there any fetched data from cloud?
         if (hasFetchedData) {
@@ -99,8 +105,9 @@ public class Account : MonoBehaviour {
             MarketItemSOs = marketItemSOs
         };
 
-        SaveGame.Encode = true;
-        SaveGame.Save<DataRepo>("Data", dataRepo);
+        string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(dataRepo);
+
+        SaveGame.Save<string>("Data", jsonData);
         CloudSaver.Sync(dataRepo);
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);

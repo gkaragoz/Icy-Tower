@@ -10,8 +10,11 @@ public class MarketItem {
     private MarketItem_SO _marketItem = null;
 
     public void Init(MarketItem_SO marketItem_SO) {
-        this._marketItem = ScriptableObject.CreateInstance("MarketItem_SO") as MarketItem_SO;
-        this._marketItem = marketItem_SO;
+        if (marketItem_SO == null) {
+            this._marketItem = UnityEngine.Object.Instantiate(_marketItem);
+        } else {
+            this._marketItem = UnityEngine.Object.Instantiate(marketItem_SO);
+        }
     }
 
     #region Setters
@@ -118,6 +121,12 @@ public class MarketItem {
 
     public void SetHasPermanentItemPurchased(bool value) {
         this._marketItem.HasPermanentItemPurchased = value;
+
+        OnMarketItemUpdated?.Invoke();
+    }
+
+    public void SetMarketItemSO(MarketItem_SO data) {
+        this._marketItem = data;
 
         OnMarketItemUpdated?.Invoke();
     }
