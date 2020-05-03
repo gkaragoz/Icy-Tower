@@ -7,11 +7,11 @@ public class MarketItemUIBase : MonoBehaviour {
     [SerializeField]
     protected MarketItem _marketItem = null;
     [SerializeField]
-    private Button _btnBuy = null;
+    protected Button _btnBuy = null;
     [SerializeField]
-    private TextMeshProUGUI _txtPrice = null;
+    protected TextMeshProUGUI _txtPrice = null;
     [SerializeField]
-    private TextMeshProUGUI _txtName = null;
+    protected TextMeshProUGUI _txtName = null;
 
     private void Start() {
         SetMarketItem();

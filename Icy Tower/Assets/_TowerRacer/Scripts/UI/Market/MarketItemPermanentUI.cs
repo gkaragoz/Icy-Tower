@@ -10,8 +10,8 @@ public class MarketItemPermanentUI : MarketItemUIBase {
 
         if (_hasBuyedBefore) {
             //Show tick ui.
-        } else {
-            //Show buy ui.
+            _btnBuy.interactable = false;
+            _txtPrice.SetText("Owned!");
         }
     }
 
