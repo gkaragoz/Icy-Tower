@@ -202,7 +202,7 @@ public class Account : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void DecreaseVirtualCurrency(int amount, VirtualCurrency vc) {
+    public void DecreaseVirtualCurrency(float amount, VirtualCurrency vc) {
         switch (vc) {
             case VirtualCurrency.Gold:
                 DecreaseGold(amount, true);
@@ -218,7 +218,7 @@ public class Account : MonoBehaviour {
         }
     }
 
-    private void DecreaseGold(int value, bool save = false) {
+    private void DecreaseGold(float value, bool save = false) {
         PlayerStats.DecreaseGold(value);
 
         if (save)
@@ -227,7 +227,7 @@ public class Account : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    private void DecreaseGem(int value, bool save = false) {
+    private void DecreaseGem(float value, bool save = false) {
         PlayerStats.DecreaseGem(value);
 
         if (save)
@@ -236,7 +236,7 @@ public class Account : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    private void DecreaseKey(int value, bool save = false) {
+    private void DecreaseKey(float value, bool save = false) {
         PlayerStats.DecreaseKey(value);
 
         if (save)

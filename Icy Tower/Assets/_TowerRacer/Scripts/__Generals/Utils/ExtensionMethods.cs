@@ -7,7 +7,7 @@ public static class ExtensionMethods {
         return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
     }
 
-    public static bool AmIAbleToBuyIt(int myCurrencyAmount, int price) {
+    public static bool AmIAbleToBuyIt(int myCurrencyAmount, float price) {
         if (myCurrencyAmount - price < 0) {
             return false;
         } else {

@@ -20,11 +20,11 @@ public class MarketItem_SO : ScriptableObject {
     [SerializeField]
     private float _inflationMultiplier = 1f;
     [SerializeField]
-    private int _initialPrice;
+    private float _initialPrice;
     [SerializeField]
     private int _currentLevel;
     [SerializeField]
-    private int _currentPrice;
+    private float _currentPrice;
     [SerializeField]
     [JsonConverter(typeof(StringEnumConverter))]
     private VirtualCurrency _virtualCurrencyOnBuy;
@@ -76,12 +76,12 @@ public class MarketItem_SO : ScriptableObject {
         set { _currentLevel = value; }
     }
 
-    public int InitialPrice {
+    public float InitialPrice {
         get { return _initialPrice; }
         set { _initialPrice = value; }
     }
 
-    public int CurrentPrice {
+    public float CurrentPrice {
         get { return _currentPrice; }
         set { _currentPrice = value; }
     }

@@ -35,8 +35,8 @@ public class PlayerStats : MonoBehaviour {
 
     #region Decreasers
 
-    public void DecreaseGold(int value) {
-        _player.Gold -= value;
+    public void DecreaseGold(float value) {
+        _player.Gold -= (int)value;
 
         if (_player.Gold < 0) {
             _player.Gold = 0;
@@ -44,8 +44,8 @@ public class PlayerStats : MonoBehaviour {
         }
     }
 
-    public void DecreaseKey(int value) {
-        _player.Key -= value;
+    public void DecreaseKey(float value) {
+        _player.Key -= (int)value;
         
         if (_player.Key < 0) {
             _player.Key = 0;
@@ -53,8 +53,8 @@ public class PlayerStats : MonoBehaviour {
         }
     }
 
-    public void DecreaseGem(int value) {
-        _player.Gem -= value;
+    public void DecreaseGem(float value) {
+        _player.Gem -= (int)value;
 
         if (_player.Gem < 0) {
             _player.Gem = 0;

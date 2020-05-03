@@ -68,7 +68,7 @@ public class MarketItem {
         OnMarketItemUpdated?.Invoke();
     }
 
-    public void SetInitialPrice(int price) {
+    public void SetInitialPrice(float price) {
         this._marketItem.InitialPrice = price;
 
         SetCurrentPrice(price);
@@ -83,7 +83,7 @@ public class MarketItem {
         OnMarketItemUpdated?.Invoke();
     }
 
-    public void SetCurrentPrice(int price) {
+    public void SetCurrentPrice(float price) {
         this._marketItem.CurrentPrice = price;
 
         OnMarketItemUpdated?.Invoke();
@@ -162,11 +162,11 @@ public class MarketItem {
         return this._marketItem.CurrentLevel;
     }
 
-    public int GetInitialPrice() {
+    public float GetInitialPrice() {
         return this._marketItem.InitialPrice;
     }
 
-    public int GetCurrentPrice() {
+    public float GetCurrentPrice() {
         return this._marketItem.CurrentPrice;
     }
 
@@ -201,8 +201,8 @@ public class MarketItem {
 
     #region Custom Methods
 
-    private int CalculatePriceByLevel(int level) {
-        int currentPrice = this._marketItem.CurrentPrice;
+    private float CalculatePriceByLevel(int level) {
+        float currentPrice = this._marketItem.CurrentPrice;
         int finalPrice = (int)(GetInitialPrice() * level * GetInflationMultiplier());
 
         if (level == 1) {
@@ -211,9 +211,9 @@ public class MarketItem {
             return finalPrice;
         }
     }
-    private int CalculatePriceByStackedAmount(int stackedAmount) {
-        int currentPrice = this._marketItem.CurrentPrice;
-        int finalPrice = (int)(GetInitialPrice() * stackedAmount * GetInflationMultiplier());
+    private float CalculatePriceByStackedAmount(float stackedAmount) {
+        float currentPrice = this._marketItem.CurrentPrice;
+        float finalPrice = (int)(GetInitialPrice() * stackedAmount * GetInflationMultiplier());
 
         if (stackedAmount == 0) {
             return currentPrice;
@@ -224,13 +224,13 @@ public class MarketItem {
 
     public void IncreaseLevel() {
         int currentLevel = GetCurrentLevel();
-        int currentPrice = GetCurrentPrice();
+        float currentPrice = GetCurrentPrice();
 
         int newLevel = ++currentLevel;
         SetCurrentLevel(newLevel);
 
         if (GetIsInflationable()) {
-            int newPrice = CalculatePriceByLevel(newLevel);
+            float newPrice = CalculatePriceByLevel(newLevel);
             SetCurrentPrice(newPrice);
         }
 
@@ -243,7 +243,7 @@ public class MarketItem {
         SetStackedAmount(newStackedAmount);
 
         if (GetIsInflationable()) {
-            int newPrice = CalculatePriceByStackedAmount(newStackedAmount);
+            float newPrice = CalculatePriceByStackedAmount(newStackedAmount);
             SetCurrentPrice(newPrice);
         }
 
