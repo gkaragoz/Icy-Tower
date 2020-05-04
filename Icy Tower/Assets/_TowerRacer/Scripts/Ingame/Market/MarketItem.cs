@@ -15,6 +15,7 @@ public class MarketItem {
         } else {
             this._marketItem = UnityEngine.Object.Instantiate(marketItem_SO);
         }
+        this._marketItem.name = this._marketItem.Name;
     }
 
     #region Setters
