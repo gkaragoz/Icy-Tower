@@ -89,6 +89,22 @@ public class LeaderboardUI : MonoBehaviour {
         _globalResultPlayers = _globalResultPlayers.OrderBy(p => p.Position).ToList();
     }
 
+    private void CleanNamesOfFacebookPlayers() {
+        try {
+            _facebookResultPlayers.ForEach(x => x.DisplayName = x.DisplayName.Remove(x.DisplayName.Length - 5));
+        } catch (System.Exception e) {
+            Debug.LogWarning(e.Message);
+        }
+    }
+
+    private void CleanNamesOfGlobalPlayers() {
+        try {
+            _globalResultPlayers.ForEach(x => x.DisplayName = x.DisplayName.Remove(x.DisplayName.Length - 5));
+        } catch (System.Exception e) {
+            Debug.LogWarning(e.Message);
+        }
+    }
+
     private void OnFetchFacebookDataCompleted(int index, int isSuccess) {
         _isFacebookReady[index] = isSuccess;
 
@@ -99,6 +115,7 @@ public class LeaderboardUI : MonoBehaviour {
 
         if (_isFacebookReady[0] == 1 && _isFacebookReady[1] == 1) {
             OrderFacebookData();
+            CleanNamesOfFacebookPlayers();
             SetOrderVisibilityForFacebook();
 
             _globalListObj.SetActive(false);
@@ -122,6 +139,7 @@ public class LeaderboardUI : MonoBehaviour {
 
         if (_isGlobalReady[0] == 1 && _isGlobalReady[1] == 1) {
             OrderGlobalData();
+            CleanNamesOfGlobalPlayers();
             SetOrderVisibilityForGlobal();
 
             _facebookListObj.SetActive(false);
