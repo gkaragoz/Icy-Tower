@@ -51,10 +51,10 @@ public class CloudSaver {
         CloudSaveOnDataTable.SetUserData(data);
     }
 
-    public static void Sync(DataRepo dataRepo) {
-        string dataJson = Newtonsoft.Json.JsonConvert.SerializeObject(dataRepo);
-
-        AddOrUpdateUserDatas(new Dictionary<string, string>() { { "Data", dataJson } });
+    public static void Sync(string dataJson) {
+        if (PlayFab.PlayFabClientAPI.IsClientLoggedIn()) {
+            AddOrUpdateUserDatas(new Dictionary<string, string>() { { "Data", dataJson } });
+        }
     }
 
 }

@@ -32,6 +32,13 @@ public class MarketManager : MonoBehaviour {
     }
 
     public void InitBy(MarketItem_SO[] marketItems) {
+        MarketItem_SO[] m = new MarketItem_SO[_marketDB.Length];
+        for (int ii = 0; ii < _marketDB.Length; ii++) {
+            m[ii] = _marketDB[ii].GetMarketItemSO();
+        }
+
+        string str = Newtonsoft.Json.JsonConvert.SerializeObject(m);
+
         if (marketItems == null) {
             for (int ii = 0; ii < _marketDB.Length; ii++) {
                 _marketDB[ii].Init(null);
@@ -67,8 +74,6 @@ public class MarketManager : MonoBehaviour {
 
         if (item.GetIsVirtualCurrency()) {
             BuyVirtualCurrencyViaRealMoney(item);
-
-            Account.instance.Save();
 
             return;
         }

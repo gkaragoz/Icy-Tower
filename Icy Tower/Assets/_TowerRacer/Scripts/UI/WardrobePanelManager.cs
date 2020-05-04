@@ -51,8 +51,7 @@ public class WardrobePanelManager : MonoBehaviour {
 
                 if (ExtensionMethods.AmIAbleToBuyIt(myMoney, headData.price)) {
                     Account.instance.DecreaseVirtualCurrency(headData.price, VirtualCurrency.Gold);
-                    Account.instance.AddCloth(ClothType.Head, headData.id, true);
-                    Account.instance.Save();
+                    Account.instance.AddCloth(ClothType.Head, headData.id);
                 }
 
                 break;
@@ -61,8 +60,7 @@ public class WardrobePanelManager : MonoBehaviour {
 
                 if (ExtensionMethods.AmIAbleToBuyIt(myMoney, bodyData.price)) {
                     Account.instance.DecreaseVirtualCurrency(bodyData.price, VirtualCurrency.Gold);
-                    Account.instance.AddCloth(ClothType.Body, bodyData.id, true);
-                    Account.instance.Save();
+                    Account.instance.AddCloth(ClothType.Body, bodyData.id);
                 }
 
                 break;
@@ -71,8 +69,7 @@ public class WardrobePanelManager : MonoBehaviour {
 
                 if (ExtensionMethods.AmIAbleToBuyIt(myMoney, shoeData.price)) {
                     Account.instance.DecreaseVirtualCurrency(shoeData.price, VirtualCurrency.Gold);
-                    Account.instance.AddCloth(ClothType.Shoe, shoeData.id, true);
-                    Account.instance.Save();
+                    Account.instance.AddCloth(ClothType.Shoe, shoeData.id);
                 }
                 break;
             default:

@@ -24,10 +24,9 @@ public class PlayFabVCRewardsHandler {
         }
     }
     private void AddToAccount() {
-        Account.instance.AddVirtualCurrency(RewardedGold, VirtualCurrency.Gold, false);
-        Account.instance.AddVirtualCurrency(RewardedGem, VirtualCurrency.Gem, false);
-        Account.instance.AddVirtualCurrency(RewardedKey, VirtualCurrency.Key, false);
-        Account.instance.Save();
+        Account.instance.AddVirtualCurrency(RewardedGold, VirtualCurrency.Gold);
+        Account.instance.AddVirtualCurrency(RewardedGem, VirtualCurrency.Gem);
+        Account.instance.AddVirtualCurrency(RewardedKey, VirtualCurrency.Key);
 
         HasRewardCollected = false;
         RewardedGold = 0;

@@ -26,7 +26,11 @@ public class Account : MonoBehaviour {
     private PlayerStats_SO _playerStats = null;
     public PlayFabVCRewardsHandler RewardsVCRepo { get; set; }
 
+    private bool _isInitialized = false;
+
     private void Start() {
+        _isInitialized = false;
+
         RewardsVCRepo = new PlayFabVCRewardsHandler();
 
         SaveGame.EncodePassword = Strings.ENC_PW;
@@ -55,6 +59,18 @@ public class Account : MonoBehaviour {
         PlayerStats.Init(_playerStats);
 
         Debug.Log("Player stats has been assigned.");
+    }
+
+    private void OnApplicationQuit() {
+        Debug.Log("OnApplicationQuit");
+
+        Save();
+    }
+
+    private void OnApplicationPause(bool pause) {
+        Debug.Log("OnApplicationPause " + pause);
+
+        Save();
     }
 
     /// <summary>
@@ -95,9 +111,15 @@ public class Account : MonoBehaviour {
         Save();
 
         Debug.Log("User account & market has been initialized.");
+
+        _isInitialized = true;
     }
 
     public void Save() {
+        if (_isInitialized == false) {
+            return;
+        }
+
         MarketItem_SO[] marketItemSOs = new MarketItem_SO[_playerStats.MarketItems.Length];
         for (int ii = 0; ii < marketItemSOs.Length; ii++) {
             marketItemSOs[ii] = _playerStats.MarketItems[ii].GetMarketItemSO();
@@ -111,30 +133,29 @@ public class Account : MonoBehaviour {
         string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(dataRepo);
 
         SaveGame.Save<string>("Data", jsonData);
-        CloudSaver.Sync(dataRepo);
+        CloudSaver.Sync(jsonData);
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void AddCloth(ClothType clothType, string id, bool save = false) {
+    public void AddCloth(ClothType clothType, string id) {
         PlayerStats.AddClothItem(clothType, id);
 
-        if (save)
-            Save();
+        Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void AddVirtualCurrency(int amount, VirtualCurrency vc, bool save = false) {
+    public void AddVirtualCurrency(int amount, VirtualCurrency vc) {
         switch (vc) {
             case VirtualCurrency.Gold:
-                AddGold(amount, save);
+                AddGold(amount);
                 break;
             case VirtualCurrency.Gem:
-                AddGem(amount, save);
+                AddGem(amount);
                 break;
             case VirtualCurrency.Key:
-                AddKey(amount, save);
+                AddKey(amount);
                 break;
             default:
                 break;
@@ -169,38 +190,32 @@ public class Account : MonoBehaviour {
         }
     }
 
-    public void AddCombo(bool save = false) {
+    public void AddCombo() {
         PlayerStats.AddCombo();
 
-        if (save)
-            Save();
-
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    private void AddGold(int value, bool save = false) {
+    private void AddGold(int value) {
         PlayerStats.AddGold(value);
 
-        if (save)
-            Save();
+        Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    private void AddGem(int value, bool save = false) {
+    private void AddGem(int value) {
         PlayerStats.AddGem(value);
 
-        if (save)
-            Save();
+        Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    private void AddKey(int value, bool save = false) {
+    private void AddKey(int value) {
         PlayerStats.AddKey(value);
 
-        if (save)
-            Save();
+        Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
@@ -208,77 +223,65 @@ public class Account : MonoBehaviour {
     public void DecreaseVirtualCurrency(float amount, VirtualCurrency vc) {
         switch (vc) {
             case VirtualCurrency.Gold:
-                DecreaseGold(amount, true);
+                DecreaseGold(amount);
                 break;
             case VirtualCurrency.Gem:
-                DecreaseGem(amount, true);
+                DecreaseGem(amount);
                 break;
             case VirtualCurrency.Key:
-                DecreaseKey(amount, true);
+                DecreaseKey(amount);
                 break;
             default:
                 break;
         }
     }
 
-    private void DecreaseGold(float value, bool save = false) {
+    private void DecreaseGold(float value) {
         PlayerStats.DecreaseGold(value);
 
-        if (save)
-            Save();
+        Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    private void DecreaseGem(float value, bool save = false) {
+    private void DecreaseGem(float value) {
         PlayerStats.DecreaseGem(value);
 
-        if (save)
-            Save();
+        Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    private void DecreaseKey(float value, bool save = false) {
+    private void DecreaseKey(float value) {
         PlayerStats.DecreaseKey(value);
 
-        if (save)
-            Save();
+        Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
     private void ResetCurrentScore() {
-        SetCurrentScore(0, true);
+        SetCurrentScore(0);
     }
 
     private void ResetCombo() {
-        SetCombo(0, true);
+        SetCombo(0);
     }
 
-    public void SetCurrentScore(int value, bool save = false) {
+    public void SetCurrentScore(int value) {
         PlayerStats.SetCurrentScore(value);
 
-        if (save)
-            Save();
-
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void SetHighScore(int value, bool save = false) {
+    public void SetHighScore(int value) {
         PlayerStats.SetHighScore(value);
 
-        if (save)
-            Save();
-
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void SetCombo(int value, bool save = false) {
+    public void SetCombo(int value) {
         PlayerStats.SetCombo(value);
-
-        if (save)
-            Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
