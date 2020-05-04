@@ -70,6 +70,14 @@ public class GameManager : MonoBehaviour {
     private void OnPlayFabAccountInitializationSuccess() {
         Debug.Log("OnPlayFabAccountInitializationSuccess!");
 
+        if (Library.Authentication.PlayfabCustomAuth.IsFreshAccount) {
+            string randomName = Strings.DISPLAY_NAMES[UnityEngine.Random.Range(0, Strings.DISPLAY_NAMES.Length)];
+            Library.Authentication.PlayfabCustomAuth.UpdateGuestUserDisplayName(
+                randomName, 
+                () => { },
+                () => { });
+        }
+
         Leaderboard.GetScores(
             (resultCallback) => {
                 if (resultCallback.Count == 0) {

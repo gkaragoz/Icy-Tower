@@ -4,6 +4,7 @@ using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
 using System;
+using System.Security.Cryptography;
 
 namespace Library.Authentication
 {
@@ -203,7 +204,7 @@ namespace Library.Authentication
         //Get Mobile Unique ID
         private static string ReturnMobileID()
         {
-            string deviceID = SystemInfo.deviceUniqueIdentifier;
+            string deviceID = SystemInfo.deviceUniqueIdentifier + "zzxccasd";
 
             return deviceID;
         }
@@ -336,6 +337,33 @@ namespace Library.Authentication
         #endregion
 
         #region DISPLAY - NAME
+
+        public static void UpdateGuestUserDisplayName(string firstName, Action actionSuccess, Action actionError)
+        {
+            //Display Name Request
+            var requestDisplayName = new UpdateUserTitleDisplayNameRequest { DisplayName = firstName };
+
+            PlayFabClientAPI.UpdateUserTitleDisplayName(requestDisplayName,
+
+                (result) =>
+                {
+                    Debug.Log("Display Name Changed: " + result.DisplayName);
+
+                    PlayerPrefs.SetString("DISPLAYNAME_GUEST", result.DisplayName);
+
+                    actionSuccess();
+
+                    UserDisplayName = result.DisplayName;
+                },
+
+                (error) =>
+                {
+                    Debug.LogError("Display Name Change Error: " + error.GenerateErrorReport());
+
+                    actionError();
+
+                });
+        }
 
         //Set PlayFab Display Name
         private void SetDisplayName(string PlayFabID)
