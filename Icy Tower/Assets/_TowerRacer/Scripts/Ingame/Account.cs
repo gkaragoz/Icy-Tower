@@ -146,16 +146,16 @@ public class Account : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    public void AddVirtualCurrency(int amount, VirtualCurrency vc) {
+    public void AddVirtualCurrency(int amount, VirtualCurrency vc, bool save) {
         switch (vc) {
             case VirtualCurrency.Gold:
-                AddGold(amount);
+                AddGold(amount, save);
                 break;
             case VirtualCurrency.Gem:
-                AddGem(amount);
+                AddGem(amount, save);
                 break;
             case VirtualCurrency.Key:
-                AddKey(amount);
+                AddKey(amount, save);
                 break;
             default:
                 break;
@@ -196,26 +196,29 @@ public class Account : MonoBehaviour {
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    private void AddGold(int value) {
+    private void AddGold(int value, bool save) {
         PlayerStats.AddGold(value);
 
-        Save();
+        if (save)
+            Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    private void AddGem(int value) {
+    private void AddGem(int value, bool save) {
         PlayerStats.AddGem(value);
 
-        Save();
+        if (save)
+            Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }
 
-    private void AddKey(int value) {
+    private void AddKey(int value, bool save) {
         PlayerStats.AddKey(value);
 
-        Save();
+        if (save)
+            Save();
 
         OnPlayerStatsChanged?.Invoke(PlayerStats);
     }

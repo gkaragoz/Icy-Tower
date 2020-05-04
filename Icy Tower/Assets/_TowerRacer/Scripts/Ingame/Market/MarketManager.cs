@@ -135,13 +135,13 @@ public class MarketManager : MonoBehaviour {
         if (isAffordable) {
             switch (vcOnReward) {
                 case VirtualCurrency.Gold:
-                    Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Gold);
+                    Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Gold, true);
                     break;
                 case VirtualCurrency.Gem:
-                    Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Gem);
+                    Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Gem, true);
                     break;
                 case VirtualCurrency.Key:
-                    Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Key);
+                    Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Key, true);
                     break;
                 default:
                     break;
@@ -162,13 +162,13 @@ public class MarketManager : MonoBehaviour {
         // Add the virtual currency to my account.
         switch (vcOnReward) {
             case VirtualCurrency.Gold:
-                Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Gold);
+                Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Gold, true);
                 break;
             case VirtualCurrency.Gem:
-                Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Gem);
+                Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Gem, true);
                 break;
             case VirtualCurrency.Key:
-                Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Key);
+                Account.instance.AddVirtualCurrency(rewardAmount, VirtualCurrency.Key, true);
                 break;
             default:
                 break;
