@@ -204,7 +204,7 @@ namespace Library.Authentication
         //Get Mobile Unique ID
         private static string ReturnMobileID()
         {
-            string deviceID = SystemInfo.deviceUniqueIdentifier + "zzxccasd";
+            string deviceID = SystemInfo.deviceUniqueIdentifier;
 
             return deviceID;
         }

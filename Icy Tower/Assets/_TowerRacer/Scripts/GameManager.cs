@@ -51,9 +51,22 @@ public class GameManager : MonoBehaviour {
     private void OnGPGSAccountInitializationSuccess() {
         Debug.Log("OnGPGSAccountInitializationSuccess!");
 
+        Leaderboard.GetScores(
+            (resultCallback) => {
+                if (resultCallback.Count == 0) {
+                    Leaderboard.InitializeLeaderboard();
+                }
+            },
+            (errorCallback) => {
+                Leaderboard.InitializeLeaderboard();
+            });
+
         _loadManager.FetchMarket(
             (isSuccess) => {
-                _loadManager.LoadAccount(isSuccess, null);
+                _loadManager.FetchVC(
+                    (isSuccess2, vcData) => {
+                        _loadManager.LoadAccount(isSuccess2, vcData);
+                    });
             });
     }
 
