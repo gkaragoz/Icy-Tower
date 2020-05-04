@@ -165,6 +165,16 @@ public class GameManager : MonoBehaviour {
             case GameState.Gameplay:
                 break;
             case GameState.GameOver:
+                int highScore = Account.instance.GetHighScore();
+                int currentScore = Account.instance.GetCurrentScore();
+
+                if (currentScore >= highScore) {
+                    Account.instance.SetHighScore(currentScore);
+
+                    if (PlayFab.PlayFabClientAPI.IsClientLoggedIn()) {
+                        Leaderboard.SubmitSingleScore(currentScore);
+                    }
+                }
                 break;
             default:
                 break;

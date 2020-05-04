@@ -68,10 +68,6 @@ public class PlayerStats : MonoBehaviour {
 
     public void SetCurrentScore(int value) {
         _player.CurrentScore = value;
-
-        if (_player.CurrentScore >= _player.HighScore) {
-            SetHighScore(_player.CurrentScore);
-        }
     }
 
     public void SetHighScore(int value) {
