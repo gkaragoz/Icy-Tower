@@ -61,7 +61,7 @@ namespace Library.GooglePlay
                     else
                     {
                         // Login in with PlayFab
-                        LoginWithGoogleAccout(serverAuthCode);
+                        LoginWithGoogleAccout(serverAuthCode, actionStatus);
                     }
 
                 }
@@ -77,7 +77,7 @@ namespace Library.GooglePlay
         }
 
         // GPGS login data with PlayFab Integration.
-        public void LoginWithGoogleAccout(string authCode)
+        public void LoginWithGoogleAccout(string authCode, Action<bool, string, bool> actionStatus)
         {
             GetPlayerCombinedInfoRequestParams requestParams = PlayfabCustomAuth.LoginPayloadRequestSetter();
 
@@ -95,10 +95,6 @@ namespace Library.GooglePlay
             }, (result) =>
 
             {   
-                string entityID = result.EntityToken.Entity.Id;
-
-                string entityType = result.EntityToken.Entity.Type;
-
                 Debug.Log("[6] Logged in as " + Social.localUser.userName);
 
                 LoggedIn = true; // Logged in user
@@ -109,20 +105,15 @@ namespace Library.GooglePlay
 
                 PlayerPrefs.SetString("GPGSAUTH", "success"); // PlayFab GPGS Auth succeed.
 
+                actionStatus(true, "Login with Google Play Succeed.", false);
             },
+            
+            (error) =>
+            {
+                actionStatus(false, "Login with Google Play Failed.", false);
 
-            OnPlayFabError); // Error Callback
+            }); // Error Callback
 
-        }
-
-        //Error Callback
-        private void OnPlayFabError(PlayFabError error)
-        {
-            PlayerPrefs.SetString("GPGSAUTH", "failed"); // PlayFab GPGS Auth failed.
-
-            Debug.LogError(error.Error);
-
-            Debug.LogError("GPGS PlayFab - Error Report: " + error.GenerateErrorReport());
         }
 
         #endregion
@@ -331,7 +322,7 @@ namespace Library.GooglePlay
         #region ACCOUNT RECOVER
 
         // User wants to recover account, Recover it.  *** Yes Click Event ***
-        public void RecoverAccount()
+        public void RecoverAccount(Action<bool, string, bool> actionStatus)
         {
             PlayGamesPlatform.Instance.GetAnotherServerAuthCode(true, (string serverAuthCode) =>
             {
@@ -341,7 +332,7 @@ namespace Library.GooglePlay
                 Debug.Log("New Server Auth Code: " + serverAuthCode);
 
                 //Login in with PlayFab
-                LoginWithGoogleAccout(serverAuthCode);
+                LoginWithGoogleAccout(serverAuthCode, actionStatus);
 
             });
         }
