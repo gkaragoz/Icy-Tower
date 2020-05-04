@@ -29,6 +29,9 @@ public class Account : MonoBehaviour {
     private void Start() {
         RewardsVCRepo = new PlayFabVCRewardsHandler();
 
+        SaveGame.EncodePassword = Strings.ENC_PW;
+        SaveGame.Encode = true;
+
         SceneManager.sceneLoaded += OnSceneLoaded;
         GameManager.instance.OnGameStateChanged += OnGameStateChanged;
     }

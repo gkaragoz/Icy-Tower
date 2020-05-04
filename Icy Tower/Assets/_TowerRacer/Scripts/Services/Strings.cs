@@ -17,4 +17,7 @@
     public static string ON_POOL_LOADED_MESSAGE = "Scene preparing...";
     public static string ON_SCENE_READY_MESSAGE = "Scene successfully prepared...";
 
+    // ENCRYPTION PW
+    public const string ENC_PW = "mL#yYur>`6}'Q@7e";
+
 }
