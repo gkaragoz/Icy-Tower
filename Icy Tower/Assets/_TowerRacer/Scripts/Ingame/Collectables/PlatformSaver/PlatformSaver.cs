@@ -53,5 +53,6 @@ public class PlatformSaver : MonoBehaviour, IHaveSingleSound {
 
     private void CalculateNewStats() {
         _platformCountToMaximize += _marketItem.GetCurrentLevel();
+
     }
 }

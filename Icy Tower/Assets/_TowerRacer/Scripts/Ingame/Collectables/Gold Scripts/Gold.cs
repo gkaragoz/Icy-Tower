@@ -4,6 +4,17 @@ using UnityEngine;
 public class Gold : MonoBehaviour, IHaveSingleSound {
 
     private Transform _player = null;
+    [SerializeField]
+    private GameObject _yellowCoinPrefab; //Meshes
+    [SerializeField]
+    private GameObject _redCoinPrefab; //Meshes
+    [SerializeField]
+    private GameObject _greenCoinPrefab; //Meshes
+    [SerializeField]
+    private float _redCoinRates;
+    [SerializeField]
+    private float _greenCoinRates;
+
 
     [SerializeField]
     private int _coinAmount = 1;
@@ -16,6 +27,7 @@ public class Gold : MonoBehaviour, IHaveSingleSound {
     private void Awake() {
         _initialPosition = transform.localPosition;
         _initialQuaternion = transform.localRotation;
+        _greenCoinRates += _redCoinRates;
     }
 
     private void FixedUpdate() {
@@ -26,6 +38,7 @@ public class Gold : MonoBehaviour, IHaveSingleSound {
 
     public void SetVisibility(bool isActive) {
         gameObject.SetActive(isActive);
+        GetRandomCoin();
         if (isActive) {
             transform.localPosition = _initialPosition;
             transform.localRotation = _initialQuaternion;
@@ -33,6 +46,33 @@ public class Gold : MonoBehaviour, IHaveSingleSound {
         }
     }
 
+    public void GetRandomCoin()
+    {
+        float random = UnityEngine.Random.Range(0,100);
+        if (random<_redCoinRates)
+        {
+            _redCoinPrefab.SetActive(true);
+            _yellowCoinPrefab.SetActive(false);
+            _greenCoinPrefab.SetActive(false);
+            _coinAmount = 2;//+ Market Level gelecek
+        }
+        else if (random<_greenCoinRates)
+        {
+            _yellowCoinPrefab.SetActive(false);
+            _redCoinPrefab.SetActive(false);
+            _greenCoinPrefab.SetActive(true);
+            _coinAmount = 3;//+ Market Level gelecek;
+
+        }
+        else
+        {
+            _yellowCoinPrefab.SetActive(true);
+            _redCoinPrefab.SetActive(false);
+            _greenCoinPrefab.SetActive(false);
+            _coinAmount = 1;
+
+        }
+    }
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "FullCollider") {
             PlayVFX();

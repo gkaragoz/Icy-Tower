@@ -101,13 +101,13 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
     private void OnTriggerEnter(Collider other) {
         if (_hasUsedStickyPlunger) {
             if (other.tag == "RightWall") {
-                _wallPositionX = 3.5f;
+                _wallPositionX = 3.25f;
                 _isCollideWithRightWall = true;
                 _isCollideWithLeftWall = false;
                 _characterMotor.AnimationStateEnum = AnimationState.RightRun;
             }
             if (other.tag == "LeftWall") {
-                _wallPositionX = -3.5f;
+                _wallPositionX = -3.25f;
                 _isCollideWithLeftWall = true;
                 _isCollideWithRightWall = false;
                 _characterMotor.AnimationStateEnum = AnimationState.LeftRun;

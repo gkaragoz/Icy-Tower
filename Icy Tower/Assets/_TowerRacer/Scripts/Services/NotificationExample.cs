@@ -18,6 +18,10 @@ public class NotificationExample : MonoBehaviour {
     }
 
     private void Setup() {
+        if (_notifications == null)
+        {
+            return;
+        }
         _notifications.ResetAll();
 
         _notifications.CreateNotificationChannel();
@@ -33,10 +37,15 @@ public class NotificationExample : MonoBehaviour {
     }
 
     private void OnApplicationQuit() {
+
         Setup();
     }
 
     private void OnApplicationPause(bool pause) {
+        if (_notifications==null)
+        {
+            return;
+        }
         if (pause) {
             Setup();
         } else {
