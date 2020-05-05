@@ -19,13 +19,20 @@ public class PlayerController : MonoBehaviour {
     [Utils.ReadOnly]
     [SerializeField]
     private float _horizontal = 0f;
-
     [SerializeField]
     private PlatformStats _platformStats = null;
     private int _conffettiAmount = 100;
     private int _conffettiCounter = 1;
 
     private bool _isFirstStart = true;
+
+    public bool IsMovingLeft {
+        get { return _isMovingLeft; }
+    }
+
+    public bool IsMovingRight {
+        get { return _isMovingRight; }
+    }
 
     private void Awake() {
         _characterManager = GetComponent<CharacterManager>();

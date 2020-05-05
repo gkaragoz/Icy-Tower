@@ -6,7 +6,6 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
 
     [SerializeField]
     private Transform _player = null;
-
     [SerializeField]
     private Transform _playerGFX = null;
     [SerializeField]
@@ -37,6 +36,8 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
     [SerializeField]
     [Utils.ReadOnly]
     private PlayerController _playerController;
+    [SerializeField]
+    private SettingsPanel _settingsPanel;
 
     private Rigidbody _rb = null;
 
@@ -64,18 +65,34 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
     }
 
     public void ChangeWall() {
-        if (_playerController._joystick == null) {
-            return;
-        }
+        if(_settingsPanel.SelectedControllerType == ControllerType.Joystick) {
 
-        if (_playerController._joystick.Horizontal < 0) {
-            if (_isCollideWithRightWall) {
-                JumptToOtherWall();
+            if (_playerController._joystick == null) {
+                return;
+            }
+
+            if (_playerController._joystick.Horizontal < 0) {
+                if (_isCollideWithRightWall) {
+                    JumptToOtherWall();
+                }
+            }
+            if (_playerController._joystick.Horizontal > 0) {
+                if (_isCollideWithLeftWall) {
+                    JumptToOtherWall();
+                }
             }
         }
-        if (_playerController._joystick.Horizontal > 0) {
-            if (_isCollideWithLeftWall) {
-                JumptToOtherWall();
+        else if (_settingsPanel.SelectedControllerType == ControllerType.Button) {
+
+            if (_playerController.IsMovingLeft) {
+                if (_isCollideWithRightWall) {
+                    JumptToOtherWall();
+                }
+            }
+            if (_playerController.IsMovingRight) {
+                if (_isCollideWithLeftWall) {
+                    JumptToOtherWall();
+                }
             }
         }
     }
