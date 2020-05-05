@@ -19,17 +19,28 @@ public class StartingFloorStats : MonoBehaviour{
 
     [SerializeField]
     private PlatformStats _platformStats = null;
-
+    private int _currentLevel;
     #region Custom Methods
 
+    private void Start()
+    {
+        _marketItem = MarketManager.instance.GetMarketItem(_marketItem.GetId());
+        _marketItem.OnMarketItemUpdated += CalculateNewStats;
+
+    }
+   void CalculateNewStats()
+    {
+        _currentLevel = _marketItem.GetCurrentLevel();
+    }
+
     public float CalculateStartingPlatformPosition() {
-        if (_marketItem.GetCurrentLevel() == 0)
+        if (_currentLevel == 0)
         {
-            Debug.Log("Burda:0"+_marketItem.GetCurrentLevel());
+            Debug.Log("Burda:0"+ _currentLevel);
             return 0f;
         }
-        Debug.Log("Start Pos :" + ((_marketItem.GetCurrentLevel() * 10f) * _platformStats.GetDistanceBetweenPlatforms()) + PlatformManager.instance.InitialSpawnPosition);
-        return ((_marketItem.GetCurrentLevel() * 10f) * _platformStats.GetDistanceBetweenPlatforms() ) + PlatformManager.instance.InitialSpawnPosition;
+        Debug.Log("Start Pos :" + ((_currentLevel * 10f) * _platformStats.GetDistanceBetweenPlatforms()) + PlatformManager.instance.InitialSpawnPosition);
+        return ((_currentLevel * 10f) * _platformStats.GetDistanceBetweenPlatforms() ) + PlatformManager.instance.InitialSpawnPosition;
     }
 
     #endregion

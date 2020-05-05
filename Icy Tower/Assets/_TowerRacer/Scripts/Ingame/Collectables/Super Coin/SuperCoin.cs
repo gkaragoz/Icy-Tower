@@ -7,6 +7,8 @@ public class SuperCoin : MonoBehaviour, IPooledObject, IHaveSingleSound {
     private int _currencyAmount = 25;
 
     private void Start() {
+        _marketItem = MarketManager.instance.GetMarketItem(_marketItem.GetId());
+
         _marketItem.OnMarketItemUpdated += CalculateNewStats;
         CalculateNewStats();
     }
@@ -35,6 +37,6 @@ public class SuperCoin : MonoBehaviour, IPooledObject, IHaveSingleSound {
     }
 
     private void CalculateNewStats() {
-        _currencyAmount = _currencyAmount * _marketItem.GetCurrentLevel();
+        _currencyAmount = 25 * _marketItem.GetCurrentLevel();
     }
 }

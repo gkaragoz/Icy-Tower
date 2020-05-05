@@ -18,6 +18,7 @@ public class SpeedUp : MonoBehaviour, IHaveSingleSound {
     private VFX _activeVFX;
 
     private void Start() {
+        _marketItem = MarketManager.instance.GetMarketItem(_marketItem.GetId());
         _marketItem.OnMarketItemUpdated += CalculateNewStats;
         CalculateNewStats();
         _tempDuration = _duration;
@@ -80,7 +81,7 @@ public class SpeedUp : MonoBehaviour, IHaveSingleSound {
     }
 
     private void CalculateNewStats() {
-        _duration = _duration + _marketItem.GetCurrentLevel();
+        _duration = 3+ _marketItem.GetCurrentLevel();
         _tempDuration = _duration;
     }
 }

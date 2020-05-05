@@ -15,6 +15,7 @@ public class Gold : MonoBehaviour, IHaveSingleSound {
     [SerializeField]
     private float _greenCoinRates;
 
+    private int _goldMarketValue;
 
     [SerializeField]
     private int _coinAmount = 1;
@@ -28,6 +29,12 @@ public class Gold : MonoBehaviour, IHaveSingleSound {
         _initialPosition = transform.localPosition;
         _initialQuaternion = transform.localRotation;
         _greenCoinRates += _redCoinRates;
+    }
+
+
+    public void SetColorfulGoldValue(int value)
+    {
+        _goldMarketValue = value;
     }
 
     private void FixedUpdate() {
@@ -54,14 +61,15 @@ public class Gold : MonoBehaviour, IHaveSingleSound {
             _redCoinPrefab.SetActive(true);
             _yellowCoinPrefab.SetActive(false);
             _greenCoinPrefab.SetActive(false);
-            _coinAmount = 2;//+ Market Level gelecek
+            _coinAmount = 1+ _goldMarketValue; 
+            
         }
         else if (random<_greenCoinRates)
         {
             _yellowCoinPrefab.SetActive(false);
             _redCoinPrefab.SetActive(false);
             _greenCoinPrefab.SetActive(true);
-            _coinAmount = 3;//+ Market Level gelecek;
+            _coinAmount = 2+_goldMarketValue;
 
         }
         else

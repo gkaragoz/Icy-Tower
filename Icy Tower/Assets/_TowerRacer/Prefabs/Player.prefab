@@ -5056,6 +5056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 5260039548835869551}
+  _playerGFX: {fileID: 4456994926574358970}
   _forceAmount: 10
   _marketItem:
     _marketItem: {fileID: 11400000, guid: 8ec5511975013b64cb26310c7a6a3413, type: 2}

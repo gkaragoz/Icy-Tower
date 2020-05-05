@@ -17,6 +17,7 @@ public class PlatformSaver : MonoBehaviour, IHaveSingleSound {
     }
 
     private void Start() {
+        _marketItem = MarketManager.instance.GetMarketItem(_marketItem.GetId());
         _marketItem.OnMarketItemUpdated += CalculateNewStats;
         CalculateNewStats();
     }
@@ -52,7 +53,7 @@ public class PlatformSaver : MonoBehaviour, IHaveSingleSound {
     }
 
     private void CalculateNewStats() {
-        _platformCountToMaximize += _marketItem.GetCurrentLevel();
+        _platformCountToMaximize = _marketItem.GetCurrentLevel()+1;
 
     }
 }

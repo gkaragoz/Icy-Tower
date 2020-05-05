@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7600886730784726782}
   - component: {fileID: 3095080110121595251}
   m_Layer: 0
-  m_Name: BigSquareGoldHolder
+  m_Name: BigSquareGoldHolder_Yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,6 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec74e7b4e1ac83d4e95c5714bde9d2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _marketItem:
+    _marketItem: {fileID: 11400000, guid: 7374b0b6787e9814fbf7eaf7e7ea00b1, type: 2}
 --- !u!1001 &617887317795351675
 PrefabInstance:
   m_ObjectHideFlags: 0

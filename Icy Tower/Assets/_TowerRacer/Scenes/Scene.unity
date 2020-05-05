@@ -15211,8 +15211,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5dbd669f1f7d954bb64c2d2c04f5892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _richyRichMarketItem:
+    _marketItem: {fileID: 11400000, guid: 8d55785090dd12a40820ab7325776b93, type: 2}
+  _powerUpPoolMarketItem:
+    _marketItem: {fileID: 11400000, guid: 44c9ddb86b28a854bbad2d8247a68887, type: 2}
   _initialPowerUpSpawnFloor: 50
   _nextPowerUpSpawnFloor: 0
+  _powerUpSpawnRateMultiplier: 1
+  _richyRichMultiplier: 1
   _nextGoldSpawnFloor: 0
   _keySpawnFloor: 0
   _hasKeySpawned: 0

@@ -22,6 +22,7 @@ public class Umbrella : MonoBehaviour, IHaveSingleSound {
     private VFX _activeVFX;
 
     private void Start() {
+        _marketItem = MarketManager.instance.GetMarketItem(_marketItem.GetId());
         _marketItem.OnMarketItemUpdated += CalculateNewStats;
         CalculateNewStats();
         _tempFlyTime = _flyTime;
@@ -83,7 +84,7 @@ public class Umbrella : MonoBehaviour, IHaveSingleSound {
     }
     
     private void CalculateNewStats() {
-        _flyTime += _marketItem.GetCurrentLevel();
+        _flyTime =5+ _marketItem.GetCurrentLevel();
         _tempFlyTime = _flyTime;
     }
 }

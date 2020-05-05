@@ -8,6 +8,8 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
     private Transform _player = null;
 
     [SerializeField]
+    private Transform _playerGFX = null;
+    [SerializeField]
     private float _forceAmount = 7f;
 
     [Header("DEBUG")]
@@ -43,6 +45,7 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
 
 
     private void Start() {
+        _marketItem = MarketManager.instance.GetMarketItem(_marketItem.GetId());
         _marketItem.OnMarketItemUpdated += CalculateNewStats;
         CalculateNewStats();
         _tempClimbTime = _climbTime;
@@ -101,16 +104,20 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
     private void OnTriggerEnter(Collider other) {
         if (_hasUsedStickyPlunger) {
             if (other.tag == "RightWall") {
+                //.5 X
+                _playerGFX.localPosition = new Vector3(.5f, _playerGFX.localPosition.y, _playerGFX.localPosition.z);
                 _wallPositionX = 3.25f;
                 _isCollideWithRightWall = true;
                 _isCollideWithLeftWall = false;
                 _characterMotor.AnimationStateEnum = AnimationState.RightRun;
             }
             if (other.tag == "LeftWall") {
+                // -.70
                 _wallPositionX = -3.25f;
                 _isCollideWithLeftWall = true;
                 _isCollideWithRightWall = false;
                 _characterMotor.AnimationStateEnum = AnimationState.LeftRun;
+                _playerGFX.localPosition = new Vector3(-.7f, _playerGFX.localPosition.y, _playerGFX.localPosition.z);
 
             }
         }
@@ -175,6 +182,7 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
         } else if (_isCollideWithRightWall) {
             _rb.AddForce(new Vector3(-5, 15, 0), ForceMode.Impulse);
         }
+        _playerGFX.localPosition = new Vector3(0, _playerGFX.localPosition.y, _playerGFX.localPosition.z);
 
         _isCollideWithRightWall = false;
         _isCollideWithLeftWall = false;
@@ -199,7 +207,7 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
     }
 
     private void CalculateNewStats() {
-        _climbTime = _climbTime + _marketItem.GetCurrentLevel();
+        _climbTime = 5 + _marketItem.GetCurrentLevel();
         _tempClimbTime = _climbTime;
     }
 }

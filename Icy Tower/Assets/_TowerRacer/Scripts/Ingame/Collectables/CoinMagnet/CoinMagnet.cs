@@ -21,12 +21,11 @@ public class CoinMagnet : MonoBehaviour, IHaveSingleSound {
     private VFX _activeVFX;
 
     private void Start() {
-        _marketItem.OnMarketItemUpdated += CalculateNewStats;
-        CalculateNewStats();
-        _tempDuration = _duration;
         _collider = GetComponentInChildren<SphereCollider>();
-        _collider.radius = _radius;
+        _marketItem = MarketManager.instance.GetMarketItem(_marketItem.GetId());
+        _marketItem.OnMarketItemUpdated += CalculateNewStats;
         _coinMagnet.SetActive(false);
+        CalculateNewStats();
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -84,8 +83,11 @@ public class CoinMagnet : MonoBehaviour, IHaveSingleSound {
     }
 
     private void CalculateNewStats() {
-        _duration = _duration + _marketItem.GetCurrentLevel();
-        _radius = _radius + (_marketItem.GetCurrentLevel() / 10);
+        _duration = _marketItem.GetCurrentLevel()+2;
+        _radius =  (_marketItem.GetCurrentLevel() / 10) +3;
+        _collider.radius = _radius;
+        _tempDuration = _duration;
+
     }
 
 }

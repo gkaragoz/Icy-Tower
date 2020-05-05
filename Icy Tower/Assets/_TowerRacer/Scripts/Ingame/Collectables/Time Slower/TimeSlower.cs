@@ -9,9 +9,12 @@ public class TimeSlower : MonoBehaviour, IHaveSingleSound {
     [SerializeField]
     private float _duration = 0f;
     private float _tempDuration = 0f;
-    private float _slowAmount = 2f;
 
-    private void Start() {
+
+    private void Start() 
+    {
+        _marketItem = MarketManager.instance.GetMarketItem(_marketItem.GetId());
+
         _marketItem.OnMarketItemUpdated += CalculateNewStats;
         CalculateNewStats();
         _tempDuration = _duration;
@@ -52,7 +55,7 @@ public class TimeSlower : MonoBehaviour, IHaveSingleSound {
     }
 
     private void CalculateNewStats() {
-        _duration += _marketItem.GetCurrentLevel();
+        _duration =3+ _marketItem.GetCurrentLevel();
         _tempDuration = _duration;
     }
 }
