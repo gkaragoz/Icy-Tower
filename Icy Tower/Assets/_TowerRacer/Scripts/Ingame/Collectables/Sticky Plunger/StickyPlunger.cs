@@ -65,33 +65,36 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
     }
 
     public void ChangeWall() {
-        if(_settingsPanel.SelectedControllerType == ControllerType.Joystick) {
+        if (_isCollideWithLeftWall == true || _isCollideWithRightWall ==true) {
 
-            if (_playerController._joystick == null) {
-                return;
-            }
+            if(_settingsPanel.SelectedControllerType == ControllerType.Joystick) {
 
-            if (_playerController._joystick.Horizontal < 0) {
-                if (_isCollideWithRightWall) {
-                    JumptToOtherWall();
+                if (_playerController._joystick == null) {
+                    return;
+                }
+
+                if (_playerController._joystick.Horizontal < 0) {
+                    if (_isCollideWithRightWall) {
+                        JumptToOtherWall();
+                    }
+                }
+                if (_playerController._joystick.Horizontal > 0) {
+                    if (_isCollideWithLeftWall) {
+                        JumptToOtherWall();
+                    }
                 }
             }
-            if (_playerController._joystick.Horizontal > 0) {
-                if (_isCollideWithLeftWall) {
-                    JumptToOtherWall();
-                }
-            }
-        }
-        else if (_settingsPanel.SelectedControllerType == ControllerType.Button) {
+            else if (_settingsPanel.SelectedControllerType == ControllerType.Button) {
 
-            if (_playerController.IsMovingLeft) {
-                if (_isCollideWithRightWall) {
-                    JumptToOtherWall();
+                if (_playerController.IsMovingLeft) {
+                    if (_isCollideWithRightWall) {
+                        JumptToOtherWall();
+                    }
                 }
-            }
-            if (_playerController.IsMovingRight) {
-                if (_isCollideWithLeftWall) {
-                    JumptToOtherWall();
+                if (_playerController.IsMovingRight) {
+                    if (_isCollideWithLeftWall) {
+                        JumptToOtherWall();
+                    }
                 }
             }
         }
