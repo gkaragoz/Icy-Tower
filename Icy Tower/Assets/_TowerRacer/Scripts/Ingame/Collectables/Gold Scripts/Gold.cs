@@ -15,7 +15,7 @@ public class Gold : MonoBehaviour, IHaveSingleSound {
     [SerializeField]
     private float _greenCoinRates;
 
-    private int _goldMarketValue;
+    private int _goldSelectorPossibilityRate = 1;
 
     [SerializeField]
     private int _coinAmount = 1;
@@ -28,13 +28,13 @@ public class Gold : MonoBehaviour, IHaveSingleSound {
     private void Awake() {
         _initialPosition = transform.localPosition;
         _initialQuaternion = transform.localRotation;
-        _greenCoinRates += _redCoinRates;
     }
 
 
     public void SetColorfulGoldValue(int value)
     {
-        _goldMarketValue = value;
+        _goldSelectorPossibilityRate = value;
+        _greenCoinRates = _redCoinRates = 5 * value;
     }
 
     private void FixedUpdate() {
@@ -53,32 +53,26 @@ public class Gold : MonoBehaviour, IHaveSingleSound {
         }
     }
 
-    public void GetRandomCoin()
-    {
+    public void GetRandomCoin() {
+        _redCoinRates += _greenCoinRates;
+
         float random = UnityEngine.Random.Range(0,100);
-        if (random<_redCoinRates)
+        if (random < _greenCoinRates) {
+            _yellowCoinPrefab.SetActive(false);
+            _redCoinPrefab.SetActive(false);
+            _greenCoinPrefab.SetActive(true);
+        }
+        else if (random<_redCoinRates)
         {
             _redCoinPrefab.SetActive(true);
             _yellowCoinPrefab.SetActive(false);
             _greenCoinPrefab.SetActive(false);
-            _coinAmount = 1+ _goldMarketValue; 
-            
-        }
-        else if (random<_greenCoinRates)
-        {
-            _yellowCoinPrefab.SetActive(false);
-            _redCoinPrefab.SetActive(false);
-            _greenCoinPrefab.SetActive(true);
-            _coinAmount = 2+_goldMarketValue;
-
         }
         else
         {
             _yellowCoinPrefab.SetActive(true);
             _redCoinPrefab.SetActive(false);
             _greenCoinPrefab.SetActive(false);
-            _coinAmount = 1;
-
         }
     }
     private void OnTriggerEnter(Collider other) {
