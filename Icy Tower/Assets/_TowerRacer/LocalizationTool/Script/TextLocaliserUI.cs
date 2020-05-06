@@ -1,24 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
-public class TextLocaliserUI : MonoBehaviour
-{
-   TextMeshProUGUI textField;
-  public LocalisedString localisedString;
+public class TextLocaliserUI : MonoBehaviour {
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        textField = GetComponent<TextMeshProUGUI>();
+    public LocalisedString localisedString;
+
+    private TextMeshProUGUI _textField;
+
+    private void Start() {
+        _textField = GetComponent<TextMeshProUGUI>();
+        
         ChangeText();
+
+        LocalizationSystem.OnLanguageChanged += ChangeText;
     }
 
-    public void ChangeText()
-    {
-        textField.text = localisedString.value;
-
+    public void ChangeText() {
+        _textField.text = localisedString.value;
     }
 
 

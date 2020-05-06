@@ -13444,7 +13444,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 44.04 FPS
+  m_text: 42.05 FPS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4634dd7c14f7df147aefd0855d9ccd18, type: 2}
   m_sharedMaterial: {fileID: 2805101894821811369, guid: 4634dd7c14f7df147aefd0855d9ccd18,
@@ -47269,6 +47269,7 @@ GameObject:
   - component: {fileID: 3984649597925356582}
   - component: {fileID: 3984649597925356576}
   - component: {fileID: 3984649597925356577}
+  - component: {fileID: 3984649597925356584}
   m_Layer: 5
   m_Name: txtStatValue
   m_TagString: Untagged
@@ -47276,6 +47277,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3984649597925356584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3984649597925356583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98693567dae5b5468e077c2f32ecf70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localisedString:
+    key: revive
 --- !u!114 &3984649597925775700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56488,7 +56503,6 @@ GameObject:
   - component: {fileID: 3984649598860653127}
   - component: {fileID: 3984649598860653121}
   - component: {fileID: 3984649598860653126}
-  - component: {fileID: 3984649598860653125}
   m_Layer: 5
   m_Name: txtStatValue
   m_TagString: Untagged
@@ -56496,20 +56510,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3984649598860653125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3984649598860653124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f98693567dae5b5468e077c2f32ecf70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  localisedString:
-    key: languagechangetext
 --- !u!114 &3984649598860653126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56528,7 +56528,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Dil ayarlar\u0131n\u0131 de\u011Fi\u015Ftirmek istedi\u011Fine emin misin?"
+  m_text: POPUP DESC
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4634dd7c14f7df147aefd0855d9ccd18, type: 2}
   m_sharedMaterial: {fileID: 2805101894821811369, guid: 4634dd7c14f7df147aefd0855d9ccd18,
@@ -60997,6 +60997,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3984649599299695795}
+        m_MethodName: ChangeLanguage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &3984649599299695757
 RectTransform:
   m_ObjectHideFlags: 0
@@ -61066,6 +61077,7 @@ GameObject:
   - component: {fileID: 3984649599299695758}
   - component: {fileID: 3984649599299695759}
   - component: {fileID: 3984649599299695756}
+  - component: {fileID: 3984649599299695795}
   m_Layer: 5
   m_Name: btnLanguage
   m_TagString: Untagged
@@ -61073,6 +61085,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3984649599299695795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3984649599299695794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a3d73ac9854be4fb7ccf32cfbe1172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _language: 1
 --- !u!222 &3984649599310558253
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -83384,7 +83409,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "T\xFCrk\xE7e"
+  m_text: English
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4634dd7c14f7df147aefd0855d9ccd18, type: 2}
   m_sharedMaterial: {fileID: 2805101894821811369, guid: 4634dd7c14f7df147aefd0855d9ccd18,
@@ -83559,7 +83584,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "T\xFCrk\xE7e"
+  m_text: "Fran\xE7ais"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4634dd7c14f7df147aefd0855d9ccd18, type: 2}
   m_sharedMaterial: {fileID: 2805101894821811369, guid: 4634dd7c14f7df147aefd0855d9ccd18,
@@ -83882,6 +83907,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7112940982621002344}
+        m_MethodName: ChangeLanguage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7112940982621002330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83931,6 +83967,7 @@ GameObject:
   - component: {fileID: 7112940982621002331}
   - component: {fileID: 7112940982621002330}
   - component: {fileID: 7112940982621002329}
+  - component: {fileID: 7112940982621002344}
   m_Layer: 5
   m_Name: btnLanguage
   m_TagString: Untagged
@@ -83938,6 +83975,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7112940982621002344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112940982621002343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a3d73ac9854be4fb7ccf32cfbe1172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _language: 2
 --- !u!1 &7112940982660787918
 GameObject:
   m_ObjectHideFlags: 0
@@ -83950,6 +84000,7 @@ GameObject:
   - component: {fileID: 7112940982660787954}
   - component: {fileID: 7112940982660787955}
   - component: {fileID: 7112940982660787952}
+  - component: {fileID: 7112940982660787919}
   m_Layer: 5
   m_Name: btnLanguage
   m_TagString: Untagged
@@ -83957,6 +84008,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7112940982660787919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112940982660787918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a3d73ac9854be4fb7ccf32cfbe1172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _language: 0
 --- !u!114 &7112940982660787952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84002,6 +84066,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3984649599418446357}
         m_MethodName: OpenGeneralSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7112940982660787919}
+        m_MethodName: ChangeLanguage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

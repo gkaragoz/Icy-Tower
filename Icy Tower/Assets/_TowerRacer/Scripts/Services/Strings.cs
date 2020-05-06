@@ -3,6 +3,9 @@
     // ID
     public static string LEADERBOARD_01 = "Leaderboard01";
 
+    // Language
+    public static string PP_LANGUAGE = "en";
+
     // Messages to users
     public static string ON_GAME_STARTING = "Loading...";
     public static string ON_GPGS_ACCOUNT_INITIALIZATION_BEGIN_MESSAGE = "Trying to login into Google Play Games...";
