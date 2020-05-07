@@ -196,7 +196,7 @@ public class StickyPlunger : MonoBehaviour, IHaveSingleSound, IHaveLoopableSound
 
     private void LeaveWall() {
         _rb.velocity = Vector3.zero;
-        _characterMotor.AnimationStateEnum = AnimationState.Jump;
+        _characterMotor.AnimationStateEnum = AnimationState.JumpBegin;
         if (_isCollideWithLeftWall) {
             _rb.AddForce(new Vector3(5, 15, 0), ForceMode.Impulse);
         } else if (_isCollideWithRightWall) {

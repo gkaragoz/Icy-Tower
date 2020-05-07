@@ -15,13 +15,36 @@ public class CharacterAnimator : MonoBehaviour {
         _animator = GetComponentInChildren<Animator>();
         _characterMotor = GetComponent<CharacterMotor>();
         _characterMotor.OnAnimationStateChanged += PlayJumpAnimation;
+        _characterMotor.OnAnimationStateChanged += PlayJumpMiddleAnimation;
+        _characterMotor.OnAnimationStateChanged += PlayFallAnimation;
         _characterMotor.OnAnimationStateChanged += PlayComboJumpAnimation;
         _characterMotor.OnAnimationStateChanged += PlayRunAnimation;
     }
 
+    private void PlayJumpMiddleAnimation(AnimationState state)
+    {
+        if (state == AnimationState.Fall)
+            _animator.SetTrigger("Fall");
+        else
+        {
+            _animator.ResetTrigger("Fall");
+        }
+    }
+    private void PlayFallAnimation(AnimationState state)
+    {
+        if (state == AnimationState.JumpMiddle)
+            _animator.SetTrigger("JumpMiddle");
+        else
+        {
+            _animator.ResetTrigger("JumpMiddle");
+        }
+    }
     private void PlayJumpAnimation(AnimationState state) {
-        if (state == AnimationState.Jump)
-            _animator.SetTrigger("Jump");
+        if (state == AnimationState.JumpBegin)
+        {
+
+              _animator.SetTrigger("Jump");
+        }
         else {
             _animator.ResetTrigger("Jump");
         }

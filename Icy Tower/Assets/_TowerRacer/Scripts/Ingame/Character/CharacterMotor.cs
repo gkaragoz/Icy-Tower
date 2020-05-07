@@ -64,6 +64,7 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
         } else {
             _boxCollider.enabled = false;
         }
+      
     }
 
     private void FixedUpdate() {
@@ -134,7 +135,16 @@ public class CharacterMotor : MonoBehaviour, IHaveSingleSound {
 
     public void Jump() {
         _rb.AddForce(Vector3.up * (_characterStats.GetJumpPower() + (Mathf.Abs(_rb.velocity.x) / 3f)), ForceMode.Impulse);
-        AnimationStateEnum = AnimationState.Jump;
+        if (AnimationStateEnum==AnimationState.JumpBegin)
+        {
+        AnimationStateEnum = AnimationState.JumpMiddle;
+
+        }
+        else
+        {
+            AnimationStateEnum = AnimationState.JumpBegin;
+
+        }
         PlayVFX();
         PlaySFX(SoundFXTypes.InGame_Player_Jump);
     }
