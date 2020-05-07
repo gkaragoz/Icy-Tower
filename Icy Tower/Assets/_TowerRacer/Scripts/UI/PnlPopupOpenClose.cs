@@ -8,9 +8,9 @@ public class PnlPopupOpenClose : MonoBehaviour {
     [SerializeField]
     private TextMeshProUGUI _txtMessage = null;
 
-    public void SetText(string header, string message) {
+    public void SetText(string header, string messageOrKey) {
         _txtHeader.text = header;
-        _txtMessage.text = message;
+        _txtMessage.text = messageOrKey;
     }
 
 }

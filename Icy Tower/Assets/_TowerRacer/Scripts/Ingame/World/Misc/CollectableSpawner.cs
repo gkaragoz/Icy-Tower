@@ -19,20 +19,9 @@ public class CollectableSpawner : MonoBehaviour
     #endregion
 
     [SerializeField]
-    private MarketItem _richyRichMarketItem=null;
-    [SerializeField]
-    private MarketItem _powerUpPoolMarketItem=null;
-
-
-
-    [SerializeField]
     private int _initialPowerUpSpawnFloor = 0;
     [SerializeField]
     private int _nextPowerUpSpawnFloor = 0;
-    [SerializeField]
-    private float _powerUpSpawnRateMultiplier=1;
-    [SerializeField]
-    private float _richyRichMultiplier=1;
     [SerializeField]
     private int _nextGoldSpawnFloor = 0;
 
@@ -60,43 +49,12 @@ public class CollectableSpawner : MonoBehaviour
 
     private void Start()
     {
-        _richyRichMarketItem = MarketManager.instance.GetMarketItem(_richyRichMarketItem.GetId());
-        _powerUpPoolMarketItem = MarketManager.instance.GetMarketItem(_powerUpPoolMarketItem.GetId());
-
-        _richyRichMarketItem.OnMarketItemUpdated += ChangeRichyRichStats;
-        _powerUpPoolMarketItem.OnMarketItemUpdated += ChangePowerUpPoolStats;
-
-
         _nextGoldSpawnFloor = CalculateNextGoldOffset();
         _nextPowerUpSpawnFloor = _initialPowerUpSpawnFloor;
         _keySpawnFloor = CalculateKeySpawnFloor();
         PlatformManager.instance.OnWantedPlatformSpawnedForPowerUp += SpawnPowerUps;
         PlatformManager.instance.OnWantedPlatformSpawnedForGold += SpawnGolds;
         PlatformManager.instance.OnWantedPlatformSpawnedForKey += SpawnKey;
-    }
-
-    private void ChangePowerUpPoolStats()
-    {
-        if (_powerUpPoolMarketItem.GetHasPermanentItemPurchased())
-        {
-            _powerUpSpawnRateMultiplier = .5f;
-        }
-        else
-        {
-            _powerUpSpawnRateMultiplier = 1;
-        }
-    }
-
-    private void ChangeRichyRichStats()
-    {
-        if (_richyRichMarketItem.GetHasPermanentItemPurchased())
-        {
-            _richyRichMultiplier = .5f;
-        }
-        else
-        {
-            _richyRichMultiplier = 1f;
-        }
     }
 
     private void SpawnPowerUps(int floor)
@@ -148,12 +106,12 @@ public class CollectableSpawner : MonoBehaviour
 
     private int CalculateNextPowerUpOffset()
     {
-        return Mathf.FloorToInt( (_powerUpSpawnRateMultiplier * UnityEngine.Random.Range(1, 5)) + UnityEngine.Random.Range(0, 5));
+        return UnityEngine.Random.Range(1, 5) + UnityEngine.Random.Range(0, 5);
     }
 
     private int CalculateNextGoldOffset()
     {
-        return Mathf.FloorToInt(_richyRichMultiplier *UnityEngine.Random.Range(1, 11));
+        return UnityEngine.Random.Range(1, 11);
     }
 
     private int CalculateKeySpawnFloor()

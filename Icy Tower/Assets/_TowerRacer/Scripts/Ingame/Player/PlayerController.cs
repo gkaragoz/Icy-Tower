@@ -43,17 +43,9 @@ public class PlayerController : MonoBehaviour {
             int currentFloor = ((int)transform.position.y - (int)PlatformManager.instance.InitialSpawnPosition) / (int)_platformStats.GetDistanceBetweenPlatforms();
             SetScore(currentFloor);
             if (_isFirstStart) {
- //               SetPlayerInitPosition();
                _isFirstStart = false;
             }
         }
-    }
-
-    private void SetPlayerInitPosition() {
-        if(StartingFloorStats.instance.CalculateStartingPlatformPosition() == 0f) {
-            return;
-        }
-            LeanTween.moveY(gameObject, StartingFloorStats.instance.CalculateStartingPlatformPosition() + 3, 1f);
     }
 
     private void FixedUpdate() {

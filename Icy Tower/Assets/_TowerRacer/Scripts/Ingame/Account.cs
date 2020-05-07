@@ -29,6 +29,8 @@ public class Account : MonoBehaviour {
     private bool _isInitialized = false;
 
     private void Start() {
+        SetLanguage();
+
         _isInitialized = false;
 
         RewardsVCRepo = new PlayFabVCRewardsHandler();
@@ -38,6 +40,19 @@ public class Account : MonoBehaviour {
 
         SceneManager.sceneLoaded += OnSceneLoaded;
         GameManager.instance.OnGameStateChanged += OnGameStateChanged;
+    }
+
+    private void SetLanguage() {
+        if (PlayerPrefs.HasKey(Strings.PP_LANGUAGE)) {
+            string langKey = PlayerPrefs.GetString(Strings.PP_LANGUAGE);
+            LocalizationSystem.Language langEnum = (LocalizationSystem.Language) Enum.Parse(typeof(LocalizationSystem.Language), langKey);
+            LocalizationSystem.ChangeLanguage(langEnum);
+        } else {
+            LocalizationSystem.Language langEnum = LocalizationSystem.Language.English;
+            LocalizationSystem.ChangeLanguage(langEnum);
+
+            PlayerPrefs.SetString(Strings.PP_LANGUAGE, langEnum.ToString());
+        }
     }
 
     private void OnGameStateChanged(GameState previousGameState, GameState newGameState) {

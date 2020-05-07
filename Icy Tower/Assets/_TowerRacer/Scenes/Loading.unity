@@ -372,7 +372,6 @@ GameObject:
   - component: {fileID: 400179098}
   - component: {fileID: 400179099}
   - component: {fileID: 400179100}
-  - component: {fileID: 400179101}
   m_Layer: 0
   m_Name: _Account
   m_TagString: Untagged
@@ -427,13 +426,9 @@ MonoBehaviour:
   - _marketItem: {fileID: 11400000, guid: f95d251fd5373ae4b848130afcfb88ad, type: 2}
   - _marketItem: {fileID: 11400000, guid: d878ccdfa525c0747b4ab2f4352b259b, type: 2}
   - _marketItem: {fileID: 11400000, guid: 7d1ff63a5a2faaf4dbc34506ad995106, type: 2}
-  - _marketItem: {fileID: 11400000, guid: 44c9ddb86b28a854bbad2d8247a68887, type: 2}
-  - _marketItem: {fileID: 11400000, guid: 8d55785090dd12a40820ab7325776b93, type: 2}
-  - _marketItem: {fileID: 11400000, guid: 246f6005583f45b4a930e25372c2a91e, type: 2}
   - _marketItem: {fileID: 11400000, guid: 7374b0b6787e9814fbf7eaf7e7ea00b1, type: 2}
   - _marketItem: {fileID: 11400000, guid: 27468524a925ff449a1934e2a56be2bb, type: 2}
-  - _marketItem: {fileID: 11400000, guid: 8ba085044c46a7540a00c6ac0d6821b9, type: 2}
-  - _marketItem: {fileID: 11400000, guid: 293727a66b1b8c74db2e0d304fcc95ac, type: 2}
+  - _marketItem: {fileID: 11400000, guid: f8d7db3c86b17c04c869cb327ff20a07, type: 2}
   - _marketItem: {fileID: 11400000, guid: fe5a00e7b1cd58a49bcd5bbd1ca746c9, type: 2}
   - _marketItem: {fileID: 11400000, guid: b092858af545e474ba3d44c454d06099, type: 2}
   - _marketItem: {fileID: 11400000, guid: aacd190ba7895264bba311023bfab406, type: 2}
@@ -443,8 +438,6 @@ MonoBehaviour:
   - _marketItem: {fileID: 11400000, guid: 569edf1241c8ad34c8e0864a24698999, type: 2}
   - _marketItem: {fileID: 11400000, guid: 17e1ceef4fca82f458c96a1ca5582fa0, type: 2}
   - _marketItem: {fileID: 11400000, guid: fdabd09b53dd868468bd2c9effb263fc, type: 2}
-  - _marketItem: {fileID: 11400000, guid: c754845dc3da6214babb49986ffb2899, type: 2}
-  - _marketItem: {fileID: 11400000, guid: f8d7db3c86b17c04c869cb327ff20a07, type: 2}
   _tempCatalogItems: []
 --- !u!114 &400179100
 MonoBehaviour:
@@ -458,19 +451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2c57d0efe86bc468de6629a8bb0903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &400179101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 400179096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9cd6d3f24c3a148a18cff41599b6ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  somethin: 1
 --- !u!1 &494499385
 GameObject:
   m_ObjectHideFlags: 0

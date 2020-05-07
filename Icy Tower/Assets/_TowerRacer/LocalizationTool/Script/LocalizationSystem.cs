@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public class LocalizationSystem 
 {
@@ -19,9 +20,15 @@ public class LocalizationSystem
 
     public static CSVLoader csvLoader;
 
-    public static Language language = Language.English;
+    private static Language language = Language.English;
 
+    public static Action OnLanguageChanged;
 
+    public static void ChangeLanguage(Language lang) {
+        language = lang;
+
+        OnLanguageChanged?.Invoke();
+    }
 
     public static void Init()
     {

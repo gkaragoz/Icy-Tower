@@ -51,8 +51,8 @@ MonoBehaviour:
   _yellowCoinPrefab: {fileID: 4506316748478967041}
   _redCoinPrefab: {fileID: 7818139454955114364}
   _greenCoinPrefab: {fileID: 9002058058756062107}
-  _redCoinRates: 10
-  _greenCoinRates: 30
+  _redCoinRates: 5
+  _greenCoinRates: 5
   _coinAmount: 1
 --- !u!135 &-157391837021166239
 SphereCollider:
