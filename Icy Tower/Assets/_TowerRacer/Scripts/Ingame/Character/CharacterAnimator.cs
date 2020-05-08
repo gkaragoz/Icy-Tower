@@ -19,6 +19,16 @@ public class CharacterAnimator : MonoBehaviour {
         _characterMotor.OnAnimationStateChanged += PlayFallAnimation;
         _characterMotor.OnAnimationStateChanged += PlayComboJumpAnimation;
         _characterMotor.OnAnimationStateChanged += PlayRunAnimation;
+        GameManager.instance.OnGameStateChanged += OnGameStateChanged;
+
+    }
+
+    private void OnGameStateChanged(GameState arg1, GameState arg2)
+    {
+        if (arg2== GameState.GameOver)
+        {
+            _animator.SetTrigger("IdleStart");
+        }
     }
 
     private void PlayJumpMiddleAnimation(AnimationState state)
